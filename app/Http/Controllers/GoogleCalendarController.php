@@ -38,31 +38,51 @@ class GoogleCalendarController extends Controller
     }
 
     public function addEvent(Request $request)
-    {
-        if (!session()->has('google_token')) {
-            return redirect('/google');
-        }
-
-        $client = $this->getClient();
-        $client->setAccessToken(session('google_token'));
-
-        $service = new Calendar($client);
-
-        $event = new \Google\Service\Calendar\Event([
-            'summary' => $request->title,
-            'description' => $request->description,
-            'start' => [
-                'dateTime' => $request->start,
-                'timeZone' => 'Europe/Istanbul',
-            ],
-            'end' => [
-                'dateTime' => $request->end,
-                'timeZone' => 'Europe/Istanbul',
-            ],
-        ]);
-
-        $service->events->insert('primary', $event);
-
-        return back()->with('success', '✅ Etkinlik Google Takvim’e eklendi!');
+{
+    if (!session()->has('google_token')) {
+        return redirect('/google');
     }
+
+    $request->validate([
+        'title' => 'required',
+        'start' => 'required',
+        'end'   => 'required',
+    ]);
+
+    $client = $this->getClient();
+    $client->setAccessToken(session('google_token'));
+
+    $service = new \Google\Service\Calendar($client);
+
+    // ✅ TARİH FORMATINI GOOGLE UYUMLU HALE GETİR
+    $start = \Carbon\Carbon::parse($request->start)
+        ->setTimezone('Europe/Istanbul')
+        ->toRfc3339String();
+
+    $end = \Carbon\Carbon::parse($request->end)
+        ->setTimezone('Europe/Istanbul')
+        ->toRfc3339String();
+
+    $event = new \Google\Service\Calendar\Event([
+        'summary' => $request->title,
+        'description' => $request->description,
+        'start' => [
+            'dateTime' => $start,
+            'timeZone' => 'Europe/Istanbul',
+        ],
+        'end' => [
+            'dateTime' => $end,
+            'timeZone' => 'Europe/Istanbul',
+        ],
+    ]);
+
+    try {
+        $service->events->insert('primary', $event);
+    } catch (\Exception $e) {
+        dd('GOOGLE API HATASI:', $e->getMessage());
+    }
+
+    return back()->with('success', '✅ Etkinlik Google Takvim’e eklendi!');
+}
+    
 }
