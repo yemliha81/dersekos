@@ -169,7 +169,7 @@ Route::get('/ogretmen/cikis', 'App\Http\Controllers\TeacherController@logout')->
 
 Route::middleware('auth:teacher')->group(function () {
     Route::get('/google/connect', [GoogleCalendarController::class, 'redirect'])->name('google.connect');
-    Route::get('/google/callback', [GoogleCalendarController::class, 'callback']);
+    Route::get('auth/google/callback', [GoogleCalendarController::class, 'callback']);
 
     //Route::get('/calendar/form', fn() => view('calendar-form'))->name('calendar.form');
     //Route::post('/calendar/store', [GoogleCalendarController::class, 'store'])->name('calendar.store');
