@@ -168,16 +168,15 @@ Route::post('/ogretmen/kayit', 'App\Http\Controllers\TeacherController@signup')-
 Route::get('/ogretmen/cikis', 'App\Http\Controllers\TeacherController@logout')->name('teacher.logout');
 
 Route::middleware('auth:teacher')->group(function () {
-    Route::get('/google/connect', [GoogleCalendarController::class, 'redirect'])->name('google.connect');
-    Route::get('auth/google/callback', [GoogleCalendarController::class, 'callback']);
+    Route::get('/google/connect', [App\Http\Controllers\GoogleCalendarController::class, 'redirect'])->name('google.connect');
+    Route::get('auth/google/callback', [App\Http\Controllers\GoogleCalendarController::class, 'callback']);
 
     //Route::get('/calendar/form', fn() => view('calendar-form'))->name('calendar.form');
-    //Route::post('/calendar/store', [GoogleCalendarController::class, 'store'])->name('calendar.store');
-
+    //Route::post('/calendar/store', [App\Http\Controllers\GoogleCalendarController::class, 'store'])->name('calendar.store');
     Route::get('/calendar/create', [App\Http\Controllers\GoogleCalendarController::class, 'create'])
     ->name('calendar.create');
 
-    Route::post('/calendar/store', [GoogleCalendarController::class, 'store'])
+    Route::post('/calendar/store', [App\Http\Controllers\GoogleCalendarController::class, 'store'])
     ->name('calendar.store');
 });
 
