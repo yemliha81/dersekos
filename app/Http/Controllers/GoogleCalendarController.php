@@ -12,8 +12,11 @@ class GoogleCalendarController extends Controller
 
     public function create()
     {
+
+        dd(auth('teacher'));
+
         $client = new Client();
-        $client->setAccessToken(json_decode(auth()->user()->google_token, true));
+        $client->setAccessToken(json_decode(auth('teacher')->user()->google_token, true));
 
         // Token süresi dolduysa otomatik yenile
         if ($client->isAccessTokenExpired()) {
