@@ -174,7 +174,7 @@ Route::middleware('auth:teacher')->group(function () {
     //Route::get('/calendar/form', fn() => view('calendar-form'))->name('calendar.form');
     //Route::post('/calendar/store', [GoogleCalendarController::class, 'store'])->name('calendar.store');
 
-    Route::get('/calendar/create', [GoogleCalendarController::class, 'create'])
+    Route::get('/calendar/create', [App\Http\Controllers\GoogleCalendarController::class, 'create'])
     ->name('calendar.create');
 
     Route::post('/calendar/store', [GoogleCalendarController::class, 'store'])
