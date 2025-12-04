@@ -1,8 +1,7 @@
 <?php
 //insert Admin/MenuController
 namespace App\Http\Controllers\Admin;
-
-
+use App\Http\Controllers\GoogleCalendarController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -167,20 +166,13 @@ Route::post('/ogretmen/kayit', 'App\Http\Controllers\TeacherController@signup')-
 
 Route::get('/ogretmen/cikis', 'App\Http\Controllers\TeacherController@logout')->name('teacher.logout');
 
-Route::middleware('auth:teacher')->group(function () {
-    Route::get('/google/connect', [App\Http\Controllers\GoogleCalendarController::class, 'redirect'])->name('google.connect');
-    Route::get('auth/google/callback', [App\Http\Controllers\GoogleCalendarController::class, 'callback']);
-
- 
-
-    Route::get('/calendar/create', 'App\Http\Controllers\GoogleCalendarController@create')->name('calendar.create');
-    Route::post('/calendar/store', 'App\Http\Controllers\GoogleCalendarController@store')->name('calendar.store');
 
 
-});
+Route::get('/google', [GoogleCalendarController::class, 'redirect']);
+Route::get('/google/callback', [GoogleCalendarController::class, 'callback']);
 
-
-
+Route::get('/event-form', fn() => view('event-form'));
+Route::post('/google/event', [GoogleCalendarController::class, 'addEvent']);
 
 
 

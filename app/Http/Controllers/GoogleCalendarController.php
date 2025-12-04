@@ -5,98 +5,46 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Google\Client;
 use Google\Service\Calendar;
-use Carbon\Carbon;
 
 class GoogleCalendarController extends Controller
 {
-
-    public function create()
-    {
-
-        dd(auth('teacher'));
-
-        $client = new Client();
-        $client->setAccessToken(json_decode(auth('teacher')->user()->google_token, true));
-
-        // Token süresi dolduysa otomatik yenile
-        if ($client->isAccessTokenExpired()) {
-            $client->fetchAccessTokenWithRefreshToken(
-                $client->getRefreshToken()
-            );
-
-            auth()->user()->update([
-                'google_token' => json_encode($client->getAccessToken())
-            ]);
-        }
-
-        $service = new Calendar($client);
-        $calendarList = $service->calendarList->listCalendarList();
-
-        return view('teacher.calendar-form', [
-            'calendars' => $calendarList->getItems()
-        ]);
-    }
-    
-
-    public function redirect()
+    private function getClient()
     {
         $client = new Client();
         $client->setClientId(config('services.google.client_id'));
         $client->setClientSecret(config('services.google.client_secret'));
         $client->setRedirectUri(config('services.google.redirect'));
-        $client->setScopes(['https://www.googleapis.com/auth/calendar']);
+        $client->setScopes(Calendar::CALENDAR);
         $client->setAccessType('offline');
         $client->setPrompt('consent');
 
+        return $client;
+    }
+
+    public function redirect()
+    {
+        $client = $this->getClient();
         return redirect($client->createAuthUrl());
     }
 
     public function callback(Request $request)
     {
-        $client = new Client();
-        $client->setClientId(config('services.google.client_id'));
-        $client->setClientSecret(config('services.google.client_secret'));
-        $client->setRedirectUri(config('services.google.redirect'));
-
+        $client = $this->getClient();
         $token = $client->fetchAccessTokenWithAuthCode($request->code);
 
-        auth('teacher')->user()->update([
-            'google_token' => json_encode($token)
-        ]);
+        session(['google_token' => $token]);
 
-        return redirect()->route('calendar.form')->with('success', 'Google bağlandı ✅');
+        return redirect('/event-form');
     }
 
-    
-
-    public function store(Request $request)
+    public function addEvent(Request $request)
     {
-        $request->validate([
-            'calendar_id' => 'required',
-            'title' => 'required',
-            'start' => 'required',
-            'end' => 'required',
-        ]);
-
-        $teacher = auth('teacher')->user();
-
-        if (!$teacher->google_token) {
-            return redirect()->route('google.connect')
-                ->with('error', 'Önce Google hesabınızı bağlayın.');
+        if (!session()->has('google_token')) {
+            return redirect('/google');
         }
 
-        $client = new Client();
-        $client->setAccessToken(json_decode(auth()->user()->google_token, true));
-
-        if ($client->isAccessTokenExpired()) {
-            $client->fetchAccessTokenWithRefreshToken(
-                $client->getRefreshToken()
-            );
-
-            auth()->user()->update([
-                'google_token' => json_encode($client->getAccessToken())
-            ]);
-        }
+        $client = $this->getClient();
+        $client->setAccessToken(session('google_token'));
 
         $service = new Calendar($client);
 
@@ -104,24 +52,17 @@ class GoogleCalendarController extends Controller
             'summary' => $request->title,
             'description' => $request->description,
             'start' => [
-                'dateTime' => Carbon::parse($request->start)->toRfc3339String(),
+                'dateTime' => $request->start,
                 'timeZone' => 'Europe/Istanbul',
             ],
             'end' => [
-                'dateTime' => Carbon::parse($request->end)->toRfc3339String(),
+                'dateTime' => $request->end,
                 'timeZone' => 'Europe/Istanbul',
             ],
         ]);
 
-        $service->events->insert(
-            $request->calendar_id,
-            $event
-        );
+        $service->events->insert('primary', $event);
 
-        return back()->with('success', 'Etkinlik seçilen takvime eklendi ✅');
+        return back()->with('success', '✅ Etkinlik Google Takvim’e eklendi!');
     }
-
-
-
-
 }
