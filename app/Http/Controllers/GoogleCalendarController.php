@@ -38,52 +38,71 @@ class GoogleCalendarController extends Controller
     }
 
     public function addEvent(Request $request)
-{
-    if (!session()->has('google_token')) {
-        return redirect('/google');
+    {
+        if (!session()->has('google_token')) {
+            return redirect('/google');
+        }
+
+        $request->validate([
+            'title' => 'required',
+            'start' => 'required',
+            'end'   => 'required',
+        ]);
+
+        $client = $this->getClient();
+        $client->setAccessToken(session('google_token'));
+
+        $service = new \Google\Service\Calendar($client);
+
+        // ✅ TARİH FORMATINI GOOGLE UYUMLU HALE GETİR
+        $start = \Carbon\Carbon::parse($request->start, 'Europe/Istanbul')
+            ->setTimezone('Europe/Istanbul')
+            ->toRfc3339String();
+
+        $end = \Carbon\Carbon::parse($request->end, 'Europe/Istanbul')
+            ->setTimezone('Europe/Istanbul')
+            ->toRfc3339String();
+
+
+        $event = new \Google\Service\Calendar\Event([
+            'summary' => $request->title,
+            'description' => $request->description,
+            'start' => [
+                'dateTime' => $start,
+                'timeZone' => 'Europe/Istanbul',
+            ],
+            'end' => [
+                'dateTime' => $end,
+                'timeZone' => 'Europe/Istanbul',
+            ],
+        ]);
+
+        try {
+            $service->events->insert('primary', $event);
+        } catch (\Exception $e) {
+            dd('GOOGLE API HATASI:', $e->getMessage());
+        }
+
+        return back()->with('success', '✅ Etkinlik Google Takvim’e eklendi!');
     }
 
-    $request->validate([
-        'title' => 'required',
-        'start' => 'required',
-        'end'   => 'required',
-    ]);
+    public function listCalendars()
+    {
+        if (!session()->has('google_token')) {
+            return redirect('/google');
+        }
 
-    $client = $this->getClient();
-    $client->setAccessToken(session('google_token'));
+        $client = $this->getClient();
+        $client->setAccessToken(session('google_token'));
 
-    $service = new \Google\Service\Calendar($client);
+        $service = new \Google\Service\Calendar($client);
 
-    // ✅ TARİH FORMATINI GOOGLE UYUMLU HALE GETİR
-    $start = \Carbon\Carbon::parse($request->start, 'Europe/Istanbul')
-        ->setTimezone('Europe/Istanbul')
-        ->toRfc3339String();
+        $calendarList = $service->calendarList->listCalendarList();
 
-    $end = \Carbon\Carbon::parse($request->end, 'Europe/Istanbul')
-        ->setTimezone('Europe/Istanbul')
-        ->toRfc3339String();
-
-
-    $event = new \Google\Service\Calendar\Event([
-        'summary' => $request->title,
-        'description' => $request->description,
-        'start' => [
-            'dateTime' => $start,
-            'timeZone' => 'Europe/Istanbul',
-        ],
-        'end' => [
-            'dateTime' => $end,
-            'timeZone' => 'Europe/Istanbul',
-        ],
-    ]);
-
-    try {
-        $service->events->insert('primary', $event);
-    } catch (\Exception $e) {
-        dd('GOOGLE API HATASI:', $e->getMessage());
+        return view('calendars', [
+            'calendars' => $calendarList->getItems()
+        ]);
     }
 
-    return back()->with('success', '✅ Etkinlik Google Takvim’e eklendi!');
-}
     
 }

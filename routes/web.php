@@ -174,6 +174,9 @@ Route::get('/google/callback', [GoogleCalendarController::class, 'callback']);
 Route::get('/event-form', fn() => view('event-form'));
 Route::post('/google/event', [GoogleCalendarController::class, 'addEvent']);
 
+Route::get('/google/calendars', [GoogleCalendarController::class, 'listCalendars']);
+Route::get('/google/calendar/{id}', [GoogleCalendarController::class, 'showCalendar']);
+
 
 
 
