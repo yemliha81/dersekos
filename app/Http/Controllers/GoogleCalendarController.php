@@ -78,7 +78,8 @@ class GoogleCalendarController extends Controller
         ]);
 
         try {
-            $service->events->insert('primary', $event);
+            $calendarId = config('services.google_calendar_id');
+            $service->events->insert($calendarId, $event);
         } catch (\Exception $e) {
             dd('GOOGLE API HATASI:', $e->getMessage());
         }

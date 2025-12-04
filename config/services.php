@@ -37,5 +37,7 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI'),
     ],
 
+    'google_calendar_id' => env('GOOGLE_CALENDAR_ID'),
+
 
 ];

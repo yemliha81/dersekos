@@ -33,7 +33,7 @@
             
 
             <div>
-                <iframe src="https://calendar.google.com/calendar/embed?src=0339fce3a47cb2ae6d1e35dc034bda3bee449b304a23eb85a88e4e86d58ef531%40group.calendar.google.com&ctz=Europe%2FIstanbul" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://calendar.google.com/calendar/embed?src=0339fce3a47cb2ae6d1e35dc034bda3bee449b304a23eb85a88e4e86d58ef531@group.calendar.google.com&ctz=Europe%2FIstanbul" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
             </div>
         </section>
 
