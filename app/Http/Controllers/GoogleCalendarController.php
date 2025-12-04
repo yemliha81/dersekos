@@ -55,13 +55,14 @@ class GoogleCalendarController extends Controller
     $service = new \Google\Service\Calendar($client);
 
     // ✅ TARİH FORMATINI GOOGLE UYUMLU HALE GETİR
-    $start = \Carbon\Carbon::parse($request->start)
+    $start = \Carbon\Carbon::parse($request->start, 'Europe/Istanbul')
         ->setTimezone('Europe/Istanbul')
         ->toRfc3339String();
 
-    $end = \Carbon\Carbon::parse($request->end)
+    $end = \Carbon\Carbon::parse($request->end, 'Europe/Istanbul')
         ->setTimezone('Europe/Istanbul')
         ->toRfc3339String();
+
 
     $event = new \Google\Service\Calendar\Event([
         'summary' => $request->title,
