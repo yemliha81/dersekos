@@ -57,7 +57,7 @@ class GoogleCalendarController extends Controller
 
         $token = $client->fetchAccessTokenWithAuthCode($request->code);
 
-        auth()->user()->update([
+        auth('teacher')->user()->update([
             'google_token' => json_encode($token)
         ]);
 
@@ -74,6 +74,13 @@ class GoogleCalendarController extends Controller
             'start' => 'required',
             'end' => 'required',
         ]);
+
+        $teacher = auth('teacher')->user();
+
+        if (!$teacher->google_token) {
+            return redirect()->route('google.connect')
+                ->with('error', 'Önce Google hesabınızı bağlayın.');
+        }
 
         $client = new Client();
         $client->setAccessToken(json_decode(auth()->user()->google_token, true));
