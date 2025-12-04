@@ -3,7 +3,7 @@
 <ul>
 @foreach($calendars as $calendar)
     <li>
-        <a href="/google/calendar/{{ urlencode($calendar->id) }}">
+        <a href="/google/calendar/{{ $calendar->id }}">
             {{ $calendar->summary }}
         </a>
     </li>
