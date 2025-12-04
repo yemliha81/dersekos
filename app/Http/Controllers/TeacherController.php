@@ -17,7 +17,7 @@ class TeacherController extends Controller
     public function dashboard()
     {
 
-        dd(auth('teacher')->user()->google_token);
+       /* dd(auth('teacher')->user()->google_token);
 
 
         $client = new Client();
@@ -38,11 +38,9 @@ class TeacherController extends Controller
         }
 
         $service = new Calendar($client);
-        $calendarList = $service->calendarList->listCalendarList();
+        $calendarList = $service->calendarList->listCalendarList();*/
 
-        return view('teacher.dashboard', [
-            'calendars' => $calendarList->getItems()
-        ]);
+        return view('teacher.dashboard'/*, ['calendars' => $calendarList->getItems()]*/);
     }
 
 
