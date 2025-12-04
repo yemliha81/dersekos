@@ -17,7 +17,10 @@ class TeacherController extends Controller
     public function dashboard()
     {
 
-         $client = new Client();
+        dd(auth('teacher')->user()->google_token);
+
+
+        $client = new Client();
         $client->setAccessToken(
             json_decode(auth('teacher')->user()->google_token, true)
         );
