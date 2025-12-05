@@ -150,6 +150,10 @@
     #c2:checked ~ .carousel-nav label[for="c2"],
     #c3:checked ~ .carousel-nav label[for="c3"]{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
 
+    .teacher-card{
+      background: #92d4ecff; padding:14px; border-radius:12px; margin-bottom:12px; border:1px solid rgba(255,255,255,0.05);
+    }
+
     @media(min-width:820px){
       .slide img{height:320px}
     }

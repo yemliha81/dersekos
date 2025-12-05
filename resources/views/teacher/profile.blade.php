@@ -11,7 +11,7 @@
         <div>
             <h3>{{ $teacher->name }}</h3>
             <p>Branş: {{ $teacher->branch }}</p>
-            <p>E-posta: {{ $teacher->email }}</p>
+            
         </div>
         <div class="calendar">
             <h3>Takvim</h3>

@@ -12,8 +12,8 @@ class StudentController extends Controller
 {
     public function dashboard()
     {
-        
-        return view('student.dashboard');
+        $teachers = Teacher::all();
+        return view('student.dashboard', compact('teachers'));
     }
 
     
