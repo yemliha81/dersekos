@@ -87,7 +87,7 @@
 
 
                 <div class="mb-3">
-                <label>Meet Link</label>
+                <label>Toplantı Linki</label>
                 <input type="url" id="meet_url" class="form-control" placeholder="https://meet.google.com/...">
                 </div>
 
