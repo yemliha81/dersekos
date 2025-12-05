@@ -8,7 +8,7 @@
         <a href="{{ url('/') }}">
           <img src="{{asset('assets/img/dersekos.jpg')}}" alt="DerseKos Logo" width="300">
         </a>
-        <div><h3>Haydi sen de derse koş!</h3></div>
+        
       </div>
     </section>
     <!-- Amaç & Carousel -->
@@ -73,10 +73,11 @@
     </section>
 
     <main>
+      <div style="margin:44px 0; text-align:center"><h3>Haydi sen de derse koş!</h3></div>
       <section class="hero-card" aria-labelledby="hero-title">
         <div class="hero-left grid-20">
-          <h2 id="hero-title">Size en uygun eğitmeni bulun. Hızlı, güvenilir, uygun fiyatlı</h2>
-          <p class="muted">Matematik, yabancı dil, sınav hazırlık veya hobi dersleri. Dersleri filtrele, eğitmen profillerini incele ve ilk dersini ayarla.</p>
+          <h3 id="hero-title" class="text-center">Size en uygun eğitmeni bulun. Hızlı, güvenilir, uygun fiyatlı</h3>
+          <p class="muted text-center">Matematik, yabancı dil, sınav hazırlık veya hobi dersleri. Dersleri filtrele, eğitmen profillerini incele ve ilk dersini ayarla.</p>
         </div>
 
         
@@ -126,7 +127,7 @@
       </section>
 
       <!-- Özellikler -->
-      <section id="features" class="hero-card" style="margin-top:22px">
+      <section id="features" class="hero-card text-center" style="margin-top:22px">
         <h2 style="margin:0 0 12px 0">Platform özellikleri</h2>
         <div class="features">
           <div class="feature">

@@ -125,7 +125,7 @@
   
     /* Carousel */
     .carousel{
-      margin: 70px 0 28px 0;
+      margin: 10px 0 10px 0;
     position: relative;
     border: 1px solid #ddd;
     border-radius: 10px;
