@@ -18,7 +18,7 @@
       <!-- Giriş Formu -->
       <form  action="{{route('teacher.login.submit')}}" method="POST" class="form form-login">
         @csrf
-        <h2>Öğretmen Giriş</h2>
+        <h3>Öğretmen Giriş</h3>
         <div class="field">
           <label>E‑posta</label>
           <input type="email" name="email" placeholder="ornek@mail.com" required>
@@ -34,7 +34,7 @@
       <!-- Üyelik Formu -->
       <form  action="{{route('teacher.signup.submit')}}" method="POST" class="form form-register">
         @csrf
-        <h2>Öğretmen Hesabı Oluştur</h2>
+        <h3>Öğretmen Hesabı Oluştur</h3>
         <div class="field">
           <label>Ad Soyad</label>
           <input type="text" name="name" placeholder="Adınız Soyadınız" required>

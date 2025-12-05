@@ -2,35 +2,61 @@
 
 
 @section('content')
-
+    <!-- logo area --> 
+    <section class="logo-area" style="margin:0;">
+      <div class="container text-center" style="display:flex; flex-direction:column; justify-content:center; align-items:center; padding:0">
+        <a href="{{ url('/') }}">
+          <img src="{{asset('assets/img/dersekos.jpg')}}" alt="DerseKos Logo" width="300">
+        </a>
+        <div><h3>Haydi sen de derse koş!</h3></div>
+      </div>
+    </section>
     <!-- Amaç & Carousel -->
     <section class="carousel" aria-label="Platformun amacı">
       <input type="radio" name="carousel" id="c1" checked>
       <input type="radio" name="carousel" id="c2">
       <input type="radio" name="carousel" id="c3">
+      <input type="radio" name="carousel" id="c4">
+      <input type="radio" name="carousel" id="c5">
+      <input type="radio" name="carousel" id="c6">
 
       <div class="carousel-wrap">
         <div class="carousel-track">
           <!-- Aynı görsel 3 slaytta kullanıldı. İstersen farklı görseller ekleyebilirsin. -->
           <div class="slide">
-            <img src="{{asset('assets/img/dersekos.jpg')}}" alt="Öğrencileri ve eğitmenleri buluşturan DerseKos platformu">
+            <img src="{{asset('assets/img/ankara-1.jpg')}}" alt="Öğrencileri ve eğitmenleri buluşturan DerseKos platformu">
             <div class="slide-caption">
-              <h3>Öğrenci & Eğitmeni Buluşturur</h3>
-              <p>DerseKos, doğru eğitmeni saniyeler içinde bulmanızı sağlar.</p>
+              
             </div>
           </div>
           <div class="slide">
-            <img src="{{asset('assets/img/dersekos.jpg')}}" alt="Online ve yüz yüze ders imkanları">
+            <img src="{{asset('assets/img/ankara-2.jpg')}}" alt="Öğrencileri ve eğitmenleri buluşturan DerseKos platformu">
             <div class="slide-caption">
-              <h3>Online & Yüz Yüze Dersler</h3>
-              <p>İster evden, ister birebir ders modeliyle öğren.</p>
+              
             </div>
           </div>
           <div class="slide">
-            <img src="{{asset('assets/img/dersekos.jpg')}}" alt="Başarıya koşan öğrenciler">
+            <img src="{{asset('assets/img/isem-1.png')}}" alt="Online ve yüz yüze ders imkanları">
             <div class="slide-caption">
-              <h3>Başarıya Giden Yol</h3>
-              <p>Hedeflerine ulaşman için sana özel ders planları.</p>
+              
+            </div>
+          </div>
+          <div class="slide">
+            <img src="{{asset('assets/img/isem-2.png')}}" alt="Online ve yüz yüze ders imkanları">
+            <div class="slide-caption">
+              
+            </div>
+          </div>
+          <div class="slide">
+            <img src="{{asset('assets/img/matsev-1.png')}}" alt="Başarıya koşan öğrenciler">
+            <div class="slide-caption">
+              
+            </div>
+          </div>
+          <div class="slide">
+            <img src="{{asset('assets/img/matsev-2.png')}}" alt="Başarıya koşan öğrenciler">
+            <div class="slide-caption">
+              
             </div>
           </div>
         </div>
@@ -40,6 +66,9 @@
         <label for="c1" aria-label="1. slayt"></label>
         <label for="c2" aria-label="2. slayt"></label>
         <label for="c3" aria-label="3. slayt"></label>
+        <label for="c4" aria-label="3. slayt"></label>
+        <label for="c5" aria-label="3. slayt"></label>
+        <label for="c6" aria-label="3. slayt"></label>
       </div>
     </section>
 
@@ -54,7 +83,7 @@
       </section>
 
       <!-- Eğitmen kartları -->
-      <section id="teachers" class="hero-card" style="margin-top:18px">
+      <section id="teachers" class="hero-card" style="margin-top:18px; display:none">
         <h2 style="margin:0 0 12px 0">Öne çıkan eğitmenler</h2>
         <div class="cards">
           <article class="teacher" tabindex="0">
@@ -117,6 +146,24 @@
 
 
     </main>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const radios = document.querySelectorAll('input[name="carousel"]');
+    let currentIndex = 0;
+    const totalSlides = radios.length;
+
+    setInterval(() => {
+        currentIndex++;
+
+        if (currentIndex >= totalSlides) {
+            currentIndex = 0; // Baştan başla
+        }
+
+        radios[currentIndex].checked = true;
+    }, 3000); // 3 saniye
+});
+</script>
 
 @endsection
 

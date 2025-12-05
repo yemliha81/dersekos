@@ -18,6 +18,10 @@ class LoginController extends Controller
         return view('login');
     }
 
+    public function choose(){
+        return view('login-choose');
+    }
+
      public function login(Request $request)
     {
         //dd($request->all());

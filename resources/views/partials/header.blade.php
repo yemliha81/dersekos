@@ -9,6 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/locales-all.global.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <style>
     /* -----------------------------
@@ -33,6 +39,9 @@
     .teacher-profile{
       display: grid;
     grid-template-columns: 300px auto;
+    }
+    .teacher-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:14px; border-radius:12px; margin-bottom:12px; border:1px solid 1px solid #673AB7);
     }
     body{
       margin:0; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
@@ -115,7 +124,13 @@
 
   
     /* Carousel */
-    .carousel{margin:70px 0 28px 0; position:relative}
+    .carousel{
+      margin: 70px 0 28px 0;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+    }
     .carousel-wrap{position:relative; overflow:hidden; border-radius:18px; background:var(--card)}
     .carousel-track{display:flex;  transition:transform .5s ease}
     .slide{width:100%; flex:0 0 100%; position:relative}
@@ -170,6 +185,7 @@
     }
 
   </style>
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
@@ -182,7 +198,7 @@
       <nav class="nav">
         <a href="{{ route('home') }}">Ana Sayfa</a>
         @if(!auth('student')->check() && !auth('teacher')->check())
-        <a href="{{ route('student.login') }}" class="cta">Üye Ol / Giriş Yap</a>
+        <a href="{{ route('login.choose') }}" class="cta">Üye Ol / Giriş Yap</a>
         @else
           @if(auth('teacher')->check())
           <a href="{{ route('teacher.dashboard') }}">Hesabım</a>

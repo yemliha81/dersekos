@@ -11,6 +11,10 @@
     <p style="color:green">{{ session('success') }}</p>
 @endif
 
+@if($errors->any())
+    <p style="color:red">{{ $errors->first() }}</p>
+@endif
+
 <form method="POST" action="/google/event">
     @csrf
 
@@ -24,8 +28,9 @@
     <label>Bitiş</label><br>
     <input type="datetime-local" name="end" required><br><br>
 
-    <button type="submit">Google Takvime Kaydet</button>
+    <button type="submit">Takvime Kaydet</button>
 </form>
+
 
 </body>
 </html>

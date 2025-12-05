@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\GoogleCalendarController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Event;
+use Illuminate\Http\Request;
+
 
 
 
@@ -164,18 +167,57 @@ Route::get('/ogretmen/giris', 'App\Http\Controllers\TeacherController@showLoginF
 Route::post('/ogretmen/giris', 'App\Http\Controllers\TeacherController@login')->name('teacher.login.submit');
 Route::post('/ogretmen/kayit', 'App\Http\Controllers\TeacherController@signup')->name('teacher.signup.submit');
 
+Route::get('/teacher/dashboard', 'App\Http\Controllers\TeacherController@dashboard')->middleware('auth:teacher')->name('teacher.dashboard');
+Route::get('/ogretmenler', 'App\Http\Controllers\TeacherController@listTeachers')->middleware('auth:student')->name('teacher.list');
+Route::get('/ogretmen/{id}/profil', 'App\Http\Controllers\TeacherController@viewProfile')->middleware('auth:student')->name('teacher.profile');
+
 Route::get('/ogretmen/cikis', 'App\Http\Controllers\TeacherController@logout')->name('teacher.logout');
 
 
+// login.choose route
+Route::get('/login-choose', 'App\Http\Controllers\LoginController@choose')->name('login.choose');
 
-Route::get('/google', [GoogleCalendarController::class, 'redirect']);
-Route::get('/google/callback', [GoogleCalendarController::class, 'callback']);
 
 Route::get('/event-form', fn() => view('event-form'));
-Route::post('/google/event', [GoogleCalendarController::class, 'addEvent']);
+Route::post('/google/event', 'App\Http\Controllers\GoogleCalendarController@addEvent')->name('teacher.addEvent');
 
-Route::get('/google/calendars', [GoogleCalendarController::class, 'listCalendars']);
-Route::get('/google/calendar/{id}', [GoogleCalendarController::class, 'showCalendar']);
+
+
+Route::get('/events', function () {
+
+    $teacherId = auth('teacher')->user()->id;
+
+    return Event::where('teacher_id', $teacherId)->get();
+});
+
+Route::get('/teacher-events/{id}', function () {
+
+    $teacherId = request()->id;
+
+    $events = Event::where('teacher_id', $teacherId)->get();
+
+    return $events;
+});
+
+Route::post('/events', function (Request $request) {
+    $teacherId = auth('teacher')->user()->id;
+
+    $event = Event::create([
+        'title'      => $request->title,
+        'start'      => $request->start,
+        'end'        => $request->end,
+        'meet_url'   => $request->meet_url,
+        'is_free'    => $request->is_free,
+        'price'      => $request->price,
+        'min_person' => $request->min_person,
+        'max_person' => $request->max_person,
+        'teacher_id' => $teacherId,
+    ]);
+
+    return response()->json($event);
+});
+
+
 
 
 

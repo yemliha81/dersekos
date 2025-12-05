@@ -43,6 +43,18 @@ class TeacherController extends Controller
         return view('teacher.dashboard'/*, ['calendars' => $calendarList->getItems()]*/);
     }
 
+    public function listTeachers()
+    {
+        $teachers = Teacher::all();
+        return view('teacher.list', ['teachers' => $teachers]);
+    }
+
+    public function viewProfile($id)
+    {
+        $teacher = Teacher::findOrFail($id);
+        return view('teacher.profile', ['teacher' => $teacher]);
+    }
+
 
 
 
