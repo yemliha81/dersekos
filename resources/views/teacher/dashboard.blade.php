@@ -21,7 +21,7 @@
 
         <section class="hero-card dashboard-cards ">
             <div class="row">
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-3 d-none d-sm-block">
                     <div>
                         <div class="feature">
                             <h3>Ad - Soyad</h3>
