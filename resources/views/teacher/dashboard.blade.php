@@ -14,24 +14,32 @@
             </div>
         </section>
 
-        <section class="hero-card dashboard-cards teacher-profile">
-            <div>
-                <div class="feature">
-                    <h3>Ad - Soyad</h3>
-                    <p>{{ auth('teacher')->user()->name }}</p>
+        <section class="hero-card dashboard-cards ">
+            <div class="row">
+                <div class="col-12 col-md-3">
+                    <div>
+                        <div class="feature">
+                            <h3>Ad - Soyad</h3>
+                            <p>{{ auth('teacher')->user()->name }}</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Email</h3>
+                            <p>{{ auth('teacher')->user()->email }}</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Branş</h3>
+                            <p>{{ ucfirst(auth('teacher')->user()->branch) }} </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature">
-                    <h3>Email</h3>
-                    <p>{{ auth('teacher')->user()->email }}</p>
-                </div>
-                <div class="feature">
-                    <h3>Branş</h3>
-                    <p>{{ ucfirst(auth('teacher')->user()->branch) }} </p>
+                <div class="col-12 col-md-9">
+                    <div>
+                        <div id="calendar"></div>
+                    </div>
                 </div>
             </div>
-            <div>
-                <div id="calendar"></div>
-            </div>
+            
+            
         </section>
 
         <!-- Event Ekleme Modal -->
@@ -40,7 +48,7 @@
             <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title">Yeni Etkinlik</h5>
+                <h5 class="modal-title">Yeni Ders oluştur</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
