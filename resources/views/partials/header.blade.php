@@ -45,6 +45,12 @@
     .teacher-card{
       background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:14px; border-radius:12px; margin-bottom:12px; border:1px solid 1px solid #673AB7);
     }
+    .logo-div{
+      display:flex; justify-content:center; align-items:center;
+    }
+    .logo-div img{
+      max-width:100%; display:block;
+    }
     body{
       margin:0; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
       background: #FFFFFF; color:#000000;
@@ -109,6 +115,7 @@
       .hero-left h1{font-size:36px}
       .cards{grid-template-columns:repeat(2, minmax(0,1fr))}
       .features{grid-template-columns:repeat(3,1fr)}
+      
     }
     @media(min-width:1100px){
       .container{max-width:1260px}
@@ -147,7 +154,7 @@
     #c3:checked ~ .carousel-wrap .carousel-track{transform:translateX(-200%)}
 
     .carousel-nav{display:flex; gap:8px; justify-content:center; margin-top:10px}
-    .carousel-nav label{width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.2); cursor:pointer}
+    .carousel-nav label{width:10px; height:10px; border-radius:50%; background:#000000; cursor:pointer}
     #c1:checked ~ .carousel-nav label[for="c1"],
     #c2:checked ~ .carousel-nav label[for="c2"],
     #c3:checked ~ .carousel-nav label[for="c3"]{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
@@ -190,8 +197,65 @@
       .auth-card{padding:32px}
     }
 
+    .carousel-wrapper {
+      width: min(1000px, 95%);
+      max-width: 1000px;
+      background: white;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(20,30,60,0.08);
+    }
+
+    /* Swiper yüksekliği */
+    .swiper {
+      width: 100% !important;
+      max-width: 100%;
+    }
+
+    .swiper-wrapper {
+      width: 100%;
+    }
+
+    .swiper-slide {
+      width: 100% !important;
+    }
+
+    .slide-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    /* Başlık katmanı örneği */
+    .slide-caption {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      backdrop-filter: blur(4px);
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    /* Küçük ekran düzeni */
+    @media (max-width: 600px) {
+      
+      .slide-caption { font-size: 14px; padding: 8px 10px; }
+      .logo-div img{
+        max-width:50%; display:block;
+      }
+    }
+
   </style>
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+<!-- Swiper CSS (CDN) -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@10/swiper-bundle.min.css" />
+
 </head>
 <body>
   <div class="container">
@@ -199,10 +263,12 @@
     <div class="inner container">
       <div class="brand">
         <div class="logo">DK</div>
-        <strong>Derse Koş</strong>
+        <a href="{{ route('home') }}">
+          <strong>Derse Koş</strong>
+        </a>
+        
       </div>
       <nav class="nav">
-        <a href="{{ route('home') }}">Ana Sayfa</a>
         @if(!auth('student')->check() && !auth('teacher')->check())
         <a href="{{ route('login.choose') }}" class="cta">Üye Ol / Giriş Yap</a>
         @else

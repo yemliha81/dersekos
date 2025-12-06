@@ -3,72 +3,75 @@
 
 @section('content')
     <!-- logo area --> 
-    <section class="logo-area" style="margin:0;">
+    <section class="hero-card logo-area" style="margin:0;">
       <div class="container text-center" style="display:flex; flex-direction:column; justify-content:center; align-items:center; padding:0">
-        <a href="{{ url('/') }}">
-          <img src="{{asset('assets/img/dersekos.jpg')}}" alt="DerseKos Logo" width="300">
-        </a>
-        
-      </div>
-    </section>
-    <!-- Amaç & Carousel -->
-    <section class="carousel" aria-label="Platformun amacı">
-      <input type="radio" name="carousel" id="c1" checked>
-      <input type="radio" name="carousel" id="c2">
-      <input type="radio" name="carousel" id="c3">
-      <input type="radio" name="carousel" id="c4">
-      <input type="radio" name="carousel" id="c5">
-      <input type="radio" name="carousel" id="c6">
+        <div class="row">
+          <div class="col-12 col-md-3 logo-div">
+            <img src="{{asset('assets/img/dersekos.jpg')}}" alt="DerseKos Logo" >
+          </div>
+          <div class="col-12 col-md-9">
+             <!-- Swiper -->
+            <div class="carousel-wrapper">
 
-      <div class="carousel-wrap">
-        <div class="carousel-track">
-          <!-- Aynı görsel 3 slaytta kullanıldı. İstersen farklı görseller ekleyebilirsin. -->
-          <div class="slide">
-            <img src="{{asset('assets/img/ankara-1.jpg')}}" alt="Öğrencileri ve eğitmenleri buluşturan DerseKos platformu">
-            <div class="slide-caption">
-              
-            </div>
-          </div>
-          <div class="slide">
-            <img src="{{asset('assets/img/ankara-2.jpg')}}" alt="Öğrencileri ve eğitmenleri buluşturan DerseKos platformu">
-            <div class="slide-caption">
-              
-            </div>
-          </div>
-          <div class="slide">
-            <img src="{{asset('assets/img/isem-1.png')}}" alt="Online ve yüz yüze ders imkanları">
-            <div class="slide-caption">
-              
-            </div>
-          </div>
-          <div class="slide">
-            <img src="{{asset('assets/img/isem-2.png')}}" alt="Online ve yüz yüze ders imkanları">
-            <div class="slide-caption">
-              
-            </div>
-          </div>
-          <div class="slide">
-            <img src="{{asset('assets/img/matsev-1.png')}}" alt="Başarıya koşan öğrenciler">
-            <div class="slide-caption">
-              
-            </div>
-          </div>
-          <div class="slide">
-            <img src="{{asset('assets/img/matsev-2.png')}}" alt="Başarıya koşan öğrenciler">
-            <div class="slide-caption">
-              
+              <!-- Swiper -->
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <!-- slide 1 -->
+                  <div class="swiper-slide">
+                    <a href="https://ankarayayincilik.com.tr/">
+                      <img class="slide-img" src="{{asset('assets/img/ankara-1.jpg')}}" alt="Ankara Yayınları 1" loading="lazy">
+                    </a>
+                  </div>
+
+                  <!-- slide 2 -->
+                  <div class="swiper-slide">
+                    <a href="https://ankarayayincilik.com.tr/">
+                      <img class="slide-img" src="{{asset('assets/img/ankara-2.jpg')}}" alt="Ankara Yayınları 2" loading="lazy">
+                    </a>
+                  </div>
+
+                  <!-- slide 3 -->
+                  <div class="swiper-slide">
+                    <a href="https://www.isemdijital.com/">
+                      <img class="slide-img" src="{{asset('assets/img/isem-1.png')}}" alt="Online ve yüz yüze ders imkanları" loading="lazy">
+                    </a>
+                  </div>
+
+                  <!-- slide 4 -->
+                  <div class="swiper-slide">
+                    <a href="https://www.isemdijital.com/">
+                      <img class="slide-img" src="{{asset('assets/img/isem-2.png')}}" alt="Online ve yüz yüze ders imkanları" loading="lazy">
+                    </a>
+                  </div>
+
+                  <!-- slide 5 -->
+                  <div class="swiper-slide">
+                    <a href="https://www.matsevyayincilik.com/">
+                      <img class="slide-img" src="{{asset('assets/img/matsev-1.png')}}" alt="Başarıya koşan öğrenciler" loading="lazy">
+                    </a>
+                  </div>
+                  <!-- slide 6 -->
+                  <div class="swiper-slide">
+                    <a href="https://www.matsevyayincilik.com/">
+                      <img class="slide-img" src="{{asset('assets/img/matsev-2.png')}}" alt="Başarıya koşan öğrenciler" loading="lazy">
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Pagination (nokta) -->
+                <div class="swiper-pagination"></div>
+
+                <!-- Navigation -->
+                <div class="swiper-button-prev" aria-label="Önceki"></div>
+                <div class="swiper-button-next" aria-label="Sonraki"></div>
+
+                <!-- Scrollbar (isteğe bağlı) -->
+                <div class="swiper-scrollbar"></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="carousel-nav">
-        <label for="c1" aria-label="1. slayt"></label>
-        <label for="c2" aria-label="2. slayt"></label>
-        <label for="c3" aria-label="3. slayt"></label>
-        <label for="c4" aria-label="3. slayt"></label>
-        <label for="c5" aria-label="3. slayt"></label>
-        <label for="c6" aria-label="3. slayt"></label>
+        
       </div>
     </section>
 
@@ -148,23 +151,70 @@
 
     </main>
 
+
+    <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
+
     <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const radios = document.querySelectorAll('input[name="carousel"]');
-    let currentIndex = 0;
-    const totalSlides = radios.length;
+    // Swiper başlatma
+    const swiper = new Swiper('.swiper', {
+      // Genel ayarlar
+      loop: true,                // sonsuz döngü
+      slidesPerView: 1,          // aynı anda görünen slayt sayısı
+      spaceBetween: 12,          // slaytlar arası boşluk (px)
+      grabCursor: true,          // fareyle çekme imleci
+      centeredSlides: true,      // kaydırma ortalansın
+      preloadImages: false,      // lazy kullanmak için false
+      lazy: {
+        loadOnTransitionStart: true,
+        loadPrevNext: true,
+      },
 
-    setInterval(() => {
-        currentIndex++;
+      // Dokunmatik duyarlılığı (opsiyonel)
+      touchRatio: 1,
+      touchAngle: 45,
+      simulateTouch: true,
 
-        if (currentIndex >= totalSlides) {
-            currentIndex = 0; // Baştan başla
+      // Erişilebilirlik & klavye
+      keyboard: { enabled: true, onlyInViewport: true },
+      a11y: { enabled: true },
+
+      // Otomatik oynatma
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+
+      // Pagination (nokta)
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+
+      // Navigation (oklar)
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // Scrollbar (isteğe bağlı)
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        hide: false,
+      },
+
+      // Responsive davranış (örnek)
+      breakpoints: {
+        800: {
+          slidesPerView: 1,
+          spaceBetween: 16
+        },
+        1200: {
+          slidesPerView: 1,
+          spaceBetween: 18
         }
-
-        radios[currentIndex].checked = true;
-    }, 3000); // 3 saniye
-});
-</script>
+      },
+    });
+  </script>
 
 @endsection
 
