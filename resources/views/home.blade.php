@@ -76,15 +76,24 @@
     </section>
 
     <main>
-      <div style="margin:44px 0; text-align:center"><h3>Haydi sen de derse koş!</h3></div>
+      <div style="margin:44px 0; text-align:center"><h3>Haydi sen de derse koş!</h3>
+      <p>Ücretsiz derslere kayıt fırsatını kaçırma.</p>
+      </div>
+       <section class="hero-card">
+        <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubuna Katıl</a>
+        <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubuna Katıl</a>
+        <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubuna Katıl</a>
+        <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubuna Katıl</a>
+        <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubuna Katıl</a>
+      </section>
       <section class="hero-card" aria-labelledby="hero-title">
         <div class="hero-left grid-20">
           <h3 id="hero-title" class="text-center">Size en uygun eğitmeni bulun. Hızlı, güvenilir, uygun fiyatlı</h3>
           <p class="muted text-center">Matematik, yabancı dil, sınav hazırlık veya hobi dersleri. Dersleri filtrele, eğitmen profillerini incele ve ilk dersini ayarla.</p>
         </div>
-
-        
       </section>
+
+     
 
       <!-- Eğitmen kartları -->
       <section id="teachers" class="hero-card" style="margin-top:18px; display:none">

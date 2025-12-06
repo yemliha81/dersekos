@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DerseKos — Özel Ders Platformu</title>
-  <meta name="description" content="DerseKos - Öğrenciler ve eğitmenleri buluşturan modern online özel ders platformu." />
+  <title>Derse Kos! — Özel Ders Platformu</title>
+  <meta name="description" content="Öğrencileri ve eğitmenleri buluşturan DerseKoş platformuna kayıt olun ve ücretsiz ders fırsatını kaçırmayın! Derse koş! Öğrenci kayıt. Derse koş!" />
   <!-- Google Font (optional) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
