@@ -25,7 +25,7 @@
                             <h4>{{ $lesson->title }}</h4>
                             <p><b>Tarih - Saat:</b> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                             
-                            <p><b>Eğitmen:</b> Eğitmen: {{ $lesson->teacher->name }} {{date('H:i', strtotime(now()))}}</p>
+                            <p><b>Eğitmen:</b> Eğitmen: {{ $lesson->teacher->name }} </p>
                             @if($lesson->meet_url != null)
                                 @if($lesson->start <= now() && $lesson->end >= now())
                                     <a target="_blank" href="{{ $lesson->meet_url }}" target="_blank" class="btn btn-success">Derse Katıl</a>
