@@ -45,6 +45,7 @@
                 <p>Ücretsiz derslere katıl ve öğrenmeye başla.</p>
                 <div class="lessons">
                     @foreach($lessons as $lesson)
+                    @if($lesson->end > now())
                         <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
                             <h4>{{ $lesson->title }}</h4>
                             <p>Başlangıç:{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</p>
@@ -61,6 +62,7 @@
                             @endif
                             
                         </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
