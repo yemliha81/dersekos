@@ -241,6 +241,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let minPerson = document.getElementById('min_person').value;
         let maxPerson = document.getElementById('max_person').value;
 
+        if (minPerson < 5) {
+            alert("Minimum katılımcı sayısı en az 5 olmalıdır.");
+            return;
+        }
+
         if (!title || !startTime || !endTime) {
             alert("Lütfen tüm zorunlu alanları doldurun.");
             return;
