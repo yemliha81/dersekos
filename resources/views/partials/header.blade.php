@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Derse Kos! — Özel Ders Platformu</title>
+  <title>Derse Koş! — Özel Ders Platformu</title>
   <meta name="description" content="Öğrencileri ve eğitmenleri buluşturan DerseKoş platformuna kayıt olun ve ücretsiz ders fırsatını kaçırmayın! Derse koş! Öğrenci kayıt. Derse koş!" />
   <!-- Google Font (optional) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
