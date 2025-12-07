@@ -14,9 +14,11 @@ class StudentController extends Controller
     public function dashboard()
     {
         $teachers = Teacher::all();
-        $freeLessons = Event::where('is_free', true)->with('teacher')->get();
+        $lessons = Event::with('teacher')->orderBy('created_at')->get();
+
+        //$paidLessons = Event::where('is_free', false)->with('teacher')->get();
         //dd($freeLessons);
-        return view('student.dashboard', compact('teachers', 'freeLessons'));
+        return view('student.dashboard', compact('teachers', 'lessons'));
     }
 
     public function joinToEvent($id)

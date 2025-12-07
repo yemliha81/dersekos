@@ -56,12 +56,19 @@
       grid-template-columns:1fr 1fr;
     }
     .lesson-card{
-    background: linear-gradient(180deg, rgba(201, 244, 61, 0.02), #bee329);
-    padding: 14px;
-    border-radius: 12px;
-    border: 1px solid #78ff22;
-    border: 1px solid #3b7515; 
-  margin-bottom: 12px;
+      background: linear-gradient(180deg, rgba(201, 244, 61, 0.02), #bee329);
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #78ff22;
+      border: 1px solid #3b7515; 
+      margin-bottom: 12px;
+    }
+    .paid-lesson-card{
+      background: linear-gradient(180deg, rgba(255, 99, 71, 0.02), #ff6347);
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #ff4500;
+      margin-bottom: 12px;
     }
     .logo-div{
       display:flex; justify-content:center; align-items:center;

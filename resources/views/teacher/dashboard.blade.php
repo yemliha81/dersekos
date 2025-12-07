@@ -117,35 +117,35 @@
 
         <!-- Event Detay Modal -->
             <div class="modal fade" id="eventDetailModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-dialog">
+                    <div class="modal-content">
 
-                <div class="modal-header">
-                    <h5 class="modal-title">Etkinlik Detayı</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Etkinlik Detayı</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
 
-                <div class="modal-body">
-                    <p><strong>Başlık:</strong> <span id="detailTitle"></span></p>
-                    <p><strong>Başlangıç:</strong> <span id="detailStart"></span></p>
-                    <p><strong>Bitiş:</strong> <span id="detailEnd"></span></p>
-                    <p><strong>Ücret:</strong> <span id="detailPrice"></span></p>
-                    <p><strong>Katılımcı:</strong> <span id="detailPerson"></span></p>
+                    <div class="modal-body">
+                        <p><strong>Başlık:</strong> <span id="detailTitle"></span></p>
+                        <p><strong>Başlangıç:</strong> <span id="detailStart"></span></p>
+                        <p><strong>Bitiş:</strong> <span id="detailEnd"></span></p>
+                        <p><strong>Ücret:</strong> <span id="detailPrice"></span></p>
+                        <p><strong>Katılımcı:</strong> <span id="detailPerson"></span></p>
 
-                    <div id="meetArea" class="d-none">
-                    <hr>
-                    <a href="#" target="_blank" id="meetLink" class="btn btn-success w-100">
-                        Toplantıya Katıl
-                    </a>
+                        <div id="meetArea" class="d-none">
+                        <hr>
+                        <a href="#" target="_blank" id="meetLink" class="btn btn-success w-100">
+                            Toplantıya Katıl
+                        </a>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    </div>
+
                     </div>
                 </div>
-
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-                </div>
-
-                </div>
-            </div>
             </div>
 
 
