@@ -23,24 +23,10 @@
                     </a>
                   </div>
 
-                  <!-- slide 2 -->
-                  <div class="swiper-slide">
-                    <a href="https://ankarayayincilik.com.tr/">
-                      <img class="slide-img" src="{{asset('assets/img/ankara-2.jpg')}}" alt="Ankara Yayınları 2" loading="lazy">
-                    </a>
-                  </div>
-
                   <!-- slide 3 -->
                   <div class="swiper-slide">
                     <a href="https://www.isemdijital.com/">
                       <img class="slide-img" src="{{asset('assets/img/isem-1.png')}}" alt="Online ve yüz yüze ders imkanları" loading="lazy">
-                    </a>
-                  </div>
-
-                  <!-- slide 4 -->
-                  <div class="swiper-slide">
-                    <a href="https://www.isemdijital.com/">
-                      <img class="slide-img" src="{{asset('assets/img/isem-2.png')}}" alt="Online ve yüz yüze ders imkanları" loading="lazy">
                     </a>
                   </div>
 
@@ -52,8 +38,8 @@
                   </div>
                   <!-- slide 6 -->
                   <div class="swiper-slide">
-                    <a href="https://www.matsevyayincilik.com/">
-                      <img class="slide-img" src="{{asset('assets/img/matsev-2.png')}}" alt="Başarıya koşan öğrenciler" loading="lazy">
+                    <a href="https://www.modelegitim.com/">
+                      <img class="slide-img" src="{{asset('assets/img/model-1.png')}}" alt="Başarıya koşan öğrenciler" loading="lazy">
                     </a>
                   </div>
                 </div>
