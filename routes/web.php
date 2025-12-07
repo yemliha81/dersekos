@@ -157,6 +157,7 @@ Route::get('/cikis', 'App\Http\Controllers\LoginController@logout')->name('stude
 // wrap student routes with auth middleware
 // Student Dashboard route
 Route::get('/student/dashboard', 'App\Http\Controllers\StudentController@dashboard')->middleware('auth:student')->name('student.dashboard');
+Route::post('/student/join-free-lesson/{id}', 'App\Http\Controllers\StudentController@joinToEvent')->middleware('auth:student')->name('student.join_free_lesson');
 
 
 

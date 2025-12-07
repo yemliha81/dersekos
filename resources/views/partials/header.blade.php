@@ -17,6 +17,8 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/locales-all.global.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jquery latest --> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <style>
     /* -----------------------------
@@ -43,7 +45,19 @@
     grid-template-columns: 300px auto;
     }
     .teacher-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:14px; border-radius:12px; margin-bottom:12px; border:1px solid 1px solid #673AB7);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), #666666); padding:14px; border-radius:12px; margin-bottom:12px; border:1px  solid #673AB7;
+    }
+    .lessons{
+      display: grid; gap:12px;
+      grid-template-columns:1fr 1fr;
+    }
+    .lesson-card{
+    background: linear-gradient(180deg, rgba(201, 244, 61, 0.02), #bee329);
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #78ff22;
+    border: 1px solid #3b7515; 
+  margin-bottom: 12px;
     }
     .logo-div{
       display:flex; justify-content:center; align-items:center;

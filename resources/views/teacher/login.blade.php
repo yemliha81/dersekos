@@ -49,13 +49,15 @@
           <select name="branch" required>
             <option value="" disabled selected>Seçiniz</option>
             <option value="ilkogretim_matematik">İlköğretim Matematik</option>
-            <option value="lise_matematik">Lise Matematik</option>
+            <option value="ilkogretim_turkce">İlköğretim Türkçe</option>
             <option value="fen_bilimleri">Fen Bilimleri</option>
+            <option value="sosyal_bilgiler">Sosyal Bilgiler</option>
             <option value="ingilizce">İngilizce</option>
+            <option value="lise_matematik">Lise Matematik</option>
             <option value="fizik">Fizik</option>
             <option value="kimya">Kimya</option>
             <option value="biyoloji">Biyoloji</option>
-            <option value="turkce">Türkçe</option>
+            <option value="lise_turkce">Lise Türkçe</option>
             <option value="tarih">Tarih</option>
             <option value="cografya">Coğrafya</option>
           </select>

@@ -18,7 +18,17 @@ class Event extends Model
         'price',
         'min_person',
         'max_person',
-        'teacher_id'
+        'teacher_id',
+        'attendees'
     ];
 
+    //teacher relation, an event belongs to a teacher, event_table has teacher_id as foreign key, teacher_table has id as primary key
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id', 'id');
+    }
+    
+
 }
+
+

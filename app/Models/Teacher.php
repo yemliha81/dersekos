@@ -31,5 +31,10 @@ class Teacher extends Authenticatable
         'created_at',
         'deleted_at',
     ];
+
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'teacher_id', 'id');
+    }
 }
 

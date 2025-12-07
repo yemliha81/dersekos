@@ -22,7 +22,7 @@
                       <img class="slide-img" src="{{asset('assets/img/ankara-1.jpg')}}" alt="Ankara Yayınları 1" loading="lazy">
                     </a>
                   </div>
-
+                  
                   <!-- slide 3 -->
                   <div class="swiper-slide">
                     <a href="https://www.isemdijital.com/">
@@ -36,12 +36,14 @@
                       <img class="slide-img" src="{{asset('assets/img/matsev-1.png')}}" alt="Başarıya koşan öğrenciler" loading="lazy">
                     </a>
                   </div>
+
                   <!-- slide 6 -->
                   <div class="swiper-slide">
                     <a href="https://www.modelegitim.com/">
                       <img class="slide-img" src="{{asset('assets/img/model-1.png')}}" alt="Başarıya koşan öğrenciler" loading="lazy">
                     </a>
                   </div>
+
                 </div>
 
                 <!-- Pagination (nokta) -->
