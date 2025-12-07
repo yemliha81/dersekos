@@ -14,7 +14,7 @@ class StudentController extends Controller
     public function dashboard()
     {
         $teachers = Teacher::all();
-        $lessons = Event::with('teacher')->orderBy('created_at')->get();
+        $lessons = Event::with('teacher')->orderBy('start')->get();
 
         $myLessons = [];
         foreach ($lessons as $lesson) {
