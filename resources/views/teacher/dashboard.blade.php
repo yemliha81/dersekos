@@ -90,7 +90,7 @@
 
                     <div class="mb-3">
                     <label>Minimum Katılımcı</label>
-                    <input type="number" id="min_person" class="form-control" min="1">
+                    <input type="number" id="min_person" min="5"  class="form-control" min="1">
                     </div>
 
                     <div class="mb-3">
