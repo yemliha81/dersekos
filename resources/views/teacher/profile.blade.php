@@ -108,7 +108,7 @@
                     <div id="meetArea" class="d-none">
                     <hr>
                     <a href="#" target="_blank" id="meetLink" class="btn btn-success w-100" style="display:none;">
-                        Toplantıya Katıl
+                        Derse Başla
                     </a>
                     </div>
                 </div>

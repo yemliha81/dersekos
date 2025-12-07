@@ -16,9 +16,19 @@ class StudentController extends Controller
         $teachers = Teacher::all();
         $lessons = Event::with('teacher')->orderBy('created_at')->get();
 
+        $myLessons = [];
+        foreach ($lessons as $lesson) {
+            $attendees = $lesson->attendees ? explode(',', $lesson->attendees) : [];
+            if (in_array(auth('student')->user()->id, $attendees)) {
+                $myLessons[] = $lesson;
+            }
+        }
+
+        //dd($myLessons);
+
         //$paidLessons = Event::where('is_free', false)->with('teacher')->get();
         //dd($freeLessons);
-        return view('student.dashboard', compact('teachers', 'lessons'));
+        return view('student.dashboard', compact('teachers', 'lessons', 'myLessons'));
     }
 
     public function joinToEvent($id)

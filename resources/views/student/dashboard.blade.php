@@ -18,7 +18,26 @@
         <section class="dashboard-cards">
             <div class="feature">
                 <h3>Derslerim</h3>
-                <p>Aktif ve geçmiş derslerini görüntüle.</p>
+                <p>Aktif ve kayıtlı derslerini görüntüle.</p>
+                @foreach($myLessons as $lesson)
+                    @if($lesson->end > now())
+                        <div class="lesson-card">
+                            <h4>{{ $lesson->title }}</h4>
+                            <p><b>Tarih - Saat:</b> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
+                            
+                            <p><b>Eğitmen:</b> Eğitmen: {{ $lesson->teacher->name }} {{date('H:i', strtotime(now()))}}</p>
+                            @if($lesson->meet_url != null)
+                                @if($lesson->start <= now() && $lesson->end >= now())
+                                    <a target="_blank" href="{{ $lesson->meet_url }}" target="_blank" class="btn btn-success">Derse Katıl</a>
+                                @else
+                                    <div class="alert alert-info">Derse katılmak için zamanınız henüz gelmedi. Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>
+                                @endif
+                            @else
+                                <div class="alert alert-warning">Ders bağlantısı henüz oluşturulmamış.</div>
+                            @endif
+                        </div>
+                    @endif
+                @endforeach
             </div>
             <!-- Ücretsiz Dersler --> 
             <div class="feature">
@@ -35,7 +54,10 @@
                                 <p>Ücret: <span class="price">250</span> ₺</p>
                                 <a href="javascript:;" class="btn btn-primary join-paid-lesson-btn" data-lesson-title="{{ $lesson->title }}" data-lesson-price="250" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
                             @else
-                                <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Katıl</a>
+                                <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                                <div>
+                                    {{count(explode(',', $lesson->attendees))}} öğrenci kayıtlı
+                                </div>
                             @endif
                             
                         </div>
