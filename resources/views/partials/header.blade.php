@@ -44,6 +44,10 @@
       display: grid;
     grid-template-columns: 300px auto;
     }
+    .teachers{
+      display: grid; gap:12px;
+      grid-template-columns:1fr 1fr;
+    }
     .teacher-card{
       background:linear-gradient(180deg, rgba(255,255,255,0.02), #666666); padding:14px; border-radius:12px; margin-bottom:12px; border:1px  solid #673AB7;
     }
