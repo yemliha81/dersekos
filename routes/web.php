@@ -182,6 +182,8 @@ Route::get('/login-choose', 'App\Http\Controllers\LoginController@choose')->name
 Route::get('/event-form', fn() => view('event-form'));
 Route::post('/google/event', 'App\Http\Controllers\GoogleCalendarController@addEvent')->name('teacher.addEvent');
 
+Route::get('/ogretmen/{id}/detay', 'App\Http\Controllers\TeacherController@publicProfile')->name('teacher.public.profile');
+
 
 
 Route::get('/events', function () {

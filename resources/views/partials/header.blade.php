@@ -11,7 +11,12 @@
   <!-- favicon --> 
   <link rel="icon" type="image/png" href="{{asset('assets/img/dersekos-favicon.png')}}" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/locales-all.global.min.js"></script>
@@ -19,7 +24,19 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- jquery latest --> 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+  <style>
+    :root{--primary:#4f46e5;}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:#f8fafc}
+    .profile-cover{background:linear-gradient(90deg, rgba(79,70,229,0.08), rgba(99,102,241,0.02));}
+    .avatar{width:140px;height:140px;object-fit:cover;border-radius:18px;border:6px solid #fff;box-shadow:0 6px 20px rgba(15,23,42,0.08)}
+    .badge-subject{background:rgba(79,70,229,0.08);color:var(--primary);font-weight:600;border-radius:10px;padding:.35rem .6rem}
+    .stat-num{font-weight:700;font-size:1.25rem}
+    .card-rounded{border-radius:14px}
+    .review-star{color:#f59e0b}
+    .book-btn{background:var(--primary);border:none}
+    .book-btn:hover{background:#3b37b4}
+    @media (max-width:575px){.avatar{width:110px;height:110px;border-radius:14px}}
+  </style>
   <style>
     /* -----------------------------
        Base / Mobile-first
@@ -53,22 +70,30 @@
     }
     .lessons{
       display: grid; gap:12px;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:1fr;
     }
     .lesson-card{
-      background: linear-gradient(180deg, rgba(201, 244, 61, 0.02), #bee329);
+      background: #309e06;
       padding: 14px;
       border-radius: 12px;
       border: 1px solid #78ff22;
-      border: 1px solid #3b7515; 
+      border: 1px solid #3b7515;
       margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #FFFFFF;
     }
     .paid-lesson-card{
-      background: linear-gradient(180deg, rgba(255, 99, 71, 0.02), #ff6347);
+      background: #f1a164;
       padding: 14px;
       border-radius: 12px;
       border: 1px solid #ff4500;
       margin-bottom: 12px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .logo-div{
       display:flex; justify-content:center; align-items:center;
@@ -82,7 +107,8 @@
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.45;
       padding:24px;
     }
-    section{margin:50px 0}
+    .mb-50{margin-bottom:50px}
+    .mt-50{margin-top:50px}
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
 
@@ -108,6 +134,11 @@
     .hero{display:grid; gap:20px; grid-template-columns:1fr; align-items:center; margin-bottom:32px}
     .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:22px; border-radius:18px; box-shadow:0 8px 30px rgba(2,6,23,0.6); display:grid; gap:18px}
     .hero-left h1{font-size:28px; margin:0; line-height:1.05}
+    .grid-3{
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+    }
     .hero-left p{margin:0; color:var(--muted)}
     .search-row{display:flex; gap:10px; align-items:center}
     .search-row input{flex:1; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit}
@@ -123,7 +154,6 @@
     /* Cards list */
     .cards{display:grid; gap:12px}
     .teacher{display:flex; gap:12px; padding:14px; align-items:center; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:12px}
-    .avatar{width:64px; height:64px; border-radius:12px; flex-shrink:0; background:linear-gradient(180deg,var(--accent),var(--accent-2)); display:flex; align-items:center; justify-content:center; font-weight:700}
     .teacher .meta small{color:var(--muted)}
 
     /* Features */
@@ -231,49 +261,54 @@
       box-shadow: 0 8px 30px rgba(20,30,60,0.08);
     }
 
-    /* Swiper yüksekliği */
+    /* Ortak swiper stilleri */
     .swiper {
-      width: 100% !important;
-      max-width: 100%;
-    }
-
-    .swiper-wrapper {
       width: 100%;
+      height: 320px;
+      border-radius: 10px;
+      overflow: hidden;
     }
 
-    .swiper-slide {
-      width: 100% !important;
-    }
-
+    /* Swiper slide içindeki görselin responsive olması */
     .slide-img {
       width: 100%;
-      height: auto;
-      object-fit: cover;
+      height: 100%;
+      object-fit: cover;   /* kırpma şeklinde güzel görünüm */
       display: block;
     }
 
-
-    /* Başlık katmanı örneği */
-    .slide-caption {
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      background: rgba(0,0,0,0.45);
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 8px;
-      backdrop-filter: blur(4px);
-      font-weight: 600;
-      font-size: 16px;
+    /* Küçük ekranlarda yüksekliği azalt */
+    @media (max-width: 576px) {
+      .swiper { height: 240px; }
+      .swiper-slide{
+        width:100% !important;
+      }
     }
 
-    /* Küçük ekran düzeni */
-    @media (max-width: 600px) {
-      
-      .slide-caption { font-size: 14px; padding: 8px 10px; }
-      .logo-div img{
-        max-width:50%; display:block;
-      }
+    /* Küçük stil düzeltmeleri: navigation butonlarının görünürlüğü */
+    .swiper-button-next, .swiper-button-prev {
+      color: #fff;
+    }
+
+    .swiper-slide{
+      padding:10px
+    }
+
+    /* .overflow-hidden parent içinde slider taşmasını kesin engeller */
+    .no-overflow { overflow: hidden; }
+
+    .teacher-box{
+      background: #1d2537;
+      padding: 14px;
+      border-radius: 12px;
+      color: #FFFFFF;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(2, 6, 23, 0.3);
+      transition: box-shadow 0.3s ease;
     }
 
   </style>

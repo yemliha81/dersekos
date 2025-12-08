@@ -15,6 +15,14 @@
             </div>
         </section>
 
+        <section class="hero-card mb-50 grid-3">
+            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubuna Katıl</a>
+            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubuna Katıl</a>
+            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubuna Katıl</a>
+            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubuna Katıl</a>
+            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubuna Katıl</a>
+        </section>
+
         <section class="dashboard-cards">
             <div class="feature">
                 <h3>Derslerim</h3>
@@ -22,7 +30,7 @@
                 @foreach($myLessons as $lesson)
                     @if($lesson->end > now())
                         <div class="lesson-card">
-                            <h4>{{ $lesson->title }}</h4>
+                            <b>{{ $lesson->title }}</b>
                             <p><b>Tarih - Saat:</b> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                             
                             <p><b>Eğitmen:</b> Eğitmen: {{ $lesson->teacher->name }} </p>
@@ -30,7 +38,7 @@
                                 @if($lesson->start <= now() && $lesson->end >= now())
                                     <a target="_blank" href="{{ $lesson->meet_url }}" target="_blank" class="btn btn-success">Derse Katıl</a>
                                 @else
-                                    <div class="alert alert-info">Derse katılmak için zamanınız henüz gelmedi. Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>
+                                    <div class="alert alert-info">Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>
                                 @endif
                             @else
                                 <div class="alert alert-warning">Ders bağlantısı henüz oluşturulmamış.</div>
@@ -47,18 +55,22 @@
                     @foreach($lessons as $lesson)
                     @if($lesson->end > now())
                         <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
-                            <h4>{{ $lesson->title }}</h4>
+                            <b>{{ $lesson->title }}</b>
                             <p>Başlangıç:{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</p>
                             <p>Bitiş:{{ date('d.m.Y', strtotime($lesson->end)) }} {{ date('H:i', strtotime($lesson->end)) }}</p>
                             <p>Eğitmen: {{ $lesson->teacher->name }}</p>
                             @if(!$lesson->is_free)
+                            <div>
                                 <p>Ücret: <span class="price">250</span> ₺</p>
                                 <a href="javascript:;" class="btn btn-primary join-paid-lesson-btn" data-lesson-title="{{ $lesson->title }}" data-lesson-price="250" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                            </div>
                             @else
+                            <div>
                                 <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
                                 <div>
                                     {{count(explode(',', $lesson->attendees))}} öğrenci kayıtlı
                                 </div>
+                            </div>
                             @endif
                             
                         </div>

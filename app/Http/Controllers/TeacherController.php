@@ -55,6 +55,13 @@ class TeacherController extends Controller
         return view('teacher.profile', ['teacher' => $teacher]);
     }
 
+    public function publicProfile($id)
+    {
+        $teacher = Teacher::with('events')->findOrFail($id);
+        //dd($teacher);
+        return view('teacher', ['teacher' => $teacher]);
+    }
+
 
 
 

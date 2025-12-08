@@ -14,6 +14,7 @@ use App\Models\Lesson;
 use App\Models\ContentCategory;
 use App\Models\Content;
 use App\Models\SeoSettings;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\DB;
 
 
@@ -22,13 +23,14 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = Slider::where('lang', app()->getLocale())->get();
-        $languages = Language::all();
+        $teachers = Teacher::all();
 
-        $grades = Grade::all();
+        //dd($teachers);
+        //$languages = Language::all();
 
-        $menuItems = Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->get();
+        //$menuItems = Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->get();
 
-        return view('home', compact('sliders', 'languages', 'grades', 'menuItems'));
+        return view('home', compact('sliders', 'teachers'));
     }
 
     public function route($slug, $slug2 = null)
