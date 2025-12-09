@@ -37,7 +37,7 @@
                                 @if(auth('teacher')->user()->image == null)
                                     <img src="{{ asset('assets/img/default-profile.png') }}" class="profile-img" width="100%" alt="">
                                 @else
-                                <img src="{{ asset('storage/' . auth('teacher')->user()->image) }}" class="profile-img" width="100%" alt="">
+                                <img src="{{ asset( auth('teacher')->user()->image) }}" class="profile-img" width="100%" alt="">
                                 @endif
                             </div>
                             <div class="">

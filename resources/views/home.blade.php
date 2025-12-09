@@ -74,7 +74,7 @@
                       @if($teacher->image == null)
                           <img src="{{ asset('assets/img/default-image.png') }}" class="profile-img" width="80" alt="">
                       @else
-                      <img src="{{ asset('storage/' . $teacher->image) }}" class="profile-img" width="80" alt="">
+                      <img src="{{ asset($teacher->image) }}" class="profile-img" width="80" alt="">
                       @endif
                   </div>
                   <div style=""><strong>{{ $teacher->name }} {{ $teacher->surname }}</strong></div>

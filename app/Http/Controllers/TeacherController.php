@@ -78,8 +78,10 @@ class TeacherController extends Controller
             ]);
 
             if($request->has('image')){
-                $imagePath = $request->file('image')->store('teacher_images', 'public');
-                $teacher->image = $imagePath;
+
+                $imagePath = $request->file('image')->move(public_path('teacher_images'), uniqid().'.jpg');
+                $teacher->image = 'teacher_images/' . basename($imagePath);
+
             }
 
             $teacher->name = $request->input('name');
