@@ -15,35 +15,35 @@
               <div class="swiper swiperA">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                      <a href="https://tammatyayincilik.com/">
+                      <a target="_blank" href="https://tammatyayincilik.com/">
                         <img class="slide-img" src="{{asset('assets/img/tammat-1.png')}}" alt="Ankara Yayınları 1" loading="lazy">
                       </a>
                     </div>
                     <div class="swiper-slide">
-                    <a href="https://ankarayayincilik.com.tr/">
+                    <a target="_blank" href="https://ankarayayincilik.com.tr/">
                       <img class="slide-img" src="{{asset('assets/img/ankara-1.jpg')}}" alt="Ankara Yayınları 1" loading="lazy">
                     </a>
                   </div>
                   
                   <div class="swiper-slide">
-                    <a href="https://www.isemdijital.com/">
+                    <a target="_blank" href="https://www.isemdijital.com/">
                       <img class="slide-img" src="{{asset('assets/img/isem-1.png')}}" alt="Online ve yüz yüze ders imkanları" loading="lazy">
                     </a>
                   </div>
 
                   <div class="swiper-slide">
-                    <a href="https://www.matsevyayincilik.com/">
+                    <a target="_blank" href="https://www.matsevyayincilik.com/">
                       <img class="slide-img" src="{{asset('assets/img/matsev-1.png')}}" alt="Başarıya koşan öğrenciler" loading="lazy">
                     </a>
                   </div>
 
                   <div class="swiper-slide">
-                    <a href="https://www.modelegitim.com/">
+                    <a target="_blank" href="https://www.modelegitim.com/">
                       <img class="slide-img" src="{{asset('assets/img/model-1.png')}}" alt="Başarıya koşan öğrenciler" loading="lazy">
                     </a>
                   </div>
                   <div class="swiper-slide">
-                      <a href="https://tammatyayincilik.com/">
+                      <a target="_blank" href="https://tammatyayincilik.com/">
                         <img class="slide-img" src="{{asset('assets/img/tammat-2.png')}}" alt="Ankara Yayınları 1" loading="lazy">
                       </a>
                     </div>
