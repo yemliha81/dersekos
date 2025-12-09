@@ -70,6 +70,13 @@
           @foreach($teachers as $teacher)
             <div class="swiper-slide">
               <div class="teacher-box" tabindex="0">
+                  <div class="mb-3 teacher-avatar">
+                      @if($teacher->image == null)
+                          <img src="{{ asset('assets/img/default-image.png') }}" class="profile-img" width="80" alt="">
+                      @else
+                      <img src="{{ asset('storage/' . $teacher->image) }}" class="profile-img" width="80" alt="">
+                      @endif
+                  </div>
                   <div style=""><strong>{{ $teacher->name }} {{ $teacher->surname }}</strong></div>
                   <small class="muted">{{ ucwords(str_replace('_', ' ',   $teacher->branch)) }} </small>
                   <div style="margin-top:8px; display:flex; gap:8px; align-items:center">

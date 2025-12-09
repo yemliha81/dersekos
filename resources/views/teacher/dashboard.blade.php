@@ -12,28 +12,49 @@
     <main>
         
         <section class="hero-card hero" aria-labelledby="hero-title">
+            
             <div class="hero-left grid-20">
                 <div class="pill">Öğretmen Paneli</div>
                 <h1 id="hero-title">Hoşgeldin, {{ auth('teacher')->user()->name }}!</h1>
                 <p class="muted">Burada derslerini yönetebilir, öğrencilerinle iletişim kurabilirsin.</p>
             </div>
         </section>
+        <section>
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </section>
 
         <section class="hero-card dashboard-cards ">
             <div class="row">
                 <div class="col-12 col-md-3 d-none d-sm-block">
                     <div>
-                        <div class="feature">
-                            <h3>Ad - Soyad</h3>
-                            <p>{{ auth('teacher')->user()->name }}</p>
+                        
+                        <div class="profile-info mb-3">
+                            <div class="mb-3">
+                                @if(auth('teacher')->user()->image == null)
+                                    <img src="{{ asset('assets/img/default-profile.png') }}" class="profile-img" width="100%" alt="">
+                                @else
+                                <img src="{{ asset('storage/' . auth('teacher')->user()->image) }}" class="profile-img" width="100%" alt="">
+                                @endif
+                            </div>
+                            <div class="">
+                                <b>Ad - Soyad</b>
+                                <p>{{ auth('teacher')->user()->name }}</p>
+                            </div>
+                            <div class="">
+                                <b>Email</b>
+                                <p>{{ auth('teacher')->user()->email }}</p>
+                            </div>
+                            <div class="">
+                                <b>Branş</b>
+                                <p>{{ ucfirst(auth('teacher')->user()->branch) }} </p>
+                            </div>
                         </div>
-                        <div class="feature">
-                            <h3>Email</h3>
-                            <p>{{ auth('teacher')->user()->email }}</p>
-                        </div>
-                        <div class="feature">
-                            <h3>Branş</h3>
-                            <p>{{ ucfirst(auth('teacher')->user()->branch) }} </p>
+                        <div class="text-right mb-2" style="text-align:right;">
+                            <a class="btn btn-sm btn-info" style="display: inline-block" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">Profili Güncelle <i class="bi-pencil-fill"></i></a>
                         </div>
                     </div>
                 </div>
@@ -138,6 +159,7 @@
                             Derse Başla
                         </a>
                         </div>
+                        <div class="lessonInfo"></div>
                     </div>
 
                     <div class="modal-footer">
@@ -149,7 +171,60 @@
             </div>
 
 
-
+        <!-- Öğretmen Profil Güncelleme modalı -->
+        <div class="modal fade" id="profileModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Öğretmen Profili Güncelle</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('teacher.profile.update') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="teacher_id" value="{{ auth('teacher')->user()->id }}">
+                            <div class="mb-3">
+                                <label class="form-label">Profil Fotografı</label>
+                                <input type="file" name="image" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Ad - Soyad</label>
+                                <input type="text" name="name" class="form-control" value="{{ auth('teacher')->user()->name }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">E-posta</label>
+                                <input type="email" name="email" class="form-control" value="{{ auth('teacher')->user()->email }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Şifre</label>
+                                <input type="password" name="password" class="form-control" placeholder="Yeni şifre (boş bırakılırsa değişmez)">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Branş</label>
+                                <input type="text" name="branch" class="form-control" value="{{ auth('teacher')->user()->branch }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Deneyim(Yıl)</label>
+                                <input type="number" name="experience" class="form-control" value="{{ auth('teacher')->user()->experience }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Varsa Belge/Sertifikalarınız</label>
+                                <input type="text" name="certificates" class="form-control" value="{{ auth('teacher')->user()->certificates }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Kendiniz hakkında</label>
+                                <textarea name="about" class="form-control" rows="3">{{ auth('teacher')->user()->about }}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Etiketler</label>
+                                <input type="text" name="tags" class="form-control" placeholder="Örn. LGS, TYT, Matematik" value="{{ auth('teacher')->user()->tags }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         
 
     </main>
@@ -217,9 +292,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (event.extendedProps.meet_url) {
                     document.getElementById('meetArea').classList.remove('d-none');
-                    document.getElementById('meetLink').href = event.extendedProps.meet_url;
+                    document.querySelector('.lessonInfo').classList.add('d-none');
+                    // if event.start <= now and event.end >= now
+                    // then meet link will be openable
+                    let now = new Date(); // plus 5 minutes
+                    now.setMinutes(now.getMinutes() + 5);
+                    console.log(event.start, now, event.end);
+                    if (event.start <= now && event.end >= now) {
+                        document.getElementById('meetLink').setAttribute('href', event.extendedProps.meet_url);
+                        document.getElementById('meetLink').classList.remove('disabled');
+                    } else {
+                        document.getElementById('meetLink').setAttribute('href', '#');
+                        document.getElementById('meetLink').classList.add('disabled');
+                    }
                 } else {
+                    // Ders linki henüz oluşturulmamıştır. Ders saatinde oluşturulacaktır.
                     document.getElementById('meetArea').classList.add('d-none');
+                    document.querySelector('.lessonInfo').classList.remove('d-none');
+                    let lessonInfo = document.querySelector('.lessonInfo');
+                    lessonInfo.innerHTML = '<div class="alert alert-warning">Ders bağlantısı henüz oluşturulmamış. Ders saati geldiğinde bağlantı oluşturulacaktır.</div>'; 
                 }
 
                 var detailModal = new bootstrap.Modal(document.getElementById('eventDetailModal'));

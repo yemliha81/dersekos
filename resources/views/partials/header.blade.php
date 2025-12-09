@@ -68,6 +68,14 @@
     .teacher-card{
       background:linear-gradient(180deg, rgba(255,255,255,0.02), #666666); padding:14px; border-radius:12px; margin-bottom:12px; border:1px  solid #673AB7;
     }
+    .teacher-avatar img{
+      border-radius:50%; overflow:hidden; width:80px; height:80px; border:2px solid #fff; box-shadow:0 4px 20px rgba(2,6,23,0.3);
+    }
+    .profile-info{
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+    }
     .lessons{
       display: grid; gap:12px;
       grid-template-columns:1fr;

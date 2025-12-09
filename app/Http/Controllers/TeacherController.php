@@ -62,6 +62,47 @@ class TeacherController extends Controller
         return view('teacher', ['teacher' => $teacher]);
     }
 
+    public function updateProfile(Request $request)
+    {
+        try {
+            //code...
+        
+            $teacher = auth('teacher')->user();
+
+            //dd($request->all());
+
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255|unique:teacher,email,'.$teacher->id,
+                'branch' => 'required|string|max:100',
+            ]);
+
+            if($request->has('image')){
+                $imagePath = $request->file('image')->store('teacher_images', 'public');
+                $teacher->image = $imagePath;
+            }
+
+            $teacher->name = $request->input('name');
+            $teacher->email = $request->input('email');
+            $teacher->branch = $request->input('branch');
+            $teacher->experience = $request->input('experience');
+            $teacher->certificates = $request->input('certificates');
+            $teacher->tags = $request->input('tags');
+            $teacher->about = $request->input('about');
+
+            if ($request->filled('password')) {
+                $teacher->password = bcrypt($request->input('password'));
+            }
+
+            $teacher->save();
+
+            return redirect()->back()->with('success', 'Profil başarıyla güncellendi.');
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
 
 
 

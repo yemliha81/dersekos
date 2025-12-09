@@ -167,6 +167,7 @@ Route::get('/teacher/dashboard', 'App\Http\Controllers\TeacherController@dashboa
 Route::get('/ogretmen/giris', 'App\Http\Controllers\TeacherController@showLoginForm')->name('teacher.login');
 Route::post('/ogretmen/giris', 'App\Http\Controllers\TeacherController@login')->name('teacher.login.submit');
 Route::post('/ogretmen/kayit', 'App\Http\Controllers\TeacherController@signup')->name('teacher.signup.submit');
+Route::post('/ogretmen/profil/duzenle', 'App\Http\Controllers\TeacherController@updateProfile')->middleware('auth:teacher')->name('teacher.profile.update');
 
 Route::get('/teacher/dashboard', 'App\Http\Controllers\TeacherController@dashboard')->middleware('auth:teacher')->name('teacher.dashboard');
 Route::get('/ogretmenler', 'App\Http\Controllers\TeacherController@listTeachers')->middleware('auth:student')->name('teacher.list');
