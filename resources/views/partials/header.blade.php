@@ -79,10 +79,12 @@
       border: 1px solid #78ff22;
       border: 1px solid #3b7515;
       margin-bottom: 12px;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       align-items: center;
       justify-content: space-between;
       color: #FFFFFF;
+      gap: 10px;
     }
     .paid-lesson-card{
       background: #f1a164;
@@ -91,7 +93,8 @@
       border: 1px solid #ff4500;
       margin-bottom: 12px;
       color: #FFFFFF;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       align-items: center;
       justify-content: space-between;
     }

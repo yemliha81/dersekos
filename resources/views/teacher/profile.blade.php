@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 let priceText = event.extendedProps.is_free == 1 
                     ? 'Ücretsiz' 
-                    : event.extendedProps.price + ' ₺';
+                    : /*event.extendedProps.price*/ '250 ₺';
 
                 document.getElementById('detailPrice').innerText = priceText;
 
