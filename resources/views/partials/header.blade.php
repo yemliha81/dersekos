@@ -318,6 +318,15 @@
 
 </head>
 <body>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKY9M74W3D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EKY9M74W3D');
+  </script>
   <div class="container">
     <header>
     <div class="inner container">
