@@ -71,6 +71,11 @@
     .teacher-avatar img{
       border-radius:50%; overflow:hidden; width:80px; height:80px; border:2px solid #fff; box-shadow:0 4px 20px rgba(2,6,23,0.3);
     }
+    .teacher-img{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .profile-info{
       border: 1px solid #ddd;
       padding: 10px;

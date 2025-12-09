@@ -29,15 +29,15 @@
 
         <section class="hero-card dashboard-cards ">
             <div class="row">
-                <div class="col-12 col-md-3 d-none d-sm-block">
+                <div class="col-12 col-md-3 ">
                     <div>
                         
                         <div class="profile-info mb-3">
-                            <div class="mb-3">
+                            <div class="mb-3 teacher-img">
                                 @if(auth('teacher')->user()->image == null)
-                                    <img src="{{ asset('assets/img/default-profile.png') }}" class="profile-img" width="100%" alt="">
+                                    <img src="{{ asset('assets/img/default-profile.png') }}" class="profile-img" width="100" alt="">
                                 @else
-                                <img src="{{ asset( auth('teacher')->user()->image) }}" class="profile-img" width="100%" alt="">
+                                <img src="{{ asset( auth('teacher')->user()->image) }}" class="profile-img" width="100" alt="">
                                 @endif
                             </div>
                             <div class="">
