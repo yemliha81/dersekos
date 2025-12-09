@@ -194,6 +194,19 @@ Route::get('/events', function () {
     return Event::where('teacher_id', $teacherId)->get();
 });
 
+Route::get('/events/{id}/registrations', function ($id) {
+
+    $event = Event::findOrFail($id);
+    $attendees = $event->attendees;
+    $count = count(array_filter(explode(',', $attendees)));
+
+    if ($event->teacher_id != auth('teacher')->user()->id) {
+        abort(403);
+    }
+
+    return response()->json(['count' => $count]);
+});
+
 Route::get('/teacher-events/{id}', function () {
 
     $teacherId = request()->id;

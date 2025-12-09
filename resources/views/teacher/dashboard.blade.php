@@ -152,6 +152,7 @@
                         <p><strong>Bitiş:</strong> <span id="detailEnd"></span></p>
                         <p><strong>Ücret:</strong> <span id="detailPrice"></span></p>
                         <p><strong>Katılımcı:</strong> <span id="detailPerson"></span></p>
+                        <p><strong>Kayıtlı Öğrenci Sayısı:</strong> <span id="detailRegistrationCount"></span></p>
 
                         <div id="meetArea" class="d-none">
                         <hr>
@@ -276,6 +277,12 @@ document.addEventListener('DOMContentLoaded', function () {
             eventClick: function(info) {
                 let event = info.event;
 
+                fetch('/events/' + event.id + '/registrations')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('detailRegistrationCount').innerText = data.count;
+                });
+
                 let priceText = event.extendedProps.is_free == 1 
                     ? 'Ücretsiz' 
                     : event.extendedProps.price + ' ₺';
@@ -285,6 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('detailPerson').innerText =
                     event.extendedProps.min_person + " - " + event.extendedProps.max_person + " kişi";
 
+                
 
                 document.getElementById('detailTitle').innerText = event.title;
                 document.getElementById('detailStart').innerText = event.start.toLocaleString('tr-TR');
@@ -359,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 is_free: isFree,
                 price: price,
                 min_person: minPerson,
-                max_person: maxPerson
+                max_person: maxPerson,
             })
         })
         .then(res => res.json())
