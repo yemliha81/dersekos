@@ -68,7 +68,7 @@
                             <div>
                                 <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
                                 <div>
-                                    {{count(explode(',', $lesson->attendees))}} öğrenci kayıtlı
+                                    {{count(array_filter(explode(',', $lesson->attendees)))}} öğrenci kayıtlı
                                 </div>
                             </div>
                             @endif
