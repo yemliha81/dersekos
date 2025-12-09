@@ -120,9 +120,9 @@
                     </div>
 
 
-                <div class="mb-3" style="display:none;">
-                    <label>Toplantı Linki</label>
-                    <input type="url" id="meet_url" class="form-control" placeholder="https://meet.google.com/..." value="...">
+                <div class="mb-3" >
+                    <label>Toplantı Linki (Zoom veya Google Meet)</label>
+                    <input type="url" id="meet_url" class="form-control" >
                 </div>
 
             </div>
