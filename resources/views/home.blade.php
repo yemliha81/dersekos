@@ -15,7 +15,7 @@
               <div class="swiper swiperA">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                      <a href="https://ankarayayincilik.com.tr/">
+                      <a href="https://tammatyayincilik.com/">
                         <img class="slide-img" src="{{asset('assets/img/tammat-1.png')}}" alt="Ankara Yayınları 1" loading="lazy">
                       </a>
                     </div>
@@ -43,7 +43,7 @@
                     </a>
                   </div>
                   <div class="swiper-slide">
-                      <a href="https://ankarayayincilik.com.tr/">
+                      <a href="https://tammatyayincilik.com/">
                         <img class="slide-img" src="{{asset('assets/img/tammat-2.png')}}" alt="Ankara Yayınları 1" loading="lazy">
                       </a>
                     </div>
