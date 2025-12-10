@@ -77,6 +77,29 @@
                     @endforeach
                 </div>
             </div>
+            <!-- Ücretli Dersler --> 
+            <div class="feature">
+                <h3>Ücretli Dersler</h3>
+                <p>Ücretli derslere katıl ve öğrenmeye başla.</p>
+                <div class="lessons">
+                    @foreach($paidLessons as $lesson)
+                    @if($lesson->end > now())
+                        <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
+                            <b>{{ $lesson->title }}</b>
+                            <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
+                            <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }}</p>
+                            @if(!$lesson->is_free)
+                                <div>
+                                    <p>Ücret: <span class="price">250</span> ₺</p>
+                                    <a href="javascript:;" class="btn btn-primary join-paid-lesson-btn" data-lesson-title="{{ $lesson->title }}" data-lesson-price="250" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                                </div>
+                            @endif
+                            
+                        </div>
+                    @endif
+                    @endforeach
+                </div>
+            </div>
             <div class="feature">
                 <h3>Eğitmenlerim</h3>
                 <p>Eğitmen profillerini incele ve iletişim kur.</p>
