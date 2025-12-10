@@ -52,6 +52,7 @@
             <option value="ilkogretim_turkce">İlköğretim Türkçe</option>
             <option value="fen_bilimleri">Fen Bilimleri</option>
             <option value="sosyal_bilgiler">Sosyal Bilgiler</option>
+            <option value="din_kültürü">Din Kültürü</option>
             <option value="ingilizce">İngilizce</option>
             <option value="lise_matematik">Lise Matematik</option>
             <option value="fizik">Fizik</option>
