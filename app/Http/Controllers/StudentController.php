@@ -13,7 +13,12 @@ class StudentController extends Controller
 {
     public function dashboard()
     {
-        $teachers = Teacher::all();
+        $teachers = Teacher::orderByRaw("
+            CASE 
+                WHEN image IS NULL OR image = '' THEN 1 
+                ELSE 0 
+            END
+        ")->get();
         $lessons = Event::with('teacher')->where('is_free', 1)->orderBy('start')->get();
 
         $paidLessons = Event::where('is_free', false)->with('teacher')->get();

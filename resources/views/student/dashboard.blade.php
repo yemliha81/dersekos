@@ -100,24 +100,33 @@
                     @endforeach
                 </div>
             </div>
-            <div class="feature">
-                <h3>Eğitmenlerim</h3>
-                <p>Eğitmen profillerini incele ve iletişim kur.</p>
-                <div class="teachers">
-                    @foreach($teachers as $teacher)
-                        <div class="teacher-card">
-                            <h4>{{ $teacher->name }}</h4>
-                            <p>Branş: {{ ucfirst($teacher->branch ) }}</p>
-                            <a href="{{ route('teacher.profile', ['id' => $teacher->id]) }}" class="btn btn-primary">Profili İncele</a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <!--<div class="feature">
-                <h3>Ödeme Geçmişi</h3>
-                <p>Tüm ödeme işlemlerini takip et.</p>
-            </div>-->
         </section>
+
+        <section>
+      <div class="teachers-section mb-50">
+          <div class="text-center mb-4"><h4><b>Eğitmenlerimiz</b></h4></div>
+          <div class="teachers-grid">
+            @foreach($teachers as $teacher)
+                <div class="">
+                  <div class="teacher-box" tabindex="0">
+                      <div class="mb-3 teacher-avatar">
+                          @if($teacher->image == null)
+                              <img src="{{ asset('assets/img/default-image.png') }}" class="profile-img" width="80" alt="">
+                          @else
+                          <img src="{{ asset($teacher->image) }}" class="profile-img" width="80" alt="">
+                          @endif
+                      </div>
+                      <div style=""><strong>{{ $teacher->name }} {{ $teacher->surname }}</strong></div>
+                      <small class="teacher-branch">{{ ucwords(str_replace('_', ' ',   $teacher->branch)) }} </small>
+                      <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
+                        <a href="{{route('teacher.public.profile', ['id' => $teacher->id])}}" class="btn btn-primary" style="padding:8px 12px; font-weight:700">Profili İncele</a>
+                      </div>
+                  </div>
+                </div>
+              @endforeach
+          </div>
+      </div>
+    </section>
 
         <!-- paid lesson modal -->
         <div class="modal" tabindex="-1" role="dialog" id="paidLessonModal" style="display:none;">
