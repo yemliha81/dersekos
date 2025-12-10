@@ -2,6 +2,13 @@
 
 
 @section('content')
+    <section>
+      <div style="margin:44px 0; text-align:center"><h3>Haydi sen de derse koş!</h3>
+      <p>Ücretsiz derslere kayıt fırsatını kaçırma.</p>
+      
+      </div>
+       
+    </section>
     <!-- logo area --> 
     <section class="hero-card logo-area mb-50" >
       <div class="container text-center" style="display:flex; flex-direction:column; justify-content:center; align-items:center; padding:0">
@@ -62,7 +69,28 @@
     </section>
 
     <section class="hero-card mb-50">
-      <!-- 2. Carousel -->
+      <p class="text-center">
+        Her gün daha da büyüyen eğitmen ve öğrenci topluluğumuza katılın.<br/> İster sınavlara hazırlanın, ister yeni beceriler öğrenin, 
+        size en uygun eğitmeni bulun. 
+        @if(!auth('student')->user())
+        <hr>
+        <a class="btn btn-success" href="{{ route('student.login') }}">
+          Hemen kaydolun ve ilk dersinizi ayarlayın!
+        </a>
+        @endif
+      </p>
+    </section>
+
+    @if(!auth('student')->user())
+        <section class="hero-card mb-50">
+        
+          <a class="btn btn-success" href="{{ route('student.login') }}">Öğrenci WhatsApp Grubuna Katıl</a>
+          
+        </section>
+      @endif
+
+    <!--<section class="hero-card mb-50">
+      
        <div class="text-center"><b>Eğitmenlerimiz</b></div>
       <div class="carousel-wrapper no-overflow" style="width:100% !important; max-width:3000px">
       <div class="swiper swiperB">
@@ -80,7 +108,7 @@
                   <div style=""><strong>{{ $teacher->name }} {{ $teacher->surname }}</strong></div>
                   <small class="muted">{{ ucwords(str_replace('_', ' ',   $teacher->branch)) }} </small>
                   <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
-                    <!--<a href="{{route('teacher.public.profile', ['id' => $teacher->id])}}" class="btn btn-primary" style="padding:8px 12px; font-weight:700">Profili İncele</a>-->
+                    <a href="{{route('teacher.public.profile', ['id' => $teacher->id])}}" class="btn btn-primary" style="padding:8px 12px; font-weight:700">Profili İncele</a>
                   </div>
               </div>
             </div>
@@ -92,19 +120,36 @@
         <div class="swiper-button-next nextB" aria-label="Sonraki"></div>
       </div>
       </div>
+    </section>-->
+
+    <section>
+      <div class="teachers-section mb-50">
+          <div class="text-center mb-4"><h4><b>Eğitmenlerimiz</b></h4></div>
+          <div class="teachers-grid">
+            @foreach($teachers as $teacher)
+                <div class="">
+                  <div class="teacher-box" tabindex="0">
+                      <div class="mb-3 teacher-avatar">
+                          @if($teacher->image == null)
+                              <img src="{{ asset('assets/img/default-image.png') }}" class="profile-img" width="80" alt="">
+                          @else
+                          <img src="{{ asset($teacher->image) }}" class="profile-img" width="80" alt="">
+                          @endif
+                      </div>
+                      <div style=""><strong>{{ $teacher->name }} {{ $teacher->surname }}</strong></div>
+                      <small class="teacher-branch">{{ ucwords(str_replace('_', ' ',   $teacher->branch)) }} </small>
+                      <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
+                        <a href="{{route('teacher.public.profile', ['id' => $teacher->id])}}" class="btn btn-primary" style="padding:8px 12px; font-weight:700">Profili İncele</a>
+                      </div>
+                  </div>
+                </div>
+              @endforeach
+          </div>
+      </div>
     </section>
 
     <main>
-      <div style="margin:44px 0; text-align:center"><h3>Haydi sen de derse koş!</h3>
-      <p>Ücretsiz derslere kayıt fırsatını kaçırma.</p>
-      </div>
-       @if(!auth('student')->user())
-        <section class="hero-card mb-50">
-        
-          <a class="btn btn-success" href="{{ route('student.login') }}">Öğrenci WhatsApp Grubuna Katıl</a>
-          
-        </section>
-      @endif
+      
       <section class="hero-card mb-50" aria-labelledby="hero-title">
         <div class="hero-left grid-20">
           <h3 id="hero-title" class="text-center">Size en uygun eğitmeni bulun. Hızlı, güvenilir, uygun fiyatlı</h3>

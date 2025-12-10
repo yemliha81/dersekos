@@ -8,7 +8,11 @@
   <div class="container">
     <div class="row g-3 align-items-center">
       <div class="col-md-3 text-center text-md-start">
-        <img src="" alt="Öğretmen foto" class="avatar">
+       @if($teacher->image == null)
+            <img src="{{ asset('assets/img/default-image.png') }}" class="profile-img avatar" width="80" alt="">
+        @else
+        <img src="{{ asset($teacher->image) }}" class="profile-img avatar" width="80" alt="">
+        @endif
       </div>
 
       <div class="col-md-6">
@@ -32,24 +36,7 @@
       </div>
 
       <div class="col-md-3">
-        <div class="card card-rounded p-3 shadow-sm">
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <div>
-              <div class="text-muted">Saatlik Ücret</div>
-              <div class="h5 fw-bold">₺250</div>
-            </div>
-            <div class="text-end">
-              <small class="text-muted">Deneyim</small>
-              <div class="fw-bold">8 yıl</div>
-            </div>
-          </div>
-          <hr>
-          <div class="d-flex gap-2 flex-wrap">
-            <small class="text-muted"><i class="bi bi-clock"></i> 45dk - 90dk</small>
-            <small class="text-muted"><i class="bi bi-globe"></i> Online</small>
-            <small class="text-muted"><i class="bi bi-geo-alt"></i> İstanbul, Türkiye</small>
-          </div>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -63,63 +50,31 @@
       <section id="about" class="mb-4">
         <div class="card card-rounded p-4 shadow-sm">
           <h3 class="h5">Hakkında</h3>
-          <p class="text-muted">Merhaba! Ben Dr. Ayşe — Boğaziçi Üniversitesi Matematik Bölümü mezunu, yüksek lisans ve doktora sahip.
-            Öğrencilerin temelden anlayıp özgüven kazanmasına odaklanan, ölçülebilir ilerleme sağlayan ders planları ile çalışıyorum.
-            KPSS, TYT/AYT ve üniversite düzeyi fizik dersleri veriyorum. Dersler hem online (Zoom) hem de yüz yüze yapılabilir.</p>
+          <p class="text-muted">{{$teacher->about}}</p>
 
-          <div class="row mt-3">
-            <div class="col-6 col-md-3 text-center">
-              <div class="stat-num">%92</div>
-              <small class="text-muted d-block">Başarı Oranı</small>
-            </div>
-            <div class="col-6 col-md-3 text-center">
-              <div class="stat-num">124</div>
-              <small class="text-muted d-block">Ders</small>
-            </div>
-            <div class="col-6 col-md-3 text-center">
-              <div class="stat-num">8</div>
-              <small class="text-muted d-block">Yıl Deneyim</small>
-            </div>
-            <div class="col-6 col-md-3 text-center">
-              <div class="stat-num">4.9</div>
-              <small class="text-muted d-block">Ortalama Puan</small>
-            </div>
-          </div>
+          
         </div>
       </section>
 
       <section id="qualifications" class="mb-4">
         <div class="card card-rounded p-4 shadow-sm">
           <h3 class="h5">Eğitim & Sertifikalar</h3>
-          <ul class="list-unstyled mb-0">
-            <li>• Doktora, Uygulamalı Matematik — Boğaziçi Üniversitesi</li>
-            <li>• Yüksek Lisans, Matematik Eğitimi — İstanbul Üniversitesi</li>
-            <li>• Sertifika: Uzaktan Eğitim Tasarımı (2021)</li>
-            <li>• TOEFL: 105</li>
-          </ul>
+          <div>
+            {{$teacher->certificates}}
+          </div>
         </div>
       </section>
 
       <section id="courses" class="mb-4">
         <div class="card card-rounded p-4 shadow-sm">
-          <h3 class="h5">Verilen Dersler & Paketler</h3>
+          <h3 class="h5">Etiketler</h3>
 
           <div class="row g-3">
-            <div class="col-md-6">
-              <div class="p-3 border rounded">
-                <h6 class="mb-1">TYT Matematik - Birebir</h6>
-                <p class="mb-1 text-muted small">Saatlik: ₺200 — Paket: 10 ders</p>
-                <a class="small" href="#">Detayları gör</a>
+            @foreach(explode(',', $teacher->tags) as $tag)
+              <div class="col-6">
+                <div class="badge-subject">{{$tag}}</div>
               </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="p-3 border rounded">
-                <h6 class="mb-1">Universite Fizik - Hazırlık</h6>
-                <p class="mb-1 text-muted small">Saatlik: ₺300 — Deneme dersi mevcut</p>
-                <a class="small" href="#">Detayları gör</a>
-              </div>
-            </div>
+            @endforeach
           </div>
 
         </div>
@@ -130,24 +85,11 @@
         <div class="card card-rounded p-4 shadow-sm">
           <div class="d-flex justify-content-between align-items-center">
             <h3 class="h5 mb-0">Takvim & Uygunluk</h3>
-            <small class="text-muted">(Güncellenme: 2 Aralık 2025)</small>
+            <small class="text-muted"></small>
           </div>
 
           <div class="mt-3 table-responsive">
-            <table class="table table-borderless align-middle">
-              <thead>
-                <tr class="text-muted small"><th>Gün</th><th>09:00 - 12:00</th><th>13:00 - 17:00</th><th>18:00 - 21:00</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Pazartesi</td><td><span class="badge bg-success">Uygun</span></td><td><span class="badge bg-secondary">Dolu</span></td><td><span class="badge bg-success">Uygun</span></td></tr>
-                <tr><td>Salı</td><td><span class="badge bg-secondary">Dolu</span></td><td><span class="badge bg-success">Uygun</span></td><td><span class="badge bg-success">Uygun</span></td></tr>
-                <tr><td>Çarşamba</td><td><span class="badge bg-success">Uygun</span></td><td><span class="badge bg-secondary">Dolu</span></td><td><span class="badge bg-success">Uygun</span></td></tr>
-                <tr><td>Perşembe</td><td><span class="badge bg-success">Uygun</span></td><td><span class="badge bg-success">Uygun</span></td><td><span class="badge bg-secondary">Dolu</span></td></tr>
-                <tr><td>Cuma</td><td><span class="badge bg-success">Uygun</span></td><td><span class="badge bg-success">Uygun</span></td><td><span class="badge bg-secondary">Dolu</span></td></tr>
-                <tr><td>Cumartesi</td><td><span class="badge bg-secondary">Dolu</span></td><td><span class="badge bg-secondary">Dolu</span></td><td><span class="badge bg-success">Uygun</span></td></tr>
-                <tr><td>Pazar</td><td colspan="3"><span class="badge bg-success">Gün boyu müsait</span></td></tr>
-              </tbody>
-            </table>
+            <div id="calendar"></div>
           </div>
 
         </div>
@@ -196,66 +138,25 @@
 
     <!-- RIGHT: CONTACT CARD / VIDEO / SOCIAL -->
     <aside class="col-lg-4">
-      <div class="card card-rounded p-3 shadow-sm mb-3">
-        <h5 class="mb-2">Hızlı İletişim</h5>
-        <p class="small text-muted mb-3">Ders almak veya deneme dersi ayarlamak için mesaj gönderin.</p>
-
-        <form id="contact" class="mb-2">
-          <div class="mb-2">
-            <input class="form-control" placeholder="Adınız" required>
-          </div>
-          <div class="mb-2">
-            <input class="form-control" placeholder="E-posta veya telefon" required>
-          </div>
-          <div class="mb-2">
-            <textarea class="form-control" rows="3" placeholder="Mesajınız"></textarea>
-          </div>
-          <button class="btn btn-primary w-100">Mesaj Gönder</button>
-        </form>
-
-        <div class="d-flex justify-content-between small text-muted">
-          <div><i class="bi bi-telephone"></i> +90 5xx xxx xx xx</div>
-          <div><i class="bi bi-geo-alt"></i> İstanbul</div>
-        </div>
-      </div>
-
-      <div class="card card-rounded p-3 shadow-sm mb-3">
-        <h6 class="mb-2">Tanıtım Videosu</h6>
-        <div class="ratio ratio-16x9">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Tanıtım" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <div class="card card-rounded p-3 shadow-sm mb-3">
-        <h6 class="mb-2">Sosyal</h6>
-        <div class="d-flex gap-2">
-          <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-instagram"></i></a>
-          <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-linkedin"></i></a>
-          <a class="btn btn-outline-secondary btn-sm" href="#"><i class="bi bi-whatsapp"></i></a>
-        </div>
-      </div>
+      
 
       <div class="card card-rounded p-3 shadow-sm">
-        <h6 class="mb-2">Hızlı Paketler</h6>
-        <div class="d-flex flex-column gap-2">
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex justify-content-between align-items-center mb-2">
             <div>
-              <div class="fw-semibold">10 Ders Paket</div>
-              <small class="text-muted">+ 1 ücretsiz analiz</small>
+              <div class="text-muted">Saatlik Ücret</div>
+              <div class="h5 fw-bold">₺1500</div>
             </div>
-            <div class="fw-bold">₺1.800</div>
+            <div class="text-end">
+              <small class="text-muted">Deneyim</small>
+              <div class="fw-bold">{{$teacher->experience}} yıl</div>
+            </div>
           </div>
-
-          <div class="d-flex justify-content-between align-items-center">
-            <div>
-              <div class="fw-semibold">5 Ders Paket</div>
-              <small class="text-muted">Yoğun program</small>
-            </div>
-            <div class="fw-bold">₺950</div>
+          <hr>
+          <div class="d-flex gap-2 flex-wrap">
+            <small class="text-muted"><i class="bi bi-clock"></i> 45dk - 90dk</small>
+            <small class="text-muted"><i class="bi bi-globe"></i> Online</small>
           </div>
         </div>
-      </div>
-
     </aside>
   </div>
 </main>
@@ -291,5 +192,152 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    var calendarEl = document.getElementById('calendar');
+    var selectedDate = null;
+
+   var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'tr',
+            selectable: true,
+            events: '/teacher-events/{{ $teacher->id }}',
+
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth'
+            },
+
+            buttonText: {
+                today: 'Bugün',
+                month: 'Ay',
+                week: 'Hafta',
+                day: 'Gün'
+            },
+
+            eventTimeFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            },
+
+            /*dateClick: function(info) {
+                selectedDate = info.dateStr;
+
+                document.getElementById('title').value = '';
+                document.getElementById('start_time').value = '';
+                document.getElementById('end_time').value = '';
+                document.getElementById('meet_url').value = '';
+
+                var modal = new bootstrap.Modal(document.getElementById('eventModal'));
+                modal.show();
+            },*/
+
+            eventClick: function(info) {
+                let event = info.event;
+
+                let priceText = event.extendedProps.is_free == 1 
+                    ? 'Ücretsiz' 
+                    : /*event.extendedProps.price*/ '250 ₺';
+
+                document.getElementById('detailPrice').innerText = priceText;
+
+                document.getElementById('detailPerson').innerText =
+                    event.extendedProps.min_person + " - " + event.extendedProps.max_person + " kişi";
+
+
+                document.getElementById('detailTitle').innerText = event.title;
+                document.getElementById('detailStart').innerText = event.start.toLocaleString('tr-TR');
+                document.getElementById('detailEnd').innerText   = event.end ? event.end.toLocaleString('tr-TR') : '-';
+
+                if (event.extendedProps.meet_url) {
+                    document.getElementById('meetArea').classList.remove('d-none');
+                    document.getElementById('meetLink').href = event.extendedProps.meet_url;
+                } else {
+                    document.getElementById('meetArea').classList.add('d-none');
+                }
+
+                var detailModal = new bootstrap.Modal(document.getElementById('eventDetailModal'));
+                detailModal.show();
+            }
+        });
+
+
+    calendar.render();
+
+    document.getElementById('saveEvent').addEventListener('click', function () {
+
+        let title = document.getElementById('title').value;
+        let startTime = document.getElementById('start_time').value;
+        let endTime = document.getElementById('end_time').value;
+        let meetUrl = document.getElementById('meet_url').value;
+        let isFree     = document.getElementById('is_free').value;
+        let price     = document.getElementById('price').value;
+        let minPerson = document.getElementById('min_person').value;
+        let maxPerson = document.getElementById('max_person').value;
+
+        if (!title || !startTime || !endTime) {
+            alert("Lütfen tüm zorunlu alanları doldurun.");
+            return;
+        }
+
+        let startDateTime = selectedDate + "T" + startTime;
+        let endDateTime   = selectedDate + "T" + endTime;
+        const teacherId = "{{ $teacher->id }}";
+
+        fetch('/teacher-events/'+teacherId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            body: JSON.stringify({
+                title: title,
+                start: startDateTime,
+                end: endDateTime,
+                meet_url: meetUrl,
+                is_free: isFree,
+                price: price,
+                min_person: minPerson,
+                max_person: maxPerson
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            calendar.addEvent({
+            id: data.id,
+            title: data.title,
+            start: data.start,
+            end: data.end,
+            extendedProps: {
+                meet_url: data.meet_url,
+                is_free: data.is_free,
+                price: data.price,
+                min_person: data.min_person,
+                max_person: data.max_person
+            }
+        });
+
+
+            bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+        });
+    });
+
+    document.getElementById('is_free').addEventListener('change', function () {
+        if (this.value == "0") {
+            document.getElementById('priceArea').style.display = 'block';
+        } else {
+            document.getElementById('priceArea').style.display = 'none';
+            document.getElementById('price').value = '';
+        }
+    });
+
+
+
+});
+</script>
 
 @endsection

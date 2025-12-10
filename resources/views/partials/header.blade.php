@@ -61,6 +61,10 @@
       display: grid;
     grid-template-columns: 300px auto;
     }
+    .teachers-grid{
+      display: grid; gap:20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
     .teachers{
       display: grid; gap:12px;
       grid-template-columns:1fr 1fr;
@@ -70,6 +74,9 @@
     }
     .teacher-avatar img{
       border-radius:50%; overflow:hidden; width:80px; height:80px; border:2px solid #fff; box-shadow:0 4px 20px rgba(2,6,23,0.3);
+    }
+    .teacher-branch{
+      color:#FFFFFF;
     }
     .teacher-img{
       display: flex;
@@ -314,8 +321,8 @@
     .no-overflow { overflow: hidden; }
 
     .teacher-box{
-      background: #1d2537;
-      padding: 14px;
+      background: linear-gradient(0deg, #1c253c, transparent);
+      padding: 30px 14px;
       border-radius: 12px;
       color: #FFFFFF;
       height: 100%;
@@ -325,6 +332,7 @@
       align-items: center;
       box-shadow: 0 4px 20px rgba(2, 6, 23, 0.3);
       transition: box-shadow 0.3s ease;
+      gap: 10px;
     }
 
   </style>

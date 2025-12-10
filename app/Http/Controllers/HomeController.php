@@ -23,7 +23,12 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = Slider::where('lang', app()->getLocale())->get();
-        $teachers = Teacher::all();
+        $teachers = Teacher::orderByRaw("
+            CASE 
+                WHEN image IS NULL OR image = '' THEN 1 
+                ELSE 0 
+            END
+        ")->get();
 
         //dd($teachers);
         //$languages = Language::all();
