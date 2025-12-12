@@ -19,9 +19,15 @@ Route::get('/admin/logout', 'App\Http\Controllers\Admin\LoginController@logout')
 // Wrap all admin routes with Auth middleware
 Route::middleware(['auth'])->group(function () {
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard'); 
+
+Route::get('/admin', 'App\Http\Controllers\Admin\DashboardController@dashboard')->name('admin.dashboard');
+Route::get('/admin/students', 'App\Http\Controllers\Admin\DashboardController@students')->name('admin.students');
+Route::get('/admin/students/{id}', 'App\Http\Controllers\Admin\DashboardController@studentShow')->name('admin.students.show');
+
+Route::get('/admin/teachers', 'App\Http\Controllers\Admin\DashboardController@teachers')->name('admin.teachers');
+Route::get('/admin/teachers/{id}', 'App\Http\Controllers\Admin\DashboardController@teacherShow')->name('admin.teachers.show');
+Route::get('/admin/events/{type}', 'App\Http\Controllers\Admin\DashboardController@events')->name('admin.events');
+Route::get('/admin/events/{id}', 'App\Http\Controllers\Admin\DashboardController@eventShow')->name('admin.events.show');
 
 // admin/menu route to menu controller index function
 Route::get('/admin/menu', 'App\Http\Controllers\Admin\MenuController@index')->name('admin.menu');
