@@ -55,7 +55,7 @@ class DashboardController extends Controller
 
     public function eventShow($id)
     {
-        $event = Event::findOrFail($id);
-        return view('admin.dashboard.event_show', compact('event'));
+        $event = Event::with('teacher')->findOrFail($id);
+        return view('admin.events.edit', compact('event'));
     }
 }

@@ -41,8 +41,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="card-title mb-0">Blog Listesi</h5>
-                            <a href="{{ route('admin.blog.create') }}" class="btn btn-primary">
+                            <h5 class="card-title mb-0">Ders Listesi</h5>
+                            <a href="{{ route('admin.events.create') }}" class="btn btn-primary">
                                 <i class="bi bi-plus"></i> Ekle
                             </a>
                         </div>
@@ -54,7 +54,8 @@
                                     <th>#</th>
                                     <th>Başlık</th>
                                     <th>Tarih - Saat</th>
-                                    <th style="width: 350px;">İşlemler</th>
+                                    <th>URL</th>
+                                    <th style="width: 150px;">İşlemler</th>
                                 </tr>
                             </thead>
                             <tbody class="connectedSortable" >
@@ -65,6 +66,7 @@
                                         <td>
                                             {{ \Carbon\Carbon::parse($item->start)->format('d.m.Y H:i') }}
                                         </td>
+                                        <td>{{ $item->meet_url }}</td>
                                         <td>
                                             <a href="{{ route('admin.events.show', $item->id) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Detaylar

@@ -25,9 +25,15 @@ Route::get('/admin/students', 'App\Http\Controllers\Admin\DashboardController@st
 Route::get('/admin/students/{id}', 'App\Http\Controllers\Admin\DashboardController@studentShow')->name('admin.students.show');
 
 Route::get('/admin/teachers', 'App\Http\Controllers\Admin\DashboardController@teachers')->name('admin.teachers');
-Route::get('/admin/teachers/{id}', 'App\Http\Controllers\Admin\DashboardController@teacherShow')->name('admin.teachers.show');
+
 Route::get('/admin/events/{type}', 'App\Http\Controllers\Admin\DashboardController@events')->name('admin.events');
-Route::get('/admin/events/{id}', 'App\Http\Controllers\Admin\DashboardController@eventShow')->name('admin.events.show');
+Route::get('/admin/event/{id}', 'App\Http\Controllers\Admin\DashboardController@eventShow')->name('admin.events.show');
+
+Route::get('/admin/events/create', 'App\Http\Controllers\Admin\EventsController@create')->name('admin.events.create');
+Route::post('/admin/events/store', 'App\Http\Controllers\Admin\EventsController@store')->name('admin.events.store');
+
+Route::get('/admin/teachers/{id}', 'App\Http\Controllers\Admin\TeacherController@teacherShow')->name('admin.teachers.show');
+Route::post('/admin/teachers/store', 'App\Http\Controllers\Admin\TeacherController@store')->name('admin.teachers.store');
 
 // admin/menu route to menu controller index function
 Route::get('/admin/menu', 'App\Http\Controllers\Admin\MenuController@index')->name('admin.menu');
