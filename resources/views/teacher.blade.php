@@ -109,7 +109,7 @@
           <div class="mb-3">
             <!-- Review 1 -->
             <div class="d-flex gap-3 mb-3">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="" class="rounded-circle" width="48" height="48">
+              <img src="https://instasize.com/api/image/8c83e89052446c521657db04dda3aa600a942eba4db10fa59c3b8c45835c4f98.png" alt="" class="rounded-circle" width="48" height="48">
               <div>
                 <div class="fw-bold">Mehmet K.</div>
                 <div class="small text-muted">"Kısa sürede eksiklerim kapandı, sınavda netlerim arttı."</div>
@@ -119,7 +119,7 @@
 
             <!-- Review 2 -->
             <div class="d-flex gap-3">
-              <img src="https://images.unsplash.com/photo-1545996124-1f5f2d9d3b2e?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="" class="rounded-circle" width="48" height="48">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="" class="rounded-circle" width="48" height="48">
               <div>
                 <div class="fw-bold">Elif A.</div>
                 <div class="small text-muted">"Dersler interaktif geçiyor; hızlı geri dönüş sağlıyor."</div>
