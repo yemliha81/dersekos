@@ -147,20 +147,61 @@
                     </div>
 
                     <div class="modal-body">
-                        <p><strong>Başlık:</strong> <span id="detailTitle"></span></p>
-                        <p><strong>Başlangıç:</strong> <span id="detailStart"></span></p>
-                        <p><strong>Bitiş:</strong> <span id="detailEnd"></span></p>
-                        <p><strong>Ücret:</strong> <span id="detailPrice"></span></p>
-                        <p><strong>Katılımcı:</strong> <span id="detailPerson"></span></p>
-                        <p><strong>Kayıtlı Öğrenci Sayısı:</strong> <span id="detailRegistrationCount"></span></p>
+                        <form method="POST" action="{{route('event.update')}}">
+                            @csrf
+                            <input type="hidden" id="detailId" name="event_id" value="">
+                            <p><strong>Başlık:</strong> <input type="text" id="detailTitle" name="title" class="form-control"></p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p><strong>Başlangıç:</strong> <input type="text" id="detailStart" name="start"  class="form-control"></p>
+                                </div>
+                                <div class="col-6">
+                                    <p><strong>Bitiş:</strong> <input type="text" id="detailEnd" name="end"  class="form-control"></p>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row">
+                                <div class="col-6">
+                                    <p>
+                                        <!-- is_free selectbox --> 
+                                        <label><strong>Ücretsiz mi?</strong></label>
+                                        <select id="detailIsFree" name="is_free" class="form-select">
+                                            <option value="1" >Ücretsiz</option>
+                                            <option value="0" >Ücretli</option>
+                                        </select>
+                                    </p>
+                                </div>
+                                <div class="col-6" id="detailPriceArea">
+                                    <p><strong>Ücret:</strong> <input type="text"  name="price" id="detailPrice" class="form-control"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p><strong>Minimum Katılımcı:</strong> <input type="number"  name="min_person" id="detailPersonMin" class="form-control"></p>
+                                </div>
+                                <div class="col-6">
+                                    <p><strong>Maksimum Katılımcı:</strong> <input type="number" name="max_person" id="detailPersonMax" class="form-control"></p>
+                                </div>
+                            </div>
+                            
+                        
+                            <p><strong>Kayıtlı Öğrenci Sayısı:</strong> <span id="detailRegistrationCount"></span></p>
 
-                        <div id="meetArea" class="d-none">
-                        <hr>
-                        <a href="#" target="_blank" id="meetLink" class="btn btn-success w-100">
-                            Derse Başla
-                        </a>
-                        </div>
-                        <div class="lessonInfo"></div>
+                            <p><strong>Toplantı Linki:</strong> <input type="url" name="meet_url" id="detailMeetUrl" class="form-control"></p>
+
+                            <p>
+                                <input type="submit" class="btn btn-info" value="Bilgileri Güncelle">
+                            </p>
+
+                            <div id="meetArea" class="d-none">
+                                <hr>
+                                <a href="#" target="_blank" id="meetLink" class="btn btn-success w-100">
+                                    Derse Başla
+                                </a>
+                            </div>
+                            <div class="lessonInfo"></div>
+                        </form>
                     </div>
 
                     <div class="modal-footer">
@@ -237,6 +278,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
     var selectedDate = null;
 
+    // isFree selectbox change event
+    document.getElementById('is_free').addEventListener('change', function () {
+        if (this.value == "0") {
+            document.getElementById('detailPriceArea').style.display = 'block';
+        } else {
+            document.getElementById('detailPriceArea').style.display = 'none';
+        }
+    });
+
    var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             locale: 'tr',
@@ -289,14 +339,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 document.getElementById('detailPrice').innerText = priceText;
 
-                document.getElementById('detailPerson').innerText =
-                    event.extendedProps.min_person + " - " + event.extendedProps.max_person + " kişi";
+                document.getElementById('detailPersonMin').value =
+                    event.extendedProps.min_person;
 
-                
+                document.getElementById('detailPersonMax').value =
+                    event.extendedProps.max_person;
 
-                document.getElementById('detailTitle').innerText = event.title;
-                document.getElementById('detailStart').innerText = event.start.toLocaleString('tr-TR');
-                document.getElementById('detailEnd').innerText   = event.end ? event.end.toLocaleString('tr-TR') : '-';
+                    document.getElementById('detailMeetUrl').value =
+                    event.extendedProps.meet_url;
+
+                // is_free selectbox
+                document.getElementById('detailIsFree').value = event.extendedProps.is_free
+
+                // price input
+                document.getElementById('detailPrice').value = event.extendedProps.price
+
+                document.getElementById('detailId').value = event.id;
+                document.getElementById('detailTitle').value = event.title;
+                document.getElementById('detailStart').value = event.start.toLocaleString('tr-TR');
+                document.getElementById('detailEnd').value   = event.end.toLocaleString('tr-TR');
 
                 if (event.extendedProps.meet_url) {
                     document.getElementById('meetArea').classList.remove('d-none');
@@ -353,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let startDateTime = selectedDate + "T" + startTime;
         let endDateTime   = selectedDate + "T" + endTime;
 
-        fetch('/events', {
+        fetch('/events/store', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

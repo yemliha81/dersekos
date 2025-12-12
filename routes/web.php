@@ -199,12 +199,7 @@ Route::get('/ogretmen/{id}/detay', 'App\Http\Controllers\TeacherController@publi
 
 
 
-Route::get('/events', function () {
 
-    $teacherId = auth('teacher')->user()->id;
-
-    return Event::where('teacher_id', $teacherId)->get();
-});
 
 Route::get('/events/{id}/registrations', function ($id) {
 
@@ -228,23 +223,10 @@ Route::get('/teacher-events/{id}', function () {
     return $events;
 });
 
-Route::post('/events', function (Request $request) {
-    $teacherId = auth('teacher')->user()->id;
+Route::get('/events', 'App\Http\Controllers\EventsController@index')->name('teacher.events');
 
-    $event = Event::create([
-        'title'      => $request->title,
-        'start'      => $request->start,
-        'end'        => $request->end,
-        'meet_url'   => $request->meet_url,
-        'is_free'    => $request->is_free,
-        'price'      => $request->price,
-        'min_person' => $request->min_person,
-        'max_person' => $request->max_person,
-        'teacher_id' => $teacherId,
-    ]);
-
-    return response()->json($event);
-});
+Route::post('/events/store', 'App\Http\Controllers\EventsController@store')->middleware('auth:teacher')->name('event.save');
+Route::post('/events/update', 'App\Http\Controllers\EventsController@update')->middleware('auth:teacher')->name('event.update');
 
 
 

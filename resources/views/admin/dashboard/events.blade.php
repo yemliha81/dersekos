@@ -53,6 +53,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Başlık</th>
+                                    <th>Eğitmen</th>
                                     <th>Tarih - Saat</th>
                                     <th>URL</th>
                                     <th style="width: 150px;">İşlemler</th>
@@ -63,6 +64,7 @@
                                      <tr  >
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td>
+                                        <td>{{ $item->teacher->name }}</td>
                                         <td>
                                             {{ \Carbon\Carbon::parse($item->start)->format('d.m.Y H:i') }}
                                         </td>

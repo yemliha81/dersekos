@@ -49,7 +49,7 @@ class DashboardController extends Controller
     public function events($type)
     {
         $is_free = ($type === 'free') ? 1 : 0;
-        $events = Event::where('is_free', $is_free)->orderBy('start')->get();
+        $events = Event::where('is_free', $is_free)->orderBy('start')->with('teacher')->get();
         return view('admin.dashboard.events', compact('events'));
     }
 
