@@ -58,7 +58,7 @@
                                     <th style="width: 150px;">İşlemler</th>
                                 </tr>
                             </thead>
-                            <tbody class="connectedSortable" >
+                            <tbody class="" >
                                 @foreach($events as $item)
                                      <tr  >
                                         <td>{{ $item->id }}</td>

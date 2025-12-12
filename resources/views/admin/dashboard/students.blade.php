@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped dataTable" id="sortable-table">
+                        <table class="table table-striped dataTable" >
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -57,7 +57,7 @@
                                     <th style="width: 350px;">İşlemler</th>
                                 </tr>
                             </thead>
-                            <tbody class="connectedSortable">
+                            <tbody class="">
                                 @foreach($students as $item)
                                      <tr  data-id="{{$item->student_id}}">
                                         <td>{{ $item->id }}</td>
