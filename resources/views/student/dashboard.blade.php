@@ -29,7 +29,7 @@
                 <p>Aktif ve kayıtlı derslerini görüntüle.</p>
                 <div class="lessons">
                     @foreach($myLessons as $lesson)
-                        @if($lesson->end > now())
+                        @if($lesson->end > nowTR())
                             <div class="lesson-card">
                                 <b>{{ $lesson->title }}</b>
                                 <p><b>Tarih - Saat:</b> <br/>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
