@@ -232,6 +232,13 @@ Route::post('/events/update', 'App\Http\Controllers\EventsController@update')->m
 
 
 
+Route::get('/tz-test', function () {
+    return [
+        'config' => config('app.timezone'),
+        'php' => date_default_timezone_get(),
+        'now' => now()->toDateTimeString(),
+    ];
+});
 
 
 

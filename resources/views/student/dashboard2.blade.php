@@ -35,6 +35,15 @@
                                 <p><b>Tarih - Saat:</b> <br/>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                                 
                                 <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} </p>
+                                <?php 
+
+                                    $time = date('Y-m-d H:i:s',time());
+
+                                    echo $time;
+                                    
+                                
+                                ?>
+                                <br>
                                 @if($lesson->meet_url != null)
                                 {{ $lesson->start }} <br>
                                 {{ now() }} <br>
