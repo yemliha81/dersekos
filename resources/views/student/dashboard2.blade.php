@@ -35,26 +35,16 @@
                                 <p><b>Tarih - Saat:</b> <br/>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                                 
                                 <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} </p>
-                                <?php 
-
-                                    $time = date('Y-m-d H:i:s',time());
-
-                                    echo $time;
-                                    
                                 
-                                ?>
                                 <br>
                                 @if($lesson->meet_url != null)
-                                {{ $lesson->start }} <br>
-                                {{ now() }} <br>
-                                {{ $lesson->end }} <br>
-                                    <!-- 
-                                    @if($lesson->start <= now() && $lesson->end >= now())
+                                    
+                                    @if($lesson->start <= nowTR() && $lesson->end >= nowTR())
                                         <a target="_blank" href="{{ $lesson->meet_url }}" target="_blank" class="btn btn-success">Derse Katıl</a>
                                     @else
                                         <div class="alert alert-info">Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>
                                     @endif
-                                    -->
+                                
                                         <a target="_blank" href="{{ $lesson->meet_url }}" target="_blank" class="btn btn-success">Derse Katıl</a>
                                     
                                         <!--<div class="alert alert-info">Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>-->

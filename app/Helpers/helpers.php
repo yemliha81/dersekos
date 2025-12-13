@@ -20,6 +20,16 @@ if (! function_exists('debug')) {
 }
 
 
+if (! function_exists('nowTR')) {
+function nowTR()
+    {
+        return now()->addHour()->addMinutes(8);
+    }
+
+}
+
+
+
 
 if (! function_exists('getFolder')) {
     function getFolder($folder_names, $lang = 'en')
