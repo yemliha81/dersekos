@@ -36,7 +36,13 @@
                                 
                                 <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} </p>
                                 @if($lesson->meet_url != null)
-                                    
+                                    <!-- 
+                                @if($lesson->start <= now() && $lesson->end >= now())
+                                        <a target="_blank" href="{{ $lesson->meet_url }}" target="_blank" class="btn btn-success">Derse Katıl</a>
+                                    @else
+                                        <div class="alert alert-info">Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>
+                                    @endif
+                                    -->
                                         <a target="_blank" href="{{ $lesson->meet_url }}" target="_blank" class="btn btn-success">Derse Katıl</a>
                                     
                                         <!--<div class="alert alert-info">Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>-->
