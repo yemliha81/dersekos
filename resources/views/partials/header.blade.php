@@ -90,7 +90,7 @@
     }
     .lessons{
       display: grid; gap:12px;
-      grid-template-columns:1fr;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
     }
     .lesson-card{
       background: #309e06;
@@ -99,9 +99,9 @@
       border: 1px solid #78ff22;
       border: 1px solid #3b7515;
       margin-bottom: 12px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      align-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       justify-content: space-between;
       color: #FFFFFF;
       gap: 10px;
@@ -113,9 +113,9 @@
       border: 1px solid #ff4500;
       margin-bottom: 12px;
       color: #FFFFFF;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      align-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       justify-content: space-between;
     }
     .logo-div{
