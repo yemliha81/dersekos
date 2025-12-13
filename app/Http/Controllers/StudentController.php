@@ -38,6 +38,33 @@ class StudentController extends Controller
         return view('student.dashboard', compact('teachers', 'lessons', 'myLessons', 'paidLessons'));
     }
 
+    public function dashboard2()
+    {
+        $teachers = Teacher::orderByRaw("
+            CASE 
+                WHEN image IS NULL OR image = '' THEN 1 
+                ELSE 0 
+            END
+        ")->get();
+        $lessons = Event::with('teacher')->where('is_free', 1)->orderBy('start')->get();
+
+        $paidLessons = Event::where('is_free', false)->with('teacher')->orderBy('start')->limit(20)->get();
+
+        $myLessons = [];
+        foreach ($lessons as $lesson) {
+            $attendees = $lesson->attendees ? explode(',', $lesson->attendees) : [];
+            if (in_array(auth('student')->user()->id, $attendees)) {
+                $myLessons[] = $lesson;
+            }
+        }
+
+        //dd($myLessons);
+
+        //$paidLessons = Event::where('is_free', false)->with('teacher')->get();
+        //dd($freeLessons);
+        return view('student.dashboard2', compact('teachers', 'lessons', 'myLessons', 'paidLessons'));
+    }
+
     public function joinToEvent($id)
     {
         $event = Event::findOrFail($id);

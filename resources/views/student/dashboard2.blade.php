@@ -36,6 +36,9 @@
                                 
                                 <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} </p>
                                 @if($lesson->meet_url != null)
+                                {{ $lesson->start }} <br>
+                                {{ now() }} <br>
+                                {{ $lesson->end }} <br>
                                     <!-- 
                                     @if($lesson->start <= now() && $lesson->end >= now())
                                         <a target="_blank" href="{{ $lesson->meet_url }}" target="_blank" class="btn btn-success">Derse Katıl</a>
