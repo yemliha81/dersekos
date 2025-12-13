@@ -22,7 +22,7 @@ class EventsController extends Controller
 
     public function allEvents(){
 
-        return Event::with('teacher')->get();
+        return Event::where('is_free', '1')->with('teacher')->get();
     }
 
     public function store (Request $request) {
