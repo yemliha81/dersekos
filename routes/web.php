@@ -232,13 +232,15 @@ Route::post('/events/update', 'App\Http\Controllers\EventsController@update')->m
 
 
 
-Route::get('/tz-test', function () {
+Route::get('/time-debug', function () {
     return [
-        'config' => config('app.timezone'),
-        'php' => date_default_timezone_get(),
-        'now' => now()->toDateTimeString(),
+        'laravel_now' => now()->toDateTimeString(),
+        'php_now' => date('Y-m-d H:i:s'),
+        'php_timezone' => date_default_timezone_get(),
+        'server_time' => shell_exec('date'),
     ];
 });
+
 
 
 
