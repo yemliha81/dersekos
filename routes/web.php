@@ -223,7 +223,8 @@ Route::get('/teacher-events/{id}', function () {
     return $events;
 });
 
-Route::get('/events', 'App\Http\Controllers\EventsController@index')->name('teacher.events');
+Route::get('/events', 'App\Http\Controllers\EventsController@index')->middleware('auth:teacher')->name('teacher.events');
+Route::get('/all-events', 'App\Http\Controllers\EventsController@allEvents')->middleware('auth:teacher')->name('all.events');
 
 Route::post('/events/store', 'App\Http\Controllers\EventsController@store')->middleware('auth:teacher')->name('event.save');
 Route::post('/events/update', 'App\Http\Controllers\EventsController@update')->middleware('auth:teacher')->name('event.update');

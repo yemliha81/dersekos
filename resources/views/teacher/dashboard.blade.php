@@ -14,9 +14,8 @@
         <section class="hero-card hero" aria-labelledby="hero-title">
             
             <div class="hero-left grid-20">
-                <div class="pill">Öğretmen Paneli</div>
-                <h1 id="hero-title">Hoşgeldin, {{ auth('teacher')->user()->name }}!</h1>
-                <p class="muted">Burada derslerini yönetebilir, öğrencilerinle iletişim kurabilirsin.</p>
+                <strong id="hero-title">Hoşgeldiniz, {{ auth('teacher')->user()->name }}!</strong>
+                <p class="muted">Burada derslerinizi yönetebilir, profil bilgilerinizi düzenleyebilirsiniz.</p>
             </div>
         </section>
         <section>
@@ -27,7 +26,7 @@
             @endif
         </section>
 
-        <section class="hero-card dashboard-cards ">
+        <section class="hero-card dashboard-cards mb-3">
             <div class="row">
                 <div class="col-12 col-md-3 ">
                     <div>
@@ -66,6 +65,13 @@
             </div>
             
             
+        </section>
+
+        <section class="hero-card" >
+            <div class="text-center mb-3">
+                <h2>Tüm Eğitmenlere ait Takvim</h2>
+            </div>
+            <div id="allCalendar"></div>
         </section>
 
         <!-- Event Ekleme Modal -->
@@ -245,6 +251,86 @@
                 </div>
             </div>
 
+            <div class="modal fade" id="allEventDetailModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ders Detayı</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                            <p><strong>Eğitmen:</strong> <span id="AlldetailTeacherName"></span></p>
+                            <p><strong>Başlık:</strong> <input disabled type="text" id="AlldetailTitle" name="title" class="form-control"></p>
+                            <p>
+                                <!-- grade level selectbox --> 
+                                <label><strong>Sınıf Seviyesi:</strong></label>
+                                <select disabled id="AlldetailGradeLevel" name="grade" class="form-select">
+                                    <option value="5" >5. Sınıf</option>
+                                    <option value="6" >6. Sınıf</option>
+                                    <option value="7" >7. Sınıf</option>
+                                    <option value="8" >8. Sınıf</option>
+                                    <option value="9" >9. Sınıf</option>
+                                    <option value="10" >10. Sınıf</option>
+                                    <option value="11" >11. Sınıf</option>
+                                    <option value="12" >12. Sınıf</option>
+                                    <option value="13" >KPSS</option>
+                                </select>
+                            </p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p><strong>Başlangıç:</strong> <input disabled type="text" id="AlldetailStart" name="start"  class="form-control"></p>
+                                </div>
+                                <div class="col-6">
+                                    <p><strong>Bitiş:</strong> <input disabled type="text" id="AlldetailEnd" name="end"  class="form-control"></p>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row">
+                                <div class="col-6">
+                                    <p>
+                                        <!-- is_free selectbox --> 
+                                        <label><strong>Ücretsiz mi?</strong></label>
+                                        <select disabled id="AlldetailIsFree" name="is_free" class="form-select">
+                                            <option value="1" >Ücretsiz</option>
+                                            <option value="0" >Ücretli</option>
+                                        </select>
+                                    </p>
+                                </div>
+                                <div class="col-6" id="detailPriceArea">
+                                    <p><strong>Ücret:</strong> <input disabled type="text"  name="price" id="AlldetailPrice" class="form-control"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p><strong>Minimum Katılımcı:</strong> <input disabled type="number"  name="min_person" id="AlldetailPersonMin" class="form-control"></p>
+                                </div>
+                                <div class="col-6">
+                                    <p><strong>Maksimum Katılımcı:</strong> <input disabled type="number" name="max_person" id="AlldetailPersonMax" class="form-control"></p>
+                                </div>
+                            </div>
+                            
+                        
+                            <p><strong>Kayıtlı Öğrenci Sayısı:</strong> <span id="AlldetailRegistrationCount"></span></p>
+
+                            <p><strong>Toplantı Linki:</strong> <input disabled type="url" name="meet_url" id="AlldetailMeetUrl" class="form-control"></p>
+
+                           
+
+                            
+                        
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+
 
         <!-- Öğretmen Profil Güncelleme modalı -->
         <div class="modal fade" id="profileModal" tabindex="-1">
@@ -309,6 +395,8 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     var calendarEl = document.getElementById('calendar');
+    var allCalendarEl = document.getElementById('allCalendar');
+
     var selectedDate = null;
 
     // isFree selectbox change event
@@ -346,7 +434,12 @@ document.addEventListener('DOMContentLoaded', function () {
             },
 
             dateClick: function(info) {
-                selectedDate = info.dateStr;
+                
+                // split date and time
+                var date = info.dateStr.split('T')[0];
+                var time = info.dateStr.split('T')[1] ?? '';
+                selectedDate = date;
+
 
                 document.getElementById('title').value = '';
                 document.getElementById('start_time').value = '';
@@ -501,9 +594,92 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    var allCalendar = new FullCalendar.Calendar(allCalendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'tr',
+            selectable: true,
+            events: '/all-events',
+
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth'
+            },
+
+            buttonText: {
+                today: 'Bugün',
+                month: 'Ay',
+                week: 'Hafta',
+                day: 'Gün'
+            },
+
+            eventTimeFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            },
+
+            
+
+            eventClick: function(info) {
+                let event = info.event;
+                
+
+                fetch('/events/' + event.id + '/registrations')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('AlldetailRegistrationCount').innerText = data.count;
+                });
+
+                let priceText = event.extendedProps.is_free == 1 
+                    ? 'Ücretsiz' 
+                    : event.extendedProps.price + ' ₺';
+
+                document.getElementById('AlldetailPrice').innerText = priceText;
+                document.getElementById('AlldetailPrice').innerText = priceText;
+
+                document.getElementById('AlldetailPersonMin').value =
+                    event.extendedProps.min_person;
+
+                // detailGradeLevel selectbox
+                document.getElementById('AlldetailGradeLevel').value =
+                    event.extendedProps.grade;
+
+                // AlldetailTeacherName
+                document.getElementById('AlldetailTeacherName').innerText =
+                    event.extendedProps.teacher.name;
+
+                document.getElementById('AlldetailPersonMax').value =
+                    event.extendedProps.max_person;
+
+                    document.getElementById('AlldetailMeetUrl').value =
+                    event.extendedProps.meet_url;
+
+                // is_free selectbox
+                document.getElementById('AlldetailIsFree').value = event.extendedProps.is_free
+
+                // price input
+                document.getElementById('AlldetailPrice').value = event.extendedProps.price
+
+                document.getElementById('detailId').value = event.id;
+                document.getElementById('AlldetailTitle').value = event.title;
+                document.getElementById('AlldetailStart').value = event.start.toLocaleString('tr-TR');
+                document.getElementById('AlldetailEnd').value   = event.end.toLocaleString('tr-TR');
+
+                
+
+                var allDetailModal = new bootstrap.Modal(document.getElementById('allEventDetailModal'));
+                allDetailModal.show();
+            }
+        });
+
+    allCalendar.render();
+
 
 
 });
+
+
 </script>
 
 

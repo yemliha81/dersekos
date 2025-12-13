@@ -20,6 +20,11 @@ class EventsController extends Controller
         return Event::where('teacher_id', $teacherId)->get();
     }
 
+    public function allEvents(){
+
+        return Event::with('teacher')->get();
+    }
+
     public function store (Request $request) {
         //dd($request->all());
         $teacherId = auth('teacher')->user()->id;
