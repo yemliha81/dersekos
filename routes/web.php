@@ -207,9 +207,9 @@ Route::get('/events/{id}/registrations', function ($id) {
     $attendees = $event->attendees;
     $count = count(array_filter(explode(',', $attendees)));
 
-    if ($event->teacher_id != auth('teacher')->user()->id) {
+    /*if ($event->teacher_id != auth('teacher')->user()->id) {
         abort(403);
-    }
+    }*/
 
     return response()->json(['count' => $count]);
 });
