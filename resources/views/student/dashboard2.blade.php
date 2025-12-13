@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-
+<?php date_default_timezone_set('Europe/Istanbul'); ?>
 @section('content')
 
     
@@ -35,7 +35,8 @@
                                 <p><b>Tarih - Saat:</b> <br/>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                                 
                                 <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} </p>
-                                
+                                {{now()}} <br>
+                                {{nowTR()}}
                                 <br>
                                 @if($lesson->meet_url != null)
                                     
