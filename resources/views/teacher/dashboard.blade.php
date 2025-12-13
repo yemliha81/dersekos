@@ -87,6 +87,24 @@
                 </div>
 
                 <div class="mb-3">
+                <p>
+                    <!-- grade level selectbox --> 
+                    <label><strong>Sınıf Seviyesi:</strong></label>
+                    <select id="grade" name="grade" class="form-select">
+                        <option value="5" >5. Sınıf</option>
+                        <option value="6" >6. Sınıf</option>
+                        <option value="7" >7. Sınıf</option>
+                        <option value="8" >8. Sınıf</option>
+                        <option value="9" >9. Sınıf</option>
+                        <option value="10" >10. Sınıf</option>
+                        <option value="11" >11. Sınıf</option>
+                        <option value="12" >12. Sınıf</option>
+                        <option value="13" >KPSS</option>
+                    </select>
+                </p>
+                </div>
+
+                <div class="mb-3">
                 <label>Başlangıç Saati</label>
                 <input type="time" id="start_time" class="form-control">
                 </div>
@@ -151,6 +169,21 @@
                             @csrf
                             <input type="hidden" id="detailId" name="event_id" value="">
                             <p><strong>Başlık:</strong> <input type="text" id="detailTitle" name="title" class="form-control"></p>
+                            <p>
+                                <!-- grade level selectbox --> 
+                                <label><strong>Sınıf Seviyesi:</strong></label>
+                                <select id="detailGradeLevel" name="grade" class="form-select">
+                                    <option value="5" >5. Sınıf</option>
+                                    <option value="6" >6. Sınıf</option>
+                                    <option value="7" >7. Sınıf</option>
+                                    <option value="8" >8. Sınıf</option>
+                                    <option value="9" >9. Sınıf</option>
+                                    <option value="10" >10. Sınıf</option>
+                                    <option value="11" >11. Sınıf</option>
+                                    <option value="12" >12. Sınıf</option>
+                                    <option value="13" >KPSS</option>
+                                </select>
+                            </p>
                             <div class="row">
                                 <div class="col-6">
                                     <p><strong>Başlangıç:</strong> <input type="text" id="detailStart" name="start"  class="form-control"></p>
@@ -342,6 +375,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('detailPersonMin').value =
                     event.extendedProps.min_person;
 
+                // detailGradeLevel selectbox
+                document.getElementById('detailGradeLevel').value =
+                    event.extendedProps.grade;
+
                 document.getElementById('detailPersonMax').value =
                     event.extendedProps.max_person;
 
@@ -393,6 +430,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('saveEvent').addEventListener('click', function () {
 
         let title = document.getElementById('title').value;
+        let grade = document.getElementById('grade').value;
         let startTime = document.getElementById('start_time').value;
         let endTime = document.getElementById('end_time').value;
         let meetUrl = document.getElementById('meet_url').value;
@@ -422,6 +460,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify({
                 title: title,
+                grade: grade,
                 start: startDateTime,
                 end: endDateTime,
                 meet_url: meetUrl,
@@ -440,6 +479,7 @@ document.addEventListener('DOMContentLoaded', function () {
             end: data.end,
             extendedProps: {
                 meet_url: data.meet_url,
+                grade: data.grade,
                 is_free: data.is_free,
                 price: data.price,
                 min_person: data.min_person,

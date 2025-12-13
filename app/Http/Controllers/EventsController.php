@@ -28,6 +28,7 @@ class EventsController extends Controller
             ['id'         => $request->event_id],
             [
             'title'      => $request->title,
+            'grade'      => $request->grade,
             'start'      => Carbon::parse($request->start)->format('Y-m-d H:i:s'),
             'end'        => Carbon::parse($request->end)->format('Y-m-d H:i:s'),
             'meet_url'   => $request->meet_url,
@@ -49,6 +50,7 @@ class EventsController extends Controller
             ['id'         => $request->event_id],
             [
             'title'      => $request->title,
+            'grade'      => $request->grade,
             'start'      => Carbon::parse($request->start)->format('Y-m-d H:i:s'),
             'end'        => Carbon::parse($request->end)->format('Y-m-d H:i:s'),
             'meet_url'   => $request->meet_url,
