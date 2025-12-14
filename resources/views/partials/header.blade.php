@@ -53,6 +53,30 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
+
+    .rocking-btn {
+      font-size: 1.2rem;
+      padding: 12px 24px;
+      border: 2px dashed #FFFFFF;
+      border-radius: 8px;
+      background: #4f46e5;
+      color: white;
+      cursor: pointer;
+
+      transform-origin: center;
+      animation: rock .5s ease-in-out infinite;
+    }
+
+    @keyframes rock {
+      0%   { transform: rotate(0deg); }
+      25%  { transform: rotate(5deg); }
+      50%  { transform: rotate(0deg); }
+      75%  { transform: rotate(-5deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+
+
     .grid-20{
       display: grid;
       gap:20px;

@@ -25,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
         date_default_timezone_set('Europe/Istanbul');
 
         // TEMPORARY drift correction (adjust minutes if needed)
-        Carbon::setTestNow(
+        /*Carbon::setTestNow(
             Carbon::now()->addHour(1)->addMinutes(8)
-        );
+        );*/
     }
 
 }

@@ -30,16 +30,16 @@
                 <div class="lessons">
                     @foreach($myLessons as $lesson)
                         @if($lesson->end > now())
-                            <div class="lesson-card">
+                            <div class="lesson-card card_{{ $lesson->id }}">
                                 <b>{{ $lesson->title }}</b>
                                 <p><b>Tarih - Saat:</b> <br/>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                                 
                                 <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} </p>
                                 @if($lesson->meet_url != null)
-                                    @if($lesson->start <= now() && $lesson->end >= now())
-                                        <a target="_blank" href="{{ $lesson->meet_url }}" target="_blank" class="btn btn-success">Derse Katıl</a>
-                                    @else
-                                        <div class="alert alert-info">Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>
+                                    @if($lesson->end > now())
+                                        <a id="start_{{ $lesson->id }}" lesson-id="{{ $lesson->id }}" target="_blank" href="{{ $lesson->meet_url }}" start-time="{{ $lesson->start }}" end-time="{{ $lesson->end }}" style="display:none;"  class="start_lesson rocking-btn">Derse Koş!</a>
+                                    
+                                        <div id="lesson_{{ $lesson->id }}" class="time_info alert alert-info">Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>
                                     @endif
                                 @else
                                     <div class="alert alert-warning">Ders bağlantısı henüz oluşturulmamış.</div>
@@ -164,6 +164,40 @@
 <script>
     // Öğrenci paneli için özel JavaScript kodları buraya eklenebilir
     $(document).ready(function() {
+
+        // start_lesson each function
+        $('.start_lesson').each(function() {
+            var lessonId = $(this).attr('lesson-id');
+            const start_time = $(this).attr('start-time');
+            const end_time   = $(this).attr('end-time');
+            
+            // set interval every second
+            setInterval(function() {
+                
+
+                // Convert to Date objects
+                const start = new Date(start_time.replace(' ', 'T'));
+                const end   = new Date(end_time.replace(' ', 'T'));
+                const now   = new Date();
+
+                // Check if current time is between start and end
+                const isBetween = now >= start && now <= end;
+
+                const isFinished = now > end;
+
+                if (isFinished == true) {
+                    $(".lesson_" + lessonId).remove();
+                }
+
+                if (isBetween == true) {
+                    $("#start_" + lessonId).show();
+                }else{
+                    
+                }
+            }, 1000)
+
+
+        });
         
         $('.join-lesson-btn').on('click', function() {
             var lessonId = $(this).data('lesson-id');
@@ -178,6 +212,7 @@
                 },
                 success: function(response) {
                     alert('Derse başarıyla kayıt oldunuz!');
+                    location.reload();
                 },
                 error: function(xhr) {
                     alert('Derse kayıt olurken bir hata oluştu. Lütfen tekrar deneyin.');
