@@ -186,7 +186,7 @@
                 const isFinished = now > end;
 
                 if (isFinished == true) {
-                    $(".lesson_" + lessonId).remove();
+                    $(".card_" + lessonId).remove();
                 }
 
                 if (isBetween == true) {
