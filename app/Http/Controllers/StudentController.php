@@ -68,16 +68,27 @@ class StudentController extends Controller
     public function joinToEvent($id)
     {
         $event = Event::findOrFail($id);
+        $max_person = $event->max_person;
+        $attendees_count = $event->attendees ? count(explode(',', $event->attendees)) : 0;
+        
         $student_id = auth('student')->user()->id;
         $attendees = $event->attendees ? explode(',', $event->attendees) : [];
         if(in_array($student_id, $attendees)) {
             // Student already joined
-            return redirect()->back();
+            echo json_encode(['status' => 'already_joined', 'message' => 'You have already joined this event.']);
+            return;
+        }
+
+        if($attendees_count >= $max_person) {
+            echo json_encode(['status' => 'full', 'message' => 'This event is full.']);
+            return;
         }
         $attendees[] = $student_id;
         $event->attendees = implode(',', $attendees);
         $event->save();
-        return redirect()->back();
+
+        echo json_encode(['status' => 'success', 'message' => 'You have joined the event successfully.']);
+        return;
     }
 
     

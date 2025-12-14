@@ -116,11 +116,23 @@
       display: grid; gap:12px;
       grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
     }
-    .lesson-card{
-      background: #309e06;
+    .free-lesson-card{
+      background: #58b892ff;
       padding: 14px;
       border-radius: 12px;
-      border: 1px solid #78ff22;
+      border: 1px solid #3b7515;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      color: #FFFFFF;
+      gap: 10px;
+    }
+    .lesson-card{
+      background: #5890b8;
+      padding: 14px;
+      border-radius: 12px;
       border: 1px solid #3b7515;
       margin-bottom: 12px;
       display: flex;
@@ -131,10 +143,10 @@
       gap: 10px;
     }
     .paid-lesson-card{
-      background: #f1a164;
+      background: #c876f0;
       padding: 14px;
       border-radius: 12px;
-      border: 1px solid #ff4500;
+      border: 1px solid #4f085eff;
       margin-bottom: 12px;
       color: #FFFFFF;
       display: flex;
@@ -190,7 +202,7 @@
     .search-row{display:flex; gap:10px; align-items:center}
     .search-row input{flex:1; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit}
     .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; font-weight:700}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#061025}
+    .btn-primary{background:#FFFFFF; color:#061025}
     .btn-ghost{border:1px solid rgba(255,255,255,0.04); background:transparent; color:var(--muted)}
 
     /* Stats */
@@ -290,7 +302,6 @@
     .field input,select{padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.05); background:transparent; color:inherit}
 
     .btn{display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; font-weight:700; border:none}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#061025}
     .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,0.08); color:var(--muted)}
 
     .auth-footer{margin-top:12px; font-size:13px; color:var(--muted); text-align:center}

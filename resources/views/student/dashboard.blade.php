@@ -9,28 +9,19 @@
       
         <section class="hero-card hero" aria-labelledby="hero-title">
             <div class="hero-left">
-                <div class="pill">Öğrenci Paneli</div>
-                <h1 id="hero-title">Hoşgeldin, {{ auth('student')->user()->name }}!</h1>
+                <div class="pill"></div>
+                <h3 id="hero-title">Hoşgeldin, {{ auth('student')->user()->name }}!</h3>
                 <p class="muted">Burada derslerini yönetebilir, eğitmenlerinle iletişim kurabilir ve öğrenme yolculuğuna devam edebilirsin.</p>
             </div>
         </section>
-
-        <section class="hero-card mb-50 grid-3">
-            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubuna Katıl</a>
-            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubuna Katıl</a>
-            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubuna Katıl</a>
-            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubuna Katıl</a>
-            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubuna Katıl</a>
-        </section>
-
         <section class="dashboard-cards">
             <div class="feature">
-                <h3>Derslerim</h3>
+                <h3>Kayıt olduğum dersler</h3>
                 <p>Aktif ve kayıtlı derslerini görüntüle.</p>
                 <div class="lessons">
                     @foreach($myLessons as $lesson)
                         @if($lesson->end > now())
-                            <div class="lesson-card card_{{ $lesson->id }}">
+                            <div class="free-lesson-card card_{{ $lesson->id }}">
                                 <b>{{ $lesson->title }}</b>
                                 <p><b>Tarih - Saat:</b> <br/>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                                 
@@ -38,8 +29,6 @@
                                 @if($lesson->meet_url != null)
                                     @if($lesson->end > now())
                                         <a id="start_{{ $lesson->id }}" lesson-id="{{ $lesson->id }}" target="_blank" href="{{ $lesson->meet_url }}" start-time="{{ $lesson->start }}" end-time="{{ $lesson->end }}" style="display:none;"  class="start_lesson rocking-btn">Derse Koş!</a>
-                                    
-                                        <div id="lesson_{{ $lesson->id }}" class="time_info alert alert-info">Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>
                                     @endif
                                 @else
                                     <div class="alert alert-warning">Ders bağlantısı henüz oluşturulmamış.</div>
@@ -59,19 +48,29 @@
                         <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
                             <b>{{ $lesson->title }}</b>
                             <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
-                            <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }}</p>
+                            <div style="display:flex; align-items:center; justify-content:space-between;width:100%;">
+                                <div>
+                                    <b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }}
+                                </div>
+                                <div>
+                                    <b>Kontenjan:</b> {{ $lesson->max_person }} Kişi
+                                </div>
+                            </div>
                             @if(!$lesson->is_free)
                             <div>
                                 <p>Ücret: <span class="price">250</span> ₺</p>
                                 <a href="javascript:;" class="btn btn-primary join-paid-lesson-btn" data-lesson-title="{{ $lesson->title }}" data-lesson-price="250" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
                             </div>
                             @else
-                            <div>
-                                <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
-                                <div>
-                                    {{count(array_filter(explode(',', $lesson->attendees)))}} öğrenci kayıtlı
+                                
+                                <div style="display:flex; align-items:center; justify-content:space-between;width:100%;">
+                                    <div>
+                                        <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                                    </div>
+                                    <div>
+                                        <i class="bi bi-person"></i> {{count(array_filter(explode(',', $lesson->attendees)))}} 
+                                    </div>
                                 </div>
-                            </div>
                             @endif
                             
                         </div>
@@ -104,31 +103,41 @@
             </div>
         </section>
 
+        <section class="hero-card mb-50 grid-3">
+            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubuna Katıl</a>
+            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubuna Katıl</a>
+            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubuna Katıl</a>
+            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubuna Katıl</a>
+            <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubuna Katıl</a>
+        </section>
+
         <section>
-      <div class="teachers-section mb-50">
-          <div class="text-center mb-4"><h4><b>Eğitmenlerimiz</b></h4></div>
-          <div class="teachers-grid">
-            @foreach($teachers as $teacher)
-                <div class="">
-                  <div class="teacher-box" tabindex="0">
-                      <div class="mb-3 teacher-avatar">
-                          @if($teacher->image == null)
-                              <img src="{{ asset('assets/img/default-image.png') }}" class="profile-img" width="80" alt="">
-                          @else
-                          <img src="{{ asset($teacher->image) }}" class="profile-img" width="80" alt="">
-                          @endif
-                      </div>
-                      <div style=""><strong>{{ $teacher->name }} {{ $teacher->surname }}</strong></div>
-                      <small class="teacher-branch">{{ ucwords(str_replace('_', ' ',   $teacher->branch)) }} </small>
-                      <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
-                        <a href="{{route('teacher.public.profile', ['id' => $teacher->id])}}" class="btn btn-primary" style="padding:8px 12px; font-weight:700">Profili İncele</a>
-                      </div>
-                  </div>
+            <div class="teachers-section mb-50">
+                <div class="text-center mb-4"><h4><b>Eğitmenlerimiz</b></h4></div>
+                <div class="teachers-grid">
+                    @foreach($teachers as $teacher)
+                        <div class="">
+                        <div class="teacher-box" tabindex="0">
+                            <div class="mb-3 teacher-avatar">
+                                @if($teacher->image == null)
+                                    <img src="{{ asset('assets/img/default-image.png') }}" class="profile-img" width="80" alt="">
+                                @else
+                                <img src="{{ asset($teacher->image) }}" class="profile-img" width="80" alt="">
+                                @endif
+                            </div>
+                            <div style=""><strong>{{ $teacher->name }} {{ $teacher->surname }}</strong></div>
+                            <small class="teacher-branch">{{ ucwords(str_replace('_', ' ',   $teacher->branch)) }} </small>
+                            <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
+                                <a href="{{route('teacher.public.profile', ['id' => $teacher->id])}}" class="btn btn-primary" style="padding:8px 12px; font-weight:700">Profili İncele</a>
+                            </div>
+                        </div>
+                        </div>
+                    @endforeach
                 </div>
-              @endforeach
-          </div>
-      </div>
-    </section>
+            </div>
+        </section>
+
+        
 
         <!-- paid lesson modal -->
         <div class="modal" tabindex="-1" role="dialog" id="paidLessonModal" style="display:none;">
@@ -191,6 +200,7 @@
 
                 if (isBetween == true) {
                     $("#start_" + lessonId).show();
+                    $(".time_info_" + lessonId).hide();
                 }else{
                     
                 }
@@ -211,8 +221,19 @@
                     _token: '{{ csrf_token() }}' // CSRF token eklenmeli
                 },
                 success: function(response) {
-                    alert('Derse başarıyla kayıt oldunuz!');
-                    location.reload();
+                      //jsonparse data
+                    var data = JSON.parse(response);
+
+                    if(data.status == 'success') {
+                        alert('Derse başarıyla kayıt oldunuz!');
+                        location.reload();
+                    }
+                    if(data.status == 'full') {
+                        alert('Ders kontenjanı dolmuştur!');
+                    }
+                    if(data.status == 'already_joined') {
+                        alert('Bu derse daha önce kayıt oldunuz!');
+                    }
                 },
                 error: function(xhr) {
                     alert('Derse kayıt olurken bir hata oluştu. Lütfen tekrar deneyin.');
