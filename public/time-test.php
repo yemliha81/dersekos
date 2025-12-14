@@ -1,2 +1,4 @@
-<?php date_default_timezone_set('Europe/Istanbul'); ?>
-<?php echo date('Y-m-d H:i:s'); ?>
+<?php 
+    date_default_timezone_set('Europe/Istanbul');
+    echo date('Y-m-d H:i:s'); 
+?>
