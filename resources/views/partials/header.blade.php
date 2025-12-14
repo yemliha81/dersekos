@@ -114,7 +114,7 @@
     }
     .lessons{
       display: grid; gap:12px;
-      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
     }
     .free-lesson-card{
       background: #58b892ff;
