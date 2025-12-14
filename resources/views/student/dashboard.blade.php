@@ -29,14 +29,14 @@
                 <p>Aktif ve kayıtlı derslerini görüntüle.</p>
                 <div class="lessons">
                     @foreach($myLessons as $lesson)
-                        @if($lesson->end > nowTR())
+                        @if($lesson->end > now())
                             <div class="lesson-card">
                                 <b>{{ $lesson->title }}</b>
                                 <p><b>Tarih - Saat:</b> <br/>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                                 
                                 <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} </p>
                                 @if($lesson->meet_url != null)
-                                    @if($lesson->start <= nowTR() && $lesson->end >= nowTR())
+                                    @if($lesson->start <= now() && $lesson->end >= now())
                                         <a target="_blank" href="{{ $lesson->meet_url }}" target="_blank" class="btn btn-success">Derse Katıl</a>
                                     @else
                                         <div class="alert alert-info">Ders saati: {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</div>

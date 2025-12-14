@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,8 +18,16 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    
+
+    public function boot()
     {
-        //
+        date_default_timezone_set('Europe/Istanbul');
+
+        // TEMPORARY drift correction (adjust minutes if needed)
+        Carbon::setTestNow(
+            Carbon::now()->addHour(1)->addMinutes(8)
+        );
     }
+
 }

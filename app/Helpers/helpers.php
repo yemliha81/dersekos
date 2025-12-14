@@ -23,7 +23,7 @@ if (! function_exists('debug')) {
 if (! function_exists('nowTR')) {
 function nowTR()
     {
-        return now()->addHour()->addMinutes(8);
+        return now()->addHour(1)->addMinutes(8);
     }
 
 }
