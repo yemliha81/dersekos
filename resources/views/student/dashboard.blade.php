@@ -46,6 +46,7 @@
                     @foreach($lessons as $lesson)
                     @if($lesson->end > now())
                         <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
+                            @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf</b> @endif
                             <b>{{ $lesson->title }}</b>
                             <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                             <div style="display:flex; align-items:center; justify-content:space-between;width:100%;">
@@ -86,6 +87,7 @@
                     @foreach($paidLessons as $lesson)
                     @if($lesson->end > now())
                         <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
+                            @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf</b> @endif
                             <b>{{ $lesson->title }}</b>
                             <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                             <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }}</p>
