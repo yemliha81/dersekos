@@ -32,8 +32,7 @@
                                     @if($lesson->end > now())
                                         <a id="start_{{ $lesson->id }}" lesson-id="{{ $lesson->id }}" target="_blank" href="{{ $lesson->meet_url }}" start-time="{{ $lesson->start }}" end-time="{{ $lesson->end }}" style="display:none;"  class="start_lesson rocking-btn">Derse Koş!</a>
                                     @endif
-                                @else
-                                    <div class="alert alert-warning">Ders bağlantısı henüz oluşturulmamış.</div>
+                                
                                 @endif
                             </div>
                         @endif
