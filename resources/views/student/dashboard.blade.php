@@ -22,6 +22,8 @@
                     @foreach($myLessons as $lesson)
                         @if($lesson->end > now())
                             <div class="free-lesson-card card_{{ $lesson->id }}">
+                                @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif
+
                                 <b>{{ $lesson->title }}</b>
                                 <p><b>Tarih - Saat:</b> <br/>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                                 
