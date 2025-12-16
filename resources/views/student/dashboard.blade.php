@@ -17,7 +17,6 @@
         <section class="dashboard-cards">
             <div class="feature">
                 <h3>Kayıt olduğum dersler</h3>
-                <div class="alert alert-info">Sayfayı yenilemenize artık gerek yok ;)</div>
                 <p>Aktif ve kayıtlı derslerini görüntüle.</p>
                 <div class="lessons">
                     @foreach($myLessons as $lesson)
