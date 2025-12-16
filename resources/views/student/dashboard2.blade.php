@@ -23,7 +23,30 @@
             <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubuna Katıl</a>
         </section>
 
+        <section class="">
+
+            
+                <script src='https://8x8.vc/vpaas-magic-cookie-642cef0e156646acaf114d29594563df/external_api.js' async></script>
+                <style>html, body, #jaas-container { height: 100%; }</style>
+                <script type="text/javascript">
+                window.onload = () => {
+                    const api = new JitsiMeetExternalAPI("8x8.vc", {
+                    roomName: "vpaas-magic-cookie-642cef0e156646acaf114d29594563df/SampleAppClassicCommitteesSmileSmoothly",
+                    parentNode: document.querySelector('#jaas-container'),
+                                    // Make sure to include a JWT if you intend to record,
+                                    // make outbound calls or use any other premium features!
+                                    // jwt: "eyJraWQiOiJ2cGFhcy1tYWdpYy1jb29raWUtNjQyY2VmMGUxNTY2NDZhY2FmMTE0ZDI5NTk0NTYzZGYvZjQyZTFjLVNBTVBMRV9BUFAiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJqaXRzaSIsImlzcyI6ImNoYXQiLCJpYXQiOjE3NjU4ODgzNjMsImV4cCI6MTc2NTg5NTU2MywibmJmIjoxNzY1ODg4MzU4LCJzdWIiOiJ2cGFhcy1tYWdpYy1jb29raWUtNjQyY2VmMGUxNTY2NDZhY2FmMTE0ZDI5NTk0NTYzZGYiLCJjb250ZXh0Ijp7ImZlYXR1cmVzIjp7ImxpdmVzdHJlYW1pbmciOmZhbHNlLCJmaWxlLXVwbG9hZCI6ZmFsc2UsIm91dGJvdW5kLWNhbGwiOmZhbHNlLCJzaXAtb3V0Ym91bmQtY2FsbCI6ZmFsc2UsInRyYW5zY3JpcHRpb24iOmZhbHNlLCJsaXN0LXZpc2l0b3JzIjpmYWxzZSwicmVjb3JkaW5nIjpmYWxzZSwiZmxpcCI6ZmFsc2V9LCJ1c2VyIjp7ImhpZGRlbi1mcm9tLXJlY29yZGVyIjpmYWxzZSwibW9kZXJhdG9yIjp0cnVlLCJuYW1lIjoiVGVzdCBVc2VyIiwiaWQiOiJnb29nbGUtb2F1dGgyfDExODQxOTAxMjIyNTc3MjcwOTk0NCIsImF2YXRhciI6IiIsImVtYWlsIjoidGVzdC51c2VyQGNvbXBhbnkuY29tIn19LCJyb29tIjoiKiJ9.LepT2e_iUt0fYazMwekjDFhqyfP81rQpcB7VrKjqgAZ6pZibX-o1jXYBFjWUnXdLB_pdbmiimO14gr_nGwNpiTOz6M78gSSry7R9hQQejci3xTdCWD-fWTVR0-nGAwhkIFpJoCZQ8hCKzsLv8DBbsM_jWMrVtONCyGZUmKMl1bkMfuA9UltcbhFf3tWeOpCji_7ovR_pynO9ISCikEEX5FoevRtih0zD9Lrt75HP8xhUvOJQBg6KaI1xFp_8zR-iCDyYxxvNQO0abL0tThD2VIhcnq7cuV64_K5BNSqLvbUcr_d8_6-tWyUIjNanGuwuQhJN7vl6pm6rFNcWRv1ZUw"
+                    });
+                }
+                </script>
+            
+            <div id="jaas-container" />
+            
+  
+        </section>
+
         <section class="dashboard-cards">
+
             <div class="feature">
                 <h3>Derslerim</h3>
                 <p>Aktif ve kayıtlı derslerini görüntüle.</p>
