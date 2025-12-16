@@ -74,6 +74,11 @@
                                                 <label for="email" class="form-label">E-posta</label>
                                                 <input type="email" class="form-control" id="email" name="email" value="{{ $teacher->email }}" >
                                             </div>
+                                            <!-- phone -->
+                                            <div class="mb-3">
+                                                <label for="phone" class="form-label">Telefon</label>
+                                                <input type="text" class="form-control" id="phone" name="phone" value="{{ $teacher->phone }}" >
+                                            </div>
                                             <!-- experience -->
                                             <div class="mb-3">
                                                 <label for="experience" class="form-label">Deneyim</label>
