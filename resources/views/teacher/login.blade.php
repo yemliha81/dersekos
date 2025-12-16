@@ -43,6 +43,10 @@
           <label>E‑posta</label>
           <input type="email" name="email" placeholder="ornek@mail.com" required>
         </div>
+        <div class="field">
+          <label>Cep Telefonu</label>
+          <input type="text" name="phone" placeholder="Cep Telefonu" required>
+        </div>
         <!-- grade selectbox --> 
         <div class="field">
           <label>Branşınız</label>

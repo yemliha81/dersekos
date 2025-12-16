@@ -74,6 +74,7 @@ class TeacherController extends Controller
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|max:255|unique:teacher,email,'.$teacher->id,
+                'phone' => 'required|string|max:20',
                 'branch' => 'required|string|max:100',
             ]);
 
@@ -86,6 +87,7 @@ class TeacherController extends Controller
 
             $teacher->name = $request->input('name');
             $teacher->email = $request->input('email');
+            $teacher->phone = $request->input('phone');
             $teacher->branch = $request->input('branch');
             $teacher->experience = $request->input('experience');
             $teacher->certificates = $request->input('certificates');
@@ -183,6 +185,7 @@ class TeacherController extends Controller
             $request->validate([
                 'name'     => 'required|string|max:255',
                 'email'    => 'required|email|unique:teacher',
+                'phone'    => 'required|string|max:20',
                 'password' => 'required|string|min:6',
                 'branch'    => 'required|string|max:50',
             ]);
@@ -191,6 +194,7 @@ class TeacherController extends Controller
             $teacher = Teacher::create([
                 'name'     => $request->name,
                 'email'    => $request->email,
+                'phone'    => $request->phone,
                 'password' => bcrypt($request->password),
                 'branch'    => $request->branch,
             ]);

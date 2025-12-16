@@ -17,6 +17,9 @@
                 <strong id="hero-title">Hoşgeldiniz, {{ auth('teacher')->user()->name }}!</strong>
                 <p class="muted">Burada derslerinizi yönetebilir, profil bilgilerinizi düzenleyebilirsiniz.</p>
             </div>
+            <div class="hero-right">
+                <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K0y7N5ZEVc2FE2PHo7HDAk">Öğretmen WhatsApp grubumuza katılın</a>
+            </div>
         </section>
         <section>
             @if(session('success'))
@@ -58,6 +61,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-9">
+                    <div class="text-center mb-3 alert alert-info">Aşağıdaki takvmiden hemen ilk dersinizi planlayabilirsiniz!</div>
                     <div>
                         <div id="calendar"></div>
                     </div>
@@ -355,6 +359,10 @@
                             <div class="mb-3">
                                 <label class="form-label">E-posta</label>
                                 <input type="email" name="email" class="form-control" value="{{ auth('teacher')->user()->email }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Telefon</label>
+                                <input type="text" name="phone" class="form-control" value="{{ auth('teacher')->user()->phone }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Şifre</label>
