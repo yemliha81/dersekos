@@ -19,7 +19,31 @@ class StudentController extends Controller
                 ELSE 0 
             END
         ")->get();
-        $lessons = Event::with('teacher')->where('is_free', 1)->orderBy('start')->get();
+
+
+
+        $where = // where start >= now
+        $lessons = Event::where('is_free', 1)->where('start', '>=', now())->with('teacher')->get();
+
+        //$lessons = Event::with('teacher')->where('is_free', 1)->orderBy('start')->get();
+
+
+        $grades = ['5', '6', '7', '8', '9', '10', '11', '12', '13'];
+
+        // group lessons by grade
+       $groupedLessons = [];
+        foreach ($grades as $grade) {
+            foreach($lessons as $lesson){
+                if($lesson->grade == $grade){
+                    $groupedLessons[$grade][] = $lesson;
+
+                }
+            }
+        }
+
+        //dd($groupedLessons);
+
+
 
         $paidLessons = Event::where('is_free', false)->with('teacher')->orderBy('start')->limit(20)->get();
 
@@ -35,7 +59,7 @@ class StudentController extends Controller
 
         //$paidLessons = Event::where('is_free', false)->with('teacher')->get();
         //dd($freeLessons);
-        return view('student.dashboard', compact('teachers', 'lessons', 'myLessons', 'paidLessons'));
+        return view('student.dashboard', compact('teachers', 'lessons', 'myLessons', 'paidLessons', 'groupedLessons'));
     }
 
     public function dashboard2()

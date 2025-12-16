@@ -43,40 +43,49 @@
             <div class="feature">
                 <h3>Ücretsiz Dersler</h3>
                 <p>Ücretsiz derslere katıl ve öğrenmeye başla.</p>
-                <div class="lessons">
-                    @foreach($lessons as $lesson)
-                    @if($lesson->end > now())
-                        <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
-                            @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif
-                            <b>{{ $lesson->title }}</b>
-                            <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
-                            <div style="display:flex; align-items:center; justify-content:space-between;width:100%;">
-                                <div>
-                                    <b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }}
-                                </div>
-                                <div>
-                                    <b>Kontenjan:</b> {{ $lesson->max_person }} Kişi
-                                </div>
-                            </div>
-                            @if(!$lesson->is_free)
-                            <div>
-                                <p>Ücret: <span class="price">250</span> ₺</p>
-                                <a href="javascript:;" class="btn btn-primary join-paid-lesson-btn" data-lesson-title="{{ $lesson->title }}" data-lesson-price="250" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
-                            </div>
-                            @else
-                                
-                                <div style="display:flex; align-items:center; justify-content:space-between;width:100%;">
-                                    <div>
-                                        <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
-                                    </div>
-                                    <div>
-                                        <i class="bi bi-person"></i> {{count(array_filter(explode(',', $lesson->attendees)))}} 
-                                    </div>
-                                </div>
-                            @endif
+                <div class="grades">
+                    @foreach($groupedLessons as $grade => $lessons)
+
+                        <div class="grade-box">
+                            <h4>{{ $grade }}. Sınıf</h4>
+                            <div class="lessons">
+                                @foreach($lessons as $lesson)
                             
+                                    <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
+                                        @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif
+                                        <b>{{ $lesson->title }}</b>
+                                        <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
+                                        <div style="display:flex; align-items:center; justify-content:space-between;width:100%;">
+                                            <div>
+                                                <b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }}
+                                            </div>
+                                            <div>
+                                                <b>Kontenjan:</b> {{ $lesson->max_person }} Kişi
+                                            </div>
+                                        </div>
+                                        @if(!$lesson->is_free)
+                                        <div>
+                                            <p>Ücret: <span class="price">250</span> ₺</p>
+                                            <a href="javascript:;" class="btn btn-primary join-paid-lesson-btn" data-lesson-title="{{ $lesson->title }}" data-lesson-price="250" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                                        </div>
+                                        @else
+                                            
+                                            <div style="display:flex; align-items:center; justify-content:space-between;width:100%;">
+                                                <div>
+                                                    <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                                                </div>
+                                                <div>
+                                                    <i class="bi bi-person"></i> {{count(array_filter(explode(',', $lesson->attendees)))}} 
+                                                </div>
+                                            </div>
+                                        @endif
+                                        
+                                    </div>
+                            
+                                @endforeach
+                            </div>
                         </div>
-                    @endif
+                    
                     @endforeach
                 </div>
             </div>
