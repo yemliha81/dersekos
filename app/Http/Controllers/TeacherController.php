@@ -16,30 +16,6 @@ class TeacherController extends Controller
 
     public function dashboard()
     {
-
-       /* dd(auth('teacher')->user()->google_token);
-
-
-        $client = new Client();
-        $client->setAccessToken(
-            json_decode(auth('teacher')->user()->google_token, true)
-        );
-
-
-        // Token süresi dolduysa otomatik yenile
-        if ($client->isAccessTokenExpired()) {
-            $client->fetchAccessTokenWithRefreshToken(
-                $client->getRefreshToken()
-            );
-
-            auth()->user()->update([
-                'google_token' => json_encode($client->getAccessToken())
-            ]);
-        }
-
-        $service = new Calendar($client);
-        $calendarList = $service->calendarList->listCalendarList();*/
-
         return view('teacher.dashboard'/*, ['calendars' => $calendarList->getItems()]*/);
     }
 
