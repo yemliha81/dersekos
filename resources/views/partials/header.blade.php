@@ -202,7 +202,7 @@
     .search-row{display:flex; gap:10px; align-items:center}
     .search-row input{flex:1; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit}
     .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; font-weight:700}
-    .btn-primary{background:#FFFFFF; color:#061025}
+   
     .btn-ghost{border:1px solid rgba(255,255,255,0.04); background:transparent; color:var(--muted)}
 
     /* Stats */
@@ -299,7 +299,7 @@
     .form h2{margin:0 0 14px 0}
     .field{display:flex; flex-direction:column; gap:6px; margin-bottom:14px}
     .field label{font-size:13px; color:var(--muted)}
-    .field input,select{padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.05); background:transparent; color:inherit}
+    .field input,select{padding:12px 14px; border-radius:12px; border:1px solid #9E9E9E; background:transparent; color:inherit}
 
     .btn{display:inline-flex; align-items:center; justify-content:center; padding:12px 16px; border-radius:12px; font-weight:700; border:none}
     .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,0.08); color:var(--muted)}
