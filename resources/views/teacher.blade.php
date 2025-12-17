@@ -143,8 +143,8 @@
       <div class="card card-rounded p-3 shadow-sm">
           <div class="d-flex justify-content-between align-items-center mb-2">
             <div>
-              <div class="text-muted">Saatlik Ücret</div>
-              <div class="h5 fw-bold">₺1500</div>
+              <!--<div class="text-muted">Saatlik Ücret</div>
+              <div class="h5 fw-bold">₺1500</div>-->
             </div>
             <div class="text-end">
               <small class="text-muted">Deneyim</small>
