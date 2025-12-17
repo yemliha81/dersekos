@@ -78,7 +78,7 @@
 
                         <div class="grade-box">
                             @if($grade == '13')
-                                <b>KPSS </b> 
+                                <h4>KPSS </h4> 
                             @else 
                                 <h4>{{ $grade }}. Sınıf</h4>
                             @endif
