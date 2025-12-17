@@ -77,7 +77,7 @@
                     @foreach($groupedLessons as $grade => $lessons)
 
                         <div class="grade-box">
-                            @if($lesson->grade == '13')
+                            @if($grade == '13')
                                 <b>KPSS </b> 
                             @else 
                                 <h4>{{ $grade }}. Sınıf</h4>
