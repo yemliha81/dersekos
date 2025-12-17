@@ -65,6 +65,7 @@
             <option value="lise_turkce">Lise Türkçe</option>
             <option value="tarih">Tarih</option>
             <option value="cografya">Coğrafya</option>
+            <option value="rehberlik">Rehberlik ve Psikolojik Danışmanlık</option>
           </select>
         </div>
         <div class="field">
