@@ -52,6 +52,7 @@
           <label>Branşınız</label>
           <select name="branch" required>
             <option value="" disabled selected>Seçiniz</option>
+            <option value="Sınıf Öğretmeni">Sınıf Öğretmeni</option>
             <option value="ilkogretim_matematik">İlköğretim Matematik</option>
             <option value="ilkogretim_turkce">İlköğretim Türkçe</option>
             <option value="fen_bilimleri">Fen Bilimleri</option>
