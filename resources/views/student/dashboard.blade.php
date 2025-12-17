@@ -82,7 +82,13 @@
                                 @foreach($lessons as $lesson)
                             
                                     <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
-                                        @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif
+                                        @if($lesson->grade != null)
+                                            @if($lesson->grade == '13')
+                                                <b>KPSS - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> 
+                                            @else 
+                                                <b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> 
+                                            @endif
+                                        @endif
                                         <b>{{ $lesson->title }}</b>
                                         <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
                                         <div style="display:flex; align-items:center; justify-content:space-between;width:100%;">
