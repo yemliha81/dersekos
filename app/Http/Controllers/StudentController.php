@@ -32,7 +32,7 @@ class StudentController extends Controller
         //$lessons = Event::with('teacher')->where('is_free', 1)->orderBy('start')->get();
 
 
-        $grades = ['5', '6', '7', '8', '9', '10', '11', '12', '13'];
+        $grades = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'];
 
         // group lessons by grade
        $groupedLessons = [];
