@@ -54,6 +54,7 @@
                                     <th>#</th>
                                     <th>Ad - Soyad</th>
                                     <th>Branş</th>
+                                    <th>Telefon</th>
                                     <th style="width: 350px;">İşlemler</th>
                                 </tr>
                             </thead>
@@ -63,6 +64,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->branch }}</td>
+                                        <td>{{ $item->phone }}</td>
                                         <td>
                                             <a href="{{ route('admin.teachers.show', $item->id) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Detaylar
