@@ -187,6 +187,10 @@
                                 <!-- grade level selectbox --> 
                                 <label><strong>Sınıf Seviyesi:</strong></label>
                                 <select id="detailGradeLevel" name="grade" class="form-select">
+                                    <option value="1" >1. Sınıf</option>
+                                    <option value="2" >2. Sınıf</option>
+                                    <option value="3" >3. Sınıf</option>
+                                    <option value="4" >4. Sınıf</option>
                                     <option value="5" >5. Sınıf</option>
                                     <option value="6" >6. Sınıf</option>
                                     <option value="7" >7. Sınıf</option>
