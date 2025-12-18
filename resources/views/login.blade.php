@@ -48,6 +48,10 @@
           <label>Sınıf Seviyesi</label>
           <select name="grade" required>
             <option value="" disabled selected>Seçiniz</option>
+            <option value="1">1. Sınıf</option>
+            <option value="2">2. Sınıf</option>
+            <option value="3">3. Sınıf</option>
+            <option value="4">4. Sınıf</option>
             <option value="5">5. Sınıf</option>
             <option value="6">6. Sınıf</option>
             <option value="7">7. Sınıf</option>
