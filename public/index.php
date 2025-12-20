@@ -1,9 +1,9 @@
 <?php
 // display all php errors
 //die('Güncelleme çalışması yapılmaktadır. Lütfen birkaç dakika içinde tekrar deneyiniz.');
-echo 'Şu anda teknik bir sorun yaşamaktayız. Ders linklerimizi geçici olarak buradan paylaşıyoruz. <br/>';
-echo '3. Sınıflar dersimiz için tıklayınız. <a href="https://us05web.zoom.us/j/87658511386?pwd=YV1VowAjgUJQXhBlcJxlvSKwgBrlbI.1">3. Sınıflar</a>';
-die();
+//echo 'Şu anda teknik bir sorun yaşamaktayız. Ders linklerimizi geçici olarak buradan paylaşıyoruz. <br/>';
+//echo '3. Sınıflar dersimiz için tıklayınız. <a href="https://us05web.zoom.us/j/87658511386?pwd=YV1VowAjgUJQXhBlcJxlvSKwgBrlbI.1">3. Sınıflar</a>';
+//die();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
