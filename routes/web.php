@@ -5,6 +5,7 @@ use App\Http\Controllers\GoogleCalendarController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Http\Controllers\SeederController;
 
 
 
@@ -19,6 +20,7 @@ Route::get('/admin/logout', 'App\Http\Controllers\Admin\LoginController@logout')
 // Wrap all admin routes with Auth middleware
 Route::middleware(['auth'])->group(function () {
 
+Route::get('/run-student-seeder', [SeederController::class, 'runStudentSeeder']);
 
 Route::get('/admin', 'App\Http\Controllers\Admin\DashboardController@dashboard')->name('admin.dashboard');
 Route::get('/admin/students', 'App\Http\Controllers\Admin\DashboardController@students')->name('admin.students');
