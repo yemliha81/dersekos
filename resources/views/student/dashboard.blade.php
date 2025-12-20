@@ -15,7 +15,18 @@
             </div>
         </section>
          <section class="hero-card mb-50 grid-3">
-            
+            @if(auth('student')->user()->grade == '1')
+                <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FU8GjclhZyxCvk78dqdkhI?mode=hqrc">1. Sınıf WhatsApp Grubuna Katıl</a>
+            @endif
+            @if(auth('student')->user()->grade == '2')
+                <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/LfZwOZWHEnV197becP2emu?mode=hqrc">2. Sınıf WhatsApp Grubuna Katıl</a>
+            @endif
+            @if(auth('student')->user()->grade == '3')
+                <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/C4bZ47W1wDXCZwnYyGTZSE?mode=hqrc">3. Sınıf WhatsApp Grubuna Katıl</a>
+            @endif
+            @if(auth('student')->user()->grade == '4')
+                <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/GgNpHFDAzSNFJka5xYk0oH?mode=hqrc">4. Sınıf WhatsApp Grubuna Katıl</a>
+            @endif
             @if(auth('student')->user()->grade == '5')
                 <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubuna Katıl</a>
             @endif
