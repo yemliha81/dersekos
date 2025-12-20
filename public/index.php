@@ -1,6 +1,6 @@
 <?php
 // display all php errors
-//die('Güncelleme çalışması yapılmaktadır.');
+die('Güncelleme çalışması yapılmaktadır. Lütfen birkaç dakika içinde tekrar deneyiniz.');
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
