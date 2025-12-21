@@ -15,7 +15,7 @@
                     <p class="muted">Burada derslerini yönetebilir, eğitmenlerinle iletişim kurabilir ve öğrenme yolculuğuna devam edebilirsin.</p>
                 </div>
             </section>
-            <section class="hero-card mb-50 grid-3">
+            <section class="hero-card mb-50">
                 @if(auth('student')->user()->grade == '1')
                     <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FU8GjclhZyxCvk78dqdkhI?mode=hqrc">1. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
