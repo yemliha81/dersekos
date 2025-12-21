@@ -341,6 +341,10 @@
       .swiper-slide{
         width:100% !important;
       }
+      .lesson-card{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+      }
     }
 
     /* Küçük stil düzeltmeleri: navigation butonlarının görünürlüğü */
