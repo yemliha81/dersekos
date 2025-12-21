@@ -27,9 +27,9 @@ class StudentController extends Controller
 
 
         $where = // where start >= now
-        $lessons = Event::where('is_free', 1)->where('end', '>=', now())->with('teacher')->orderBy('start')->get();
+        //$lessons = Event::where('is_free', 1)->where('end', '>=', now())->with('teacher')->orderBy('start')->get();
 
-        //$lessons = Event::with('teacher')->where('is_free', 1)->orderBy('start')->get();
+        $lessons = Event::with('teacher')->where(['is_free' => 1, 'grade' => auth()->user()->grade])->where('end', '>=', now())->orderBy('start')->get();
 
 
         $grades = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'];
