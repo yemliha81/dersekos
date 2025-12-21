@@ -114,19 +114,19 @@
     }
     .lessons{
       display: grid; gap:12px;
-      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns:1fr;
     }
     .free-lesson-card{
-      background: #58b892ff;
+      background: #b2ffe0;
       padding: 14px;
       border-radius: 12px;
       border: 1px solid #3b7515;
       margin-bottom: 12px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;
-      color: #FFFFFF;
+      color: #000000;
       gap: 10px;
     }
     .lesson-card{
