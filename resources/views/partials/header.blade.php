@@ -28,14 +28,14 @@
     :root{--primary:#4f46e5;}
     body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:#f8fafc}
     .profile-cover{background:linear-gradient(90deg, rgba(79,70,229,0.08), rgba(99,102,241,0.02));}
-    .avatar{width:140px;height:140px;object-fit:cover;border-radius:18px;border:6px solid #fff;box-shadow:0 6px 20px rgba(15,23,42,0.08)}
+    .avatar{width:140px;object-fit:cover;border-radius:18px;border:6px solid #fff;box-shadow:0 6px 20px rgba(15,23,42,0.08)}
     .badge-subject{background:rgba(79,70,229,0.08);color:var(--primary);font-weight:600;border-radius:10px;padding:.35rem .6rem}
     .stat-num{font-weight:700;font-size:1.25rem}
     .card-rounded{border-radius:14px}
     .review-star{color:#f59e0b}
     .book-btn{background:var(--primary);border:none}
     .book-btn:hover{background:#3b37b4}
-    @media (max-width:575px){.avatar{width:110px;height:110px;border-radius:14px}}
+    @media (max-width:575px){.avatar{width:110px;border-radius:14px}}
   </style>
   <style>
     /* -----------------------------
