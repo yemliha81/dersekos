@@ -147,7 +147,7 @@
                         @foreach($paidLessons as $lesson)
                         @if($lesson->end > now())
                             <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
-                                <p>
+                                <p style="max-width:240px;">
                                 @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif
                                 <br>
                                 {{ $lesson->title }}
