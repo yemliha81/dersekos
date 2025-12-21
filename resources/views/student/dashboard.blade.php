@@ -9,10 +9,9 @@
         <!-- col-3 in pc screen, col-12 in mobile screen -->
         <div class="row">
             <div class="col-12 col-md-3">
-            <section class="hero-card hero" aria-labelledby="hero-title">
+            <section class="hero-card" aria-labelledby="hero-title">
                 <div class="hero-left">
-                    <div class="pill"></div>
-                    <h3 id="hero-title">Hoşgeldin, {{ auth('student')->user()->name }}!</h3>
+                    <h4 id="hero-title">Hoşgeldin, {{ auth('student')->user()->name }}!</h4>
                     <p class="muted">Burada derslerini yönetebilir, eğitmenlerinle iletişim kurabilir ve öğrenme yolculuğuna devam edebilirsin.</p>
                 </div>
             </section>
