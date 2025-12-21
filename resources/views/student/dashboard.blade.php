@@ -102,7 +102,7 @@
                                     @foreach($lessons as $lesson)
                                 
                                         <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
-                                            <div>
+                                            <div  style="max-width:240px;">
                                                 @if($lesson->grade != null)
                                                     @if($lesson->grade == '13')
                                                         <b>KPSS</b> 
