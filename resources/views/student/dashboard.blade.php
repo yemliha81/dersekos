@@ -149,6 +149,7 @@
                             <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
                                 <p>
                                 @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif
+                                <br>
                                 {{ $lesson->title }}
                                 </p>
                                 <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
