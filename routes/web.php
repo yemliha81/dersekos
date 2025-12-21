@@ -200,7 +200,7 @@ Route::post('/google/event', 'App\Http\Controllers\GoogleCalendarController@addE
 
 Route::get('/ogretmen/{id}/detay', 'App\Http\Controllers\TeacherController@publicProfile')->name('teacher.public.profile');
 
-
+Route::get('/oyunlar/carpan-avi',  fn() => view('games/carpan-avi'));
 
 
 
