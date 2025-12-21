@@ -150,7 +150,7 @@
       margin-bottom: 12px;
       color: #FFFFFF;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;
     }
