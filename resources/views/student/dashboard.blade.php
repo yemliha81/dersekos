@@ -62,7 +62,6 @@
             <section class="dashboard-cards">
                 <div class="feature">
                     <h3>Kayıt olduğum dersler</h3>
-                    <p>Aktif ve kayıtlı derslerini görüntüle.</p>
                     <div class="lessons">
                         @foreach($myLessons as $lesson)
                             @if($lesson->end > now())
@@ -87,7 +86,6 @@
                 <!-- Ücretsiz Dersler --> 
                 <div class="feature">
                     <h3>Ücretsiz Dersler</h3>
-                    <p>Ücretsiz derslere katıl ve öğrenmeye başla.</p>
                     <div class="grades">
                         @foreach($groupedLessons as $grade => $lessons)
 
@@ -148,7 +146,6 @@
                 <!-- Ücretli Dersler --> 
                 <div class="feature">
                     <h3>Ücretli Dersler</h3>
-                    <p>Ücretli derslere katıl ve öğrenmeye başla.</p>
                     <div class="lessons">
                         @foreach($paidLessons as $lesson)
                         @if($lesson->end > now())
