@@ -17,43 +17,43 @@
             </section>
             <section class="hero-card mb-50 grid-3">
                 @if(auth('student')->user()->grade == '1')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FU8GjclhZyxCvk78dqdkhI?mode=hqrc">1. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FU8GjclhZyxCvk78dqdkhI?mode=hqrc">1. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '2')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/LfZwOZWHEnV197becP2emu?mode=hqrc">2. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/LfZwOZWHEnV197becP2emu?mode=hqrc">2. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '3')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/C4bZ47W1wDXCZwnYyGTZSE?mode=hqrc">3. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/C4bZ47W1wDXCZwnYyGTZSE?mode=hqrc">3. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '4')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/GgNpHFDAzSNFJka5xYk0oH?mode=hqrc">4. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/GgNpHFDAzSNFJka5xYk0oH?mode=hqrc">4. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '5')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '6')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '7')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '8')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '9')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '10')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/L97vpPBhlqt3dpfV4knbND?mode=hqrc">10. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/L97vpPBhlqt3dpfV4knbND?mode=hqrc">10. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '11')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/GHZ6XPSC9q1A0K5oeG26Pa?mode=hqrc">11. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/GHZ6XPSC9q1A0K5oeG26Pa?mode=hqrc">11. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '12')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">12. Sınıf WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">12. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '13')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">KPSS WhatsApp Grubuna Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">KPSS WhatsApp Grubumuza Katıl</a>
                 @endif
             </section>
       </div>
@@ -102,7 +102,7 @@
                                     @foreach($lessons as $lesson)
                                 
                                         <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
-                                            <div  style="max-width:240px;">
+                                            <div  style="width:240px;">
                                                 @if($lesson->grade != null)
                                                     @if($lesson->grade == '13')
                                                         <b>KPSS</b> 
