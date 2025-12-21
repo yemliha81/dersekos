@@ -49,7 +49,7 @@ class StudentController extends Controller
 
 
 
-        $paidLessons = Event::where('is_free', false)->with('teacher')->orderBy('start')->limit(20)->get();
+        $paidLessons = Event::where('is_free', false)->with('teacher')->orderBy('start')->get();
 
         $myLessons = [];
         foreach ($lessons as $lesson) {
