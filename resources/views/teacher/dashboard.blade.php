@@ -511,7 +511,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // if event.start <= now and event.end >= now
                     // then meet link will be openable
                     let now = new Date(); // plus 5 minutes
-                    now.setMinutes(now.getMinutes() + 5);
+                    //now.setMinutes(now.getMinutes());
                     console.log(event.start, now, event.end);
                     if (event.start <= now && event.end >= now) {
                         document.getElementById('meetLink').setAttribute('href', event.extendedProps.meet_url);
