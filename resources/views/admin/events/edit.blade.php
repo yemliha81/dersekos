@@ -90,6 +90,10 @@
                                                 <label for="price" class="form-label">Ücret </label>
                                                 <input type="text" class="form-control" id="price" name="price" value="{{ $event->price }}" >
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="grade" class="form-label">Sınıf Seviyesi </label>
+                                                <input type="number" class="form-control" id="grade" name="max_person" value="{{ $event->grade }}" >
+                                            </div>
                                              <!-- meet_url -->
                                             <div class="mb-3">
                                                 <label for="meet_url" class="form-label">Ders Url </label>
