@@ -76,7 +76,7 @@ class StudentController extends Controller
         ")->get();
         $lessons = Event::with('teacher')->where('is_free', 1)->orderBy('start')->get();
 
-        $paidLessons = Event::where('is_free', false)->with('teacher')->orderBy('start')->limit(20)->get();
+        $paidLessons = Event::where('is_free', false)->with('teacher')->orderBy('start')->get();
 
         $myLessons = [];
         foreach ($lessons as $lesson) {
@@ -90,7 +90,7 @@ class StudentController extends Controller
 
         //$paidLessons = Event::where('is_free', false)->with('teacher')->get();
         //dd($freeLessons);
-        return view('student.dashboard2', compact('teachers', 'lessons', 'myLessons', 'paidLessons'));
+        return view('student.dashboard', compact('teachers', 'lessons', 'myLessons', 'paidLessons'));
     }
 
     public function joinToEvent($id)
