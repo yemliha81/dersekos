@@ -17,16 +17,16 @@
             </section>
             <section class="hero-card mb-50">
                 @if(auth('student')->user()->grade == '1')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FU8GjclhZyxCvk78dqdkhI?mode=hqrc">1. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/KqnVpHc71dBGHMlPVwa8YM?mode=hqrc">1. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '2')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/LfZwOZWHEnV197becP2emu?mode=hqrc">2. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/BUfeng4quwoIFoC0tXHsQS?mode=hqrc">2. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '3')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/C4bZ47W1wDXCZwnYyGTZSE?mode=hqrc">3. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FHb3K0BlY0P01YCJWEawcD?mode=hqrc">3. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '4')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/GgNpHFDAzSNFJka5xYk0oH?mode=hqrc">4. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IQW5Ft9xGZSGgbf1m3D4b9?mode=hqrc">4. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '5')
                     <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubumuza Katıl</a>
