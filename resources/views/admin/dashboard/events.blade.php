@@ -52,6 +52,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Sınıf</th>
                                     <th>Başlık</th>
                                     <th>Eğitmen</th>
                                     <th>Tarih - Saat</th>
@@ -63,6 +64,7 @@
                                 @foreach($events as $item)
                                      <tr  >
                                         <td>{{ $item->id }}</td>
+                                        <td>{{ $item->grade }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->teacher->name }}</td>
                                         <td>
