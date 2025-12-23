@@ -26,17 +26,7 @@
                         <img class="slide-img" src="{{asset('assets/img/tammat-1.png')}}" alt="Ankara Yayınları 1" loading="lazy">
                       </a>
                     </div>
-                    <div class="swiper-slide">
-                    <a target="_blank" href="https://ankarayayincilik.com.tr/">
-                      <img class="slide-img" src="{{asset('assets/img/ankara-1.jpg')}}" alt="Ankara Yayınları 1" loading="lazy">
-                    </a>
-                  </div>
-                  
-                  <div class="swiper-slide">
-                    <a target="_blank" href="https://www.isemdijital.com/">
-                      <img class="slide-img" src="{{asset('assets/img/isem-1.png')}}" alt="Online ve yüz yüze ders imkanları" loading="lazy">
-                    </a>
-                  </div>
+                    
 
                   <div class="swiper-slide">
                     <a target="_blank" href="https://www.matsevyayincilik.com/">
