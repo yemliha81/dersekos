@@ -215,9 +215,9 @@
                 <p>Bu derse kayıt olmak için <span id="lessonPrice"></span> ₺ ödemeniz gerekmektedir.</p>
                 <p>Ödemeyi aşağıdaki IBAN hesabına yaptıktan sonra ders kaydınız tamamlanacaktır.</p>
                 <p class="alert alert-info">Lütfen ödemeyi yaparken açıklama kısmına, öğrenci Adı - Soyadı ve Ders kodu olarak "00<span id="lessonId"></span>" yazmayı unutmayınız.</p>
-                <p>IBAN: TR620006701000000098498893 </p>
-                <p>Banka Adı: Yapı Kredi Bankası</p>
-                <p>Alıcı: Evren Demirdelen</p>
+                <p>IBAN: TR040009901186780300100002 </p>
+                <p>Banka Adı: ING Bank</p>
+                <p>Alıcı: Yemliha Demirdelen</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="$('.modal').hide();">Kapat</button>
