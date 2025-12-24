@@ -112,6 +112,11 @@
       padding: 10px;
       border-radius: 5px;
     }
+    .flex-space-between{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     .lessons{
       display: grid; gap:12px;
       grid-template-columns:1fr;

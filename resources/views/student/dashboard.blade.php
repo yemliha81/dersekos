@@ -71,10 +71,11 @@
                                         <div>{{ $lesson->title }}</div>
                                     </div>
                                     
-                                    <div>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</div>
                                     
-                                    
-                                    <div>{{ $lesson->teacher->name }} </div>
+                                    <div class="flex-space-between">
+                                        <b>{{ $lesson->teacher->name }} </b>
+                                        <span>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
+                                    </div>
                                     <div>
                                         @if($lesson->meet_url != null)
                                             @if($lesson->end > now())
