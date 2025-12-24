@@ -92,7 +92,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="grade" class="form-label">Sınıf Seviyesi </label>
-                                                <input type="number" class="form-control" id="grade" name="max_person" value="{{ $event->grade }}" >
+                                                <input type="number" class="form-control" id="grade" name="grade" value="{{ $event->grade }}" >
                                             </div>
                                              <!-- meet_url -->
                                             <div class="mb-3">
