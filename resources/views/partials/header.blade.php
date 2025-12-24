@@ -347,6 +347,9 @@
       .swiper-slide{
         width:100% !important;
       }
+      .free-lessons{
+        grid-template-columns:1fr;
+      }
       .lesson-card{
         display:grid;
         grid-template-columns:1fr 1fr;
