@@ -96,7 +96,7 @@
             6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) kapsamında, DERSEKOŞ (“Platform”) olarak gönüllü öğretmenlerimize ait kişisel verilerin korunmasına azami özen göstermekteyiz. <br>
             Platformumuza gönüllü öğretmen olarak kayıt olmanız kapsamında; <br>
             ad, soyad, e-posta adresi, telefon numarası, branş/ders bilgileri ve platform kullanım verileriniz işlenmektedir. <br>
-            Kişisel Verilerin İşlenme Amaçları <br>
+            <b>Kişisel Verilerin İşlenme Amaçları </b><br><br>
             Kişisel verileriniz; <br> <br>
             
             - Platforma gönüllü öğretmen kaydınızın oluşturulması, <br>
@@ -108,19 +108,15 @@
             amaçlarıyla işlenmektedir. <br> <br>
 
 
-            Kişisel Verilerin Aktarılması <br>
+            <b>Kişisel Verilerin Aktarılması </b><br>
             Kişisel verileriniz; <br>
-            Ders hizmetinin yürütülmesi amacıyla öğrencilerle, <br>
-
-
-            Teknik hizmet sağlayıcılarla, <br>
-
-
-            Yetkili kamu kurum ve kuruluşlarıyla <br>
+            - Ders hizmetinin yürütülmesi amacıyla öğrencilerle, <br>
+            - Teknik hizmet sağlayıcılarla, <br>
+            - Yetkili kamu kurum ve kuruluşlarıyla <br>
             KVKK hükümlerine uygun şekilde paylaşılabilir. <br>
 
 
-            Kişisel Verilerin Toplanma Yöntemi ve Hukuki Sebebi <br> <br>
+            <b>Kişisel Verilerin Toplanma Yöntemi ve Hukuki Sebebi</b> <br> <br>
             Kişisel verileriniz, elektronik kayıt formları aracılığıyla; KVKK’nın 5. maddesinde yer alan “açık rıza” ve “meşru menfaat” hukuki sebeplerine dayanılarak toplanmaktadır. <br>
             KVKK Kapsamındaki Haklarınız <br>
             KVKK’nın 11. maddesi kapsamında; <br>
