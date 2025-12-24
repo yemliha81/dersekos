@@ -131,10 +131,7 @@
       border-radius: 12px;
       border: 1px solid #3b7515;
       margin-bottom: 12px;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
+      
       color: #000000;
       gap: 10px;
     }
