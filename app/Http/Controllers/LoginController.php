@@ -35,7 +35,7 @@ class LoginController extends Controller
 
         // chaeck if student is_banned 
         $student = Student::where('email', $request->email)->first();
-        if($student->is_banned == 1){
+        if($student->is_banned != null && $student->is_banned == 1){
             //dd('Hesabınız, ders sırasında yaptığınız olumsuz davranışlar sebebiyle engellenmiştir.');
             //dd($student);
             return redirect()->route('student.banned');
