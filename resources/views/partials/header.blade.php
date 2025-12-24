@@ -116,6 +116,10 @@
       display: grid; gap:12px;
       grid-template-columns:1fr;
     }
+    .free-lessons{
+      display: grid; gap:12px;
+      grid-template-columns:1fr 1fr;
+    }
     .free-lesson-card{
       background: #b2ffe0;
       padding: 14px;

@@ -62,24 +62,27 @@
             <section class="dashboard-cards">
                 <div class="feature">
                     <h3>Kayıt olduğum dersler</h3>
-                    <div class="lessons">
+                    <div class="free-lessons">
                         @foreach($myLessons as $lesson)
                             @if($lesson->end > now())
                                 <div class="free-lesson-card card_{{ $lesson->id }}">
-                                    <p>
-                                        @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif <br/>
-                                        {{ $lesson->title }}
-                                    </p>
+                                    <div>
+                                        <div>@if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
+                                        <div>{{ $lesson->title }}</div>
+                                    </div>
                                     
-                                    <p><b>Tarih - Saat:</b> <br/>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
+                                    <div>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</div>
                                     
-                                    <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} </p>
-                                    @if($lesson->meet_url != null)
-                                        @if($lesson->end > now())
-                                            <a id="start_{{ $lesson->id }}" lesson-id="{{ $lesson->id }}" target="_blank" href="{{ $lesson->meet_url }}" start-time="{{ $lesson->start }}" end-time="{{ $lesson->end }}" style="display:none;"  class="start_lesson rocking-btn">Derse Koş!</a>
+                                    
+                                    <div>{{ $lesson->teacher->name }} </div>
+                                    <div>
+                                        @if($lesson->meet_url != null)
+                                            @if($lesson->end > now())
+                                                <a id="start_{{ $lesson->id }}" lesson-id="{{ $lesson->id }}" target="_blank" href="{{ $lesson->meet_url }}" start-time="{{ $lesson->start }}" end-time="{{ $lesson->end }}" style="display:none;"  class="start_lesson rocking-btn">Derse Koş!</a>
+                                            @endif
+                                        
                                         @endif
-                                    
-                                    @endif
+                                    </div>
                                 </div>
                             @endif
                         @endforeach
