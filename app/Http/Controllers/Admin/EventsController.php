@@ -40,6 +40,9 @@ class EventsController extends Controller
         $event->title = $request->title;
         $event->start = $request->start;
         $event->end = $request->end;
+        $event->grade = $request->grade;
+        $event->min_person = $request->min_person;
+        $event->max_person = $request->max_person;
         $event->is_free = $request->is_free;
         $event->price = $request->is_free == 1 ? null : $request->price;
         $event->meet_url = $request->meet_url;
