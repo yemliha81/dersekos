@@ -126,10 +126,10 @@
       grid-template-columns:1fr 1fr;
     }
     .free-lesson-card{
-      background: #b2ffe0;
+      background: #bfffd3;
       padding: 14px;
       border-radius: 12px;
-      border: 1px solid #3b7515;
+      border: 2px solid #3b7515;
       margin-bottom: 12px;
       
       color: #000000;

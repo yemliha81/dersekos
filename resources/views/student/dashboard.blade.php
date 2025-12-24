@@ -68,13 +68,13 @@
                                 <div class="free-lesson-card card_{{ $lesson->id }}">
                                     <div>
                                         <div>@if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
-                                        <div>{{ $lesson->title }}</div>
+                                        <div style="font-size:15px;">{{ $lesson->title }}</div>
                                     </div>
                                     
                                     
-                                    <div class="flex-space-between">
+                                    <div class="flex-space-between" style="margin-top:15px;">
                                         <b>{{ $lesson->teacher->name }} </b>
-                                        <span>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
+                                        <span style="font-size:15px;">{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
                                     </div>
                                     <div>
                                         @if($lesson->meet_url != null)
