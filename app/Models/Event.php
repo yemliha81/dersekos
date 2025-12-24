@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -21,6 +21,11 @@ class Event extends Model
         'max_person',
         'teacher_id',
         'attendees'
+    ];
+
+    protected $dates = [
+        'created_at',
+        'deleted_at',
     ];
 
     //teacher relation, an event belongs to a teacher, event_table has teacher_id as foreign key, teacher_table has id as primary key
