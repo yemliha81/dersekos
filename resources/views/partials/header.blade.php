@@ -62,7 +62,7 @@
       background: #4f46e5;
       color: white;
       cursor: pointer;
-
+      display:inline-block;
       transform-origin: center;
       animation: rock .5s ease-in-out infinite;
     }
