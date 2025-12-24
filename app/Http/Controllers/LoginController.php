@@ -33,6 +33,14 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
+        // chaeck if student is_banned 
+        $student = Student::where('email', $request->email)->first();
+        if($student->is_banned == 1){
+            //dd('Hesabınız, ders sırasında yaptığınız olumsuz davranışlar sebebiyle engellenmiştir.');
+            //dd($student);
+            return redirect()->route('student.banned');
+        }
+
         // Attempt to log the user in
         if (auth('student')->attempt($credentials)) {
             // Authentication passed...

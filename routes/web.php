@@ -167,6 +167,12 @@ Route::get('/giris', 'App\Http\Controllers\LoginController@showLoginForm')->name
 Route::post('/giris', 'App\Http\Controllers\LoginController@login')->name('student.login.submit');
 Route::post('/kayit', 'App\Http\Controllers\LoginController@signup')->name('student.signup.submit');
 Route::get('/cikis', 'App\Http\Controllers\LoginController@logout')->name('student.logout');
+Route::get('/banned', 
+
+    function () {
+        return view('student.banned');
+    }
+)->name('student.banned');
 
 // wrap student routes with auth middleware
 // Student Dashboard route

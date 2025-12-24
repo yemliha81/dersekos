@@ -14,7 +14,13 @@
         <label for="login">Giriş Yap</label>
         <label for="register">Üye Ol</label>
       </div>
+      @if(session()->has('error'))
 
+      <div class="alert alert-danger">
+        {{session()->get('error')}}
+      </div>
+
+      @endif
       <!-- Giriş Formu -->
       <form  action="{{route('student.login.submit')}}" method="POST" class="form form-login">
         @csrf
