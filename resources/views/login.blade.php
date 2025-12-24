@@ -68,13 +68,79 @@
           <input type="password" name="password" placeholder="En az 6 karakter" required>
         </div>
         <div class="field">
-          <label><input type="checkbox" name="terms" required> Kullanım şartlarını kabul ediyorum</label>
+          <label><input type="checkbox" name="terms" required> <a href="#" data-bs-toggle="modal" data-bs-target="#studentKVKKModal">KVKK Bilgilendirmesini</a> okudum, kabul ediyorum.</label>
         </div>
         <button class="btn btn-primary" style="width:100%">Üye Ol</button>
-        <div class="auth-footer">Zaten hesabın var mı? Giriş Yap</div>
       </form>
 
     </div>
+
+
+    <!-- bootstrap modal --> 
+    <div class="modal fade" id="studentKVKKModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Kişisel Verilerin Korunması Hakkında</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            1. Öğrenciler İçin KVKK Aydınlatma ve Açık Rıza Metni
+            Kişisel Verilerin Korunması Hakkında Aydınlatma Metni (Öğrenci)
+            6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, DERSEKOŞ (“Platform”) olarak kişisel verilerinizin güvenliğine önem veriyoruz.
+            Platformumuza öğrenci olarak kayıt olmanız ve sunulan ücretsiz canlı ders hizmetlerinden faydalanabilmeniz kapsamında; <br>
+            ad, soyad, e-posta adresi, telefon numarası ve platform kullanımına ilişkin bilgileriniz, KVKK’ya uygun olarak işlenmektedir. <br>
+            Kişisel Verilerin İşlenme Amaçları <br>
+            Kişisel verileriniz; <br>
+            Platforma üyelik işlemlerinin gerçekleştirilmesi, <br>
+            Canlı derslerin planlanması ve yürütülmesi, <br>
+            Öğretmen–öğrenci eşleşmelerinin sağlanması, <br>
+            İletişim faaliyetlerinin yürütülmesi, <br>
+            Teknik destek ve kullanıcı deneyiminin iyileştirilmesi, <br>
+            Mevzuattan doğan yükümlülüklerin yerine getirilmesi <br>
+            amaçlarıyla işlenmektedir. <br> <br>
+
+
+            Kişisel Verilerin Aktarılması <br>
+            Kişisel verileriniz; <br>
+            Ders hizmetinin sunulabilmesi amacıyla gönüllü öğretmenlerle, <br>
+ <br>
+ <br>
+            Teknik altyapı ve hizmet sağlayıcılarla,
+
+ <br>
+            Yetkili kamu kurum ve kuruluşlarıyla
+            KVKK’nın 8. ve 9. maddelerine uygun olarak paylaşılabilir.
+
+ <br>
+            Kişisel Verilerin Toplanma Yöntemi ve Hukuki Sebebi <br>
+            Kişisel verileriniz, platform üzerindeki kayıt formları ve elektronik ortamlar aracılığıyla; KVKK’nın 5. maddesinde belirtilen “açık rıza” ve “bir sözleşmenin kurulması ve ifası” hukuki sebeplerine dayanılarak toplanmaktadır. <br>
+            KVKK Kapsamındaki Haklarınız <br>
+            KVKK’nın 11. maddesi uyarınca; <br>
+            Kişisel verilerinizin işlenip işlenmediğini öğrenme, <br>
+
+
+            İşlenmişse buna ilişkin bilgi talep etme, <br>
+
+
+            Amacına uygun kullanılıp kullanılmadığını öğrenme, <br>
+
+
+            Eksik veya yanlış işlenmişse düzeltilmesini isteme, <br>
+
+
+            Silinmesini veya yok edilmesini talep etme haklarına sahipsiniz.
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </main>
 
 @endsection
