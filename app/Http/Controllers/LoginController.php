@@ -69,6 +69,7 @@ class LoginController extends Controller
                 'email'    => $request->email,
                 'password' => bcrypt($request->password),
                 'grade'    => $request->grade,
+                'address' =>  $request->ip()
             ]);
 
             // ✅ Log them in using student guard
