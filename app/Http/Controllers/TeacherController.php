@@ -84,40 +84,6 @@ class TeacherController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function showLoginForm()
     {
         
@@ -173,6 +139,7 @@ class TeacherController extends Controller
                 'phone'    => $request->phone,
                 'password' => bcrypt($request->password),
                 'branch'    => $request->branch,
+                'status' => '0'
             ]);
 
             // ✅ Log them in using teacher guard

@@ -18,7 +18,9 @@
                 <p class="muted">Burada derslerinizi yönetebilir, profil bilgilerinizi düzenleyebilirsiniz.</p>
             </div>
             <div class="hero-right">
-                <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K0y7N5ZEVc2FE2PHo7HDAk">Öğretmen WhatsApp grubumuza katılın</a>
+                @if(auth('teacher')->user()->status == '1')
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K0y7N5ZEVc2FE2PHo7HDAk">Öğretmen WhatsApp grubumuza katılın</a>
+                @endif
             </div>
         </section>
         <section>
@@ -56,28 +58,38 @@
                             </div>
                         </div>
                         <div class="text-right mb-2" style="text-align:right;">
+                            @if(auth('teacher')->user()->status == '1')
                             <a class="btn btn-sm btn-info" style="display: inline-block" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">Profili Güncelle <i class="bi-pencil-fill"></i></a>
+                            @endif
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-9">
+                    @if(auth('teacher')->user()->status == '1')
                     <div class="text-center mb-3 alert alert-info">Aşağıdaki takvmiden hemen ilk dersinizi planlayabilirsiniz!</div>
                     <div>
                         <div id="calendar"></div>
                     </div>
+                    @else 
+                        <div class="text-center mb-3 alert alert-danger">
+                            Öğretmen hesabınız henüz onaylanmamıştır. <br> Onay işlemi için bize 
+                            <a href="https://wa.me/905067790414" target="_blank">05067790414
+                            </a> nolu telefondan whatsapp ile ulaşabilirsiniz.
+                        </div>
+                    @endif
                 </div>
             </div>
             
             
         </section>
-
+        @if(auth('teacher')->user()->status == '1')
         <section class="hero-card" >
             <div class="text-center mb-3">
                 <h2>Tüm Eğitmenlere ait Takvim</h2>
             </div>
             <div id="allCalendar"></div>
         </section>
-
+        @endif
         <!-- Event Ekleme Modal -->
         <div class="modal fade" id="eventModal" tabindex="-1">
         <div class="modal-dialog">
