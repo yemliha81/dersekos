@@ -66,10 +66,13 @@
                 </div>
                 <div class="col-12 col-md-9">
                     @if(auth('teacher')->user()->status == '1')
-                    <div class="text-center mb-3 alert alert-info">Aşağıdaki takvmiden hemen ilk dersinizi planlayabilirsiniz!</div>
-                    <div>
-                        <div id="calendar"></div>
-                    </div>
+                        <div class="mb-3 alert alert-info" style="display:flex; align-items:center; justify-content:space-between">
+                            <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#howItWorksModal">Sistem nasıl çalışır?</a>
+                            <span>Aşağıdaki takvmiden hemen ilk dersinizi planlayabilirsiniz!</span>
+                        </div>
+                        <div>
+                            <div id="calendar"></div>
+                        </div>
                     @else 
                         <div class="text-center mb-3 alert alert-danger">
                             Öğretmen hesabınız henüz onaylanmamıştır. <br> Onay işlemi için bize 
@@ -178,6 +181,55 @@
 
             </div>
         </div>
+        </div>
+
+        <!-- how it works modal --> 
+        <div class="modal fade" id="howItWorksModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sistem nasıl çalışır?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info mb-3">
+                            <b>1. Profil bilgilerinizi tamalama</b>
+                            <p>
+                                Lütfen öncelikle "Profili Güncelle" butonuna tıklayarak, açılan formdaki alanları eksiksiz olarak doldurun.
+                            </p>
+                        </div>
+                        <div class="alert alert-warning mb-3">
+                            <b>2. Ders oluşturma</b>
+                            <p>
+                                Ders takviminizdeki bir tarihe tıkladığınızda ders oluşturma formu açılacaktır. Bu formdaki alanları doldurarak 
+                                ücretsiz veya ücretli bir ders planlayabilirsiniz. Lütfen formdaki alanları eksiksiz doldurduğunuzdan emin olun. <br>
+                                * Ders başlığında, derste işleyeceğiniz konuyu mutlaka belirtin. <br>
+                                * Sınıf seviyesini mutlaka belirtin. <br>
+                                * Ders başlangıç ve bitiş saatlerini doğru girdiğinizden emin olun. <br>
+                                * Minimum ve maksimum katılımcı sayısını belirtin. <br>
+                                * Ders linkini Google Meet veya Zoom üzerinden oluşturduktan sonra bu alana doğru bir şekilde girin. <br>
+                                * Kaydet butonuna tıklayarak dersinizi kaydedin.<br>
+                                * Eğer hatalı girdiğiniz bir alan varsa, takvime kaydedilen ders üzerine tıklayarak formu güncelleyebilirsiniz. <br>
+                                * Dersinize katılan öğrenci sayısını da güncelleme formunda görebilirsiniz.
+                                
+                            </p>
+                        </div>
+                        <div class="alert alert-success mb-3">
+                            <b>3. Dersi Başlatma</b>
+                            <p>
+                                * Planladığınız ders saati geldiğinde, takvimdeki ders üzerine tıklayın. <br>
+                                * Açılan formun altında "Derse Başla" butonu aktif olacaktır. Eğer aktif değilse sayfanızı yenileyip tekrar deneyin. <br>
+                                * Derse Başla butonuna tıkladığınızda, girmiş olduğunuz Google Meet veya Zoom linki açılacaktır. <br>
+                                * Dersinize başlayıp öğrencilerin katılmasını bekleyin. <br>
+                                * Eğer 5 dakika geçmesine rağmen katılımcı yoksa lütfen bizimle whatsapp uzerinden iletisime geçin. <br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Event Detay Modal -->
