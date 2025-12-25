@@ -132,6 +132,8 @@ class TeacherController extends Controller
                 'branch'    => 'required|string|max:50',
             ]);
 
+            $ip = $request->ip();
+
             // ✅ Create teacher
             $teacher = Teacher::create([
                 'name'     => $request->name,
@@ -139,7 +141,9 @@ class TeacherController extends Controller
                 'phone'    => $request->phone,
                 'password' => bcrypt($request->password),
                 'branch'    => $request->branch,
-                'status' => '0'
+                'status' => '0',
+                'address' => $ip
+
             ]);
 
             // ✅ Log them in using teacher guard

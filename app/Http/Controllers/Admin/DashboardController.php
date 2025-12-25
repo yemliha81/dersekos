@@ -14,6 +14,7 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
+        
         $studentCount = Student::count();
         $teacherCount = Teacher::count();
         $freeEventCount = Event::where('is_free', 1)->count();
