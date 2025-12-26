@@ -69,6 +69,9 @@
                                             <a href="{{ route('admin.teachers.show', $item->id) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Detaylar
                                             </a>
+                                            <a href="{{ route('admin.teachers.delete', $item->id) }}" class="btn btn-danger btn-sm">
+                                                <i class="bi bi-trash"></i> Sil
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

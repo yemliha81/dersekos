@@ -58,4 +58,15 @@ class TeacherController extends Controller
         }
 
     }
+
+    public function delete($id)
+    {
+        try {
+            //code...
+            Teacher::where('id', $id)->delete();
+            return redirect()->route('admin.teachers')->with('success', 'Eğitmen basarıyla silindi.');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }

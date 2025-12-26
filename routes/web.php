@@ -36,6 +36,8 @@ Route::post('/admin/events/store', 'App\Http\Controllers\Admin\EventsController@
 
 Route::get('/admin/teachers/{id}', 'App\Http\Controllers\Admin\TeacherController@teacherShow')->name('admin.teachers.show');
 Route::post('/admin/teachers/store', 'App\Http\Controllers\Admin\TeacherController@store')->name('admin.teachers.store');
+Route::get('/admin/teachers/delete/{id}', 'App\Http\Controllers\Admin\TeacherController@delete')->name('admin.teachers.delete');
+
 
 // admin/menu route to menu controller index function
 Route::get('/admin/menu', 'App\Http\Controllers\Admin\MenuController@index')->name('admin.menu');
