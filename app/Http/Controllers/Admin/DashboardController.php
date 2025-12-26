@@ -20,7 +20,18 @@ class DashboardController extends Controller
         $freeEventCount = Event::where('is_free', 1)->count();
         $paidEventCount = Event::where('is_free', 0)->count();
 
-        return view('admin.dashboard', compact('studentCount', 'teacherCount', 'freeEventCount', 'paidEventCount'));
+        $teacherCountsByDay = Teacher::all()
+        ->groupBy(fn ($teacher) => $teacher->created_at->format('Y-m-d'))
+        ->map(fn ($items) => $items->count());
+
+        $studentCountsByDay = Student::all()
+        ->groupBy(fn ($student) => $student->created_at->format('Y-m-d'))
+        ->map(fn ($items) => $items->count());
+
+        //dd($teacherCountsByDay);
+
+
+        return view('admin.dashboard', compact('studentCount', 'teacherCount', 'freeEventCount', 'paidEventCount', 'teacherCountsByDay', 'studentCountsByDay'));
     }
 
     public function students()
@@ -38,8 +49,16 @@ class DashboardController extends Controller
     public function teachers()
     {
         $teachers = Teacher::all();
+
+        $countsByDay = Teacher::all()
+        ->groupBy(fn ($teacher) => $teacher->created_at->format('Y-m-d'))
+        ->map(fn ($items) => $items->count());
+
+
         return view('admin.dashboard.teachers', compact('teachers'));
-    }
+
+        }
+        
 
     public function teacherShow($id)
     {

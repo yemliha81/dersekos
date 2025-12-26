@@ -86,6 +86,14 @@
                   <a href="{{ route('admin.events', ['type' => 'paid']) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
+
+
+              <div class="col-lg-12 connectedSortable">
+                <div class="card mb-4">
+                  <div class="card-header"><h3 class="card-title">Öğretmen kayıtları Tarihe göre</h3></div>
+                  <div class="card-body"><div id="revenue-chart"></div></div>
+                </div>
+              </div>
               <!-- ./col -->
             </div>
             <!-- /.row (main row) -->
@@ -95,10 +103,55 @@
         <!--end::App Content-->
 @endsection
 
-@push('scripts')
+@section('scripts')
 <script>
-    console.log('Dashboard home page script');
+
+  const sales_chart_options = {
+        series: [
+          {
+            name: 'Öğretmen Kayıt Tarihlere göre',
+            data: [
+              <?php foreach($teacherCountsByDay as $date => $count) { echo "$count,"; } ?>
+            ],
+          }
+        ],
+        chart: {
+          height: 300,
+          type: 'area',
+          toolbar: {
+            show: false,
+          },
+        },
+        legend: {
+          show: false,
+        },
+        colors: ['#0d6efd', '#20c997'],
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          curve: 'smooth',
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: [
+            <?php foreach($teacherCountsByDay as $date => $count) { echo "'$date',"; } ?>
+          ],
+        },
+        tooltip: {
+          x: {
+            format: 'MMMM yyyy',
+          },
+        },
+      };
+
+      const sales_chart = new ApexCharts(
+        document.querySelector('#revenue-chart'),
+        sales_chart_options,
+      );
+      sales_chart.render();
+
 </script>
-@endpush
+@endsection
 
 
