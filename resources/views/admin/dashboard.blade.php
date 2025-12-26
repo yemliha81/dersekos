@@ -199,7 +199,7 @@
       };
 
       const student_chart = new ApexCharts(
-        document.querySelector('#teacher-chart'),
+        document.querySelector('#student-chart'),
         student_chart_options,
       );
       student_chart.render();
