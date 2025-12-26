@@ -120,12 +120,6 @@
             data: [
               <?php foreach($teacherCountsByDay as $date => $count) { echo "$count,"; } ?>
             ],
-          },
-          {
-            name: 'Öğrenci Kayıt Tarihlere göre',
-            data: [
-              <?php foreach($studentCountsByDay as $date => $count) { echo "$count,"; } ?>
-            ],
           }
         ],
         chart: {
@@ -165,7 +159,50 @@
       teacher_chart.render();
 
 
-  
+  const student_chart_options = {
+        series: [
+          {
+            name: 'Öğrenci Kayıt Tarihlere göre',
+            data: [
+              <?php foreach($studentCountsByDay as $date => $count) { echo "$count,"; } ?>
+            ],
+          }
+        ],
+        chart: {
+          height: 300,
+          type: 'area',
+          toolbar: {
+            show: false,
+          },
+        },
+        legend: {
+          show: false,
+        },
+        colors: ['#0d6efd', '#20c997'],
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          curve: 'smooth',
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: [
+            <?php foreach($studentCountsByDay as $date => $count) { echo "'$date',"; } ?>
+          ],
+        },
+        tooltip: {
+          x: {
+            format: 'MMMM yyyy',
+          },
+        },
+      };
+
+      const student_chart = new ApexCharts(
+        document.querySelector('#teacher-chart'),
+        student_chart_options,
+      );
+      student_chart.render();
 
 </script>
 @endsection
