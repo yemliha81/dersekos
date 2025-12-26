@@ -91,7 +91,14 @@
               <div class="col-lg-12 connectedSortable">
                 <div class="card mb-4">
                   <div class="card-header"><h3 class="card-title">Öğretmen kayıtları Tarihe göre</h3></div>
-                  <div class="card-body"><div id="revenue-chart"></div></div>
+                  <div class="card-body"><div id="teacher-chart"></div></div>
+                </div>
+              </div>
+
+              <div class="col-lg-12 connectedSortable">
+                <div class="card mb-4">
+                  <div class="card-header"><h3 class="card-title">Öğrenci kayıtları Tarihe göre</h3></div>
+                  <div class="card-body"><div id="student-chart"></div></div>
                 </div>
               </div>
               <!-- ./col -->
@@ -106,12 +113,18 @@
 @section('scripts')
 <script>
 
-  const sales_chart_options = {
+  const teacher_chart_options = {
         series: [
           {
             name: 'Öğretmen Kayıt Tarihlere göre',
             data: [
               <?php foreach($teacherCountsByDay as $date => $count) { echo "$count,"; } ?>
+            ],
+          },
+          {
+            name: 'Öğrenci Kayıt Tarihlere göre',
+            data: [
+              <?php foreach($studentCountsByDay as $date => $count) { echo "$count,"; } ?>
             ],
           }
         ],
@@ -145,11 +158,14 @@
         },
       };
 
-      const sales_chart = new ApexCharts(
-        document.querySelector('#revenue-chart'),
-        sales_chart_options,
+      const teacher_chart = new ApexCharts(
+        document.querySelector('#teacher-chart'),
+        teacher_chart_options,
       );
-      sales_chart.render();
+      teacher_chart.render();
+
+
+  
 
 </script>
 @endsection
