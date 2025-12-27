@@ -100,6 +100,15 @@
                                                 <label for="tags" class="form-label">Etiketler (Virgül ile ayırın)</label>
                                                 <input type="text" class="form-control" id="tags" name="tags" value="{{ $teacher->tags }}" >                                               
                                             </div>
+
+                                            <!-- status --> 
+                                            <div class="mb-3">
+                                                <label for="status" class="form-label">Durum</label>
+                                                <select name="status" id="status" class="form-control">
+                                                    <option value="1" {{ $teacher->status == 1 ? 'selected' : '' }}>Aktif</option>
+                                                    <option value="0" {{ $teacher->status == 0 ? 'selected' : '' }}>Pasif</option>
+                                                </select>
+                                            </div>
                                             
                                         </div>
                                        

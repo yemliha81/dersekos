@@ -37,6 +37,9 @@ class TeacherController extends Controller
         $teacher->certificates = $request->input('certificates');
         $teacher->tags = $request->input('tags');
         $teacher->about = $request->input('about');
+        $teacher->status = $request->input('status');
+        //status
+        
 
         if($request->has('image')){
 
