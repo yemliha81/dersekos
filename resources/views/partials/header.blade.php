@@ -358,7 +358,13 @@
       .free-lessons{
         grid-template-columns:1fr;
       }
-      
+      .lesson-card{
+        display:grid;
+        grid-template-columns:1fr;
+      }
+      .lessons{
+        grid-template-columns:1fr;
+      }
     }
 
     /* Küçük stil düzeltmeleri: navigation butonlarının görünürlüğü */
