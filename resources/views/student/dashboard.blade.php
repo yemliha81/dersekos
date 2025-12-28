@@ -121,7 +121,7 @@
                                                         <div>@if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
                                                         <div style="font-size:15px;">{{ $lesson->title }}</div>
                                                     </div>
-                                                    <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                                                    <a href="javascript:;" class="btnx" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
                                                 </div>
                                                 
                                                 
