@@ -59,6 +59,8 @@ class StudentController extends Controller
             }
         }
 
+        //dd($paidLessons);
+
         //dd($myLessons);
 
         //$paidLessons = Event::where('is_free', false)->with('teacher')->get();
@@ -113,7 +115,7 @@ class StudentController extends Controller
             }
         }
 
-        //dd($myLessons);
+        //dd($paidLessons);
 
         //$paidLessons = Event::where('is_free', false)->with('teacher')->get();
         //dd($freeLessons);

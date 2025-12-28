@@ -145,6 +145,15 @@
       color: #FFFFFF;
       border-radius: 5px;
     }
+    .join-paid-lesson-btn{
+      background: #6c0076;
+      display: inline-block;
+      color: #FFFFFF;
+      padding: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
     .lesson-card{
       background: #ffffff;
       padding: 14px;
@@ -157,16 +166,15 @@
       gap: 10px;
     }
     .paid-lesson-card{
-      background: #c876f0;
+      background: #ffffff;
       padding: 14px;
       border-radius: 12px;
-      border: 1px solid #4f085eff;
+      border: 1px solid #ddd;
+      border-top: 10px solid #6c0076;
       margin-bottom: 12px;
-      color: #FFFFFF;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
       justify-content: space-between;
+      color: #000000;
+
     }
     .logo-div{
       display:flex; justify-content:center; align-items:center;
@@ -348,6 +356,38 @@
       object-fit: cover;   /* kırpma şeklinde güzel görünüm */
       display: block;
     }
+
+    .lesson-title-div{
+      display: block;
+      margin-bottom: 15px;
+      padding: 15px;
+      background: #3b7514;
+      border-bottom: 1px solid;
+      color: #FFF;
+      border-radius: 10px;
+    }
+
+    .free-lesson-title-div{
+      display: block;
+      margin-bottom: 15px;
+      padding: 15px;
+      background: #0ca9e1;
+      border-bottom: 1px solid;
+      color: #FFF;
+      border-radius: 10px;
+    }
+
+    .paid-lesson-title-div{
+      display: block;
+      margin-bottom: 15px;
+      padding: 15px;
+      background: #6c0076;
+      border-bottom: 1px solid;
+      color: #FFF;
+      border-radius: 10px;
+    }
+
+    
 
     /* Küçük ekranlarda yüksekliği azalt */
     @media (max-width: 576px) {
