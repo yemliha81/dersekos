@@ -126,26 +126,27 @@
       grid-template-columns:1fr 1fr;
     }
     .free-lesson-card{
-      background: #bfffd3;
+      background: #ffffff;
       padding: 14px;
+      border: 1px solid #ddd;
       border-radius: 12px;
-      border: 2px solid #3b7515;
+      border-top: 10px solid #3b7515;
       margin-bottom: 12px;
-      
       color: #000000;
       gap: 10px;
     }
     .lesson-card{
-      background: #5890b8;
+      background: #ffffff;
       padding: 14px;
       border-radius: 12px;
-      border: 1px solid #3b7515;
+      border: 1px solid #ddd;
+      border-top: 10px solid #09a9e1;
       margin-bottom: 12px;
       display: flex;
       flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;
-      color: #FFFFFF;
+      color: #000000;
       gap: 10px;
     }
     .paid-lesson-card{

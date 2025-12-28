@@ -61,7 +61,7 @@
         <div class="col-12 col-md-9">
             <section class="dashboard-cards">
                 <div class="feature">
-                    <h3>Kayıt olduğum dersler</h3>
+                    <b>Kayıt olduğum dersler</b>
                     <div class="free-lessons">
                         @if(count($myLessons) > 0)
                             @foreach($myLessons as $lesson)
@@ -116,30 +116,28 @@
                                         @foreach($lessons as $lesson)
                                     
                                             <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
-                                                <div  style="width:240px;">
-                                                    @if($lesson->grade != null)
-                                                        @if($lesson->grade == '13')
-                                                            <b>KPSS</b> 
-                                                            <p>
-                                                                {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}
-                                                            </p>
-                                                        @else 
-                                                            <b>{{ $lesson->grade }}. Sınıf</b> 
-                                                            <p>{{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</p>
+                                                <div class="flex-space-between">
+                                                    <div >
+                                                        <div>@if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
+                                                        <div style="font-size:15px;">{{ $lesson->title }}</div>
+                                                    </div>
+                                                    <div>
+                                                        @if($lesson->meet_url != null)
+                                                            @if($lesson->end > now())
+                                                                <a id="start_{{ $lesson->id }}" lesson-id="{{ $lesson->id }}" target="_blank" href="{{ $lesson->meet_url }}" start-time="{{ $lesson->start }}" end-time="{{ $lesson->end }}" style="display:none;"  class="start_lesson rocking-btn">Derse Koş!</a>
+                                                            @endif
+                                                        
                                                         @endif
-                                                    @endif
-                                                    <br>
-                                                    <p>{{ $lesson->title }}</p>
+                                                    </div>
                                                 </div>
                                                 
                                                 
-                                                <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
+                                                <div class="flex-space-between" style="margin-top:15px;">
+                                                    <b>{{ $lesson->teacher->name }} </b>
+                                                    <span style="font-size:15px;">{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
+                                                </div>
                                                 
-                                                <p>
-                                                    <b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} <br>
-                                                    <b>Kontenjan:</b> {{ $lesson->max_person }} Kişi <br>
-                                                    <b>Kayıtlı:</b> <i class="bi bi-person"></i> {{count(array_filter(explode(',', $lesson->attendees)))}} 
-                                                </p>
+                                                
                                                 
                                                 <div>
                                                     <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
