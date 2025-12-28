@@ -121,27 +121,13 @@
                                                         <div>@if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
                                                         <div style="font-size:15px;">{{ $lesson->title }}</div>
                                                     </div>
-                                                    <div>
-                                                        @if($lesson->meet_url != null)
-                                                            @if($lesson->end > now())
-                                                                <a id="start_{{ $lesson->id }}" lesson-id="{{ $lesson->id }}" target="_blank" href="{{ $lesson->meet_url }}" start-time="{{ $lesson->start }}" end-time="{{ $lesson->end }}" style="display:none;"  class="start_lesson rocking-btn">Derse Koş!</a>
-                                                            @endif
-                                                        
-                                                        @endif
-                                                    </div>
+                                                    <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
                                                 </div>
                                                 
                                                 
                                                 <div class="flex-space-between" style="margin-top:15px;">
                                                     <b>{{ $lesson->teacher->name }} </b>
                                                     <span style="font-size:15px;">{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
-                                                </div>
-                                                
-                                                
-                                                
-                                                <div class="flex-space-between" style="margin-top:15px;">
-                                                <span></span>
-                                                    <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
                                                 </div>
                                                 
                                             </div>
