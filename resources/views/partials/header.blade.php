@@ -135,6 +135,16 @@
       color: #000000;
       gap: 10px;
     }
+    .btnx{
+      display: inline-block;
+      background: #0ca9e1;
+      padding: 8px;
+      white-space: nowrap;
+      font-size: 14px;
+      font-weight: bold;
+      color: #FFFFFF;
+      border-radius: 5px;
+    }
     .lesson-card{
       background: #ffffff;
       padding: 14px;
@@ -348,10 +358,7 @@
       .free-lessons{
         grid-template-columns:1fr;
       }
-      .lesson-card{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-      }
+      
     }
 
     /* Küçük stil düzeltmeleri: navigation butonlarının görünürlüğü */
