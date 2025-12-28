@@ -139,7 +139,8 @@
                                                 
                                                 
                                                 
-                                                <div>
+                                                <div class="flex-space-between" style="margin-top:15px;">
+                                                <span></span>
                                                     <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
                                                 </div>
                                                 
