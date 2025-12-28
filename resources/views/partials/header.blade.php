@@ -153,6 +153,7 @@
       font-size: 14px;
       font-weight: bold;
       border-radius: 5px;
+      white-space: nowrap;
     }
     .lesson-card{
       background: #ffffff;
