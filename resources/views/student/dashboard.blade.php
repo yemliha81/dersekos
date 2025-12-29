@@ -159,7 +159,10 @@
                                         
                                         
                                         <div class="flex-space-between" style="margin-top:15px;">
-                                            <b>{{ $lesson->teacher->name }} </b>
+                                            <div>
+                                                <b>{{ $lesson->teacher->name }} </b>
+                                                <span><i class="bi bi-person"></i> {{ $lesson->max_person }} / {{count(array_filter(explode(',', $lesson->attendees)))}} </span>
+                                            </div>
                                             <span style="font-size:15px;">{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
                                         </div>
                                        
