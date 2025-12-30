@@ -56,6 +56,12 @@
                 @endif
                 </div>
             </section>
+
+            <section class="hero-card mb-50" aria-labelledby="hero-title">
+                <div class="left-student-menu">
+                    <a href="{{route('student.old_lessons')}}"> <i class="bi bi-file-earmark-text"></i> Geçmiş Derslerim</a>
+                </div>
+            </section>
       </div>
         
         <div class="col-12 col-md-9">

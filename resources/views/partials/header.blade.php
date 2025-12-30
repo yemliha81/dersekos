@@ -49,7 +49,6 @@
       --accent-2: #4ad6b6;
       --glass: rgba(255,255,255,0.04);
       --radius: 14px;
-      color-scheme: dark;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -75,7 +74,18 @@
       100% { transform: rotate(0deg); }
     }
 
+    .star-rating{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
 
+    .star-rating label{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
 
     .grid-20{
       display: grid;
@@ -311,9 +321,56 @@
     .tabs{display:grid; grid-template-columns:1fr 1fr; margin-bottom:18px; background:rgba(255,255,255,0.04); border-radius:12px; overflow:hidden}
     .tabs label{text-align:center; padding:12px; font-weight:700; cursor:pointer; color:var(--muted)}
 
-    input[type="radio"]{display:none}
+    .auth-card input[type="radio"]{display:none}
+    input[type="radio"] {
+      appearance: auto;
+      -webkit-appearance: radio;
+      opacity: 1;
+      visibility: visible;
+      display: inline-block !important;
+      position: static !important;
+    }
+
+    input[type="radio"].form-control {
+      width: auto;
+      height: auto;
+    }
+
+    .form-check-input[type="radio"] {
+      appearance: auto;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      accent-color: #0d6efd;
+      background-color: #fff !important;
+      border: 1px solid #0d6efd;
+    }
+
+    .form-check-input[type="radio"]:checked {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
+
+
+
+
     #login:checked ~ .tabs label[for="login"],
     #register:checked ~ .tabs label[for="register"]{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#061025}
+
+    .star-rating input{
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      border:1px solid #dddddd;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+      display:inline-block;
+      cursor:pointer;
+    }
 
     .form{display:none}
     #login:checked ~ .form-login{display:block}

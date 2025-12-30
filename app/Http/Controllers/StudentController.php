@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Models\Language;
 use App\Models\Event;
+use App\Models\EventRate;
 use Illuminate\Support\Facades\DB;
 
 
@@ -146,6 +147,60 @@ class StudentController extends Controller
 
         echo json_encode(['status' => 'success', 'message' => 'You have joined the event successfully.']);
         return;
+    }
+
+    public function oldEvents(){
+        $events = Event::where('is_free', 1)->where('end', '<', now())->with('teacher')->orderBy('start')->get();
+        $studentId = auth('student')->user()->id;
+        $joined_events = [];
+        foreach($events as $event){
+            $event->attendees = explode(',', $event->attendees);
+            $event->is_joined = in_array($studentId, $event->attendees);
+            if($event->is_joined){
+                $joined_events[] = $event;
+            }
+        }
+
+
+        $myEventRates = EventRate::where('student_id', $studentId)->get(); 
+        $rated_lessons = [];
+        foreach($joined_events as $key => $event){
+            foreach($myEventRates as $rate){
+                if($rate->event_id == $event->id){
+                    unset($joined_events[$key]);
+                    $rated_lessons[] = $event;
+                }
+            }
+        }
+
+        //dd($joined_events);
+
+
+        
+        return view('student.old_events', compact('joined_events'));
+    }
+
+    public function rateEvent(Request $request){
+        
+        try {
+            //dd($request->all());
+            $event = Event::findOrFail($request->event_id);
+            
+                $eventRate = EventRate::create([
+                    'event_id' => $request->event_id,
+                    'teacher_id' => $event->teacher_id,
+                    'student_id' => auth('student')->user()->id,
+                    'rating' => $request->rate,
+                    'comment' => $request->comment ?? null
+                ]);
+            
+            return back()->with('success', 'Yorum ve puan başarıyla kaydedildi.');
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Lütfen gerekli alanları eksiksiz doldurun.');
+        }
+
+        
+
     }
 
     
