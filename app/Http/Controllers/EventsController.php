@@ -20,6 +20,12 @@ class EventsController extends Controller
         return Event::where('teacher_id', $teacherId)->get();
     }
 
+    public function paidEvents(){
+
+        return Event::where('is_free', '0')->with('teacher')->get();
+
+    }
+
     public function allEvents(){
 
         return Event::where('is_free', '1')->with('teacher')->get();

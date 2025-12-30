@@ -92,6 +92,13 @@
             </div>
             <div id="allCalendar"></div>
         </section>
+
+        <section class="hero-card" >
+            <div class="text-center mb-3">
+                <h2>Ücretli Ders Takvimi</h2>
+            </div>
+            <div id="paidCalendar"></div>
+        </section>
         @endif
         <!-- Event Ekleme Modal -->
         <div class="modal fade" id="eventModal" tabindex="-1">
@@ -476,6 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var calendarEl = document.getElementById('calendar');
     var allCalendarEl = document.getElementById('allCalendar');
+    var paidCalendarEl = document.getElementById('paidCalendar');
 
     var selectedDate = null;
 
@@ -754,6 +762,88 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     allCalendar.render();
+
+
+    var paidCalendar = new FullCalendar.Calendar(paidCalendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'tr',
+            selectable: true,
+            events: '/paid-events',
+
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth'
+            },
+
+            buttonText: {
+                today: 'Bugün',
+                month: 'Ay',
+                week: 'Hafta',
+                day: 'Gün'
+            },
+
+            eventTimeFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            },
+
+            
+
+            eventClick: function(info) {
+                let event = info.event;
+                
+
+                fetch('/events/' + event.id + '/registrations')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('AlldetailRegistrationCount').innerText = data.count;
+                });
+
+                let priceText = event.extendedProps.is_free == 1 
+                    ? 'Ücretsiz' 
+                    : event.extendedProps.price + ' ₺';
+
+                document.getElementById('AlldetailPrice').innerText = priceText;
+                document.getElementById('AlldetailPrice').innerText = priceText;
+
+                document.getElementById('AlldetailPersonMin').value =
+                    event.extendedProps.min_person;
+
+                // detailGradeLevel selectbox
+                document.getElementById('AlldetailGradeLevel').value =
+                    event.extendedProps.grade;
+
+                // AlldetailTeacherName
+                document.getElementById('AlldetailTeacherName').innerText =
+                    event.extendedProps.teacher.name;
+
+                document.getElementById('AlldetailPersonMax').value =
+                    event.extendedProps.max_person;
+
+                    document.getElementById('AlldetailMeetUrl').value =
+                    event.extendedProps.meet_url;
+
+                // is_free selectbox
+                document.getElementById('AlldetailIsFree').value = event.extendedProps.is_free
+
+                // price input
+                document.getElementById('AlldetailPrice').value = event.extendedProps.price
+
+                document.getElementById('detailId').value = event.id;
+                document.getElementById('AlldetailTitle').value = event.title;
+                document.getElementById('AlldetailStart').value = event.start.toLocaleString('tr-TR');
+                document.getElementById('AlldetailEnd').value   = event.end.toLocaleString('tr-TR');
+
+                
+
+                var allDetailModal = new bootstrap.Modal(document.getElementById('allEventDetailModal'));
+                allDetailModal.show();
+            }
+        });
+
+    paidCalendar.render();
 
 
 
