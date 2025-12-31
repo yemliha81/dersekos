@@ -254,6 +254,9 @@ Route::get('/time-debug', function () {
     ];
 });
 
+// statistics route
+Route::get('/statistics', 'App\Http\Controllers\HomeController@statistics')->name('statistics');
+
 
 
 

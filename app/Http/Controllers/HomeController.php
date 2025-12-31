@@ -15,6 +15,7 @@ use App\Models\ContentCategory;
 use App\Models\Content;
 use App\Models\SeoSettings;
 use App\Models\Teacher;
+use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 
 
@@ -44,6 +45,17 @@ class HomeController extends Controller
         //$menuItems = Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->get();
 
         return view('home', compact('sliders', 'teachers'));
+    }
+
+    public function statistics(){
+        $events = Event::where('is_free', 1)->get();
+        $total_attendees = 0;
+        foreach($events as $event){
+            $event->registrations = count(explode(',', $event->attendees));
+            $total_attendees += $event->registrations;
+
+        }
+        dd($total_attendees);
     }
 
     public function route($slug, $slug2 = null)
