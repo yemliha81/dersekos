@@ -2,7 +2,7 @@
 
 
 @section('content')
-
+ <?php $avg = $reviews->avg('rating');?>
 <!-- HERO / PROFILE HEADER -->
 <div class="profile-cover py-5">
   <div class="container">
@@ -24,8 +24,8 @@
 
           <div class="ms-3 d-flex align-items-center">
             <i class="bi bi-star-fill review-star me-1"></i>
-            <span class="fw-bold">4.9</span>
-            <small class="text-muted ms-2">(124 değerlendirme)</small>
+            <span class="fw-bold">{{$avg}}</span>
+            <small class="text-muted ms-2">({{count($reviews)}} değerlendirme)</small>
           </div>
         </div>
 
@@ -101,8 +101,7 @@
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h3 class="h5 mb-0">Öğrenci Yorumları</h3>
             <div class="text-end">
-              <?php 
-              $avg = $reviews->avg('rating');?>
+             
               <div class="fw-bold">{{$avg}} <small class="text-muted">/ 5</small></div>
               <small class="text-muted">{{count($reviews)}} değerlendirme</small>
             </div>
@@ -113,7 +112,7 @@
              @if(count($reviews) > 0)
                 @foreach($reviews as $review)
                 <div class="d-flex gap-3 mb-3">
-                  <img src="https://instasize.com/api/image/8c83e89052446c521657db04dda3aa600a942eba4db10fa59c3b8c45835c4f98.png" alt="" class="rounded-circle" width="48" height="48">
+                  <i class="bi bi-person"></i>
                   <div>
                     <div class="fw-bold">{{$review->student->name}}</div>
                     <div class="small text-muted">{{$review->comment}}</div>
