@@ -95,7 +95,32 @@
         </div>
       </section>
 
-      <!-- REVIEWS -->
+     
+
+    </div>
+
+    <!-- RIGHT: CONTACT CARD / VIDEO / SOCIAL -->
+    <aside class="col-lg-4">
+      
+
+      <div class="card card-rounded p-3 shadow-sm mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div>
+            <!--<div class="text-muted">Saatlik Ücret</div>
+            <div class="h5 fw-bold">₺1500</div>-->
+          </div>
+          <div class="text-end">
+            <small class="text-muted">Deneyim</small>
+            <div class="fw-bold">{{$teacher->experience}} yıl</div>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex gap-2 flex-wrap">
+          <small class="text-muted"><i class="bi bi-clock"></i> 45dk - 90dk</small>
+          <small class="text-muted"><i class="bi bi-globe"></i> Online</small>
+        </div>
+      </div>
+
       <section id="reviews" class="mb-4">
         <div class="card card-rounded p-4 shadow-sm">
           <div class="d-flex justify-content-between align-items-center mb-3">
@@ -143,29 +168,8 @@
         </div>
       </section>
 
-    </div>
-
-    <!-- RIGHT: CONTACT CARD / VIDEO / SOCIAL -->
-    <aside class="col-lg-4">
+         <!-- REVIEWS -->
       
-
-      <div class="card card-rounded p-3 shadow-sm">
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <div>
-              <!--<div class="text-muted">Saatlik Ücret</div>
-              <div class="h5 fw-bold">₺1500</div>-->
-            </div>
-            <div class="text-end">
-              <small class="text-muted">Deneyim</small>
-              <div class="fw-bold">{{$teacher->experience}} yıl</div>
-            </div>
-          </div>
-          <hr>
-          <div class="d-flex gap-2 flex-wrap">
-            <small class="text-muted"><i class="bi bi-clock"></i> 45dk - 90dk</small>
-            <small class="text-muted"><i class="bi bi-globe"></i> Online</small>
-          </div>
-        </div>
     </aside>
   </div>
 </main>
