@@ -115,7 +115,11 @@
                   <div>
                     <div class="fw-bold">{{$review->student->name}}</div>
                     <div class="small text-muted">{{$review->comment}}</div>
-                    <div class="small mt-1"> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i></div>
+                    <div class="small mt-1"> 
+                      @for($i = 1; $i <= $review->rating; $i++)
+                      <i class="bi bi-star-fill review-star"></i>
+                      @endfor
+                    </div>
                   </div>
                 </div>
                 @endforeach
