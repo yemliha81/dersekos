@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Teacher;
+use App\Models\EventRate;
 use App\Models\Student;
 use App\Models\Language;
 use Illuminate\Support\Facades\DB;
@@ -28,14 +29,17 @@ class TeacherController extends Controller
     public function viewProfile($id)
     {
         $teacher = Teacher::findOrFail($id);
+        
         return view('teacher.profile', ['teacher' => $teacher]);
     }
 
     public function publicProfile($id)
     {
         $teacher = Teacher::with('events')->findOrFail($id);
+        $reviews = EventRate::where('teacher_id', $id)->with('student')->get();
+        //dd($rates);
         //dd($teacher);
-        return view('teacher', ['teacher' => $teacher]);
+        return view('teacher', ['teacher' => $teacher, 'reviews' => $reviews]);
     }
 
     public function updateProfile(Request $request)

@@ -28,5 +28,10 @@ class EventRate extends Authenticatable
     protected $dates = [
         'created_at'
     ];
+
+    public function student()
+    {
+        return $this->hasOne(Student::class, 'id', 'student_id');
+    }
 }
 

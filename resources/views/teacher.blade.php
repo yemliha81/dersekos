@@ -108,24 +108,25 @@
 
           <div class="mb-3">
             <!-- Review 1 -->
-            <div class="d-flex gap-3 mb-3">
-              <img src="https://instasize.com/api/image/8c83e89052446c521657db04dda3aa600a942eba4db10fa59c3b8c45835c4f98.png" alt="" class="rounded-circle" width="48" height="48">
-              <div>
-                <div class="fw-bold">Mehmet K.</div>
-                <div class="small text-muted">"Kısa sürede eksiklerim kapandı, sınavda netlerim arttı."</div>
-                <div class="small mt-1"> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i></div>
-              </div>
+             @if(count($reviews) > 0)
+                @foreach($reviews as $review)
+                <div class="d-flex gap-3 mb-3">
+                  <img src="https://instasize.com/api/image/8c83e89052446c521657db04dda3aa600a942eba4db10fa59c3b8c45835c4f98.png" alt="" class="rounded-circle" width="48" height="48">
+                  <div>
+                    <div class="fw-bold">{{$review->student->name}}</div>
+                    <div class="small text-muted">{{$review->comment}}</div>
+                    <div class="small mt-1"> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i></div>
+                  </div>
+                </div>
+                @endforeach
+            @else 
+
+            <div class="alert alert-info">
+              <p>Henüz herhangi bir degerlendirme bulunmamaktadır.</p>
             </div>
 
-            <!-- Review 2 -->
-            <div class="d-flex gap-3">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="" class="rounded-circle" width="48" height="48">
-              <div>
-                <div class="fw-bold">Elif A.</div>
-                <div class="small text-muted">"Dersler interaktif geçiyor; hızlı geri dönüş sağlıyor."</div>
-                <div class="small mt-1"> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-fill review-star"></i> <i class="bi bi-star-half review-star"></i></div>
-              </div>
-            </div>
+            @endif
+            
 
           </div>
 
