@@ -2,7 +2,8 @@
 
 
 @section('content')
- <?php $avg = $reviews->avg('rating');?>
+ <?php $avg = $reviews->avg('rating'); // round value to 2 decimals
+  $avg = number_format($avg, 2);?>
 <!-- HERO / PROFILE HEADER -->
 <div class="profile-cover py-5">
   <div class="container">
