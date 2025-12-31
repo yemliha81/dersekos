@@ -114,7 +114,10 @@
                 <div class="d-flex gap-3 mb-3">
                   <i class="bi bi-person"></i>
                   <div>
-                    <div class="fw-bold">{{$review->student->name}}</div>
+                    <div class="fw-bold">
+                      <!-- get first letters of first name and then add *** after --> 
+                      {{maskName($review->student->name) }}
+                    </div>
                     <div class="small text-muted">{{$review->comment}}</div>
                     <div class="small mt-1"> 
                       @for($i = 1; $i <= $review->rating; $i++)

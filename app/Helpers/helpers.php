@@ -19,6 +19,26 @@ if (! function_exists('debug')) {
     }
 }
 
+if (! function_exists('maskName')) {
+    function maskName($fullName)
+    {
+
+        $parts = explode(' ', trim($fullName));
+        $maskedParts = [];
+
+        foreach ($parts as $part) {
+            if ($part !== '') {
+                $firstLetter = mb_substr($part, 0, 1); // supports UTF-8 names
+                $maskedParts[] = $firstLetter . '***';
+            }
+        }
+
+        $result = implode(' ', $maskedParts);
+
+        return $result;
+    }
+}
+
 
 if (! function_exists('nowTR')) {
 function nowTR()
