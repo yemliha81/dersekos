@@ -101,8 +101,10 @@
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h3 class="h5 mb-0">Öğrenci Yorumları</h3>
             <div class="text-end">
-              <div class="fw-bold">4.9 <small class="text-muted">/ 5</small></div>
-              <small class="text-muted">124 değerlendirme</small>
+              <?php 
+              $avg = $reviews->avg('rating');?>
+              <div class="fw-bold">{{$avg}} <small class="text-muted">/ 5</small></div>
+              <small class="text-muted">{{count($reviews)}} değerlendirme</small>
             </div>
           </div>
 
