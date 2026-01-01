@@ -46,6 +46,7 @@ class EventsController extends Controller
         $event->is_free = $request->is_free;
         $event->price = $request->is_free == 1 ? null : $request->price;
         $event->meet_url = $request->meet_url;
+        $event->attendees = $request->attendees;
         
         // create or update event
         $event->save();

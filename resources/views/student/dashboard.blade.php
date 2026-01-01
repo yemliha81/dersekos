@@ -170,7 +170,7 @@
                                         <div class="flex-space-between" style="margin-top:15px;">
                                             <div>
                                                 <b>{{ $lesson->teacher->name }} </b>
-                                                <span><i class="bi bi-person"></i> {{ $lesson->max_person }} </span>
+                                                <span><i class="bi bi-person"></i> {{ $lesson->max_person }} / {{count(array_filter(explode(',', $lesson->attendees)))}} </span>
                                             </div>
                                             <span style="font-size:15px;">{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
                                         </div>
@@ -234,7 +234,8 @@
                 <p class="lessonTitle"></p>
                 <p>Bu derse kayıt olmak için <span id="lessonPrice"></span> ₺ ödemeniz gerekmektedir.</p>
                 <p>Ödemeyi aşağıdaki IBAN hesabına yaptıktan sonra ders kaydınız tamamlanacaktır.</p>
-                <p class="alert alert-info">Lütfen ödemeyi yaparken açıklama kısmına, öğrenci Adı - Soyadı ve Ders kodu olarak "00<span id="lessonId"></span>" yazmayı unutmayınız.</p>
+                <p class="alert alert-info">Lütfen ödemeyi yaparken açıklama kısmına, öğrenci Adı - Soyadı ve Ders kodu olarak "00<span id="lessonId"></span>" yazmayı unutmayınız. 
+            Ödemeyi yaptıktan sonra dekontunuzu lütfen <a href="https://wa.me/905067790414">05067790414</a> numaralı telefon numarasına whatsapp ile gönderiniz.</p>
                 <p>IBAN: TR040009901186780300100002 </p>
                 <p>Banka Adı: ING Bank</p>
                 <p>Alıcı: Yemliha Demirdelen</p>

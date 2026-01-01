@@ -11,22 +11,21 @@
             <div class="col-12 col-md-3">
             <section class="hero-card mb-50" aria-labelledby="hero-title">
                 <div class="hero-left">
-                    <h4 id="hero-title">Hoşgeldin, {{ auth('student')->user()->name }}!</h4>
+                    <div class="mb-3">Hoşgeldin, <br> <b id="hero-title">{{ auth('student')->user()->name }}!</b></div>
                     <p class="muted">Burada derslerini yönetebilir, eğitmenlerinle iletişim kurabilir ve öğrenme yolculuğuna devam edebilirsin.</p>
                 </div>
-            </section>
-            <section class="hero-card mb-50">
-                @if(auth('student')->user()->grade == '1')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FU8GjclhZyxCvk78dqdkhI?mode=hqrc">1. Sınıf WhatsApp Grubumuza Katıl</a>
+                <div>
+                    @if(auth('student')->user()->grade == '1')
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/KqnVpHc71dBGHMlPVwa8YM?mode=hqrc">1. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '2')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/LfZwOZWHEnV197becP2emu?mode=hqrc">2. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/BUfeng4quwoIFoC0tXHsQS?mode=hqrc">2. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '3')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/C4bZ47W1wDXCZwnYyGTZSE?mode=hqrc">3. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FHb3K0BlY0P01YCJWEawcD?mode=hqrc">3. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '4')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/GgNpHFDAzSNFJka5xYk0oH?mode=hqrc">4. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IQW5Ft9xGZSGgbf1m3D4b9?mode=hqrc">4. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '5')
                     <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubumuza Katıl</a>
@@ -55,115 +54,136 @@
                 @if(auth('student')->user()->grade == '13')
                     <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">KPSS WhatsApp Grubumuza Katıl</a>
                 @endif
+                </div>
+            </section>
+
+            <section class="hero-card mb-50" aria-labelledby="hero-title">
+                <div class="left-student-menu">
+                    <a href="{{route('student.old_lessons')}}"> <i class="bi bi-file-earmark-text"></i> Geçmiş Derslerim</a>
+                </div>
             </section>
       </div>
         
         <div class="col-12 col-md-9">
             <section class="dashboard-cards">
-                <div class="feature">
-                    <h3>Kayıt olduğum dersler</h3>
-                    <div class="lessons">
-                        @foreach($myLessons as $lesson)
-                            @if($lesson->end > now())
-                                <div class="free-lesson-card card_{{ $lesson->id }}">
-                                    <p>
-                                        @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif <br/>
-                                        {{ $lesson->title }}
-                                    </p>
+                <div class="mb-50">
+                    <div class="lesson-title-div"><b>Kayıt olduğum dersler</b></div>
+                    <div class="free-lessons">
+                        @if(count($myLessons) > 0)
+                            @foreach($myLessons as $lesson)
+                                @if($lesson->end > now())
+                                    <div class="free-lesson-card card_{{ $lesson->id }}">
+                                        <div class="flex-space-between">
+                                            <div >
+                                                <div>@if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
+                                                <div style="font-size:15px;">{{ $lesson->title }}</div>
+                                            </div>
+                                            <div>
+                                                @if($lesson->meet_url != null)
+                                                    @if($lesson->end > now())
+                                                        <a id="start_{{ $lesson->id }}" lesson-id="{{ $lesson->id }}" target="_blank" href="{{ $lesson->meet_url }}" start-time="{{ $lesson->start }}" end-time="{{ $lesson->end }}" style="display:none;"  class="start_lesson rocking-btn">Derse Koş!</a>
+                                                    @endif
+                                                
+                                                @endif
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="flex-space-between" style="margin-top:15px;">
+                                            <b>{{ $lesson->teacher->name }} </b>
+                                            <span style="font-size:15px;">{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @else
+                            <div class="alert alert-warning">
+                                Henüz hiç bir derse kayıt olmadınız.
+                            </div>
+                        @endif
                                     
-                                    <p><b>Tarih - Saat:</b> <br/>{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
-                                    
-                                    <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} </p>
-                                    @if($lesson->meet_url != null)
-                                        @if($lesson->end > now())
-                                            <a id="start_{{ $lesson->id }}" lesson-id="{{ $lesson->id }}" target="_blank" href="{{ $lesson->meet_url }}" start-time="{{ $lesson->start }}" end-time="{{ $lesson->end }}" style="display:none;"  class="start_lesson rocking-btn">Derse Koş!</a>
-                                        @endif
-                                    
-                                    @endif
-                                </div>
-                            @endif
-                        @endforeach
                     </div>
                 </div>
                 <!-- Ücretsiz Dersler --> 
-                <div class="feature">
-                    <h3>Ücretsiz Dersler</h3>
+                <div class="mb-50">
+                    <div class="free-lesson-title-div"><b>Ücretsiz Dersler</b></div>
                     <div class="grades">
-                        @foreach($groupedLessons as $grade => $lessons)
+                        @if(count($groupedLessons) > 0)
+                            @foreach($groupedLessons as $grade => $lessons)
 
-                            <div class="grade-box">
-                                @if($grade == '13')
-                                    <h4>KPSS </h4> 
-                                @else 
-                                    <h4>{{ $grade }}. Sınıf</h4>
-                                @endif
-                                
-                                <div class="lessons">
-                                    @foreach($lessons as $lesson)
-                                
-                                        <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
-                                            <div  style="width:240px;">
-                                                @if($lesson->grade != null)
-                                                    @if($lesson->grade == '13')
-                                                        <b>KPSS</b> 
-                                                        <p>
-                                                            {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}
-                                                        </p>
-                                                    @else 
-                                                        <b>{{ $lesson->grade }}. Sınıf</b> 
-                                                        <p>{{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</p>
-                                                    @endif
-                                                @endif
-                                                <br>
-                                                <p>{{ $lesson->title }}</p>
+                                <div class="grade-box">
+                                    <div class="lessons">
+                                        @foreach($lessons as $lesson)
+                                    
+                                            <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
+                                                <div class="flex-space-between">
+                                                    <div >
+                                                        <div>@if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
+                                                        <div style="font-size:15px;">{{ $lesson->title }}</div>
+                                                    </div>
+                                                    <a href="javascript:;" class="btnx join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                                                </div>
+                                                
+                                                
+                                                <div class="flex-space-between" style="margin-top:15px;">
+                                                    <div>
+                                                        <b>{{ $lesson->teacher->name }} </b>
+                                                        <span><i class="bi bi-person"></i> {{ $lesson->max_person }} / {{count(array_filter(explode(',', $lesson->attendees)))}} </span>
+                                                    </div>
+                                                    <span style="font-size:15px;">{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
+                                                </div>
+                                                
                                             </div>
-                                            
-                                            
-                                            <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
-                                            
-                                            <p>
-                                                <b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }} <br>
-                                                <b>Kontenjan:</b> {{ $lesson->max_person }} Kişi <br>
-                                                <b>Kayıtlı:</b> <i class="bi bi-person"></i> {{count(array_filter(explode(',', $lesson->attendees)))}} 
-                                            </p>
-                                            
-                                            <div>
-                                                <a href="javascript:;" class="btn btn-primary join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
-                                            </div>
-                                            
-                                        </div>
-                                
-                                    @endforeach
+                                    
+                                        @endforeach
+                                    </div>
                                 </div>
+                            
+                            @endforeach
+                        @else
+                            <div class="alert alert-warning">
+                                Sınıf seviyenizde aktif ücretsiz ders bulunamadı. Lütfen sayfayı daha sonra tekrar ziyaret ediniz.
                             </div>
-                        
-                        @endforeach
+                        @endif
                     </div>
                 </div>
                 <!-- Ücretli Dersler --> 
-                <div class="feature">
-                    <h3>Ücretli Dersler</h3>
+                <div class="">
+                    <div class="paid-lesson-title-div"><b>Ücretli Dersler</b></div>
                     <div class="lessons">
-                        @foreach($paidLessons as $lesson)
-                        @if($lesson->end > now())
-                            <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
-                                <p style="max-width:240px;">
-                                @if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif
-                                <br>
-                                {{ $lesson->title }}
-                                </p>
-                                <p><b>Tarih - Saat:</b> <br/> {{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }} - {{ date('H:i', strtotime($lesson->end)) }}</p>
-                                <p><b>Eğitmen:</b> <br/>{{ $lesson->teacher->name }}</p>
-                                @if(!$lesson->is_free)
-                                    <div>
-                                        <p>Ücret: <span class="price">250</span> ₺</p>
-                                        <a href="javascript:;" class="btn btn-primary join-paid-lesson-btn" data-lesson-title="{{ $lesson->title }}" data-lesson-price="250" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                        @if(count($paidLessons) > 0)
+                            @foreach($paidLessons as $lesson)
+                                @if($lesson->end > now())
+                                    <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
+                                        <div class="flex-space-between">
+                                            <div >
+                                                <div>@if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
+                                                <div style="font-size:15px;">{{ $lesson->title }}</div>
+                                            </div>
+                                            <div>
+                                                <p>Ücret: <span class="price">250</span> ₺</p>
+                                                <a href="javascript:;" class="join-paid-lesson-btn" data-lesson-title="{{ $lesson->title }}" data-lesson-price="250" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="flex-space-between" style="margin-top:15px;">
+                                            <div>
+                                                <b>{{ $lesson->teacher->name }} </b>
+                                                <span><i class="bi bi-person"></i> {{ $lesson->max_person }} / {{count(array_filter(explode(',', $lesson->attendees)))}} </span>
+                                            </div>
+                                            <span style="font-size:15px;">{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
+                                        </div>
+                                       
+                                        
                                     </div>
                                 @endif
-                                
+                            @endforeach
+                        @else
+                            <div class="alert alert-warning">
+                                Sınıf seviyenizde aktif ders bulunamadı. Lütfen sayfayı daha sonra tekrar ziyaret ediniz.
                             </div>
                         @endif
-                        @endforeach
                     </div>
                 </div>
             </section>
@@ -214,10 +234,11 @@
                 <p class="lessonTitle"></p>
                 <p>Bu derse kayıt olmak için <span id="lessonPrice"></span> ₺ ödemeniz gerekmektedir.</p>
                 <p>Ödemeyi aşağıdaki IBAN hesabına yaptıktan sonra ders kaydınız tamamlanacaktır.</p>
-                <p class="alert alert-info">Lütfen ödemeyi yaparken açıklama kısmına, öğrenci Adı - Soyadı ve Ders kodu olarak "00<span id="lessonId"></span>" yazmayı unutmayınız.</p>
-                <p>IBAN: TR620006701000000098498893 </p>
-                <p>Banka Adı: Yapı Kredi Bankası</p>
-                <p>Alıcı: Evren Demirdelen</p>
+                <p class="alert alert-info">Lütfen ödemeyi yaparken açıklama kısmına, öğrenci Adı - Soyadı ve Ders kodu olarak "00<span id="lessonId"></span>" yazmayı unutmayınız. 
+            Ödemeyi yaptıktan sonra dekontunuzu lütfen <a href="https://wa.me/905067790414">05067790414</a> numaralı telefon numarasına whatsapp ile gönderiniz.</p>
+                <p>IBAN: TR040009901186780300100002 </p>
+                <p>Banka Adı: ING Bank</p>
+                <p>Alıcı: Yemliha Demirdelen</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="$('.modal').hide();">Kapat</button>

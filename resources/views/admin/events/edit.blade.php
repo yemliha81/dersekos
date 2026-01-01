@@ -99,6 +99,10 @@
                                                 <label for="meet_url" class="form-label">Ders Url </label>
                                                 <input type="text" class="form-control" id="meet_url" name="meet_url" value="{{ $event->meet_url }}" >
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="attendees" class="form-label">Katılımcılar </label>
+                                                <input type="text" class="form-control" id="attendees" name="attendees" value="{{ $event->attendees }}" >
+                                            </div>
                                         </div>
                                        
                                     </div>
