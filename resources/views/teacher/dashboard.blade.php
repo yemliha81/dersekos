@@ -159,8 +159,17 @@
                     </div>
 
                     <div class="mb-3" id="priceArea" style="display:none;">
-                    <label>Ücret (₺)</label>
-                    <input type="number" id="price" class="form-control" min="0" step="0.01">
+                    <label></label>
+                    <div>
+                    <a
+                        type="button"
+                        class="btn btn-primary btn-sm"
+                        data-bs-toggle="tooltip"
+                        title="Öğrencilerimiz ders başına {{env('LESSON_PRICE')}}₺ öderler. Öğrenci sayısını bu tutarla çarptıktan sonra size toplam tutarın %{{env('TEACHER_RATE')}}'i kadar ödeme yapılır.">
+                        Ne kadar ödeme alacağım?
+                    </a>
+                    </div>
+                    <input type="number" id="price" class="form-control" min="0" step="0.01" style="display:none;">
                     </div>
 
                     <div class="mb-3">
@@ -294,8 +303,15 @@
                                         </select>
                                     </p>
                                 </div>
-                                <div class="col-6" id="detailPriceArea">
-                                    <p><strong>Ücret:</strong> <input type="text"  name="price" id="detailPrice" class="form-control"></p>
+                                <div class="col-6" id="detailPriceArea" style="display: none;">
+                                    <a
+                                        type="button"
+                                        class="btn btn-primary btn-sm"
+                                        data-bs-toggle="tooltip"
+                                        title="Öğrencilerimiz ders başına {{env('LESSON_PRICE')}}₺ öderler. Öğrenci sayısını bu tutarla çarptıktan sonra size toplam tutarın %{{env('TEACHER_RATE')}}'i kadar ödeme yapılır.">
+                                        Ne kadar ödeme alacağım?
+                                    </a>
+                                    <p><input type="text"  name="price" id="detailPrice" class="form-control" value="0" style="display: none;"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -382,7 +398,7 @@
                                         </select>
                                     </p>
                                 </div>
-                                <div class="col-6" id="detailPriceArea">
+                                <div class="col-6" id="detailPriceArea2">
                                     <p><strong>Ücret:</strong> <input disabled type="text"  name="price" id="AlldetailPrice" class="form-control"></p>
                                 </div>
                             </div>
@@ -477,8 +493,15 @@
 
     </main>
 
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(
+    tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl)
+  )
+</script>
 
 <script>
+    
 document.addEventListener('DOMContentLoaded', function () {
 
     var calendarEl = document.getElementById('calendar');
@@ -489,6 +512,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // isFree selectbox change event
     document.getElementById('is_free').addEventListener('change', function () {
+        if (this.value == "0") {
+            document.getElementById('detailPriceArea').style.display = 'block';
+        } else {
+            document.getElementById('detailPriceArea').style.display = 'none';
+        }
+    });
+
+    document.getElementById('detailIsFree').addEventListener('change', function () {
+        
         if (this.value == "0") {
             document.getElementById('detailPriceArea').style.display = 'block';
         } else {

@@ -161,8 +161,8 @@
                                                 <div style="font-size:15px;">{{ $lesson->title }}</div>
                                             </div>
                                             <div>
-                                                <p>Ücret: <span class="price">250</span> ₺</p>
-                                                <a href="javascript:;" class="join-paid-lesson-btn" data-lesson-title="{{ $lesson->title }}" data-lesson-price="250" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                                                <p>Ücret: <span class="price">{{env('LESSON_PRICE')}}</span> ₺</p>
+                                                <a href="javascript:;" class="join-paid-lesson-btn" data-lesson-title="{{ $lesson->title }}" data-lesson-price="{{env('LESSON_PRICE')}}" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
                                             </div>
                                         </div>
                                         
