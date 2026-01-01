@@ -10,7 +10,7 @@ $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
 $kernel->bootstrap();
 
 // Run the commands
-foreach (['config:clear', 'cache:clear', 'route:clear', 'view:clear', 'config:cache'] as $command) {
+foreach (['config:clear', 'cache:clear', 'route:clear', 'view:clear','optimize:clear', 'config:cache'] as $command) {
     Artisan::call($command);
     echo Artisan::output() . "<br>";
 }
