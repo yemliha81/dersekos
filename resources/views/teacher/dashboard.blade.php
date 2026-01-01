@@ -165,7 +165,7 @@
                         type="button"
                         class="btn btn-primary btn-sm"
                         data-bs-toggle="tooltip"
-                        title="Öğrencilerimiz ders başına {{env('LESSON_PRICE')}}₺ öderler. Öğrenci sayısını bu tutarla çarptıktan sonra size toplam tutarın %{{env('TEACHER_RATE')}}'i kadar ödeme yapılır.">
+                        title="Öğrencilerimiz ders başına 250 ₺ öderler. Öğrenci sayısını bu tutarla çarptıktan sonra size toplam tutarın %{{env('TEACHER_RATE')}}'i kadar ödeme yapılır.">
                         Ne kadar ödeme alacağım?
                     </a>
                     </div>
@@ -308,7 +308,7 @@
                                         type="button"
                                         class="btn btn-primary btn-sm"
                                         data-bs-toggle="tooltip"
-                                        title="Öğrencilerimiz ders başına {{env('LESSON_PRICE')}}₺ öderler. Öğrenci sayısını bu tutarla çarptıktan sonra size toplam tutarın %{{env('TEACHER_RATE')}}'i kadar ödeme yapılır.">
+                                        title="Öğrencilerimiz ders başına 250 ₺ öderler. Öğrenci sayısını bu tutarla çarptıktan sonra size toplam tutarın %{{env('TEACHER_RATE')}}'i kadar ödeme yapılır.">
                                         Ne kadar ödeme alacağım?
                                     </a>
                                     <p><input type="text"  name="price" id="detailPrice" class="form-control" value="0" style="display: none;"></p>
