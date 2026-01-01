@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 let priceText = event.extendedProps.is_free == 1 
                     ? 'Ücretsiz' 
-                    : /*event.extendedProps.price*/ '{{env('LESSON_PRICE')}} ₺';
+                    : /*event.extendedProps.price*/ '{{env(LESSON_PRICE)}} ₺';
 
                 document.getElementById('detailPrice').innerText = priceText;
 
