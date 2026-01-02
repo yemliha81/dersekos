@@ -79,11 +79,11 @@
                                                 <div style="font-size:15px;">{{ $lesson->title }}</div>
                                             </div>
                                             <div>
-                                                @if($lesson->meet_url != null)
+                                                
                                                     @if($lesson->end > now())
                                                         <a id="start_{{ $lesson->id }}" lesson-id="{{ $lesson->id }}" target="_blank" href="{{ $lesson->meet_url }}" start-time="{{ $lesson->start }}" end-time="{{ $lesson->end }}" style="display:none;"  class="start_lesson rocking-btn">Derse Koş!</a>
                                                     @endif
-                                                @endif
+                                                
                                                 @if($lesson->start > now())
                                                     <span><i class="bi bi-alarm"></i> <span class="countdown" id="countdown_{{ $lesson->id }}"></span></span>
                                                 @endif
@@ -266,9 +266,6 @@
             const start_time = $(this).attr('start-time');
             const end_time   = $(this).attr('end-time');
 
-            console.log(start_time);
-            console.log(end_time);
-
             
             // set interval every second
             setInterval(function() {
@@ -280,8 +277,6 @@
                 var hours = Math.floor((timeLeft - days * 86400) / 3600); 
                 var minutes = Math.floor((timeLeft - days * 86400 - hours * 3600) / 60); 
                 var seconds = timeLeft - (days * 86400 + hours * 3600 + minutes * 60);
-
-                console.log( lessonId);
 
                 // Format time left
                 var timeLeft = (days > 0 ? days + 'gün ' : '') + (hours > 0 ? hours + 'saat ' : '') + (minutes > 0 ? minutes + 'dk ' : '') + (seconds > 0 ? seconds + 's' : '');
