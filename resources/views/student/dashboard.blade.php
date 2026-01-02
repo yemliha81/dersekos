@@ -279,7 +279,7 @@
                 var seconds = timeLeft - (days * 86400 + hours * 3600 + minutes * 60);
 
                 // Format time left
-                var timeLeft = (days > 0 ? days + 'gün ' : '') + (hours > 0 ? hours + 'saat ' : '') + (minutes > 0 ? minutes + 'dk ' : '') + (seconds > 0 ? seconds + 's' : '');
+                var timeLeft = (days > 0 ? days + 'g ' : '') + (hours > 0 ? hours + 's ' : '') + (minutes > 0 ? minutes + 'dk ' : '') + (seconds > 0 ? seconds + 'sn' : '');
 
                 // Set time left
                 $('#countdown_' + lessonId).text(timeLeft);
