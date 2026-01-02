@@ -352,7 +352,16 @@
     }
 
 
-
+    .countdown{
+      display: inline-block;
+      background: orange;
+      color: #FFFFFF;
+      line-height: 1;
+      padding: 4px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
 
     #login:checked ~ .tabs label[for="login"],
     #register:checked ~ .tabs label[for="register"]{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#061025}
