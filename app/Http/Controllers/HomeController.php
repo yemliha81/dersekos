@@ -23,6 +23,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+        //die(bcrypt('86141688m'));
         // cache $sliders for 120 minutes
         $sliders = cache()->remember('sliders', 120, function () {
             return Slider::where('lang', app()->getLocale())->get();
