@@ -281,7 +281,7 @@
                 var minutes = Math.floor((timeLeft - days * 86400 - hours * 3600) / 60); 
                 var seconds = timeLeft - (days * 86400 + hours * 3600 + minutes * 60);
 
-                console.log( days + 'gün ' + hours + 'saat ' + minutes + 'dk ' + seconds + 's');
+                console.log( lessonId);
 
                 // Format time left
                 var timeLeft = (days > 0 ? days + 'gün ' : '') + (hours > 0 ? hours + 'saat ' : '') + (minutes > 0 ? minutes + 'dk ' : '') + (seconds > 0 ? seconds + 's' : '');
