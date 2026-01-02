@@ -265,6 +265,10 @@
             var lessonId = $(this).attr('lesson-id');
             const start_time = $(this).attr('start-time');
             const end_time   = $(this).attr('end-time');
+
+            console.log(start_time);
+            console.log(end_time);
+
             
             // set interval every second
             setInterval(function() {
@@ -275,7 +279,7 @@
                 var days = Math.floor(timeLeft / 86400); 
                 var hours = Math.floor((timeLeft - days * 86400) / 3600); 
                 var minutes = Math.floor((timeLeft - days * 86400 - hours * 3600) / 60); 
-                var seconds = timeLeft - (days * 86400 + hours * 3600 + minutes * 60); 
+                var seconds = timeLeft - (days * 86400 + hours * 3600 + minutes * 60);
 
                 console.log( days + 'gün ' + hours + 'saat ' + minutes + 'dk ' + seconds + 's');
 
