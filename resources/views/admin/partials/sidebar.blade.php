@@ -35,6 +35,13 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{route('admin.quiz.index')}}" class="nav-link">
+                  <i class="nav-icon bi bi-box-seam-fill"></i>
+                  <p>
+                    Quiz Yönetimi
+                    
+                  </p>
+                </a>
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-box-seam-fill"></i>
                   <p>
