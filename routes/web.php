@@ -159,6 +159,14 @@ Route::delete('/admin/footer-info/{id}', 'App\Http\Controllers\Admin\FooterInfoC
 Route::post('/admin/update-order', 'App\Http\Controllers\Admin\FooterInfoController@updateSortOrder')->name('admin.update_order');
 
 
+// Quiz routes
+Route::get('/admin/quiz', 'App\Http\Controllers\Admin\QuizController@index')->name('admin.quiz.index');
+Route::get('/admin/quiz/create', 'App\Http\Controllers\Admin\QuizController@create')->name('admin.quiz.create');
+Route::post('/admin/quiz/store', 'App\Http\Controllers\Admin\QuizController@store')->name('admin.quiz.store');
+Route::get('/admin/quiz/{id}/edit', 'App\Http\Controllers\Admin\QuizController@edit')->name('admin.quiz.edit');
+Route::delete('/admin/quiz/{id}', 'App\Http\Controllers\Admin\QuizController@destroy')->name('admin.quiz.destroy');
+
+
 }); // End of Auth middleware group
 //Project Front End routes
 //Home route
@@ -257,6 +265,10 @@ Route::get('/time-debug', function () {
 
 // statistics route
 Route::get('/statistics', 'App\Http\Controllers\HomeController@statistics')->name('statistics');
+Route::get('/quiz_list', 'App\Http\Controllers\QuizController@quiz_list')->name('quiz.list');
+Route::get('/quiz/{id}', 'App\Http\Controllers\QuizController@quiz_show')->name('quiz.show');
+
+
 
 
 
