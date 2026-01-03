@@ -11,7 +11,7 @@
         <p class="auth-form__subtitle">Lütfen giriş yapmak istediğiniz kullanıcı tipini seçiniz.</p>
         <div class="auth-form__options" style="display:flex; gap:20px">
           <div>
-            <a  class="login-div-x" href="{{ route('teacher.login') }}">
+            <a  class="login-div-x" href="{{ route('student.login') }}">
               <img src="{{asset('assets/img/ogrenci-giris.jpg')}}" with="200" alt="">
               <div>
                 <b>Öğrenci Girişi</b>
