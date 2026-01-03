@@ -11,6 +11,11 @@
   <!-- favicon --> 
   <link rel="icon" type="image/png" href="{{asset('assets/img/dersekos-favicon.png')}}" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+
   <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
@@ -26,7 +31,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
     :root{--primary:#4f46e5;}
-    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:#f8fafc}
+    body{font-family:'Work Sans", sans-serif'; background:#f8fafc}
     .profile-cover{background:linear-gradient(90deg, rgba(79,70,229,0.08), rgba(99,102,241,0.02));}
     .avatar{width:140px;object-fit:cover;border-radius:18px;border:6px solid #fff;box-shadow:0 6px 20px rgba(15,23,42,0.08)}
     .badge-subject{background:rgba(79,70,229,0.08);color:var(--primary);font-weight:600;border-radius:10px;padding:.35rem .6rem}
@@ -36,6 +41,40 @@
     .book-btn{background:var(--primary);border:none}
     .book-btn:hover{background:#3b37b4}
     @media (max-width:575px){.avatar{width:110px;border-radius:14px}}
+  </style>
+  <style>
+    .top-info-boxes{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+    .top-info-box{
+      padding: 24px;
+      border-radius: 12px;
+      background: #901aad;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(15,23,42,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+    .top-info-box-icon{
+      height: 50px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .top-info-box-content{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+    .top-info-box-title{
+      color: #ffdd81ff;
+    }
   </style>
   <style>
     /* -----------------------------
@@ -194,7 +233,8 @@
       max-width:100%; display:block;
     }
     body{
-      margin:0; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      margin:0; 
+      font-family: "Work Sans", sans-serif;
       background: #FFFFFF; color:#000000;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.45;
       padding:24px;
@@ -214,9 +254,18 @@
       border-bottom:1px solid rgba(255,255,255,0.04)
     }
     header .inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 24px}
-
+    .home-header-div{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      /* border: 1px solid #a6a6a6; */
+      border-radius: 10px;
+      background: linear-gradient(90deg, #ffffff, #ffffff, #0544ef, #0000b9);
+      color: #ffffff;
+    }
     .brand{display:flex; align-items:center; gap:12px; color:#FFFFFF;}
-    .logo{width:48px; height:48px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:flex; align-items:center; justify-content:center; font-weight:800; color:#061025}
+    .logo{width:48px; height:48px; border-radius:10px;  display:flex; align-items:center; justify-content:center; font-weight:800; color:#061025}
     .site-title{font-weight:700; font-size:18px}
     .nav{display:flex; gap:12px; align-items:center}
     .nav a{padding:10px 12px; border-radius:10px; color:var(--muted); font-weight:600}
@@ -351,7 +400,9 @@
       border-color: #0d6efd;
     }
 
-
+    .camp-photos{
+      display:grid; grid-template-columns:1fr 1fr 1fr; justify-content:space-around;gap:20px
+    }
     .countdown{
       display: inline-block;
       background: orange;
@@ -472,6 +523,9 @@
       .lessons{
         grid-template-columns:1fr;
       }
+      .camp-photos{
+        grid-template-columns:1fr;
+      }
     }
 
     /* Küçük stil düzeltmeleri: navigation butonlarının görünürlüğü */
@@ -486,8 +540,17 @@
     /* .overflow-hidden parent içinde slider taşmasını kesin engeller */
     .no-overflow { overflow: hidden; }
 
+    .bg-purple{
+      background: #901aad;
+    
+    }
+
+    .text-white{
+      color: #fff;
+    }
+
     .teacher-box{
-      background: linear-gradient(0deg, #1c253c, transparent);
+      background: #901aad;
       padding: 30px 14px;
       border-radius: 12px;
       color: #FFFFFF;
@@ -521,7 +584,9 @@
     <header>
     <div class="inner container">
       <div class="brand">
-        <div class="logo">DK</div>
+        <div class="logo">
+        <img src="{{asset('assets/img/dersekos-favicon.png')}}" width="150" alt="DerseKos Logo" >    
+      </div>
         <a href="{{ route('home') }}">
           <strong>Derse Koş</strong>
         </a>

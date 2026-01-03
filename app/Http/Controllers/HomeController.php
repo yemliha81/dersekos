@@ -23,11 +23,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        //die(bcrypt('86141688m'));
-        // cache $sliders for 120 minutes
-        $sliders = cache()->remember('sliders', 120, function () {
-            return Slider::where('lang', app()->getLocale())->get();
-        });
 
         // cache teachers for 60 minutes
         $teachers = cache()->remember('teachers', 60, function () {
@@ -36,7 +31,7 @@ class HomeController extends Controller
                     WHEN image IS NULL OR image = '' THEN 1 
                     ELSE 0 
                 END
-            ")->get();
+            ")->where('status', 1)->get();
         });
         
 
@@ -45,7 +40,7 @@ class HomeController extends Controller
 
         //$menuItems = Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->get();
 
-        return view('home', compact('sliders', 'teachers'));
+        return view('home', compact('teachers'));
     }
 
     public function statistics(){
