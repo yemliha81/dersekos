@@ -67,15 +67,23 @@
         <section class="hero-card mb-50 camp-photos">
           
               <a target="_blank" class="" href="">
-                <img  src="{{asset('assets/img/fatih-korkmaz-kamp-8.jpg')}}"  alt="Fatih Korkmaz" loading="lazy">
+                <img  src="{{asset('assets/img/fatih-korkmaz-kamp-8.jpg')}}"  alt="Fatih Korkmaz Matematik Kampı" loading="lazy">
               </a>
             
               <a target="_blank" class="" href="">
-                <img  src="{{asset('assets/img/kemal-oltulu-kamp.jpg')}}"  alt="Fatih Korkmaz" loading="lazy">
+                <img  src="{{asset('assets/img/kemal-oltulu-kamp.jpg')}}"  alt="Kemal Oltulu Matematik Kampı" loading="lazy">
               </a>
             
               <a target="_blank" class="" href="">
-                <img  src="{{asset('assets/img/ayse-gul-kamp-foto.png')}}"  alt="Fatih Korkmaz" loading="lazy">
+                <img  src="{{asset('assets/img/ayse-gul-kamp-foto.png')}}"  alt="Ayşe Gül Türkçe Kampı" loading="lazy">
+              </a>
+
+              <a target="_blank" class="" href="">
+                <img  src="{{asset('assets/img/guzide-arslanhan-8-sinif-kamp.jpg')}}"  alt="Güzide Arslanhan Türkçe Kampı 8. Sınıf" loading="lazy">
+              </a>
+
+              <a target="_blank" class="" href="">
+                <img  src="{{asset('assets/img/guzide-arslanhan-5-6-7-kamp.jpg')}}"  alt="Güzide Arslanhan Türkçe Kampı 5,6,7. sınıf" loading="lazy">
               </a>
             
         </section>
