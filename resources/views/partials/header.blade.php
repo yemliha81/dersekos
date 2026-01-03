@@ -526,6 +526,12 @@
       .camp-photos{
         grid-template-columns:1fr;
       }
+      .home-header-div{
+        flex-direction: column;
+        gap:20px;
+        background: #FFFFFF;
+        color: #000000ff;
+      }
     }
 
     /* Küçük stil düzeltmeleri: navigation butonlarının görünürlüğü */
