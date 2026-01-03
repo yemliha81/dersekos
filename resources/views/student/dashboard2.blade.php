@@ -11,7 +11,7 @@
             <div class="col-12 col-md-3">
             <section class="hero-card mb-50" aria-labelledby="hero-title">
                 <div class="hero-left">
-                    <div class="mb-3">Hoşgeldin, <br> <b id="hero-title">{{ auth('student')->user()->name }}!</b></div>
+                    <div class="mb-3">Hoş geldin, <br> <b id="hero-title">{{ auth('student')->user()->name }}!</b></div>
                     <p class="muted">Burada derslerini yönetebilir, eğitmenlerinle iletişim kurabilir ve öğrenme yolculuğuna devam edebilirsin.</p>
                 </div>
                 <div>

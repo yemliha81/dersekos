@@ -7,7 +7,7 @@
   <main class="auth-wrap">
     <div class="auth-form">
       <div class="auth-form__container text-center">
-        <h1 class="auth-form__title">Hoşgeldiniz</h1>
+        <h1 class="auth-form__title">Hoş geldiniz</h1>
         <p class="auth-form__subtitle">Lütfen giriş yapmak istediğiniz kullanıcı tipini seçiniz.</p>
         <div class="auth-form__options" style="display:flex; gap:20px">
           <div>
