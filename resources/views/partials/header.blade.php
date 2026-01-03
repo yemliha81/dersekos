@@ -275,6 +275,14 @@
       white-space: nowrap;
       flex-wrap: nowrap;
     }
+    .login-div-x{
+      border: 1px solid #ddd;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      border-radius: 10px;
+    }
     .nav a{padding:10px 6px; border-radius:10px; color:var(--muted); font-weight:600}
     .nav a.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#061025}
 
