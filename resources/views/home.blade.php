@@ -48,6 +48,16 @@
                       <div class="top-info-box-subtitle">Bütçenize uygun ve hedefe yönelik kamplarımızlara kayıt olabilirsiniz.</div>
                     </div>
                   </div>
+
+                  <div class="top-info-box">
+                    <div class="top-info-box-icon">
+                      <i class="bi bi-controller fs-1"></i>
+                    </div>
+                    <div class="top-info-box-content">
+                      <div class="top-info-box-title"><b>Eğitici Oyunlar</b></div> 
+                      <div class="top-info-box-subtitle">Her dersten eğitico oyunlarla eğlenirken öğrenin.</div>
+                    </div>
+                  </div>
                 
           </div>
           
