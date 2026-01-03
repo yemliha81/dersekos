@@ -45,7 +45,7 @@
                     </div>
                     <div class="top-info-box-content">
                       <div class="top-info-box-title"><b>Uygun Fiyatlı Kamplar</b></div> 
-                      <div class="top-info-box-subtitle">Bütçenize uygun ve hedefe yönelik kamplarımızlara kayıt olabilirsiniz.</div>
+                      <div class="top-info-box-subtitle">Bütçenize uygun ve hedefe yönelik kamplarımıza kayıt olabilirsiniz.</div>
                     </div>
                   </div>
 
