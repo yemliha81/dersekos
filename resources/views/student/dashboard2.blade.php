@@ -52,7 +52,7 @@
                     <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">12. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '13')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">KPSS WhatsApp Grubumuza Katıl</a>
+                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/GmPAYDFFoSOGcxULO9ApGw?mode=hqrc">KPSS WhatsApp Grubumuza Katıl</a>
                 @endif
                 </div>
             </section>
