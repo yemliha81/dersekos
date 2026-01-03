@@ -9,7 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 class BlockIpMiddleware
 {
     protected array $blockedIps = [
-        '78.173.11.165'
+        '78.173.11.165',
+        '78.173.7.52'
     ];
 
     public function handle(Request $request, Closure $next): Response
