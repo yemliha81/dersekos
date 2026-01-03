@@ -179,12 +179,7 @@
     <!-- Sorular Burada Listelenecek -->
     <div id="questions-wrapper"></div>
 
-    <!-- JSON Çıktısı -->
-    <div class="json-container">
-        <h3>JSON Formatı (Kopyalanabilir)</h3>
-        <button class="copy-btn" onclick="copyJson()">JSON'u Kopyala</button>
-        <pre id="json-output"></pre>
-    </div>
+   
 </div>
 
 <script>
