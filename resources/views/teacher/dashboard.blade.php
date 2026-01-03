@@ -14,7 +14,7 @@
         <section class="hero-card hero" aria-labelledby="hero-title">
             
             <div class="hero-left grid-20">
-                <strong id="hero-title">Hoşgeldiniz, {{ auth('teacher')->user()->name }}!</strong>
+                <strong id="hero-title">Hoş geldiniz, {{ auth('teacher')->user()->name }}!</strong>
                 <p class="muted">Burada derslerinizi yönetebilir, profil bilgilerinizi düzenleyebilirsiniz.</p>
             </div>
             <div class="hero-right">
