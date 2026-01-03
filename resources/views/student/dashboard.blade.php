@@ -9,10 +9,10 @@
         <!-- col-3 in pc screen, col-12 in mobile screen -->
         <div class="row">
             <div class="col-12 col-md-3">
-            <section class="hero-card mb-50" aria-labelledby="hero-title">
+            <section class="hero-card mb-3" aria-labelledby="hero-title">
                 <div class="hero-left">
                     <div class="mb-3">Hoşgeldin, <br> <b id="hero-title">{{ auth('student')->user()->name }}!</b></div>
-                    <p class="muted">Burada derslerini yönetebilir, eğitmenlerinle iletişim kurabilir ve öğrenme yolculuğuna devam edebilirsin.</p>
+                    <p class="muted d-none d-sm-block">Burada derslerini yönetebilir, eğitmenlerinle iletişim kurabilir ve öğrenme yolculuğuna devam edebilirsin.</p>
                 </div>
                 <div>
                     @if(auth('student')->user()->grade == '1')
@@ -57,7 +57,7 @@
                 </div>
             </section>
 
-            <section class="hero-card mb-50" aria-labelledby="hero-title">
+            <section class="hero-card mb-3" aria-labelledby="hero-title">
                 <div class="left-student-menu">
                     <div class="mb-3"><a href="{{route('student.old_lessons')}}"> <i class="bi bi-file-earmark-text"></i> Geçmiş Derslerim</a></div>
                     <div><a href="{{route('student.dashboard2')}}"> <i class="bi bi-file-earmark-text"></i> Tüm Sınıf Dersleri</a></div>

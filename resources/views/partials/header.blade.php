@@ -237,7 +237,7 @@
       font-family: "Work Sans", sans-serif;
       background: #FFFFFF; color:#000000;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.45;
-      padding:24px;
+      padding-top:24px;
     }
     .mb-50{margin-bottom:50px}
     .mt-50{margin-top:50px}
@@ -267,8 +267,15 @@
     .brand{display:flex; align-items:center; gap:12px; color:#FFFFFF;}
     .logo{width:48px; height:48px; border-radius:10px;  display:flex; align-items:center; justify-content:center; font-weight:800; color:#061025}
     .site-title{font-weight:700; font-size:18px}
-    .nav{display:flex; gap:12px; align-items:center}
-    .nav a{padding:10px 12px; border-radius:10px; color:var(--muted); font-weight:600}
+    .nav{
+      display: flex;
+      gap: 0;
+      align-items: center;
+      /* justify-content: end; */
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+    .nav a{padding:10px 6px; border-radius:10px; color:var(--muted); font-weight:600}
     .nav a.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#061025}
 
     /* Hero */
@@ -531,6 +538,9 @@
         gap:20px;
         background: #FFFFFF;
         color: #000000ff;
+      }
+      .top-info-boxes{
+        grid-template-columns: 1fr 1fr;
       }
     }
 
