@@ -55,7 +55,7 @@
                     </div>
                     <div class="top-info-box-content">
                       <div class="top-info-box-title"><b>Eğitici Oyunlar</b></div> 
-                      <div class="top-info-box-subtitle">Her dersten eğitico oyunlarla eğlenirken öğrenin.</div>
+                      <div class="top-info-box-subtitle">Her dersten eğitici oyunlarla eğlenirken öğrenin.</div>
                     </div>
                   </div>
                 
