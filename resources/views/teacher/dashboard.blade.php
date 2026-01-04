@@ -29,6 +29,11 @@
                     {{ session('success') }}
                 </div>
             @endif
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
         </section>
 
         <section class="hero-card dashboard-cards mb-3">
@@ -297,7 +302,7 @@
                                     <p>
                                         <!-- is_free selectbox --> 
                                         <label><strong>Ücretsiz mi?</strong></label>
-                                        <select id="detailIsFree" name="is_free" class="form-select">
+                                        <select id="detailIsFree" name="is_free" class="form-select" disabled>
                                             <option value="1" >Ücretsiz</option>
                                             <option value="0" >Ücretli</option>
                                         </select>
@@ -687,7 +692,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 max_person: maxPerson,
             })
         })
-        .then(res => res.json())
+        // console.log response as json
+        .then(async res => {
+            const data = await res.json();
+
+            if (!res.ok) {
+                // backend sent an error
+                alert(data.error);
+                throw new Error(data.error);
+            }
+
+            return data;
+        })
+        //console.log data
         .then(data => {
             calendar.addEvent({
             id: data.id,

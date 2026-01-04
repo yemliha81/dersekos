@@ -35,6 +35,65 @@ class EventsController extends Controller
         //dd($request->all());
         $teacherId = auth('teacher')->user()->id;
 
+
+         //check if end time is after start time
+        if(Carbon::parse($request->end)->lessThanOrEqualTo(Carbon::parse($request->start))){
+            return response()->json([
+                'error' => 'Ders bitiş zamanı, başlangıç zamanından önce veya aynı olamaz.'
+            ], 400);
+        }
+
+        // check if the event time is less than 30 minutes
+        $start = Carbon::parse($request->start);
+        $end = Carbon::parse($request->end);
+        $diffInMinutes = $start->diffInMinutes($end);
+        if($diffInMinutes < 30){
+            return response()->json([
+                'error' => 'Ders süresi en az 30 dakika olmalıdır.'
+            ], 400);
+        }
+
+        // check if the event total time is more than 45 minutes
+        $start = Carbon::parse($request->start);
+        $end = Carbon::parse($request->end);
+        $diffInMinutes = $start->diffInMinutes($end);
+
+        if($diffInMinutes > 45){
+            return response()->json([
+                'error' => 'Ders süresi 45 dakikadan fazla olamaz.'
+            ], 400);
+        }
+
+
+        // check if event start time is in the past
+        if($start->isPast()){
+            return response()->json([
+                'error' => 'Ders başlangıç zamanı geçmiş bir tarih olamaz.'
+            ], 400);
+        }
+
+        // list events with same grade and time
+        if($request->is_free == 1){
+        
+            $existing_free_events = Event::where('grade', $request->grade)
+                ->where('is_free', '1')
+                ->where('start', Carbon::parse($request->start))
+                ->where(function($query) use ($request) {
+                    $query->whereBetween('start', [Carbon::parse($request->start), Carbon::parse($request->end)])
+                        ->orWhereBetween('end', [Carbon::parse($request->start), Carbon::parse($request->end)]);
+                })
+                ->get();
+            if($existing_free_events->count() > 0 && $request->is_free == '1'){
+                return response()->json([
+                    'error' => 'Girdiğiniz zaman diliminde aynı sınıf seviyesi için ücretsiz başka bir ders bulunuyor. Lütfen farklı bir zaman dilimi seçin.'
+                ], 400);
+
+            }
+
+        }
+
+        //dd($existing_free_events);
+
         $event = Event::updateOrCreate(
             ['id'         => $request->event_id],
             [
@@ -55,7 +114,40 @@ class EventsController extends Controller
 
     public function update (Request $request) {
         //dd($request->all());
+        
+
+        try {
+
         $teacherId = auth('teacher')->user()->id;
+
+
+        //check if end time is after start time
+        if(Carbon::parse($request->end)->lessThanOrEqualTo(Carbon::parse($request->start))){
+            return back()->with('error', 'Ders bitiş zamanı, başlangıç zamanından önce veya aynı olamaz.');
+        }
+
+        // check if the event time is less than 30 minutes
+        $start = Carbon::parse($request->start);
+        $end = Carbon::parse($request->end);
+        $diffInMinutes = $start->diffInMinutes($end);
+        if($diffInMinutes < 30){
+            return back()->with('error', 'Ders süresi en az 30 dakika olmalıdır.');
+        }
+
+        // check if the event total time is more than 45 minutes
+        $start = Carbon::parse($request->start);
+        $end = Carbon::parse($request->end);
+        $diffInMinutes = $start->diffInMinutes($end);
+
+        if($diffInMinutes > 45){
+            return back()->with('error', 'Etkinlik süresi 45 dakikadan fazla olamaz.');
+        }
+
+
+        // check if event start time is in the past
+        if($start->isPast()){
+            return back()->with('error', 'Ders başlangıç zamanı geçmiş bir tarih olamaz.');
+        }
 
         $event = Event::updateOrCreate(
             ['id'         => $request->event_id],
@@ -65,14 +157,17 @@ class EventsController extends Controller
             'start'      => Carbon::parse($request->start)->format('Y-m-d H:i:s'),
             'end'        => Carbon::parse($request->end)->format('Y-m-d H:i:s'),
             'meet_url'   => $request->meet_url,
-            'is_free'    => $request->is_free,
             'price'      => $request->price,
             'min_person' => $request->min_person,
             'max_person' => $request->max_person,
             'teacher_id' => $teacherId,
         ]);
 
-        return back()->with('success', 'Etkinlik başarıyla güncellendi.');
+            return back()->with('success', 'Etkinlik başarıyla güncellendi.');
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
 }
