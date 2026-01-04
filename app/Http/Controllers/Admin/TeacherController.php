@@ -34,6 +34,7 @@ class TeacherController extends Controller
         $teacher->branch = $request->input('branch');
         
         $teacher->experience = $request->input('experience');
+        $teacher->phone = $request->input('phone');
         $teacher->certificates = $request->input('certificates');
         $teacher->tags = $request->input('tags');
         $teacher->about = $request->input('about');

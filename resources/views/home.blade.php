@@ -79,11 +79,11 @@
               </a>
 
               <a target="_blank" class="" href="">
-                <img  src="{{asset('assets/img/guzide-arslanhan-8-sinif-kamp.jpg')}}"  alt="Güzide Arslanhan Türkçe Kampı 8. Sınıf" loading="lazy">
+                <img  src="{{asset('assets/img/guzide-arslanhan-turkce-8-sinif-kamp.jpg')}}"  alt="Güzide Arslanhan Türkçe Kampı 8. Sınıf" loading="lazy">
               </a>
 
               <a target="_blank" class="" href="">
-                <img  src="{{asset('assets/img/guzide-arslanhan-5-6-7-kamp.jpg')}}"  alt="Güzide Arslanhan Türkçe Kampı 5,6,7. sınıf" loading="lazy">
+                <img  src="{{asset('assets/img/guzide-arslanhan-turkce-5-6-7-sinif-kamp.jpg')}}"  alt="Güzide Arslanhan Türkçe Kampı 5,6,7. sınıf" loading="lazy">
               </a>
             
         </section>
