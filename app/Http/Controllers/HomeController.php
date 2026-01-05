@@ -43,6 +43,11 @@ class HomeController extends Controller
         return view('home', compact('teachers'));
     }
 
+    public function campRegistration()
+    {
+        return view('camp_registration');
+    }
+
     public function statistics(){
         $events = Event::where('is_free', 1)->get();
         $total_attendees = 0;
