@@ -63,26 +63,28 @@
           
         </section>
 
-
+        <section>
+          <div class="text-center mb-4"><h4><b>Öne Çıkan Kamp ve Etkinlikler</b></h4></div>
+        </section>
         <section class="hero-card mb-50 camp-photos">
           
-              <a target="_blank" class="" href="">
+              <a target="_blank" class="" href="{{route('camp.registration')}}">
                 <img  src="{{asset('assets/img/fatih-korkmaz-kamp-8-1.jpg?v=123')}}"  alt="Fatih Korkmaz Matematik Kampı" loading="lazy">
               </a>
-            
-              <a target="_blank" class="" href="">
+
+              <a target="_blank" class="" href="{{route('camp.registration')}}">
                 <img  src="{{asset('assets/img/kemal-oltulu-kamp.jpg')}}"  alt="Kemal Oltulu Matematik Kampı" loading="lazy">
               </a>
-            
-              <a target="_blank" class="" href="">
+
+              <a target="_blank" class="" href="{{route('camp.registration')}}">
                 <img  src="{{asset('assets/img/ayse-gul-turkce-kamp.jpg')}}"  alt="Ayşe Gül Türkçe Kampı" loading="lazy">
               </a>
 
-              <a target="_blank" class="" href="">
+              <a target="_blank" class="" href="{{route('camp.registration')}}">
                 <img  src="{{asset('assets/img/guzide-arslanhan-turkce-8-sinif-kamp.jpg')}}"  alt="Güzide Arslanhan Türkçe Kampı 8. Sınıf" loading="lazy">
               </a>
 
-              <a target="_blank" class="" href="">
+              <a target="_blank" class="" href="{{route('camp.registration')}}">
                 <img  src="{{asset('assets/img/guzide-arslanhan-turkce-5-6-7-sinif-kamp.jpg')}}"  alt="Güzide Arslanhan Türkçe Kampı 5,6,7. sınıf" loading="lazy">
               </a>
             
