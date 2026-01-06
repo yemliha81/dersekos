@@ -85,7 +85,7 @@
               </a>
 
               <a target="_blank" class="" href="{{route('camp.registration')}}">
-                <img  src="{{asset('assets/img/guzide-arslanhan-turkce-5-6-7-sinif-kamp.jpg')}}"  alt="Güzide Arslanhan Türkçe Kampı 5,6,7. sınıf" loading="lazy">
+                <img  src="{{asset('assets/img/8-sinif-lgs-kamp-fen-bilimleri.jpg')}}"  alt="8. Sınıf Fen bilimleri Kampı sınıf" loading="lazy">
               </a>
             
         </section>

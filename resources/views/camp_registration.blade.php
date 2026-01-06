@@ -174,18 +174,68 @@
         </div>
       </div>
 
-      <!--<div class="camp-detail">
-        <div>
-          <img src="{{asset('assets/img/guzide-arslanhan-turkce-5-6-7-sinif-kamp.jpg')}}" alt="">
+      <div class="camp-detail">
+        <div class="camp-image">
+          <img src="{{asset('assets/img/8-sinif-lgs-kamp-fen-bilimleri.jpg')}}" alt="">
         </div>
-        <div>
-          <h3>Güzide Arslanhan, 5-6-7. Sınıf Ara Tatil Türkçe Kampı</h3>
-          <p></p>
-          <div class="camp-register-btn">
-            <a href="" class="btn btn-primary btn-lg">Kampa Kayıt Ol</a>
-          </div>
+        <div class="grids-2">
+
+            <div class="camp-info">
+              <b>Burcu Bedir & Cansu Aksu, 8. Sınıf LGS Fen Bilimleri Kampı</b> <br><br>
+                 <div>
+                  <ul>
+                    <li>1.gün: 23 Ocak <br>
+
+                      - Mevsimlerin oluşumu <br>
+
+                      - İklim ve hava hareketleri
+                    </li>
+
+
+
+                    <li>2.gün: 25 Ocak <br>
+
+                      - DNA ve genetik kod <br>
+
+                      - Kalıtım, mutasyon ve modifikasyon Adaptasyon, Biyoteknoloji
+                    </li>
+
+                      3. Gün 27 ocak <br>
+
+                      - Katı, sıvı ve gaz basıncı
+
+                    </li>
+
+                    <li>4. Gün: 29 ocak  <br>
+
+                      - Periyodik sistem ve Fiziksel Kimyasal Degisim
+
+                      - Kimyasal Tepkimeler
+                    </li>
+
+                    <li>5. Gün 31 ocak <br>
+
+                      - Asitler ve Bazlar <br>
+
+                      - Maddenin Isı ile Etkileşimi
+                    </li>
+
+
+
+                    <li>Toplam 10 derste İlk Yarıyı tekrar et!</li>
+
+                    <li>Kamp Ücreti 1500 TL</li>
+                  </ul>
+
+                </div>
+            </div>
+            <div>
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdHdAdZ4N4yQVopzButba38lI7U05e1XpIwNWYrka6LA3WZ9Q/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+            </div>
+          
         </div>
-      </div>-->
+      </div>
+      
     </div>
 
 
