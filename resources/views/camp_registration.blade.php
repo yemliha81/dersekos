@@ -100,7 +100,7 @@
           <div class="grids-2">
             
             <div class="camp-info">
-              <b>Kemal Oltulu, 8. Sınıf Ara Tatil LGS Hazırlık Kampı</b> <br><br>
+              <b>Kemal Oltulu, 8. Sınıf Ara Tatil LGS Matematik Kampı</b> <br><br>
               <ul>
                 <li>LGS'nin yarısını bitir</li>
                 <li>28 Saat yoğun ders programı</li>
