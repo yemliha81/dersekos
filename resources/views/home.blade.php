@@ -67,7 +67,7 @@
         <section class="hero-card mb-50 camp-photos">
           
               <a target="_blank" class="" href="">
-                <img  src="{{asset('assets/img/fatih-korkmaz-kamp-8.jpg?v=123')}}"  alt="Fatih Korkmaz Matematik Kampı" loading="lazy">
+                <img  src="{{asset('assets/img/fatih-korkmaz-kamp-8-1.jpg?v=123')}}"  alt="Fatih Korkmaz Matematik Kampı" loading="lazy">
               </a>
             
               <a target="_blank" class="" href="">

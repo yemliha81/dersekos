@@ -32,7 +32,16 @@ class QuizController extends Controller
     public function quiz_show($id)
     {
         $quiz = Quiz::where('id', $id)->first();
-        return view('quiz.quiz1', compact('quiz'));
+
+        $type = $quiz->sort;
+
+        if($type == 2){
+            return view('quiz.quiz2', compact('quiz'));
+        }else{
+            return view('quiz.quiz1', compact('quiz'));
+        }
+
+        
     }
     
 }
