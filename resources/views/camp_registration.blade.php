@@ -16,131 +16,159 @@
     border-radius: 20px;
     padding: 25px;
     box-shadow: 10px 10px 10px #ddd;
+    background-color: #ffd1f3ff;
   }
   .camp-detail img {
-    width: 240px;
+    width: 300px;
     height: auto;
     max-width:unset
   }
   .grids-2{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 500px;
     gap: 20px;
     margin-bottom: 15px;
+  }
+  .camp-info{
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  @media screen and (max-width: 768px) {
+    .camp-detail {
+      flex-direction: column;
+    }
+    .grids-2{
+      grid-template-columns: auto;
+    }
+
+    .camp-image{
+      text-align: center;
+    }
+
+    .camp-image img{
+      display: inline-block;
+    }
+    
   }
 </style>
  <!-- Ana İçerik -->
   <main class="auth-wrap">
    
-
-
+    
     <div class="camps">
+      <div class="page-header text-center mb-50">
+        <div class="page-title"><h3>Ara Tatil Kamplarımız</h3></div>
+      </div>
+
       <div class="camp-detail">
-        <div>
-          <img src="{{asset('assets/img/fatih-korkmaz-kamp-8-1.jpg?v=123')}}"  width="200" alt="">
+        <div class="camp-image">
+          <img src="{{asset('assets/img/fatih-korkmaz-kamp-8-1.jpg?v=123')}}"  width="300" alt="">
         </div>
         <div>
           
           <div class="grids-2">
             
-            <div>
-              <b>Fatih Korkmaz, 8. Sınıf Ara Tatil Matematik Kampı</b> <br><br><br>
-              1. Gün 23 Ocak: Çarpanlar ve Katlar, EBOB-EKOK <br>
-
-              2. Gün 25 Ocak: Üslü İfadeler 1, Üslü ifadeler 2 <br>
-
-              3. Gün 26 Ocak: Ondalık Gösterimleri Çözümleme- Bilimsel Gösterim, Kareköklü İfadeler 1 <br>
-
-              4. Gün 27 Ocak: Kareköklü İfadeler 2, Çizgi- Sütun- Daire Grafiği <br>
-
-              5. Gün 29 Ocak, Olasılık, 2025 LGS Çıkmış Soru Çözümü <br>
-              
-              Kamp süresi 5 gün, her gün 2 ders olmak üzere toplam 10 ders yapılacaktır. <br>
-              10 ders için Kamp ücreti 2000 TL’dir. <br>
-              
+            <div class="camp-info">
+              <b>Fatih Korkmaz, 8. Sınıf Ara Tatil Matematik Kampı</b> <br><br>
+              <ul>
+                
+                <li>1. Gün 23 Ocak: Çarpanlar ve Katlar, EBOB-EKOK</li>
+                <li>2. Gün 25 Ocak: Üslü İfadeler 1, Üslü ifadeler 2</li>
+                <li>3. Gün 26 Ocak: Ondalık Gösterimleri Çözümleme- Bilimsel Gösterim, Kareköklü İfadeler 1</li>
+                <li>4. Gün 27 Ocak: Kareköklü İfadeler 2, Çizgi- Sütun- Daire Grafiği</li>
+                <li>5. Gün 29 Ocak, Olasılık, 2025 LGS Çıkmış Soru Çözümü</li>
+                <li>Kamp süresi 5 gün, her gün 2 ders olmak üzere toplam 10 ders yapılacaktır.</li>
+                <li>10 ders için Kamp ücreti 2000 TL’dir. </li>
+              </ul>
 
             </div>
             <div>
-              <div>
-                <b>Kamp Kayıt Formu</b>
-              </div>
-              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdQZewZHcRseUM9vOaCsOvuxADXmhMm07cv4UPICZGOQIWiRg/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdQZewZHcRseUM9vOaCsOvuxADXmhMm07cv4UPICZGOQIWiRg/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
             </div>
           </div>
         </div>
       </div>
 
       <div class="camp-detail">
-        <div>
+        <div class="camp-image">
           <img src="{{asset('assets/img/kemal-oltulu-kamp.jpg')}}" alt="">
         </div>
         <div>
-          
-         <div class="grids-2">
+          <div class="grids-2">
             
-            <div>
-              <b>Kemal Oltulu, 8. Sınıf Ara Tatil Matematik Kampı</b> <br><br>
-                28 Saat yoğun ders programı <br><br>
-                Konu Tekrarı + Soru Çözümü <br><br>
-                Her öğrenciye mentörlük desteği <br><br>
-                Tüm Kamp Sadece 3000 TL
+            <div class="camp-info">
+              <b>Kemal Oltulu, 8. Sınıf Ara Tatil LGS Hazırlık Kampı</b> <br><br>
+              <ul>
+                <li>LGS'nin yarısını bitir</li>
+                <li>28 Saat yoğun ders programı</li>
+                <li>Konu Tekrarı + Soru Çözümü</li>
+                <li>Her öğrenciye mentörlük desteği</li>
+                <li>Tüm Kamp Sadece 3000 TL</li>
+                <li>
+                  <a class="btn btn-primary btn-sm" href="{{asset('assets/img/kemal-oltulu-8-sinif-takvim.png')}}" target="_blank">KAMP TAKVİMİ</a>
+                </li>
+              </ul>
+
             </div>
             <div>
-              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdgyxC-icz91qqvHQV8hzS4zdsl8A6otHqjhfd_Y-YMRg0h_A/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdgyxC-icz91qqvHQV8hzS4zdsl8A6otHqjhfd_Y-YMRg0h_A/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
             </div>
           </div>
         </div>
       </div>
 
       <div class="camp-detail">
-        <div>
+        <div class="camp-image">
           <img src="{{asset('assets/img/ayse-gul-turkce-kamp.jpg')}}" alt="">
         </div>
         <div class="grids-2">
             
-            <div>
+            <div class="camp-info">
               <b>Ayşe Gül, 8. Sınıf Ara Tatil Türkçe Paragraf ve Dilbilgisi Kampı</b>
                 <div><br><br>
-                  21 Ocak - Cümlede, Paragrafta, Sözcükte anlam <br>
-                  22 Ocak - Metin Türleri ve sanatlar, Fiilimsiler <br>
-                  23 Ocak - Fiilde Çatı, Cümle Ögeleri, Pekiştirme<br>
-                  24 Ocak - Cümle Türleri, Yazım kuralları, Uygulama <br>
-                  25 Ocak - Noktalama, Noktalama (Uygulama)i Anlatım Bozukluğu<br>
+                <ul>
+                  <li>21 Ocak - Cümlede, Paragrafta, Sözcükte anlam</li>
+                  <li>22 Ocak - Metin Türleri ve sanatlar, Fiilimsiler</li>
+                  <li>23 Ocak - Fiilde Çatı, Cümle Ögeleri, Pekiştirme</li>
+                  <li>24 Ocak - Cümle Türleri, Yazım kuralları, Uygulama</li>
+                  <li>25 Ocak - Noktalama, Noktalama (Uygulama)i Anlatım Bozukluğu</li>
+                </ul>
                   15 Dersten oluşan kamp programı <br>
                   Kamp Ücreti: 1500 TL
                 </div>
             </div>
             <div>
-              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSerJJN6EJmyYQrA-Cp0grqWCbhXmO_TX6PONYChPc-PpFzSQA/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSerJJN6EJmyYQrA-Cp0grqWCbhXmO_TX6PONYChPc-PpFzSQA/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
             </div>
           </div>
       </div>
 
       <div class="camp-detail">
-        <div>
+        <div class="camp-image">
           <img src="{{asset('assets/img/guzide-arslanhan-turkce-8-sinif-kamp.jpg')}}" alt="">
         </div>
         <div class="grids-2">
-            
-            <div>
+
+            <div class="camp-info">
               <b>Güzide Arslanhan, 8. Sınıf Ara Tatil Türkçe Kampı</b> <br><br>
                  <div>
-                  21 OCAK - 29 OCAK tarihleri arasında <br>
-
-                  8. SINIFLAR İÇİN LGS HAZIRLIK KAMPI <br>
-                  LGS KONULARININ YARISINI BİTİRİYORUZ <br>
-
-                  YENİ NESİL SORULAR VE  <br>
-                  SORU ÇÖZÜM TAKTİKLERİYLE BİRLİKTE <br>
-
-                  TOPLAM 10 DERS SAATİ <br>
-
-                  KAMP ÜCRETİ 1500 TL <br>
+                  <ul>
+                    <li>21 OCAK - 29 OCAK tarihleri arasında</li>
+                    <li>8. SINIFLAR İÇİN LGS HAZIRLIK KAMPI</li>
+                    <li> LGS KONULARININ YARISINI BİTİRİYORUZ</li>
+                    <li></li>
+                    <li>YENİ NESİL SORULAR VE SORU ÇÖZÜM TAKTİKLERİYLE BİRLİKTE</li>
+                    <li> TOPLAM 10 DERS SAATİ</li>
+                    <li>KAMP ÜCRETİ 1500 TL</li>
+                  </ul>
 
                 </div>
             </div>
             <div>
-              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdKvvBcMKGp7vlHuyT0wKET1FMJRYStUyIjyOrtXNhsJQfMfQ/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdKvvBcMKGp7vlHuyT0wKET1FMJRYStUyIjyOrtXNhsJQfMfQ/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
             </div>
           
         </div>

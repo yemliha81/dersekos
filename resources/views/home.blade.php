@@ -89,6 +89,9 @@
               </a>
             
         </section>
+        <section class="text-center mb-50">
+          <a href="{{route('camp.registration')}}" class="btn btn-primary btn-lg">Tüm Kamp ve Etkinliklere Gözat</a>
+        </section>
 
         
         <section class="hero-card mb-50 bg-purple text-white">
