@@ -235,6 +235,44 @@
           
         </div>
       </div>
+
+      <div class="camp-detail">
+        <div class="camp-image">
+          <img src="{{asset('assets/img/cemre-karaduran-7-sinif-kamp.jpg')}}" alt="">
+        </div>
+        <div class="grids-2">
+
+            <div class="camp-info">
+              <b>Cemre Karaduran, 7. Sınıf LGS Matematik Kampı</b> <br><br>
+                 <div>
+                  <ul>
+                    <li>1. Hafta <br>
+
+                      - 4 saat ders <br>
+
+                      - Konu anlatımı ve soru çözümü
+                    </li>
+
+                    <li>2. Hafta: 25 Ocak <br>
+
+                       - 4 saat ders <br>
+
+                      - Konu anlatımı ve soru çözümü
+                    </li>
+
+                    <li>Toplam 8 ders</li>
+
+                    <li>Kamp Ücreti 1000 TL</li>
+                  </ul>
+
+                </div>
+            </div>
+            <div>
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScu1SlX0qoWi2Jxny1eITY8gdeyNemNbvHMra56g_n2Y2nq7Q/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+            </div>
+          
+        </div>
+      </div>
       
     </div>
 

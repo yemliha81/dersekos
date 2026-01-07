@@ -87,6 +87,10 @@
               <a target="_blank" class="" href="{{route('camp.registration')}}">
                 <img  src="{{asset('assets/img/8-sinif-lgs-kamp-fen-bilimleri.jpg')}}"  alt="8. Sınıf Fen bilimleri Kampı sınıf" loading="lazy">
               </a>
+
+              <a target="_blank" class="" href="{{route('camp.registration')}}">
+                <img  src="{{asset('assets/img/cemre-karaduran-7-sinif-kamp.jpg')}}"  alt="Cemre Karaduran 7. Sınıf Kampı" loading="lazy">
+              </a>
             
         </section>
         <section class="text-center mb-50">

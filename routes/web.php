@@ -269,7 +269,7 @@ Route::get('/quiz_list', 'App\Http\Controllers\QuizController@quiz_list')->name(
 Route::get('/quiz/{id}', 'App\Http\Controllers\QuizController@quiz_show')->name('quiz.show');
 
 
-Route::get('/kamp-kayit', 'App\Http\Controllers\HomeController@campRegistration')->name('camp.registration');
+Route::get('/kamplar', 'App\Http\Controllers\HomeController@campRegistration')->name('camp.registration');
 
 
 
