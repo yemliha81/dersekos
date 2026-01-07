@@ -331,7 +331,7 @@
                         
                             <p><strong>Kayıtlı Öğrenci Sayısı:</strong> <span id="detailRegistrationCount"></span></p>
 
-                            <p><strong>Toplantı Linki:</strong> <input type="url" name="meet_url" id="detailMeetUrl" class="form-control"></p>
+                            <p><strong>Toplantı Linki:</strong> <input type="url" name="meet_url" id="detailMeetUrl" class="form-control" ></p>
 
                             <p>
                                 <input type="submit" class="btn btn-info" value="Bilgileri Güncelle">
@@ -666,8 +666,29 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        if (!title || !startTime || !endTime) {
+        if (!title || !startTime || !endTime || !minPerson || !maxPerson || !meetUrl ) {
             alert("Lütfen tüm zorunlu alanları doldurun.");
+            return;
+        }
+
+        //meet url must contain https:// , meet.google.com or zoom.us   
+        if (!meetUrl.startsWith('https://') || 
+            (meetUrl.indexOf('meet.google.com') === -1 && meetUrl.indexOf('zoom.us') === -1)) {
+            alert("Lütfen geçerli bir toplantı linki girin.");
+            return;
+        }
+
+        //meet Url shouldn't contain spaces
+        if (meetUrl.indexOf(' ') >= 0) {
+            alert("Lütfen geçerli bir toplantı linki girin.");
+            return;
+        }
+
+        // check if meetUrl is a valid url
+        try {
+            new URL(meetUrl);
+        } catch (e) {
+            alert("Lütfen geçerli bir toplantı linki girin.");
             return;
         }
 

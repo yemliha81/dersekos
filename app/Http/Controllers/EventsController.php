@@ -149,6 +149,17 @@ class EventsController extends Controller
             return back()->with('error', 'Ders başlangıç zamanı geçmiş bir tarih olamaz.');
         }
 
+
+        // check if meetUrl contains https:// and (meet.google.com or zoom.us)
+        if(!str_starts_with($request->meet_url, 'https://') || (!str_contains($request->meet_url, 'meet.google.com') && !str_contains($request->meet_url, 'zoom.us'))){
+            return back()->with('error', 'Lütfen geçerli bir toplantı linki girin (Google Meet veya Zoom).');
+        }
+
+        //check if meetUrl is a valid URL 
+        if(!filter_var($request->meet_url, FILTER_VALIDATE_URL)){
+            return back()->with('error', 'Lütfen geçerli bir toplantı linki girin. (Google Meet veya Zoom)');
+        }
+        
         $event = Event::updateOrCreate(
             ['id'         => $request->event_id],
             [
