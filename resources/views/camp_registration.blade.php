@@ -236,7 +236,7 @@
         </div>
       </div>
 
-      <div class="camp-detail">
+      <div class="camp-detail" id="cemre-karaduran">
         <div class="camp-image">
           <img src="{{asset('assets/img/cemre-karaduran-7-sinif-kamp.jpg')}}" alt="">
         </div>
