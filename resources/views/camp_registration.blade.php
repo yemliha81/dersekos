@@ -174,7 +174,7 @@
         </div>
       </div>
 
-      <div class="camp-detail">
+      <div class="camp-detail"  id="burcu-bedir-cansu-aksu">
         <div class="camp-image">
           <img src="{{asset('assets/img/8-sinif-lgs-kamp-fen-bilimleri.jpg')}}" alt="">
         </div>
