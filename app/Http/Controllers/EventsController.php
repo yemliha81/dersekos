@@ -28,7 +28,15 @@ class EventsController extends Controller
 
     public function allEvents(){
 
-        return Event::where('is_free', '1')->with('teacher')->get();
+
+        // where start is greater than today and is_free is 1
+        $today = Carbon::today();
+        $events = Event::where('is_free', '1')
+            ->where('start', '>', $today)
+            ->with('teacher')
+            ->get();
+
+        return $events;
     }
 
     public function store (Request $request) {
