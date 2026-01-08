@@ -22,7 +22,7 @@ class StudentController extends Controller
                     WHEN image IS NULL OR image = '' THEN 1 
                     ELSE 0 
                 END
-            ")->get();
+            ")->where('status', 1)->get();
         });
 
 
@@ -78,7 +78,7 @@ class StudentController extends Controller
                     WHEN image IS NULL OR image = '' THEN 1 
                     ELSE 0 
                 END
-            ")->get();
+            ")->where('status', 1)->get();
         });
 
 
