@@ -21,9 +21,9 @@ class EventsController extends Controller
     }
 
     public function paidEvents(){
-        $today = Carbon::today();
+        $now = Carbon::now();
         $events = Event::where('is_free', '0')
-            ->where('start', '>', $today)
+            ->where('start', '>', $now)
             ->with('teacher')
             ->get();
         return $events;
@@ -33,9 +33,9 @@ class EventsController extends Controller
 
 
         // where start is greater than today and is_free is 1
-        $today = Carbon::today();
+        $now = Carbon::now();
         $events = Event::where('is_free', '1')
-            ->where('start', '>', $today)
+            ->where('start', '>', $now)
             ->with('teacher')
             ->get();
 
