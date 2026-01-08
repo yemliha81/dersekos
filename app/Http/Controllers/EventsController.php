@@ -21,9 +21,12 @@ class EventsController extends Controller
     }
 
     public function paidEvents(){
-
-        return Event::where('is_free', '0')->with('teacher')->get();
-
+        $today = Carbon::today();
+        $events = Event::where('is_free', '0')
+            ->where('start', '>', $today)
+            ->with('teacher')
+            ->get();
+        return $events;
     }
 
     public function allEvents(){
