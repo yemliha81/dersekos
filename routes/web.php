@@ -272,7 +272,8 @@ Route::get('/quiz/{id}', 'App\Http\Controllers\QuizController@quiz_show')->name(
 Route::get('/kamplar', 'App\Http\Controllers\HomeController@campRegistration')->name('camp.registration');
 
 
-
+//Exam Route
+Route::get('/exam', 'App\Http\Controllers\ExamController@index')->name('exam.index');
 
 
 

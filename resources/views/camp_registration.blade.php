@@ -122,6 +122,34 @@
 
       <div class="camp-detail">
         <div class="camp-image">
+          <img src="{{asset('assets/img/kemal-oltulu-kamp.jpg')}}" alt="">
+        </div>
+        <div>
+          <div class="grids-2">
+            
+            <div class="camp-info">
+              <b>Kemal Oltulu, 5 - 6. Sınıf Ara Tatil LGS Matematik Kampı</b> <br><br>
+              <ul>
+                <li></li>
+                <li>42 Saat yoğun ders programı</li>
+                <li>Konu Tekrarı + Soru Çözümü</li>
+                <li>Her öğrenciye mentörlük desteği</li>
+                <li>Tüm Kamp Sadece 2000 TL</li>
+                <li>
+                  <a class="btn btn-primary btn-sm" href="{{asset('assets/img/kemal-oltulu-8-sinif-takvim.png')}}" target="_blank">KAMP TAKVİMİ</a>
+                </li>
+              </ul>
+
+            </div>
+            <div>
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfRTlWqQFt9cS6oqCGEM7kGdL9zHNyTicvor24UGDGCmZoaNw/viewform?embedded=true" width="100%" height="721" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="camp-detail">
+        <div class="camp-image">
           <img src="{{asset('assets/img/ayse-gul-turkce-kamp.jpg')}}" alt="">
         </div>
         <div class="grids-2">
