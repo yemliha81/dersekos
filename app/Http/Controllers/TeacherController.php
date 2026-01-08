@@ -29,17 +29,23 @@ class TeacherController extends Controller
     public function viewProfile($id)
     {
         $teacher = Teacher::findOrFail($id);
+
+        $meta_title = "Öğretmen Profili - " . $teacher->name;
+        $meta_description = "Dersekos öğretmen profili. " . $teacher->name . " " . Str::limit(strip_tags($teacher->about), 150);
         
-        return view('teacher.profile', ['teacher' => $teacher]);
+        return view('teacher.profile', compact('teacher', 'meta_title', 'meta_description'));
     }
 
     public function publicProfile($id)
     {
         $teacher = Teacher::with('events')->findOrFail($id);
         $reviews = EventRate::where('teacher_id', $id)->with('student')->get();
+
+        $meta_title = "Öğretmen Profili - " . $teacher->name;
+        $meta_description = "Dersekos öğretmen profili. " . $teacher->name . " " . Str::limit(strip_tags($teacher->about), 150);
         //dd($rates);
         //dd($teacher);
-        return view('teacher', ['teacher' => $teacher, 'reviews' => $reviews]);
+        return view('teacher', compact('teacher', 'reviews', 'meta_title', 'meta_description'));
     }
 
     public function updateProfile(Request $request)
@@ -48,6 +54,8 @@ class TeacherController extends Controller
             //code...
         
             $teacher = auth('teacher')->user();
+
+
 
             //dd($request->all());
 

@@ -45,7 +45,10 @@ class HomeController extends Controller
 
     public function campRegistration()
     {
-        return view('camp_registration');
+        $meta_title = "2025 - 2026 Ara Tatil Kamplarımız";
+
+        return view('camp_registration', compact('meta_title'));
+
     }
 
     public function statistics(){
@@ -61,20 +64,6 @@ class HomeController extends Controller
 
     public function route($slug, $slug2 = null)
     {
-
-        if($slug == 'copy-db') {
-
-            $lang_array = ['es', 'fr', 'ru', 'ae']; // Add more languages as needed
-
-            if(in_array($slug2, $lang_array)) {
-                $lang = $slug2;
-            } else {
-                return "Invalid or missing language code. Please provide a valid language code (e.g., /copy-db/es).";
-            }
-
-            //return $this->copyDB($lang);
-        }
-
         $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();
         //dd($menu);
         // If the menu item has a page_type of 'about', fetch the about data

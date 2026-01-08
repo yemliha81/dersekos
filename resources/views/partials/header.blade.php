@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Derse Koş! — Özel Ders Platformu</title>
   @if(isset($meta_title))
   <?php $meta_title = Str::limit($meta_title, 60); ?>
-    <title>{{ $meta_title }}</title>
+    <title>Derse Koş! — {{ $meta_title }}</title>
   @else 
     <title>Derse Koş! — Özel Ders Platformu</title>
   @endif
   @if(isset($meta_description))
     <?php $meta_description = Str::limit($meta_description, 160); ?>
-    <meta name="description" content="{{ $meta_description }}" />
   @else 
   <?php $meta_description = "Öğrencileri ve eğitmenleri buluşturan DerseKoş platformuna kayıt olun ve ücretsiz ders fırsatını kaçırmayın! Derse koş! Öğrenci kayıt. Derse koş! Eğitmen kayıt."; ?>
-  <meta name="description" content="{{ $meta_description }}" />
   @endif
+  <meta name="description" content="{{ $meta_description }}" />
   <!-- Google Font (optional) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
