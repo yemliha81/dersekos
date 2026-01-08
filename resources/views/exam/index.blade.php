@@ -56,6 +56,10 @@
         <button id="submit-exam-btn">Sınavı Bitir</button>
     </div>
 
+    <div class="answers">
+        <p id="answers-display"></p>
+    </div>
+
     </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -83,10 +87,27 @@
         }
 
         $('.option').click(function() {
-            const selectedOption = $(this).data('option');
-            answers[currentQuestionIndex] = selectedOption;
-            console.log(answers);
-            colorAnswerButtons()
+
+            // if option already selected, deselect it
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+                answers[currentQuestionIndex] = null;
+                colorAnswerButtons()
+                return;
+            }else{
+                $('.option').removeClass('selected');
+                $(this).addClass('selected');
+
+                const selectedOption = $(this).data('option');
+                answers[currentQuestionIndex] = selectedOption;
+                console.log(answers);
+                colorAnswerButtons()
+            }
+
+
+
+
+            
         });
 
         $('#next-question-btn').click(function() {
@@ -122,8 +143,10 @@
         }
 
         $('#submit-exam-btn').click(function() {
-            console.log('Sınav tamamlandı. Cevaplar:', answers);
-            alert('Sınav tamamlandı. Cevaplar konsola yazdırıldı.');
+            // stringify answers and send to server or display
+            const answersString = JSON.stringify(answers);
+            console.log('Sınav tamamlandı. Cevaplar:', answersString);
+            $('#answers-display').text('Cevaplar: ' + answersString);
         });
 
         loadQuestion(currentQuestionIndex);
