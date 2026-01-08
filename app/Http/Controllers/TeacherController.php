@@ -31,7 +31,7 @@ class TeacherController extends Controller
         $teacher = Teacher::findOrFail($id);
 
         $meta_title = "Öğretmen Profili - " . $teacher->name . ", ".$teacher->branch;
-        $meta_description = "Dersekos öğretmen profili. " . $teacher->name . " " . Str::limit(strip_tags($teacher->about), 150);
+        $meta_description = "Dersekos öğretmen profili. " . $teacher->name . " " . strip_tags($teacher->about);
         
         return view('teacher.profile', compact('teacher', 'meta_title', 'meta_description'));
     }
@@ -42,7 +42,7 @@ class TeacherController extends Controller
         $reviews = EventRate::where('teacher_id', $id)->with('student')->get();
 
         $meta_title = "Öğretmen Profili - " . $teacher->name . ", ".$teacher->branch;
-        $meta_description = "Dersekos öğretmen profili. " . $teacher->name . " " . Str::limit(strip_tags($teacher->about), 150);
+        $meta_description = "Dersekos öğretmen profili. " . $teacher->name . " " . strip_tags($teacher->about);
         //dd($rates);
         //dd($teacher);
         return view('teacher', compact('teacher', 'reviews', 'meta_title', 'meta_description'));
