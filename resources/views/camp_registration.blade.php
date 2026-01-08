@@ -130,13 +130,12 @@
             <div class="camp-info">
               <b>Kemal Oltulu, 5 - 6. Sınıf Ara Tatil LGS Matematik Kampı</b> <br><br>
               <ul>
-                <li></li>
                 <li>42 Saat yoğun ders programı</li>
                 <li>Konu Tekrarı + Soru Çözümü</li>
                 <li>Her öğrenciye mentörlük desteği</li>
                 <li>Tüm Kamp Sadece 2000 TL</li>
                 <li>
-                  <a class="btn btn-primary btn-sm" href="{{asset('assets/img/kemal-oltulu-8-sinif-takvim.png')}}" target="_blank">KAMP TAKVİMİ</a>
+                  <a class="btn btn-primary btn-sm" href="{{asset('assets/img/kemal-oltulu-5-6-sinif-takvim.jpg')}}" target="_blank">KAMP TAKVİMİ</a>
                 </li>
               </ul>
 
