@@ -283,6 +283,7 @@ Route::get('/time-debug', function () {
 
 // statistics route
 Route::get('/statistics', 'App\Http\Controllers\HomeController@statistics')->name('statistics');
+Route::get('/teacher-stats', 'App\Http\Controllers\HomeController@teacherStats')->name('teacher.stats');
 Route::get('/quiz_list', 'App\Http\Controllers\QuizController@quiz_list')->name('quiz.list');
 Route::get('/quiz/{id}', 'App\Http\Controllers\QuizController@quiz_show')->name('quiz.show');
 

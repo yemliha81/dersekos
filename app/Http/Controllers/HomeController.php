@@ -62,6 +62,25 @@ class HomeController extends Controller
         dd($total_attendees);
     }
 
+    public function teacherStats(){
+        $teacherArray = [];
+        $teachers = Teacher::all();
+        foreach($teachers as $teacher){
+            $teacher->event_count = Event::where(['teacher_id' => $teacher->id, 'is_free' => 1])
+            //where start is smaller than today
+            ->where('start', '<=', date('Y-m-d H:i:s'))
+            ->count();
+            $teacherArray[] = [$teacher->id . '|' . $teacher->name. '|' . $teacher->branch, $teacher->event_count];
+        }
+        // sort by event_count desc
+        usort($teacherArray, function($a, $b) {
+            return $b[1] <=> $a[1];
+        });
+
+
+        debug($teacherArray);
+    }
+
     public function route($slug, $slug2 = null)
     {
         $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();
