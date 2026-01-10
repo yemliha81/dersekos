@@ -67,31 +67,35 @@
     // jquery
     
     $(document).ready(function() {
-        const studentId = 30;
-        let questions = [
-            {   questionImg: "question_1.jpg" },
-            {   questionImg: "question_2.jpg" },
-            {   questionImg: "question_3.jpg" },
-            {   questionImg: "question_4.jpg" },
-            {   questionImg: "question_5.jpg" }
-        ];
+        const studentId = '{{ auth("student")->user()->id; }}';
+        let questions = @json(
+            $examQuestions->get()->map(function ($q) {
+                return [
+                    'id' => $q->id,
+                    'questionImg' => $q->question_image
+                ];
+            })->toArray()
+        );
 
-        let answers = [null, null, null, null, null];
+
+        let answers = new Array(questions.length).fill(null);
 
         let currentQuestionIndex = 0;
 
 
         function loadQuestion(index) {
             const question = questions[index];
-            $('.question').html('<img src="{{asset("assets/img/exam1")}}/' + question.questionImg + '" alt="Question Image" style="max-width: 100%;">');
+            $('.question').html('<img src="{{asset("assets/img/exam_questions")}}/' + question.questionImg + '" alt="Question Image" style="max-width: 100%;">');
         }
 
         $('.option').click(function() {
 
             // if option already selected, deselect it
             if ($(this).hasClass('selected')) {
+                console.log('deselected');
                 $(this).removeClass('selected');
                 answers[currentQuestionIndex] = null;
+                console.log(answers);
                 colorAnswerButtons()
                 return;
             }else{
@@ -99,14 +103,11 @@
                 $(this).addClass('selected');
 
                 const selectedOption = $(this).data('option');
-                answers[currentQuestionIndex] = selectedOption;
+                const questionId = questions[currentQuestionIndex].id;
+                answers[currentQuestionIndex] = [questionId, selectedOption];
                 console.log(answers);
                 colorAnswerButtons()
             }
-
-
-
-
             
         });
 
@@ -119,7 +120,9 @@
             if(currentQuestionIndex === questions.length -1){
                 $('#next-question-btn').hide();
             }
-            colorAnswerButtons()
+            $('.option').removeClass('selected');
+            colorAnswerButtons();
+            showAnswers();
         });
 
         $('#prev-question-btn').click(function() {
@@ -127,14 +130,16 @@
                 currentQuestionIndex--;
                 loadQuestion(currentQuestionIndex);
             }
+            $('.option').removeClass('selected');
             $('#next-question-btn').show();
-            colorAnswerButtons()
+            colorAnswerButtons();
+            showAnswers();
         });
 
         function colorAnswerButtons() {
             $('.option').each(function() {
                 const option = $(this).data('option');
-                if (answers[currentQuestionIndex] === option) {
+                if (answers[currentQuestionIndex] && answers[currentQuestionIndex][1] === option) {
                     $(this).css('background-color', 'lightgreen');
                 } else {
                     $(this).css('background-color', '');
@@ -142,11 +147,35 @@
             });
         }
 
-        $('#submit-exam-btn').click(function() {
+        function showAnswers() {
             // stringify answers and send to server or display
             const answersString = JSON.stringify(answers);
-            console.log('Sınav tamamlandı. Cevaplar:', answersString);
             $('#answers-display').text('Cevaplar: ' + answersString);
+        };
+
+
+        $('#submit-exam-btn').click(function() {
+
+            //convert answers to json and show in alert
+            const answersString = JSON.stringify(answers);
+            // send answers to server via ajax
+            $.ajax({
+                url: '/exam/{{ $exam->id }}/submit-answers',
+                method: 'POST',
+                data: {
+                    student_id: studentId,
+                    answers: answersString,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    alert('Sınav başarıyla gönderildi!');
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    alert('Sınav gönderilirken bir hata oluştu.');
+                    console.log(error);
+                }
+            });
         });
 
         loadQuestion(currentQuestionIndex);

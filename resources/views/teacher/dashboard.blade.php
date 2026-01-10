@@ -64,7 +64,9 @@
                         </div>
                         <div class="text-right mb-2" style="text-align:right;">
                             @if(auth('teacher')->user()->status == '1')
-                            <a class="btn btn-sm btn-info" style="display: inline-block" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">Profili Güncelle <i class="bi-pencil-fill"></i></a>
+                            <a class="btn btn-sm btn-info btn-sm form-control" style="display: inline-block" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">Profili Güncelle <i class="bi-pencil-fill"></i></a>
+                            <hr>
+                            <a href="#" class="btn btn-success btn-sm form-control" data-bs-toggle="modal" data-bs-target="#createCampaignModal">Yeni Kamp oluştur <i class="bi bi-plus-circle"></i></a>
                             @endif
                         </div>
                     </div>
@@ -351,6 +353,50 @@
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
                     </div>
 
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Campaign Modal -->
+            <div class="modal fade" id="createCampaignModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Yeni Kamp Oluştur</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('teacher.campaign.store') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="teacher_id" value="{{ auth('teacher')->user()->id }}">
+                                <div class="mb-3">
+                                    <label class="form-label">Kamp Başlığı</label>
+                                    <input type="text" name="campaign_title" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Kamp Açıklaması</label>
+                                    <textarea name="campaign_description" class="form-control" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Başlangıç Tarihi</label>
+                                    <input type="date" name="campaign_start" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Bitiş Tarihi</label>
+                                    <input type="date" name="campaign_end" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Kamp Afişi</label>
+                                    <input type="file" name="campaign_image" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Toplam Fiyat</label>
+                                    <input type="number" name="campaign_price" step=".01" min=0 value=0.00 class="form-control">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Kamp Oluştur</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

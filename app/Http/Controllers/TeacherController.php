@@ -10,6 +10,7 @@ use App\Models\Language;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Google\Client;
+use App\Models\Campaign;
 
 
 class TeacherController extends Controller
@@ -55,10 +56,6 @@ class TeacherController extends Controller
         
             $teacher = auth('teacher')->user();
 
-
-
-            //dd($request->all());
-
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|max:255|unique:teacher,email,'.$teacher->id,
@@ -93,6 +90,49 @@ class TeacherController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
+    }
+
+
+    public function storeCampaign(Request $request)
+    {
+        try {
+            //code...
+        
+            $teacher = auth('teacher')->user();
+
+            $request->validate([
+                'teacher_id' => 'required|exists:teacher,id',
+                'campaign_title' => 'required|string|max:255',
+                'campaign_description' => 'required|string',
+                'campaign_start' => 'required|date',
+                'campaign_end' => 'required|date|after:campaign_start',
+                'campaign_image' => 'nullable|image|max:2048',
+                'campaign_price' => 'required|numeric|min:0',
+            ]);
+
+            $campaign = new Campaign();
+            $campaign->teacher_id = $request->input('teacher_id');
+            $campaign->campaign_title = $request->input('campaign_title');
+            $campaign->campaign_description = $request->input('campaign_description');
+            $campaign->campaign_start = $request->input('campaign_start');
+            $campaign->campaign_end = $request->input('campaign_end');
+            $campaign->campaign_price = $request->input('campaign_price');
+
+            if($request->has('campaign_image')){
+
+                $imagePath = $request->file('campaign_image')->move(public_path('assets/img/campaign_images'), uniqid().'.jpg');
+                $campaign->campaign_image = basename($imagePath);
+
+            }
+
+            $campaign->save();
+
+            return redirect()->back()->with('success', 'Kampanya başarıyla kaydedildi.');
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
     }
 
 

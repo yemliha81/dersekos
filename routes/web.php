@@ -166,6 +166,20 @@ Route::post('/admin/quiz/store', 'App\Http\Controllers\Admin\QuizController@stor
 Route::get('/admin/quiz/{id}/edit', 'App\Http\Controllers\Admin\QuizController@edit')->name('admin.quiz.edit');
 Route::delete('/admin/quiz/{id}', 'App\Http\Controllers\Admin\QuizController@destroy')->name('admin.quiz.destroy');
 
+// Exam routes
+Route::get('/admin/exam', 'App\Http\Controllers\Admin\ExamController@index')->name('admin.exam.index');
+Route::get('/admin/exam/create', 'App\Http\Controllers\Admin\ExamController@create')->name('admin.exam.create');
+Route::post('/admin/exam/store', 'App\Http\Controllers\Admin\ExamController@store')->name('admin.exam.store');
+Route::get('/admin/exam/{id}/edit', 'App\Http\Controllers\Admin\ExamController@edit')->name('admin.exam.edit');
+Route::delete('/admin/exam/{id}', 'App\Http\Controllers\Admin\ExamController@destroy')->name('admin.exam.destroy');
+
+// Exam questions routes
+Route::get('/admin/exam/{exam_id}/questions', 'App\Http\Controllers\Admin\ExamController@questionIndex')->name('admin.exam.question.index');
+Route::get('/admin/exam/{exam_id}/question/create', 'App\Http\Controllers\Admin\ExamController@questionCreate')->name('admin.exam.question.create');
+Route::post('/admin/exam/question/store', 'App\Http\Controllers\Admin\ExamController@questionStore')->name('admin.exam.question.store');
+Route::get('/admin/exam/question/{question_id}/edit', 'App\Http\Controllers\Admin\ExamController@questionEdit')->name('admin.exam.question.edit');
+Route::delete('/admin/exam/question/{question_id}', 'App\Http\Controllers\Admin\ExamController@questionDestroy')->name('admin.exam.question.destroy');
+
 
 }); // End of Auth middleware group
 //Project Front End routes
@@ -206,6 +220,10 @@ Route::post('/ogretmen/profil/duzenle', 'App\Http\Controllers\TeacherController@
 Route::get('/teacher/dashboard', 'App\Http\Controllers\TeacherController@dashboard')->middleware('auth:teacher')->name('teacher.dashboard');
 Route::get('/ogretmenler', 'App\Http\Controllers\TeacherController@listTeachers')->middleware('auth:student')->name('teacher.list');
 Route::get('/ogretmen/{id}/profil', 'App\Http\Controllers\TeacherController@viewProfile')->middleware('auth:student')->name('teacher.profile');
+
+
+// Campaign routes
+Route::post('/ogretmen/kamp-olustur', 'App\Http\Controllers\TeacherController@storeCampaign')->middleware('auth:teacher')->name('teacher.campaign.store');
 
 Route::get('/ogretmen/cikis', 'App\Http\Controllers\TeacherController@logout')->name('teacher.logout');
 
@@ -273,7 +291,8 @@ Route::get('/kamplar', 'App\Http\Controllers\HomeController@campRegistration')->
 
 
 //Exam Route
-Route::get('/exam', 'App\Http\Controllers\ExamController@index')->name('exam.index');
+Route::get('/exam/{id}', 'App\Http\Controllers\ExamController@index')->name('exam.index');
+Route::post('/exam/{exam_id}/submit-answers', 'App\Http\Controllers\ExamController@submitAnswers')->name('exam.submit_answers');
 
 
 
