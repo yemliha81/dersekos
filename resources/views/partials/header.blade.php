@@ -426,7 +426,7 @@
     }
 
     .camp-photos{
-      display:grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr; justify-content:space-around;gap:20px
+      display:grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr; justify-content:space-around;gap:20px
     }
     .countdown{
       display: inline-block;
