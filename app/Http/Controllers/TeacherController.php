@@ -51,6 +51,7 @@ class TeacherController extends Controller
 
     public function updateProfile(Request $request)
     {
+        //dd($request->all());
         try {
             //code...
         
@@ -78,10 +79,13 @@ class TeacherController extends Controller
             $teacher->certificates = $request->input('certificates');
             $teacher->tags = $request->input('tags');
             $teacher->about = $request->input('about');
+            $teacher->lesson_price = $request->input('lesson_price');
 
             if ($request->filled('password')) {
                 $teacher->password = bcrypt($request->input('password'));
             }
+
+            //dd($teacher);
 
             $teacher->save();
 

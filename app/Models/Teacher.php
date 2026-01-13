@@ -24,6 +24,7 @@ class Teacher extends Authenticatable
         'branch',
         'image',
         'status',
+        
     ];
 
     // If you want to automatically cast created_at as datetime

@@ -538,6 +538,10 @@
                                 <label class="form-label">Etiketler</label>
                                 <input type="text" name="tags" class="form-control" placeholder="Örn. LGS, TYT, Matematik" value="{{ auth('teacher')->user()->tags }}">
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label">Birebir Ders Ücreti</label>
+                                <input type="text" name="lesson_price" class="form-control" value="{{ auth('teacher')->user()->lesson_price }}">
+                            </div>
                             <button type="submit" class="btn btn-primary">Güncelle</button>
                         </form>
                     </div>
