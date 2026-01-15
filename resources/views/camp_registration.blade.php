@@ -171,7 +171,6 @@
                   <a class="btn btn-primary btn-sm" href="{{asset('assets/img/kemal-oltulu-5-6-sinif-takvim.jpg')}}" target="_blank">KAMP TAKVİMİ</a>
                 </li>
               </ul>
-
             </div>
             <div>
               <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfRTlWqQFt9cS6oqCGEM7kGdL9zHNyTicvor24UGDGCmZoaNw/viewform?embedded=true" width="100%" height="721" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>

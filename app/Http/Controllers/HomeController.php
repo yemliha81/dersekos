@@ -50,6 +50,7 @@ class HomeController extends Controller
 
         $campaigns = Campaign::where('status', 1)
         ->where('campaign_start', '>', date('Y-m-d'))
+        ->orderBy('id', 'desc')
         ->get();
 
         //dd($campaigns);
