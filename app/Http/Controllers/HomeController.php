@@ -16,6 +16,7 @@ use App\Models\Content;
 use App\Models\SeoSettings;
 use App\Models\Teacher;
 use App\Models\Event;
+use App\Models\Campaign;
 use Illuminate\Support\Facades\DB;
 
 
@@ -47,7 +48,13 @@ class HomeController extends Controller
     {
         $meta_title = "2025 - 2026 Ara Tatil Kamplarımız";
 
-        return view('camp_registration', compact('meta_title'));
+        $campaigns = Campaign::where('status', 1)
+        ->where('campaign_start', '>', date('Y-m-d'))
+        ->get();
+
+        //dd($campaigns);
+
+        return view('camp_registration', compact('meta_title', 'campaigns'));
 
     }
 

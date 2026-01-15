@@ -3,13 +3,17 @@
 
 @section('content')
 <style>
+  .text-right{
+    text-align: right;
+  }
   .camps{
     display: flex;
     flex-direction: column;
     gap: 40px;
   }
   .camp-detail {
-    display: flex;
+    display: grid;
+    grid-template-columns: 200px auto;
     gap: 20px;
     margin-bottom: 30px;
     border: 1px solid #dddddd;
@@ -19,7 +23,7 @@
     background-color: #ffd1f3ff;
   }
   .camp-detail img {
-    width: 300px;
+    width: 200px;
     height: auto;
     max-width:unset
   }
@@ -38,7 +42,7 @@
   }
   @media screen and (max-width: 768px) {
     .camp-detail {
-      flex-direction: column;
+      grid-template-columns: 1fr;
     }
     .grids-2{
       grid-template-columns: auto;
@@ -50,6 +54,7 @@
 
     .camp-image img{
       display: inline-block;
+      width: 300px;
     }
     
   }
@@ -59,11 +64,35 @@
    
     
     <div class="camps">
-      <div class="page-header text-center mb-50">
+      <div class="page-header text-center mb-3">
         <div class="page-title"><h3>Ara Tatil Kamplarımız</h3></div>
       </div>
 
-      <div class="camp-detail">
+      @foreach($campaigns as $campaign)
+        <div class="camp-detail">
+          <div class="camp-image">
+            <img src="{{asset('assets/img/campaign_images/'.$campaign->campaign_image)}}"  width="200" alt="">
+          </div>
+          <div>
+              
+              <div class="camp-info">
+                <b>{{$campaign->campaign_title}}</b> <br><br>
+                <div>
+                  {!!$campaign->campaign_description!!}
+                </div>
+                <div class="mt-3">
+                  <b>Kamp Ücreti: </b> {{$campaign->campaign_price}} TL
+                </div>
+                <div class="mt-3 text-right">
+                  <a target="_blank" style="display: inline-block;" class="btn btn-primary" href="{{$campaign->form_url}}">Hemen Kayıt Ol!</a>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+      @endforeach
+
+      <!--<div class="camp-detail">
         <div class="camp-image">
           <img src="{{asset('assets/img/fatih-korkmaz-kamp-8-1.jpg?v=123')}}"  width="300" alt="">
         </div>
@@ -261,10 +290,7 @@
             </div>
           
         </div>
-      </div>
-
-      
-      
+      </div>-->
       
     </div>
 
