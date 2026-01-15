@@ -76,7 +76,11 @@
           <div>
               
               <div class="camp-info">
+                <b>{{$campaign->teacher->name}}</b> - {{$campaign->teacher->branch}} <br><br>
                 <b>{{$campaign->campaign_title}}</b> <br><br>
+                <div>
+                  <b>Kamp Tarihleri: </b> {{date('d.m.Y', strtotime($campaign->campaign_start))}} - {{date('d.m.Y', strtotime($campaign->campaign_end))}}
+                </div>
                 <div>
                   {!!$campaign->campaign_description!!}
                 </div>

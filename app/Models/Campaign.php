@@ -37,4 +37,9 @@ class Campaign extends Model
         return $this->hasMany(ExamQuestion::class, 'exam_id', 'id');
     }
 
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id', 'id');
+    }
+
 }
