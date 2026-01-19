@@ -59,6 +59,14 @@ class HomeController extends Controller
 
     }
 
+    public function campsList()
+    {
+        $meta_title = "2025 - 2026 Ara Tatil Kamplarımız";
+
+        return view('camps', compact('meta_title'));
+
+    }
+
     public function statistics(){
         $events = Event::where('is_free', 1)->get();
         $total_attendees = 0;

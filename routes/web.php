@@ -289,6 +289,7 @@ Route::get('/quiz/{id}', 'App\Http\Controllers\QuizController@quiz_show')->name(
 
 
 Route::get('/kamplar', 'App\Http\Controllers\HomeController@campRegistration')->name('camp.registration');
+Route::get('/ara-tatil-kamplar', 'App\Http\Controllers\HomeController@campsList')->name('camps.page');
 
 
 //Exam Route
