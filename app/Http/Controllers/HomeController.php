@@ -49,7 +49,7 @@ class HomeController extends Controller
         $meta_title = "2025 - 2026 Ara Tatil Kamplarımız";
 
         $campaigns = Campaign::where('status', 1)
-        ->where('campaign_start', '>', date('Y-m-d'))
+        //->where('campaign_start', '>', date('Y-m-d'))
         ->orderBy('id', 'desc')
         ->get();
 
