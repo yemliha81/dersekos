@@ -197,7 +197,7 @@
 
        
 
-        <section>
+        <!--<section>
             <div class="teachers-section mb-50">
                 <div class="text-center mb-4"><h4><b>Eğitmenlerimiz</b></h4></div>
                 <div class="teachers-grid">
@@ -221,7 +221,7 @@
                     @endforeach
                 </div>
             </div>
-        </section>
+        </section>-->
 
         
 
