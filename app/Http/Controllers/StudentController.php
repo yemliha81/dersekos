@@ -16,19 +16,19 @@ class StudentController extends Controller
     {
 
         // cache $teachers for 60 minutes
-        $teachers = cache()->remember('teachers', 60, function () {
+        /*$teachers = cache()->remember('teachers', 60, function () {
             return Teacher::orderByRaw("
                 CASE 
                     WHEN image IS NULL OR image = '' THEN 1 
                     ELSE 0 
                 END
             ")->where('status', 1)->get();
-        });
+        });*/
 
 
 
-        $where = // where start >= now
-        //$lessons = Event::where('is_free', 1)->where('end', '>=', now())->with('teacher')->orderBy('start')->get();
+        // $where = // where start >= now
+        // $lessons = Event::where('is_free', 1)->where('end', '>=', now())->with('teacher')->orderBy('start')->get();
 
         $lessons = Event::with('teacher')->where(['is_free' => 1, 'grade' => auth()->user()->grade])->where('end', '>=', now())->orderBy('start')->get();
 
@@ -66,24 +66,24 @@ class StudentController extends Controller
 
         //$paidLessons = Event::where('is_free', false)->with('teacher')->get();
         //dd($freeLessons);
-        return view('student.dashboard', compact('teachers', 'lessons', 'myLessons', 'paidLessons', 'groupedLessons'));
+        return view('student.dashboard', compact('lessons', 'myLessons', 'paidLessons', 'groupedLessons'));
     }
 
     public function dashboard2()
     {
         // cache $teachers for 60 minutes
-        $teachers = cache()->remember('teachers', 60, function () {
+        /*$teachers = cache()->remember('teachers', 60, function () {
             return Teacher::orderByRaw("
                 CASE 
                     WHEN image IS NULL OR image = '' THEN 1 
                     ELSE 0 
                 END
             ")->where('status', 1)->get();
-        });
+        });*/
 
 
 
-        $where = // where start >= now
+        // $where = // where start >= now
         //$lessons = Event::where('is_free', 1)->where('end', '>=', now())->with('teacher')->orderBy('start')->get();
 
         $lessons = Event::with('teacher')->where(['is_free' => 1])->where('end', '>=', now())->orderBy('start')->get();
@@ -120,7 +120,7 @@ class StudentController extends Controller
 
         //$paidLessons = Event::where('is_free', false)->with('teacher')->get();
         //dd($freeLessons);
-        return view('student.dashboard', compact('teachers', 'lessons', 'myLessons', 'paidLessons', 'groupedLessons'));
+        return view('student.dashboard', compact( 'lessons', 'myLessons', 'paidLessons', 'groupedLessons'));
     }
 
     public function joinToEvent($id)

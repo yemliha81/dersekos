@@ -24,7 +24,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        //die(bcrypt('drsekos2025'));
+        //die(bcrypt('drs123*'));
         // cache teachers for 60 minutes
         $teachers = cache()->remember('teachers', 60, function () {
             return Teacher::orderByRaw("
