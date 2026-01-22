@@ -193,35 +193,6 @@
         </div>
         </div>
         
-        
-
-       
-
-        <!--<section>
-            <div class="teachers-section mb-50">
-                <div class="text-center mb-4"><h4><b>Eğitmenlerimiz</b></h4></div>
-                <div class="teachers-grid">
-                    @foreach($teachers as $teacher)
-                        <div class="">
-                        <div class="teacher-box" tabindex="0">
-                            <div class="mb-3 teacher-avatar">
-                                @if($teacher->image == null)
-                                    <img src="{{ asset('assets/img/default-image.png') }}" class="profile-img" width="80" alt="">
-                                @else
-                                <img src="{{ asset($teacher->image) }}" class="profile-img" width="80" alt="">
-                                @endif
-                            </div>
-                            <div style=""><strong>{{ $teacher->name }} {{ $teacher->surname }}</strong></div>
-                            <small class="teacher-branch">{{ ucwords(str_replace('_', ' ',   $teacher->branch)) }} </small>
-                            <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
-                                <a href="{{route('teacher.public.profile', ['id' => $teacher->id])}}" class="btn btn-primary" style="padding:8px 12px; font-weight:700">Profili İncele</a>
-                            </div>
-                        </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>-->
 
         
 
