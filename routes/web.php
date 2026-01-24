@@ -296,6 +296,16 @@ Route::get('/ara-tatil-kamplar', 'App\Http\Controllers\HomeController@campsList'
 Route::get('/exam/{id}', 'App\Http\Controllers\ExamController@index')->name('exam.index');
 Route::post('/exam/{exam_id}/submit-answers', 'App\Http\Controllers\ExamController@submitAnswers')->name('exam.submit_answers');
 
+//Contact Route
+Route::get('/iletisim', 'App\Http\Controllers\HomeController@contact')->name('contact');
+Route::post('/iletisim/form-submit', 'App\Http\Controllers\HomeController@contactFormSubmit')->name('contact.form.submit');
+
+Route::get('/hakkimizda', 'App\Http\Controllers\HomeController@about')->name('about.page');
+
+// Teachers List Route
+Route::get('/ogretmenler', 'App\Http\Controllers\HomeController@teachersList')->name('teachers.list');
+
+
 
 
 // Route for HomeController copyDB function

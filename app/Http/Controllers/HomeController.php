@@ -181,6 +181,39 @@ class HomeController extends Controller
 
         //return view('page', compact('page'));
     }
+
+    public function contact(){
+        return view('contact');
+    }
+
+    public function contactFormSubmit(Request $request){
+        //dd($request->all());
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'message' => 'required|string',
+        ]);
+
+        // Save contact form data to database
+        DB::table('contacts')->insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Mesajınız başarıyla gönderildi. Teşekkürler!');
+    }
+
+    public function about(){
+        return view('about');
+    }
+
+    public function teachersList(){
+        $teachers = Teacher::where('status', 1)->orderBy('id')->get();
+        return view('teachers_list', compact('teachers'));
+    }   
     
 
     
