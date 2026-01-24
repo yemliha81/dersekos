@@ -12,7 +12,7 @@
                         
                         <div class="teachers-list">
                             @foreach($teachers as $teacher)
-                                <div class="">
+                                <div style="padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
                                     @if($teacher->image == null)
                                         <img src="{{ asset('assets/img/default-image.png') }}" class="profile-img" width="80" alt="">
                                     @else
@@ -20,6 +20,8 @@
                                     @endif
                                     <div class="teacher-name">{{ $teacher->name }}</div>
                                     <div class="teacher-bio">{{ $teacher->branch }}</div>
+                                    <a href="{{route('teacher.public.profile', ['id' => $teacher->id])}}" class="btn btn-primary" style="padding:8px 12px; font-weight:700">Profili İncele</a>
+
                                 </div>
                             @endforeach
                         </div>
