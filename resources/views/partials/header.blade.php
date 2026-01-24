@@ -746,7 +746,7 @@
         <a href="{{ route('home') }}">Anasayfa</a>
         <a href="{{ route('contact') }}">Bize ulaşın</a>
         <a href="{{ route('about.page') }}">Hakkımızda</a>
-        <a href="">Eğitmenler</a>
+        <a href="{{ route('teachers.list') }}">Eğitmenler</a>
         <a href="">Ücretsiz Dersler</a>
       
     </div>
