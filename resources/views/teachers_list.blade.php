@@ -18,10 +18,11 @@
                                     @else
                                     <img src="{{ asset($teacher->image) }}" class="profile-img" width="80" alt="">
                                     @endif
-                                    <div class="teacher-name">{{ $teacher->name }}</div>
-                                    <div class="teacher-bio">{{ $teacher->branch }}</div>
-                                    <a href="{{route('teacher.public.profile', ['id' => $teacher->id])}}" class="btn btn-primary" style="padding:8px 12px; font-weight:700">Profili İncele</a>
-
+                                    <div style=""><strong>{{ $teacher->name }} {{ $teacher->surname }}</strong></div>
+                                    <span class="">{{ ucwords(str_replace('_', ' ',   $teacher->branch)) }} </span>
+                                    <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
+                                        <a href="{{route('teacher.public.profile', ['id' => $teacher->id])}}" class="btn btn-primary" style="padding:8px 12px; font-weight:700">Profili İncele</a>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
