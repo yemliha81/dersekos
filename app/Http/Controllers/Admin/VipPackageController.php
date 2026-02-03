@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\VipPackage;
+// use Str
+use Illuminate\Support\Str;
+
 
 
 class VipPackageController extends Controller
@@ -36,6 +39,7 @@ class VipPackageController extends Controller
 
         $vip_package->title = $request->title;
         $vip_package->description = $request->description;
+        $vip_package->slug = \Str::slug($request->title);
 
         if($request->hasFile('image')){
             $image = $request->file('image');
