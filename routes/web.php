@@ -180,6 +180,13 @@ Route::post('/admin/exam/question/store', 'App\Http\Controllers\Admin\ExamContro
 Route::get('/admin/exam/question/{question_id}/edit', 'App\Http\Controllers\Admin\ExamController@questionEdit')->name('admin.exam.question.edit');
 Route::delete('/admin/exam/question/{question_id}', 'App\Http\Controllers\Admin\ExamController@questionDestroy')->name('admin.exam.question.destroy');
 
+// vip_package routes
+Route::get('/admin/vip-package', 'App\Http\Controllers\Admin\VipPackageController@index')->name('admin.vip_package.index');
+Route::get('/admin/vip-package/create', 'App\Http\Controllers\Admin\VipPackageController@create')->name('admin.vip_package.create');
+Route::post('/admin/vip-package/store', 'App\Http\Controllers\Admin\VipPackageController@store')->name('admin.vip_package.store');
+Route::get('/admin/vip-package/{id}/edit', 'App\Http\Controllers\Admin\VipPackageController@edit')->name('admin.vip_package.edit');
+Route::delete('/admin/vip-package/{id}', 'App\Http\Controllers\Admin\VipPackageController@destroy')->name('admin.vip_package.destroy');
+
 
 }); // End of Auth middleware group
 //Project Front End routes

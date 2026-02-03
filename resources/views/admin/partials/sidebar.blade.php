@@ -35,6 +35,15 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{ route('admin.vip_package.index') }}" class="nav-link">
+                  <i class="nav-icon bi bi-box-seam-fill"></i>
+                  <p>
+                    VIP Paket Yönetimi
+                    
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{route('admin.exam.index')}}" class="nav-link">
                   <i class="nav-icon bi bi-box-seam-fill"></i>
                   <p>
@@ -42,6 +51,8 @@
                     
                   </p>
                 </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{route('admin.quiz.index')}}" class="nav-link">
                   <i class="nav-icon bi bi-box-seam-fill"></i>
                   <p>
@@ -49,6 +60,8 @@
                     
                   </p>
                 </a>
+              </li>
+              <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-box-seam-fill"></i>
                   <p>

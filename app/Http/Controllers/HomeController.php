@@ -86,7 +86,7 @@ class HomeController extends Controller
             //where start is smaller than today
             ->where('start', '<=', date('Y-m-d H:i:s'))
             ->count();
-            $teacherArray[] = [$teacher->name. '|' . $teacher->branch, $teacher->event_count];
+            $teacherArray[] = [$teacher->name. '|' . $teacher->branch. '|' . $teacher->event_count];
         }
         // sort by event_count desc
         usort($teacherArray, function($a, $b) {
