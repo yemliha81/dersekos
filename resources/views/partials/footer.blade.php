@@ -8,9 +8,7 @@
       </div>
 
       <div style="display:flex; gap:12px; align-items:center">
-        <a href="#" class="">Gizlilik</a>
-        <a href="#" class="">Kullanım Şartları</a>
-        <a href="#" class="">İletişim</a>
+        <a href="{{ route('contact') }}" class="">İletişim</a>
       </div>
     </footer>
 </div>

@@ -11,7 +11,7 @@
 </style>
     <main>
         
-        <section class="hero-card hero" aria-labelledby="hero-title">
+        <section class="hero-card hero mt-3" aria-labelledby="hero-title">
             
             <div class="hero-left grid-20">
                 <strong id="hero-title">Hoş geldiniz, {{ auth('teacher')->user()->name }}!</strong>
@@ -99,13 +99,6 @@
             </div>
             <div id="allCalendar"></div>
         </section>
-
-        <section class="hero-card" >
-            <div class="text-center mb-3">
-                <h2>Ücretli Ders Takvimi</h2>
-            </div>
-            <div id="paidCalendar"></div>
-        </section>
         @endif
         <!-- Event Ekleme Modal -->
         <div class="modal fade" id="eventModal" tabindex="-1">
@@ -158,10 +151,9 @@
                 </div>
 
                 <div class="mb-3">
-                    <label>Ücretsiz mi?</label>
+                    <label>Ders Türü</label>
                     <select id="is_free" class="form-select">
                         <option value="1">Ücretsiz</option>
-                        <option value="0">Ücretli</option>
                     </select>
                     </div>
 
@@ -225,7 +217,7 @@
                             <b>2. Ders oluşturma</b>
                             <p>
                                 Ders takviminizdeki bir tarihe tıkladığınızda ders oluşturma formu açılacaktır. Bu formdaki alanları doldurarak 
-                                ücretsiz veya ücretli bir ders planlayabilirsiniz. Lütfen formdaki alanları eksiksiz doldurduğunuzdan emin olun. <br>
+                                ücretsiz derslerinizi planlayabilirsiniz. Lütfen formdaki alanları eksiksiz doldurduğunuzdan emin olun. <br>
                                 * Ders başlığında, derste işleyeceğiniz konuyu mutlaka belirtin. <br>
                                 * Sınıf seviyesini mutlaka belirtin. <br>
                                 * Ders başlangıç ve bitiş saatlerini doğru girdiğinizden emin olun. <br>
@@ -303,10 +295,10 @@
                                 <div class="col-6">
                                     <p>
                                         <!-- is_free selectbox --> 
-                                        <label><strong>Ücretsiz mi?</strong></label>
+                                        <label><strong>Ders Türü</strong></label>
                                         <select id="detailIsFree" name="is_free" class="form-select" disabled>
                                             <option value="1" >Ücretsiz</option>
-                                            <option value="0" >Ücretli</option>
+                                            <!--<option value="0" >Ücretli</option>-->
                                         </select>
                                     </p>
                                 </div>
@@ -446,15 +438,15 @@
                                 <div class="col-6">
                                     <p>
                                         <!-- is_free selectbox --> 
-                                        <label><strong>Ücretsiz mi?</strong></label>
+                                        <label><strong>Ders Türü</strong></label>
                                         <select disabled id="AlldetailIsFree" name="is_free" class="form-select">
                                             <option value="1" >Ücretsiz</option>
-                                            <option value="0" >Ücretli</option>
+                                            
                                         </select>
                                     </p>
                                 </div>
                                 <div class="col-6" id="detailPriceArea2">
-                                    <p><strong>Ücret:</strong> <input disabled type="text"  name="price" id="AlldetailPrice" class="form-control"></p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -570,7 +562,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var selectedDate = null;
 
     // isFree selectbox change event
-    document.getElementById('is_free').addEventListener('change', function () {
+    /*document.getElementById('is_free').addEventListener('change', function () {
         if (this.value == "0") {
             document.getElementById('detailPriceArea').style.display = 'block';
         } else {
@@ -585,7 +577,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             document.getElementById('detailPriceArea').style.display = 'none';
         }
-    });
+    });*/
 
    var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
@@ -642,7 +634,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     ? 'Ücretsiz' 
                     : event.extendedProps.price + ' ₺';
 
-                document.getElementById('detailPrice').innerText = priceText;
+                //document.getElementById('detailPrice').innerText = priceText;
 
                 document.getElementById('detailPersonMin').value =
                     event.extendedProps.min_person;
@@ -661,7 +653,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('detailIsFree').value = event.extendedProps.is_free
 
                 // price input
-                document.getElementById('detailPrice').value = event.extendedProps.price
+                //document.getElementById('detailPrice').value = event.extendedProps.price
 
                 document.getElementById('detailId').value = event.id;
                 document.getElementById('detailTitle').value = event.title;
@@ -847,8 +839,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     ? 'Ücretsiz' 
                     : event.extendedProps.price + ' ₺';
 
-                document.getElementById('AlldetailPrice').innerText = priceText;
-                document.getElementById('AlldetailPrice').innerText = priceText;
+                //document.getElementById('AlldetailPrice').innerText = priceText;
 
                 document.getElementById('AlldetailPersonMin').value =
                     event.extendedProps.min_person;
@@ -871,7 +862,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('AlldetailIsFree').value = event.extendedProps.is_free
 
                 // price input
-                document.getElementById('AlldetailPrice').value = event.extendedProps.price
+                //document.getElementById('AlldetailPrice').value = event.extendedProps.price
 
                 document.getElementById('detailId').value = event.id;
                 document.getElementById('AlldetailTitle').value = event.title;
@@ -929,8 +920,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     ? 'Ücretsiz' 
                     : event.extendedProps.price + ' ₺';
 
-                document.getElementById('AlldetailPrice').innerText = priceText;
-                document.getElementById('AlldetailPrice').innerText = priceText;
+                //document.getElementById('AlldetailPrice').innerText = priceText;
 
                 document.getElementById('AlldetailPersonMin').value =
                     event.extendedProps.min_person;
@@ -953,7 +943,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('AlldetailIsFree').value = event.extendedProps.is_free
 
                 // price input
-                document.getElementById('AlldetailPrice').value = event.extendedProps.price
+                //document.getElementById('AlldetailPrice').value = event.extendedProps.price
 
                 document.getElementById('detailId').value = event.id;
                 document.getElementById('AlldetailTitle').value = event.title;

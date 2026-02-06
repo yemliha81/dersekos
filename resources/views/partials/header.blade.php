@@ -85,6 +85,13 @@
     .top-info-box-title{
       color: #ffdd81ff;
     }
+    .whatsapp-btn{
+      background: #9affae;
+      display: inline-block;
+      padding: 5px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
   </style>
   <style>
     /* -----------------------------
@@ -738,11 +745,17 @@
         <a href="{{ route('contact') }}">Bize ulaşın</a>
         <a href="{{ route('about.page') }}">Hakkımızda</a>
         <a href="{{ route('teachers.list') }}">Eğitmenler</a>
-        @if(Auth::check())
-            <a href="{{ route('student.dashboard') }}">Hesabım</a>
-            <a href="{{ route('student.logout') }}">Çıkış Yap</a>
+        @if(!auth('student')->check() && !auth('teacher')->check())
+        <a href="{{ route('login.choose') }}" class="cta">Üye Ol / Giriş Yap</a>
         @else
-            <a href="{{ route('login.choose') }}">Giriş yap / Üye ol</a>
+          @if(auth('teacher')->check())
+          <a href="{{ route('teacher.dashboard') }}">Hesabım</a>
+          <a href="{{ route('teacher.logout') }}">Çıkış Yap</a>
+          @endif
+          @if(auth('student')->check())
+          <a href="{{ route('student.dashboard') }}">Hesabım</a>
+          <a href="{{ route('student.logout') }}">Çıkış Yap</a>
+          @endif
         @endif
       
     </div>

@@ -11,7 +11,7 @@
             <div class="col-12 col-md-3">
             <section class="mb-3" aria-labelledby="hero-title">
                 <div class="hero-left">
-                    <div class="mb-3">Hoş geldin, <br> <b id="hero-title">{{ auth('student')->user()->name }}!</b></div>
+                    <div class="mb-3">Hoş geldin, <b id="hero-title">{{ auth('student')->user()->name }}!</b></div>
                 </div>
                 <div>
                     @if(auth('student')->user()->grade == '1')
@@ -55,11 +55,15 @@
                 @endif
                 </div>
             </section>
-
-            <section class="mb-3" aria-labelledby="hero-title">
+            <section class="hero-card mb-50" aria-labelledby="hero-title">
                 <div class="left-student-menu">
-                    <div class="mb-3"><a href="{{route('student.old_lessons')}}"> <i class="bi bi-file-earmark-text"></i> Geçmiş Derslerim</a></div>
-                    <div><a href="{{route('student.dashboard2')}}"> <i class="bi bi-file-earmark-text"></i> Tüm Sınıf Dersleri</a></div>
+                    <a href="{{route('student.dashboard')}}"> <i class="bi bi-person "></i> Öğrenci Sayfam</a>
+                </div>
+                <div class="left-student-menu">
+                    <a href="{{route('student.old_lessons')}}"> <i class="bi bi-file-earmark-text"></i> Geçmiş Derslerim</a>
+                </div>
+                <div class="left-student-menu">
+                    <a href="{{route('student.dashboard2')}}"> <i class="bi bi-file-earmark-text"></i> Tüm Sınıf Dersleri</a>
                 </div>
             </section>
       </div>
