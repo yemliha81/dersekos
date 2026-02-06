@@ -533,43 +533,6 @@
       border-radius: 10px;
     }
 
-    
-
-    /* Küçük ekranlarda yüksekliği azalt */
-    @media (max-width: 576px) {
-      .swiper { height: 240px; }
-      .swiper-slide{
-        width:100% !important;
-      }
-      .free-lessons{
-        grid-template-columns:1fr;
-      }
-      .lesson-card{
-        display:grid;
-        grid-template-columns:1fr;
-      }
-      .lessons{
-        grid-template-columns:1fr;
-      }
-      .camp-photos{
-        grid-template-columns:1fr;
-      }
-      .home-header-div{
-        flex-direction: column;
-        gap:20px;
-        background: #FFFFFF;
-        color: #000000ff;
-      }
-      .top-info-boxes{
-        grid-template-columns: 1fr 1fr;
-      }
-      .top-image-areas{
-        grid-template-columns: 1fr !important;
-      }
-      .top-image-area img{
-        width:100px !important;
-      }
-    }
 
     /* Küçük stil düzeltmeleri: navigation butonlarının görünürlüğü */
     .swiper-button-next, .swiper-button-prev {
@@ -686,6 +649,62 @@
       grid-template-columns: 1fr 1fr 1fr;
     }
 
+
+    /* Küçük ekranlarda yüksekliği azalt */
+    @media (max-width: 576px) {
+      .swiper { height: 240px; }
+      .swiper-slide{
+        width:100% !important;
+      }
+      .free-lessons{
+        grid-template-columns:1fr;
+      }
+      .lesson-card{
+        display:grid;
+        grid-template-columns:1fr;
+      }
+      .lessons{
+        grid-template-columns:1fr;
+      }
+      .camp-photos{
+        grid-template-columns:1fr;
+      }
+      .home-header-div{
+        flex-direction: column;
+        gap:20px;
+        background: #FFFFFF;
+        color: #000000ff;
+      }
+      .top-info-boxes{
+        grid-template-columns: 1fr 1fr;
+      }
+      .top-image-areas{
+        grid-template-columns: 1fr !important;
+      }
+      .top-image-area img{
+        width:100px !important;
+      }
+
+      .top-nav-bar{
+        display: none;
+      }
+
+      .top-nav-bar .container{
+        flex-direction: column;
+        gap: 0px !important;
+      }
+      .top-nav-bar a{
+        padding: 8px 0;
+        padding: 14px 12px !important;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #dddddd;
+      }
+      .teachers-list{
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
 <!-- Swiper CSS (CDN) -->
@@ -703,34 +722,6 @@
     gtag('config', 'G-EKY9M74W3D');
   </script>
   <div class="container">
-    <!--<header>
-    <div class="inner container">
-      <div class="brand">
-        <div class="logo">
-        <img src="{{asset('assets/img/dersekos-favicon.png')}}" width="150" alt="DerseKos Logo" >    
-      </div>
-        <a href="{{ route('home') }}">
-          <strong>Derse Koş</strong>
-        </a>
-        
-      </div>
-      <nav class="nav">
-        @if(!auth('student')->check() && !auth('teacher')->check())
-        <a href="{{ route('login.choose') }}" class="">Üye Ol / Giriş Yap</a>
-        @else
-          @if(auth('teacher')->check())
-          <a href="{{ route('teacher.dashboard') }}">Hesabım</a>
-          <a href="{{ route('teacher.logout') }}">Çıkış Yap</a>
-          @endif
-          @if(auth('student')->check())
-          <a href="{{ route('student.dashboard') }}">Hesabım</a>
-          <a href="{{ route('student.logout') }}">Çıkış Yap</a>
-          @endif
-        @endif
-        
-      </nav>
-    </div>
-  </header>-->
 
   <div style="text-align:center">
     <a href="{{ route('home') }}">
@@ -747,9 +738,22 @@
         <a href="{{ route('contact') }}">Bize ulaşın</a>
         <a href="{{ route('about.page') }}">Hakkımızda</a>
         <a href="{{ route('teachers.list') }}">Eğitmenler</a>
-        <a href="">Ücretsiz Dersler</a>
+        @if(Auth::check())
+            <a href="{{ route('student.dashboard') }}">Hesabım</a>
+            <a href="{{ route('student.logout') }}">Çıkış Yap</a>
+        @else
+            <a href="{{ route('login.choose') }}">Giriş yap / Üye ol</a>
+        @endif
       
     </div>
   </div>
+
+  <a href="javascript:;" class="mobile-nav-toggle d-lg-none" 
+    style="position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 36px;z-index:1111;">
+    <i class="bi-list"></i>
+  </a>
 
   <div class="container">

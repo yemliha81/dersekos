@@ -11,9 +11,9 @@
                         <h1 class="mb-20">Bize Ulaşın</h1>
                         
                         <p>
-                            Adres: Derse Koş Eğitim Danışmanlık Sanayi ve Ticaret Ltd. Şti. Kılıçdede, <br>Kastamonu Sk., 55060 İlkadım/Samsun<br>
-                            Telefon: +90 530 226 01 55<br>
-                            E-posta: <a href="mailto:info@dersekos.com">info@dersekos.com</a>
+                            <b>Adres:</b> Derse Koş Eğitim Danışmanlık Sanayi ve Ticaret Ltd. Şti. Kılıçdede, <br>Kastamonu Sk., No:6 K:1 D:26 55060 İlkadım/Samsun<br>
+                            <b>Telefon:</b> +90 530 226 01 55<br>
+                            <b>E-posta:</b> <a href="mailto:info@dersekos.com">info@dersekos.com</a>
                         </p>
                     </div>
                 </div>

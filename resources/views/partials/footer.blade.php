@@ -14,6 +14,19 @@
       </div>
     </footer>
 </div>
+<script>
+  // Mobile nav toggle
+    document.querySelector('.mobile-nav-toggle').addEventListener('click', function() {
+      const nav = document.querySelector('.top-nav-bar');
+      if (nav.style.display === 'flex') {
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.gap = '10px';
+      }
+    });
+</script>
 </body>
 
 </html>
