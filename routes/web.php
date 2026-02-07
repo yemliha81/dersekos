@@ -209,7 +209,6 @@ Route::get('/banned',
 // Student Dashboard route
 Route::get('/student/dashboard', 'App\Http\Controllers\StudentController@dashboard')->middleware('auth:student')->name('student.dashboard');
 Route::get('/student/dashboard234', 'App\Http\Controllers\StudentController@dashboard2')->middleware('auth:student')->name('student.dashboard2');
-Route::get('/student/dashboard234', 'App\Http\Controllers\StudentController@dashboard2')->middleware('auth:student')->name('student.dashboard2');
 Route::get('/student/old-lessons', 'App\Http\Controllers\StudentController@oldEvents')->middleware('auth:student')->name('student.old_lessons');
 Route::post('/student/event-rate', 'App\Http\Controllers\StudentController@rateEvent')->middleware('auth:student')->name('student.event_rate');
 Route::post('/student/join-free-lesson/{id}', 'App\Http\Controllers\StudentController@joinToEvent')->middleware('auth:student')->name('student.join_free_lesson');
@@ -302,6 +301,16 @@ Route::get('/ara-tatil-kamplar', 'App\Http\Controllers\HomeController@campsList'
 //Exam Route
 Route::get('/exam/{id}', 'App\Http\Controllers\ExamController@index')->name('exam.index');
 Route::post('/exam/{exam_id}/submit-answers', 'App\Http\Controllers\ExamController@submitAnswers')->name('exam.submit_answers');
+
+//Contact Route
+Route::get('/iletisim', 'App\Http\Controllers\HomeController@contact')->name('contact');
+Route::post('/iletisim/form-submit', 'App\Http\Controllers\HomeController@contactFormSubmit')->name('contact.form.submit');
+
+Route::get('/hakkimizda', 'App\Http\Controllers\HomeController@about')->name('about.page');
+
+// Teachers List Route
+Route::get('/ogretmenler', 'App\Http\Controllers\HomeController@teachersList')->name('teachers.list');
+
 
 
 

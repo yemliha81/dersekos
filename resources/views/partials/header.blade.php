@@ -61,7 +61,7 @@
     .top-info-box{
       padding: 24px;
       border-radius: 12px;
-      background: #901aad;
+      background: #456dce;
       color: #fff;
       box-shadow: 0 6px 20px rgba(15,23,42,0.08);
       display: flex;
@@ -84,6 +84,13 @@
     }
     .top-info-box-title{
       color: #ffdd81ff;
+    }
+    .whatsapp-btn{
+      background: #9affae;
+      display: inline-block;
+      padding: 5px;
+      border-radius: 5px;
+      font-weight: bold;
     }
   </style>
   <style>
@@ -247,12 +254,11 @@
       font-family: "Work Sans", sans-serif;
       background: #FFFFFF; color:#000000;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.45;
-      padding-top:24px;
     }
     .mb-50{margin-bottom:50px}
     .mt-50{margin-top:50px}
     a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
+    img{max-width:100%; display:inline-block}
 
     /* Container */
     .container{max-width:1180px; margin:0 auto}
@@ -327,8 +333,12 @@
     .feature{padding:14px;; border-radius:12px}
 
     /* Footer */
-    footer{margin-top:28px; padding-top:18px; border-top:1px dashed rgba(255,255,255,0.03); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-
+    footer{border-top:1px dashed rgba(255,255,255,0.03); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .footer{
+      background: #456dcf;
+    color: #FFFFFF;
+    padding: 20px;
+    }
     /* Responsive larger screens */
     @media(min-width:820px){
       header{margin-bottom:40px}
@@ -530,37 +540,6 @@
       border-radius: 10px;
     }
 
-    
-
-    /* Küçük ekranlarda yüksekliği azalt */
-    @media (max-width: 576px) {
-      .swiper { height: 240px; }
-      .swiper-slide{
-        width:100% !important;
-      }
-      .free-lessons{
-        grid-template-columns:1fr;
-      }
-      .lesson-card{
-        display:grid;
-        grid-template-columns:1fr;
-      }
-      .lessons{
-        grid-template-columns:1fr;
-      }
-      .camp-photos{
-        grid-template-columns:1fr;
-      }
-      .home-header-div{
-        flex-direction: column;
-        gap:20px;
-        background: #FFFFFF;
-        color: #000000ff;
-      }
-      .top-info-boxes{
-        grid-template-columns: 1fr 1fr;
-      }
-    }
 
     /* Küçük stil düzeltmeleri: navigation butonlarının görünürlüğü */
     .swiper-button-next, .swiper-button-prev {
@@ -598,6 +577,141 @@
       gap: 10px;
     }
 
+    .top-nav-bar{
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 0;
+      border-bottom: 1px solid #a3a3a3;
+      background: #456dcf;
+    }
+
+    .top-nav-bar .container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .top-nav-bar a{
+      color: #FFFFFF;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 8px 12px;
+      display: inline-block;
+    }
+
+    .lead-text{
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #333333;
+    }
+
+    .lead-text h1{
+      font-size: 2.5rem;
+      color: #222222;
+    }
+
+    .top-image-areas{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+      gap: 20px;
+    }
+
+    .top-image-area{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      gap: 20px;
+      background: #3fa5bd;
+      color: #FFFFFF;
+    }
+
+    .top-image-area img{
+      width:200px;
+    }
+
+    .login-new-btn{
+      display: inline-block;
+      background: #FFFFFF;
+      padding: 8px 16px;
+      white-space: nowrap;
+      font-size: 16px;
+      font-weight: bold;
+      color: #0ca9e1;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .text-right{
+      text-align: right;
+    }
+
+    .teachers-list{
+      display: grid; gap:20px;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+
+    /* Küçük ekranlarda yüksekliği azalt */
+    @media (max-width: 576px) {
+      .swiper { height: 240px; }
+      .swiper-slide{
+        width:100% !important;
+      }
+      .free-lessons{
+        grid-template-columns:1fr;
+      }
+      .lesson-card{
+        display:grid;
+        grid-template-columns:1fr;
+      }
+      .lessons{
+        grid-template-columns:1fr;
+      }
+      .camp-photos{
+        grid-template-columns:1fr;
+      }
+      .home-header-div{
+        flex-direction: column;
+        gap:20px;
+        background: #FFFFFF;
+        color: #000000ff;
+      }
+      .top-info-boxes{
+        grid-template-columns: 1fr 1fr;
+      }
+      .top-image-areas{
+        grid-template-columns: 1fr !important;
+      }
+      .top-image-area img{
+        width:100px !important;
+      }
+
+      .top-nav-bar{
+        display: none;
+      }
+
+      .top-nav-bar .container{
+        flex-direction: column;
+        gap: 0px !important;
+      }
+      .top-nav-bar a{
+        padding: 8px 0;
+        padding: 14px 12px !important;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #dddddd;
+      }
+      .teachers-list{
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
 <!-- Swiper CSS (CDN) -->
@@ -615,18 +729,22 @@
     gtag('config', 'G-EKY9M74W3D');
   </script>
   <div class="container">
-    <header>
-    <div class="inner container">
-      <div class="brand">
-        <div class="logo">
-        <img src="{{asset('assets/img/dersekos-favicon.png')}}" width="150" alt="DerseKos Logo" >    
-      </div>
-        <a href="{{ route('home') }}">
-          <strong>Derse Koş</strong>
-        </a>
-        
-      </div>
-      <nav class="nav">
+
+  <div style="text-align:center">
+    <a href="{{ route('home') }}">
+      <img src="{{asset('assets/img/dersekos.jpg')}}" width="150" alt="DerseKos Logo" >
+      </a>
+  </div>
+
+  </div>
+
+  
+  <div class="top-nav-bar">
+    <div class="container">
+        <a href="{{ route('home') }}">Anasayfa</a>
+        <a href="{{ route('contact') }}">Bize ulaşın</a>
+        <a href="{{ route('about.page') }}">Hakkımızda</a>
+        <a href="{{ route('teachers.list') }}">Eğitmenler</a>
         @if(!auth('student')->check() && !auth('teacher')->check())
         <a href="{{ route('login.choose') }}" class="cta">Üye Ol / Giriş Yap</a>
         @else
@@ -639,8 +757,16 @@
           <a href="{{ route('student.logout') }}">Çıkış Yap</a>
           @endif
         @endif
-        
-      </nav>
+      
     </div>
-  </header>
-    <div style="height:80px"></div>
+  </div>
+
+  <a href="javascript:;" class="mobile-nav-toggle d-lg-none" 
+    style="position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 36px;z-index:1111;">
+    <i class="bi-list"></i>
+  </a>
+
+  <div class="container">
