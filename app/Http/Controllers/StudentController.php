@@ -12,23 +12,11 @@ use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
+
     public function dashboard()
     {
 
-        // cache $teachers for 60 minutes
-        /*$teachers = cache()->remember('teachers', 60, function () {
-            return Teacher::orderByRaw("
-                CASE 
-                    WHEN image IS NULL OR image = '' THEN 1 
-                    ELSE 0 
-                END
-            ")->where('status', 1)->get();
-        });*/
-
-
-
-        // $where = // where start >= now
-        // $lessons = Event::where('is_free', 1)->where('end', '>=', now())->with('teacher')->orderBy('start')->get();
+        
 
         $lessons = Event::with('teacher')->where(['is_free' => 1, 'grade' => auth()->user()->grade])->where('end', '>=', now())->orderBy('start')->get();
 
