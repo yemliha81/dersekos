@@ -7,60 +7,63 @@
 
     <main>
         <!-- col-3 in pc screen, col-12 in mobile screen -->
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-12 col-md-3">
-            <section class="hero-card mb-3" aria-labelledby="hero-title">
+            <section class="mb-3" aria-labelledby="hero-title">
                 <div class="hero-left">
-                    <div class="mb-3">Hoş geldin, <br> <b id="hero-title">{{ auth('student')->user()->name }}!</b></div>
-                    <p class="muted d-none d-sm-block">Burada derslerini yönetebilir, eğitmenlerinle iletişim kurabilir ve öğrenme yolculuğuna devam edebilirsin.</p>
+                    <div class="mb-3">Hoş geldin, <b id="hero-title">{{ auth('student')->user()->name }}!</b></div>
                 </div>
                 <div>
                     @if(auth('student')->user()->grade == '1')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/KqnVpHc71dBGHMlPVwa8YM?mode=hqrc">1. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/KqnVpHc71dBGHMlPVwa8YM?mode=hqrc">1. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '2')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/BUfeng4quwoIFoC0tXHsQS?mode=hqrc">2. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/BUfeng4quwoIFoC0tXHsQS?mode=hqrc">2. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '3')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FHb3K0BlY0P01YCJWEawcD?mode=hqrc">3. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/FHb3K0BlY0P01YCJWEawcD?mode=hqrc">3. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '4')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IQW5Ft9xGZSGgbf1m3D4b9?mode=hqrc">4. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/IQW5Ft9xGZSGgbf1m3D4b9?mode=hqrc">4. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '5')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '6')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '7')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '8')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '9')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '10')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/L97vpPBhlqt3dpfV4knbND?mode=hqrc">10. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/L97vpPBhlqt3dpfV4knbND?mode=hqrc">10. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '11')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/GHZ6XPSC9q1A0K5oeG26Pa?mode=hqrc">11. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/GHZ6XPSC9q1A0K5oeG26Pa?mode=hqrc">11. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '12')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">12. Sınıf WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">12. Sınıf WhatsApp Grubumuza Katıl</a>
                 @endif
                 @if(auth('student')->user()->grade == '13')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/GmPAYDFFoSOGcxULO9ApGw?mode=hqrc">KPSS WhatsApp Grubumuza Katıl</a>
+                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/GmPAYDFFoSOGcxULO9ApGw?mode=hqrc">KPSS WhatsApp Grubumuza Katıl</a>
                 @endif
                 </div>
             </section>
-
-            <section class="hero-card mb-3" aria-labelledby="hero-title">
+            <section class="hero-card mb-50" aria-labelledby="hero-title">
                 <div class="left-student-menu">
-                    <div class="mb-3"><a href="{{route('student.old_lessons')}}"> <i class="bi bi-file-earmark-text"></i> Geçmiş Derslerim</a></div>
-                    <div><a href="{{route('student.dashboard2')}}"> <i class="bi bi-file-earmark-text"></i> Tüm Sınıf Dersleri</a></div>
+                    <a href="{{route('student.dashboard')}}"> <i class="bi bi-person "></i> Öğrenci Sayfam</a>
+                </div>
+                <div class="left-student-menu">
+                    <a href="{{route('student.old_lessons')}}"> <i class="bi bi-file-earmark-text"></i> Geçmiş Derslerim</a>
+                </div>
+                <div class="left-student-menu">
+                    <a href="{{route('student.dashboard2')}}"> <i class="bi bi-file-earmark-text"></i> Tüm Sınıf Dersleri</a>
                 </div>
             </section>
       </div>
@@ -151,7 +154,7 @@
                     </div>
                 </div>
                 <!-- Ücretli Dersler --> 
-                <div class="">
+                <!--<div class="">
                     <div class="paid-lesson-title-div"><b>Ücretli Dersler</b></div>
                     <div class="lessons">
                         @if(count($paidLessons) > 0)
@@ -188,7 +191,7 @@
                             </div>
                         @endif
                     </div>
-                </div>
+                </div>-->
             </section>
         </div>
         </div>
@@ -197,7 +200,7 @@
         
 
         <!-- paid lesson modal -->
-        <div class="modal" tabindex="-1" role="dialog" id="paidLessonModal" style="display:none;">
+        <!--<div class="modal" tabindex="-1" role="dialog" id="paidLessonModal" style="display:none;">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -220,7 +223,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
 
     </main>
 

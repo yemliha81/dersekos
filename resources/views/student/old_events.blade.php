@@ -7,15 +7,9 @@
 
     <main>
         <!-- col-3 in pc screen, col-12 in mobile screen -->
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-12 col-md-3">
-            <section class="hero-card mb-50" aria-labelledby="hero-title">
-                <div class="hero-left">
-                    <div class="mb-3"><b id="hero-title">{{ auth('student')->user()->name }}!</b></div>
-                    <p class="muted">Bu sayfada geçmiş derslerinizi görebilir, yorum ve puan ekleyebilirsiniz.</p>
-                </div>
-                
-            </section>
+            
 
             <section class="hero-card mb-50" aria-labelledby="hero-title">
                 <div class="left-student-menu">
