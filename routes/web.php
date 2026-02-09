@@ -224,7 +224,7 @@ Route::post('/ogretmen/kayit', 'App\Http\Controllers\TeacherController@signup')-
 Route::post('/ogretmen/profil/duzenle', 'App\Http\Controllers\TeacherController@updateProfile')->middleware('auth:teacher')->name('teacher.profile.update');
 
 Route::get('/teacher/dashboard', 'App\Http\Controllers\TeacherController@dashboard')->middleware('auth:teacher')->name('teacher.dashboard');
-Route::get('/ogretmenler', 'App\Http\Controllers\TeacherController@listTeachers')->middleware('auth:student')->name('teacher.list');
+//Route::get('/ogretmenler', 'App\Http\Controllers\TeacherController@listTeachers')->middleware('auth:student')->name('teacher.list');
 Route::get('/ogretmen/{id}/profil', 'App\Http\Controllers\TeacherController@viewProfile')->middleware('auth:student')->name('teacher.profile');
 
 
