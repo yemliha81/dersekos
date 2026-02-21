@@ -221,6 +221,8 @@ class HomeController extends Controller
         ->get();
         return view('teachers_list', compact('teachers'));
     } 
+
+    
     
 
     
