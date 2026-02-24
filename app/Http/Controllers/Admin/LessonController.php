@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Lesson;
+use App\Models\Event;
+use App\Models\Teacher;
 use App\Models\Language; // Assuming you have a Language model to fetch languages
 
 class LessonController extends Controller
@@ -100,6 +102,42 @@ class LessonController extends Controller
         Lesson::where('lesson_id', $id)->delete();
         LessonSlider::where('lesson_id', $id)->delete();
         return redirect()->route('admin.lesson')->with('success', 'Lesson başarıyla silindi.');
+    }
+
+
+    public function free_lesson_stats()
+    {
+        $lessons = [];
+        // check if this is a get request
+        $request = request();
+        if($request->has('start_date') && $request->has('end_date')){
+            $request->validate([
+                'start_date' => 'required|date',
+                'end_date' => 'required|date|after:start_date',
+            ]);
+            $start_date = $request->input('start_date');
+            $end_date = $request->input('end_date');
+            // code to show edit lesson form
+            $lessons = Event::where('start', '>=', $start_date)->where('end', '<=', $end_date)->where('grade', '<', 9)->get();
+
+
+            //group these lessons by their teacher_id
+            $groupedLessons = [];
+            foreach ($lessons as $lesson) {
+                $teacher_id = $lesson->teacher_id;
+                if (!isset($groupedLessons[$teacher_id])) {
+                    $groupedLessons[$teacher_id] = [];
+                }
+                $groupedLessons[$teacher_id]['lessons'][] = $lesson;
+                $groupedLessons[$teacher_id]['teacher'] = Teacher::where('id', $teacher_id)->first();
+                $groupedLessons[$teacher_id]['count'] = Event::where('teacher_id', $teacher_id)->where('start', '>=', $start_date)->where('end', '<=', $end_date)->count();
+            }
+
+            //dd($groupedLessons);
+        }
+        
+        
+        return view('admin.free_lessons.index', compact('groupedLessons'));
     }
 
 }

@@ -187,6 +187,9 @@ Route::post('/admin/vip-package/store', 'App\Http\Controllers\Admin\VipPackageCo
 Route::get('/admin/vip-package/{id}/edit', 'App\Http\Controllers\Admin\VipPackageController@edit')->name('admin.vip_package.edit');
 Route::delete('/admin/vip-package/{id}', 'App\Http\Controllers\Admin\VipPackageController@destroy')->name('admin.vip_package.destroy');
 
+// lesson stats route
+Route::get('/admin/lesson/stats', 'App\Http\Controllers\Admin\LessonController@free_lesson_stats')->name('admin.lesson.stats');
+
 
 }); // End of Auth middleware group
 //Project Front End routes
