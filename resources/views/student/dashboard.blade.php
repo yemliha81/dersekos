@@ -79,7 +79,7 @@
                                     <div class="free-lesson-card card_{{ $lesson->id }}">
                                         <div class="flex-space-between">
                                             <div >
-                                                <div>@if($lesson->grade != null)<b>{{ $(lesson->grade) == 13 ? 'KPSS' : $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
+                                                <div>@if($lesson->grade != null)<b>{{ ($lesson->grade == 13 ) ? 'KPSS' : $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
                                                 <div style="font-size:15px;">{{ $lesson->title }}</div>
                                             </div>
                                             <div>
