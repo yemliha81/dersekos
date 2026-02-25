@@ -124,7 +124,7 @@
                                             <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
                                                 <div class="flex-space-between">
                                                     <div >
-                                                        <div>@if($lesson->grade != null)<b>{{ $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
+                                                        <div>@if($lesson->grade != null)<b>{{ ($lesson->grade == 13 ) ? 'KPSS' : $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
                                                         <div style="font-size:15px;">{{ $lesson->title }}</div>
                                                     </div>
                                                     <a href="javascript:;" class="btnx join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
