@@ -38,6 +38,7 @@ class VipPackageController extends Controller
 
 
         $vip_package->title = $request->title;
+        $vip_package->type = $request->type;
         $vip_package->description = $request->description;
         $vip_package->slug = \Str::slug($request->title);
 

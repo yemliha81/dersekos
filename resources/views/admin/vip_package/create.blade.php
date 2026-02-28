@@ -47,6 +47,14 @@
                                 <div class="" id="tab-1" role="tabpanel" aria-labelledby="tab-1-tab">
                                     <div class="card-body">
                                        <div class="">
+                                            <!-- Camp type selection -->
+                                             <div class="mb-3">
+                                                <label for="type" class="form-label">Paket Tipi </label>
+                                                <select name="type" id="type" class="form-control" required>
+                                                    <option value="package">Paket</option>
+                                                    <option value="camp">Kamp</option>
+                                                </select>
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="title" class="form-label">Başlık </label>
                                                 <input type="text" class="form-control" id="title" name="title" required>

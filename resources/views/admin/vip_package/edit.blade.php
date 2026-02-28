@@ -48,6 +48,13 @@
                                     <div class="card-body">
                                        <div class="">
                                             <div class="mb-3">
+                                                <label for="type" class="form-label">Paket Tipi </label>
+                                                <select name="type" id="type" class="form-control" required>
+                                                    <option value="package" {{ $vip_package->type == 'package' ? 'selected' : '' }}>Paket</option>
+                                                    <option value="camp" {{ $vip_package->type == 'camp' ? 'selected' : '' }}>Kamp</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="title" class="form-label">Başlık </label>
                                                 <input type="text" class="form-control" id="title" name="title" value="{{ $vip_package->title }}" required>
                                             </div>

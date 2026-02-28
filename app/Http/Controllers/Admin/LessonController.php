@@ -130,7 +130,7 @@ class LessonController extends Controller
                 }
                 $groupedLessons[$teacher_id]['lessons'][] = $lesson;
                 $groupedLessons[$teacher_id]['teacher'] = Teacher::where('id', $teacher_id)->first();
-                $groupedLessons[$teacher_id]['count'] = Event::where('teacher_id', $teacher_id)->where('start', '>=', $start_date)->where('end', '<=', $end_date)->count();
+                $groupedLessons[$teacher_id]['count'] = Event::where('teacher_id', $teacher_id)->where('grade', '<', 9)->where('start', '>=', $start_date)->where('end', '<=', $end_date)->count();
             }
 
             //dd($groupedLessons);
