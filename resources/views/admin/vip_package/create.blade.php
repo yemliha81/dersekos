@@ -61,7 +61,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="description" class="form-label">Açıklama </label>
-                                                <textarea name="description" id="description" class="form-control editor" required></textarea>
+                                                <textarea name="description" id="description" class="form-control summernote" required></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="price" class="form-label">Aylık Ücret </label>
