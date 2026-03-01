@@ -18,6 +18,8 @@ class VipPackage extends Model
 
     protected $fillable = [
         'title',
+        'subtitle',
+        'type',
         'description',
         'slug',
         'image',

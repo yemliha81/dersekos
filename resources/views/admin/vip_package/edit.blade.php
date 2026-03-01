@@ -58,6 +58,18 @@
                                                 <label for="title" class="form-label">Başlık </label>
                                                 <input type="text" class="form-control" id="title" name="title" value="{{ $vip_package->title }}" required>
                                             </div>
+                                             <div class="mb-3">
+                                                <label for="subtitle" class="form-label">Alt Başlık </label>
+                                                <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{ $vip_package->subtitle }}" required>
+                                            </div>
+                                            <!-- Type Selectbox -->
+                                             <div class="mb-3">
+                                                <label for="type" class="form-label">Paket Tipi </label>
+                                                <select name="type" id="type" class="form-control" required>
+                                                    <option value="package" {{ $vip_package->type == 'package' ? 'selected' : '' }}>Paket</option>
+                                                    <option value="camp" {{ $vip_package->type == 'camp' ? 'selected' : '' }}>Kamp</option>
+                                                </select>
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="description" class="form-label">Açıklama </label>
                                                 <textarea name="description" id="description" class="form-control summernote" required>{{ $vip_package->description }}</textarea>
