@@ -60,8 +60,8 @@
                                                 <input type="text" class="form-control" id="title" name="title" required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="description" class="form-label">Alt Başlık </label>
-                                                <textarea name="description" id="description" class="form-control" required></textarea>
+                                                <label for="description" class="form-label">Açıklama </label>
+                                                <textarea name="description" id="description" class="form-control editor" required></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="price" class="form-label">Aylık Ücret </label>
