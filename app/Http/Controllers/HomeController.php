@@ -261,7 +261,7 @@ class HomeController extends Controller
         $phoneNumberId = '975195775683335';
         $accessToken = 'EAAjXZBqSsnEEBQ5SvjA96T3PvpGitd9OCHPXVZBVlVDcgKkUNeveNghNmyjCAxKSCf1JGVe6B69GvfKWdbEfko5GMr3Nj1UhgC0LDWT4dZBaZBpo89XhAZCDKCrkiqtQK7fjLZCxQkp4AbYUuhnZBVnDi0lu0U9uCLEZB8Aey3jPN2gdWJMLfipSfBAATAL9C1XAZBgZDZD';
 
-        $response = Http::withToken($token)
+        $response = Http::withToken($accessToken)
             ->post("https://graph.facebook.com/v22.0/{$phoneNumberId}/messages", [
                 "messaging_product" => "whatsapp",
                 "to" => $phone_number,
