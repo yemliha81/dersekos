@@ -229,7 +229,7 @@ class HomeController extends Controller
         // Get the lessons that start in 30 mins later
 
         $lessons = Event::where('start', '>=', Carbon::now()->addMinutes(30))
-        ->where('start', '<=', Carbon::now()->addMinutes(31))->with("teacher")
+        ->where('start', '<=', Carbon::now()->addMinutes(50))->with("teacher")
         ->get();
         
         $lesson_text = [];
@@ -257,7 +257,6 @@ class HomeController extends Controller
     }
 
     private function sendWhatsappMessage($phone_number, $message) {
-
         $phoneNumberId = '975195775683335';
         $accessToken = 'EAAjXZBqSsnEEBQ5SvjA96T3PvpGitd9OCHPXVZBVlVDcgKkUNeveNghNmyjCAxKSCf1JGVe6B69GvfKWdbEfko5GMr3Nj1UhgC0LDWT4dZBaZBpo89XhAZCDKCrkiqtQK7fjLZCxQkp4AbYUuhnZBVnDi0lu0U9uCLEZB8Aey3jPN2gdWJMLfipSfBAATAL9C1XAZBgZDZD';
 
@@ -265,15 +264,18 @@ class HomeController extends Controller
             ->post("https://graph.facebook.com/v22.0/{$phoneNumberId}/messages", [
                 "messaging_product" => "whatsapp",
                 "to" => $phone_number,
-                "type" => "text",
-                "text" => [
-                    "body" => $message
+                "type" => "template",
+                "template" => [
+                    "name" => "hello_world",
+                    "language" => [
+                        "code" => "en_US"
+                    ]
                 ]
             ]);
 
         return response()->json([
             'status' => $response->status(),
-            'response' => $response->json()
+            'body' => $response->json()
         ]);
     }
 
