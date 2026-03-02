@@ -241,8 +241,7 @@ class HomeController extends Controller
             foreach($lessons as $lesson){
             
                 $lesson_text[$lesson->id] = 
-                "Değerli öğrencilerimiz, 
-                ". $lesson->teacher->name . " hocamızın, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacak olan  
+                "Değerli öğrencilerimiz, n\ ". $lesson->teacher->name . " hocamızın, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacak olan  
                 ". $lesson->title . " dersine katılmak için 
                 dersekos.com üzerinden kayıt olmayı unutmayın. 
                 Şimdiden iyi dersler dileriz. @all";
