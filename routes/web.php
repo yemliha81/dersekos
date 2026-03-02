@@ -314,6 +314,9 @@ Route::get('/hakkimizda', 'App\Http\Controllers\HomeController@about')->name('ab
 // Teachers List Route
 Route::get('/ogretmenler', 'App\Http\Controllers\HomeController@teachersList')->name('teachers.list');
 
+// upComing Events Route
+Route::get('/up-coming-events', 'App\Http\Controllers\HomeController@upComingEvents')->name('upcoming.events');
+
 
 
 

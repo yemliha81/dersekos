@@ -17,7 +17,9 @@ use App\Models\SeoSettings;
 use App\Models\Teacher;
 use App\Models\Event;
 use App\Models\Campaign;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 
 class HomeController extends Controller
@@ -223,7 +225,59 @@ class HomeController extends Controller
     } 
 
     
-    
+    public function upComingEvents(){
+        // Get the lessons that start in 30 mins later
+
+        $lessons = Event::where('start', '>=', Carbon::now()->addMinutes(30))
+        ->where('start', '<=', Carbon::now()->addMinutes(31))->with("teacher")
+        ->get();
+        
+        $lesson_text = [];
+
+        if($lessons->isEmpty()){
+            // No lessons found
+            echo "No lessons found.";
+        }else{
+            foreach($lessons as $lesson){
+            
+                $lesson_text[$lesson->id] = 
+                "Değerli öğrencilerimiz, 
+                ". $lesson->teacher->name . " hocamızın, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacak olan  
+                ". $lesson->title . " dersine katılmak için 
+                dersekos.com üzerinden kayıt olmayı unutmayın. 
+                Şimdiden iyi dersler dileriz. @all";
+
+                $this->sendWhatsappMessage('905067790414', $lesson_text[$lesson->id]);
+
+            }
+
+        }
+
+
+    }
+
+    private function sendWhatsappMessage($phone_number, $message) {
+        $phoneNumberId = '975195775683335';
+        $accessToken = 'EAAjXZBqSsnEEBQ5SvjA96T3PvpGitd9OCHPXVZBVlVDcgKkUNeveNghNmyjCAxKSCf1JGVe6B69GvfKWdbEfko5GMr3Nj1UhgC0LDWT4dZBaZBpo89XhAZCDKCrkiqtQK7fjLZCxQkp4AbYUuhnZBVnDi0lu0U9uCLEZB8Aey3jPN2gdWJMLfipSfBAATAL9C1XAZBgZDZD';
+
+        $response = Http::withToken($accessToken)
+            ->post("https://graph.facebook.com/v22.0/{$phoneNumberId}/messages", [
+                "messaging_product" => "whatsapp",
+                "to" => $phone_number,
+                "type" => "template",
+                "template" => [
+                    "name" => "hello_world",
+                    "language" => [
+                        "code" => "en_US"
+                    ]
+                ]
+            ]);
+
+        return response()->json([
+            'status' => $response->status(),
+            'body' => $response->json()
+        ]);
+    }
 
     
 }
