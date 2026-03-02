@@ -264,12 +264,9 @@ class HomeController extends Controller
             ->post("https://graph.facebook.com/v22.0/{$phoneNumberId}/messages", [
                 "messaging_product" => "whatsapp",
                 "to" => $phone_number,
-                "type" => "template",
-                "template" => [
-                    "name" => "hello_world",
-                    "language" => [
-                        "code" => "en_US"
-                    ]
+                "type" => "text",
+                "text" => [
+                    "body" => $message
                 ]
             ]);
 
@@ -278,6 +275,27 @@ class HomeController extends Controller
             'body' => $response->json()
         ]);
     }
+
+    /*private function sendWhatsappMessage($phone_number, $message) {
+
+        $phoneNumberId = '975195775683335';
+        $accessToken = 'EAAjXZBqSsnEEBQ5SvjA96T3PvpGitd9OCHPXVZBVlVDcgKkUNeveNghNmyjCAxKSCf1JGVe6B69GvfKWdbEfko5GMr3Nj1UhgC0LDWT4dZBaZBpo89XhAZCDKCrkiqtQK7fjLZCxQkp4AbYUuhnZBVnDi0lu0U9uCLEZB8Aey3jPN2gdWJMLfipSfBAATAL9C1XAZBgZDZD';
+
+        $response = Http::withToken($accessToken)
+            ->post("https://graph.facebook.com/v22.0/{$phoneNumberId}/messages", [
+                "messaging_product" => "whatsapp",
+                "to" => $phone_number,
+                "type" => "text",
+                "text" => [
+                    "body" => $message
+                ]
+            ]);
+
+        return response()->json([
+            'status' => $response->status(),
+            'response' => $response->json()
+        ]);
+    }*/
 
     
 }
