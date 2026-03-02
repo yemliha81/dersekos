@@ -228,8 +228,8 @@ class HomeController extends Controller
     public function upComingEvents(){
         // Get the lessons that start in 30 mins later
 
-        $lessons = Event::where('start', '>=', Carbon::now()->addMinutes(20))
-        ->where('start', '<=', Carbon::now()->addMinutes(50))->with("teacher")
+        $lessons = Event::where('start', '>=', Carbon::now()->addMinutes(30))
+        ->where('start', '<=', Carbon::now()->addMinutes(31))->with("teacher")
         ->get();
         
         $lesson_text = [];
@@ -242,7 +242,8 @@ class HomeController extends Controller
             
                 $lesson_text[$lesson->id] = 
                 "Değerli öğrencilerimiz,  ". $lesson->teacher->name . " hocamızın, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacak olan  
- ". $lesson->grade . ". sınıf " . ucwords( str_replace('_', ' ', $lesson->teacher->branch )) . $lesson->title . " dersine katılmak için 
+ ". $lesson->grade . ". sınıf " . ucwords( str_replace('_', ' ', $lesson->teacher->branch )) ." 
+ ". $lesson->title . " dersine katılmak için 
 dersekos.com üzerinden kayıt olmayı unutmayın. 
 Şimdiden iyi dersler dileriz. @all";
 
