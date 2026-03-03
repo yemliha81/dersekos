@@ -656,6 +656,22 @@
       grid-template-columns: 1fr 1fr 1fr;
     }
 
+    .vip-banner{
+      background: rgb(0, 0, 0);
+      color: #ffdd81ff;
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      font-weight:bold;
+    }
+
+    .vip-banner a i{
+      text-decoration: underline;
+    }
+
 
     /* Küçük ekranlarda yüksekliği azalt */
     @media (max-width: 576px) {
@@ -770,3 +786,6 @@
   </a>
 
   <div class="container">
+    <div class="vip-banner">
+      <a href="https://dersekos.vip"><i>dersekos.vip</i> Açıldı! Hemen incele</a>
+    </div>
