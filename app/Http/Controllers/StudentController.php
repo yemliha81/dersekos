@@ -125,10 +125,10 @@ class StudentController extends Controller
             return;
         }
 
-        if($attendees_count >= $max_person) {
+        /*if($attendees_count >= $max_person) {
             echo json_encode(['status' => 'full', 'message' => 'This event is full.']);
             return;
-        }
+        }*/
         $attendees[] = $student_id;
         $event->attendees = implode(',', $attendees);
         $event->save();
