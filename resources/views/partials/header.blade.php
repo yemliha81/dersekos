@@ -744,19 +744,20 @@
 
     gtag('config', 'G-EKY9M74W3D');
   </script>
-  <div class="container">
+  <div class="header-div" style="background:#FFFFFF;">
+    <div class="container" style="padding:0;">
 
-  <div style="text-align:center">
-    <a href="{{ route('home') }}">
-      <img src="{{asset('assets/img/dersekos.jpg')}}" width="150" alt="DerseKos Logo" >
-      </a>
+      <div style="text-align:center">
+        <a href="{{ route('home') }}">
+          <img src="{{asset('assets/img/dersekos.jpg')}}" width="150" alt="DerseKos Logo" >
+          </a>
+      </div>
+
+    </div>
   </div>
-
-  </div>
-
   
   <div class="top-nav-bar">
-    <div class="container">
+    <div class="container" style="padding:0;">
         <a href="{{ route('home') }}">Anasayfa</a>
         <a href="{{ route('contact') }}">Bize ulaşın</a>
         <a href="{{ route('about.page') }}">Hakkımızda</a>
@@ -786,6 +787,4 @@
   </a>
 
   <div class="container">
-    <div class="vip-banner">
-      <a href="https://dersekos.vip"><i>dersekos.vip</i> Açıldı! Hemen incele</a>
-    </div>
+    

@@ -6,13 +6,25 @@
     
 
     <main>
+        <div class="vip-banner">
+        <a href="https://dersekos.vip"><i>dersekos.vip</i> Açıldı! Hemen incele</a>
+        </div>
         <!-- col-3 in pc screen, col-12 in mobile screen -->
         <div class="row mt-3">
             <div class="col-12 col-md-3">
             <section class="mb-3" aria-labelledby="hero-title">
-                <div class="hero-left">
+                <section class="hero-card mb-50" aria-labelledby="hero-title">
                     <div class="mb-3">Hoş geldin, <b id="hero-title">{{ auth('student')->user()->name }}!</b></div>
-                </div>
+                    <div class="left-student-menu">
+                        <a href="{{route('student.dashboard')}}"> <i class="bi bi-person "></i> Öğrenci Sayfam</a>
+                    </div>
+                    <div class="left-student-menu">
+                        <a href="{{route('student.old_lessons')}}"> <i class="bi bi-file-earmark-text"></i> Geçmiş Derslerim</a>
+                    </div>
+                    <div class="left-student-menu">
+                        <a href="{{route('student.dashboard2')}}"> <i class="bi bi-file-earmark-text"></i> Tüm Sınıf Dersleri</a>
+                    </div>
+                </section>
                 <div>
                     @if(auth('student')->user()->grade == '1')
                     <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/KqnVpHc71dBGHMlPVwa8YM?mode=hqrc">1. Sınıf WhatsApp Grubumuza Katıl</a>
@@ -55,17 +67,7 @@
                 @endif
                 </div>
             </section>
-            <section class="hero-card mb-50" aria-labelledby="hero-title">
-                <div class="left-student-menu">
-                    <a href="{{route('student.dashboard')}}"> <i class="bi bi-person "></i> Öğrenci Sayfam</a>
-                </div>
-                <div class="left-student-menu">
-                    <a href="{{route('student.old_lessons')}}"> <i class="bi bi-file-earmark-text"></i> Geçmiş Derslerim</a>
-                </div>
-                <div class="left-student-menu">
-                    <a href="{{route('student.dashboard2')}}"> <i class="bi bi-file-earmark-text"></i> Tüm Sınıf Dersleri</a>
-                </div>
-            </section>
+            
       </div>
         
         <div class="col-12 col-md-9">
