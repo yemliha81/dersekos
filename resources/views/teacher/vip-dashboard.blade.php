@@ -1,3 +1,9 @@
+<?php 
+$teacher = auth('teacher')->user();
+
+if($teacher->is_vip == 0){
+    die('Bu sayfaya erişim yetkiniz yoktur.');
+} ?>
 @extends('layouts.main')
 
 
@@ -11,17 +17,13 @@
 </style>
     <main>
         
-        <section class="hero-card hero mt-3" aria-labelledby="hero-title">
+        <section class="hero-card mt-3 mb-3" aria-labelledby="hero-title" style="background:#000000; color:#FFFFFF;">
             
-            <div class="hero-left grid-20">
+            <div class="text-center">
                 <strong id="hero-title">Hoş geldiniz, {{ auth('teacher')->user()->name }}!</strong>
-                <p class="muted">Burada derslerinizi yönetebilir, profil bilgilerinizi düzenleyebilirsiniz.</p>
+                <p class="muted">Burada VIP derslerinizi yönetebilir, profil bilgilerinizi düzenleyebilirsiniz.</p>
             </div>
-            <div class="hero-right">
-                @if(auth('teacher')->user()->status == '1')
-                    <a class="btn btn-success" target="_blank" href="https://chat.whatsapp.com/K0y7N5ZEVc2FE2PHo7HDAk">Öğretmen WhatsApp grubumuza katılın</a>
-                @endif
-            </div>
+            
         </section>
         <section>
             @if(session('success'))
@@ -36,12 +38,12 @@
             @endif
         </section>
 
-        <section class="hero-card dashboard-cards mb-3">
+        <section class="hero-card dashboard-cards mb-3" style="background:#666666; color:#FFFFFF;">
             <div class="row">
                 <div class="col-12 col-md-3 ">
                     <div>
                         
-                        <div class="profile-info mb-3">
+                        <div class="profile-info mb-3" >
                             <div class="mb-3 teacher-img">
                                 @if(auth('teacher')->user()->image == null)
                                     <img src="{{ asset('assets/img/default-profile.png') }}" class="profile-img" width="100" alt="">
@@ -64,19 +66,15 @@
                         </div>
                         <div class="text-right mb-2" style="text-align:right;">
                             @if(auth('teacher')->user()->status == '1')
-                            <a class="btn btn-sm btn-info btn-sm form-control" style="display: inline-block" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">Profili Güncelle <i class="bi-pencil-fill"></i></a>
-                            <hr>
-                            <a href="{{route('teacher.vip_dashboard')}}" class="btn btn-success btn-sm form-control" style="background:#000000;" >VIP PANELE GEÇ </a>
+                            
+                           <a href="{{route('teacher.dashboard')}}" class="btn btn-info btn-sm form-control" >DERSE KOŞ PANELE GEÇ </a>
                             @endif
+
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-9">
                     @if(auth('teacher')->user()->status == '1')
-                        <div class="mb-3 alert alert-info" style="display:flex; align-items:center; justify-content:space-between">
-                            <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#howItWorksModal">Sistem nasıl çalışır?</a>
-                            <span>Aşağıdaki takvmiden hemen ilk dersinizi planlayabilirsiniz!</span>
-                        </div>
                         <div>
                             <div id="calendar"></div>
                         </div>
@@ -92,14 +90,7 @@
             
             
         </section>
-        @if(auth('teacher')->user()->status == '1')
-        <section class="hero-card" >
-            <div class="text-center mb-3">
-                <h2>Tüm Eğitmenlere ait Takvim</h2>
-            </div>
-            <div id="allCalendar"></div>
-        </section>
-        @endif
+        
         <!-- Event Ekleme Modal -->
         <div class="modal fade" id="eventModal" tabindex="-1">
         <div class="modal-dialog">
@@ -123,19 +114,19 @@
                     <!-- grade level selectbox --> 
                     <label><strong>Sınıf Seviyesi:</strong></label>
                     <select id="grade" name="grade" class="form-select">
-                        <option value="1" >1. Sınıf</option>
+                        <!--<option value="1" >1. Sınıf</option>
                         <option value="2" >2. Sınıf</option>
                         <option value="3" >3. Sınıf</option>
-                        <option value="4" >4. Sınıf</option>
+                        <option value="4" >4. Sınıf</option>-->
                         <option value="5" >5. Sınıf</option>
                         <option value="6" >6. Sınıf</option>
                         <option value="7" >7. Sınıf</option>
                         <option value="8" >8. Sınıf</option>
-                        <option value="9" >9. Sınıf</option>
+                        <!--<option value="9" >9. Sınıf</option>
                         <option value="10" >10. Sınıf</option>
                         <option value="11" >11. Sınıf</option>
                         <option value="12" >12. Sınıf</option>
-                        <option value="13" >KPSS</option>
+                        <option value="13" >KPSS</option>-->
                     </select>
                 </p>
                 </div>
@@ -153,7 +144,7 @@
                 <div class="mb-3">
                     <label>Ders Türü</label>
                     <select id="is_free" class="form-select">
-                        <option value="1">Ücretsiz</option>
+                        <option value="1">VIP</option>
                     </select>
                     </div>
 
@@ -171,14 +162,14 @@
                     <input type="number" id="price" class="form-control" min="0" step="0.01" style="display:none;">
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3" style="display:none;">
                     <label>Minimum Katılımcı</label>
-                    <input type="number" id="min_person" min="5"  class="form-control">
+                    <input type="number" id="min_person" min="5"  class="form-control" value="5">
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3" style="display:none;">
                     <label>Maksimum Katılımcı</label>
-                    <input type="number" id="max_person" class="form-control" min="1">
+                    <input type="number" id="max_person" class="form-control" min="1" value="10">
                     </div>
 
 
@@ -198,55 +189,6 @@
         </div>
         </div>
 
-        <!-- how it works modal --> 
-        <div class="modal fade" id="howItWorksModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Sistem nasıl çalışır?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info mb-3">
-                            <b>1. Profil bilgilerinizi tamalama</b>
-                            <p>
-                                Lütfen öncelikle "Profili Güncelle" butonuna tıklayarak, açılan formdaki alanları eksiksiz olarak doldurun.
-                            </p>
-                        </div>
-                        <div class="alert alert-warning mb-3">
-                            <b>2. Ders oluşturma</b>
-                            <p>
-                                Ders takviminizdeki bir tarihe tıkladığınızda ders oluşturma formu açılacaktır. Bu formdaki alanları doldurarak 
-                                ücretsiz derslerinizi planlayabilirsiniz. Lütfen formdaki alanları eksiksiz doldurduğunuzdan emin olun. <br>
-                                * Ders başlığında, derste işleyeceğiniz konuyu mutlaka belirtin. <br>
-                                * Sınıf seviyesini mutlaka belirtin. <br>
-                                * Ders başlangıç ve bitiş saatlerini doğru girdiğinizden emin olun. <br>
-                                * Minimum ve maksimum katılımcı sayısını belirtin. <br>
-                                * Ders linkini Google Meet veya Zoom üzerinden oluşturduktan sonra bu alana doğru bir şekilde girin. <br>
-                                * Kaydet butonuna tıklayarak dersinizi kaydedin.<br>
-                                * Eğer hatalı girdiğiniz bir alan varsa, takvime kaydedilen ders üzerine tıklayarak formu güncelleyebilirsiniz. <br>
-                                * Dersinize katılan öğrenci sayısını da güncelleme formunda görebilirsiniz.
-                                
-                            </p>
-                        </div>
-                        <div class="alert alert-success mb-3">
-                            <b>3. Dersi Başlatma</b>
-                            <p>
-                                * Planladığınız ders saati geldiğinde, takvimdeki ders üzerine tıklayın. <br>
-                                * Açılan formun altında "Derse Başla" butonu aktif olacaktır. Eğer aktif değilse sayfanızı yenileyip tekrar deneyin. <br>
-                                * Derse Başla butonuna tıkladığınızda, girmiş olduğunuz Google Meet veya Zoom linki açılacaktır. <br>
-                                * Dersinize başlayıp öğrencilerin katılmasını bekleyin. <br>
-                                * Eğer 5 dakika geçmesine rağmen katılımcı yoksa lütfen bizimle whatsapp uzerinden iletisime geçin. <br>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Event Detay Modal -->
             <div class="modal fade" id="eventDetailModal" tabindex="-1">
                 <div class="modal-dialog">
@@ -258,7 +200,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <form method="POST" action="{{route('event.update')}}">
+                        <form method="POST" action="{{route('vip_event.update')}}">
                             @csrf
                             <input type="hidden" id="detailId" name="event_id" value="">
                             <p><strong>Başlık:</strong> <input type="text" id="detailTitle" name="title" class="form-control"></p>
@@ -266,19 +208,19 @@
                                 <!-- grade level selectbox --> 
                                 <label><strong>Sınıf Seviyesi:</strong></label>
                                 <select id="detailGradeLevel" name="grade" class="form-select">
-                                    <option value="1" >1. Sınıf</option>
+                                    <!--<option value="1" >1. Sınıf</option>
                                     <option value="2" >2. Sınıf</option>
                                     <option value="3" >3. Sınıf</option>
-                                    <option value="4" >4. Sınıf</option>
+                                    <option value="4" >4. Sınıf</option>-->
                                     <option value="5" >5. Sınıf</option>
                                     <option value="6" >6. Sınıf</option>
                                     <option value="7" >7. Sınıf</option>
                                     <option value="8" >8. Sınıf</option>
-                                    <option value="9" >9. Sınıf</option>
+                                    <!--<option value="9" >9. Sınıf</option>
                                     <option value="10" >10. Sınıf</option>
                                     <option value="11" >11. Sınıf</option>
                                     <option value="12" >12. Sınıf</option>
-                                    <option value="13" >KPSS</option>
+                                    <option value="13" >KPSS</option>-->
                                 </select>
                             </p>
                             <div class="row">
@@ -297,23 +239,16 @@
                                         <!-- is_free selectbox --> 
                                         <label><strong>Ders Türü</strong></label>
                                         <select id="detailIsFree" name="is_free" class="form-select" disabled>
-                                            <option value="1" >Ücretsiz</option>
+                                            <option value="1" >VIP</option>
                                             <!--<option value="0" >Ücretli</option>-->
                                         </select>
                                     </p>
                                 </div>
                                 <div class="col-6" id="detailPriceArea" style="display: none;">
-                                    <a
-                                        type="button"
-                                        class="btn btn-primary btn-sm"
-                                        data-bs-toggle="tooltip"
-                                        title="Öğrencilerimiz ders başına 250 ₺ öderler. Öğrenci sayısını bu tutarla çarptıktan sonra size toplam tutarın %80'i kadar ödeme yapılır.">
-                                        Ne kadar ödeme alacağım?
-                                    </a>
-                                    <p><input type="text"  name="price" id="detailPrice" class="form-control" value="0" style="display: none;"></p>
+                                    
                                 </div>
                             </div>
-                            <div class="row">
+                            <div style="display:none;">
                                 <div class="col-6">
                                     <p><strong>Minimum Katılımcı:</strong> <input type="number"  name="min_person" id="detailPersonMin" class="form-control"></p>
                                 </div>
@@ -322,8 +257,6 @@
                                 </div>
                             </div>
                             
-                        
-                            <p><strong>Kayıtlı Öğrenci Sayısı:</strong> <span id="detailRegistrationCount"></span></p>
 
                             <p><strong>Toplantı Linki:</strong> <input type="url" name="meet_url" id="detailMeetUrl" class="form-control" ></p>
 
@@ -349,50 +282,6 @@
                 </div>
             </div>
 
-            <!-- Create Campaign Modal -->
-            <div class="modal fade" id="createCampaignModal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Yeni Kamp Oluştur</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{ route('teacher.campaign.store') }}" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <input type="hidden" name="teacher_id" value="{{ auth('teacher')->user()->id }}">
-                                <div class="mb-3">
-                                    <label class="form-label">Kamp Başlığı</label>
-                                    <input type="text" name="campaign_title" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Kamp Açıklaması</label>
-                                    <textarea name="campaign_description" class="form-control" required></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Başlangıç Tarihi</label>
-                                    <input type="date" name="campaign_start" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Bitiş Tarihi</label>
-                                    <input type="date" name="campaign_end" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Kamp Afişi</label>
-                                    <input type="file" name="campaign_image" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Toplam Fiyat</label>
-                                    <input type="number" name="campaign_price" step=".01" min=0 value=0.00 class="form-control">
-                                </div>
-
-                                <button type="submit" class="btn btn-primary">Kamp Oluştur</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="modal fade" id="allEventDetailModal" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -409,19 +298,19 @@
                                 <!-- grade level selectbox --> 
                                 <label><strong>Sınıf Seviyesi:</strong></label>
                                 <select disabled id="AlldetailGradeLevel" name="grade" class="form-select">
-                                    <option value="1" >1. Sınıf</option>
+                                    <!--<option value="1" >1. Sınıf</option>
                                     <option value="2" >2. Sınıf</option>
                                     <option value="3" >3. Sınıf</option>
-                                    <option value="4" >4. Sınıf</option>
+                                    <option value="4" >4. Sınıf</option>-->
                                     <option value="5" >5. Sınıf</option>
                                     <option value="6" >6. Sınıf</option>
                                     <option value="7" >7. Sınıf</option>
                                     <option value="8" >8. Sınıf</option>
-                                    <option value="9" >9. Sınıf</option>
+                                    <!--<option value="9" >9. Sınıf</option>
                                     <option value="10" >10. Sınıf</option>
                                     <option value="11" >11. Sınıf</option>
                                     <option value="12" >12. Sınıf</option>
-                                    <option value="13" >KPSS</option>
+                                    <option value="13" >KPSS</option>-->
                                 </select>
                             </p>
                             <div class="row">
@@ -440,7 +329,7 @@
                                         <!-- is_free selectbox --> 
                                         <label><strong>Ders Türü</strong></label>
                                         <select disabled id="AlldetailIsFree" name="is_free" class="form-select">
-                                            <option value="1" >Ücretsiz</option>
+                                            <option value="1" >VIP</option>
                                             
                                         </select>
                                     </p>
@@ -450,22 +339,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-6" style="diplay:none;">
                                     <p><strong>Minimum Katılımcı:</strong> <input disabled type="number"  name="min_person" id="AlldetailPersonMin" class="form-control"></p>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6" style="diplay:none;">
                                     <p><strong>Maksimum Katılımcı:</strong> <input disabled type="number" name="max_person" id="AlldetailPersonMax" class="form-control"></p>
                                 </div>
                             </div>
-                            
-                        
-                            <p><strong>Kayıtlı Öğrenci Sayısı:</strong> <span id="AlldetailRegistrationCount"></span></p>
-
-                            <p><strong>Toplantı Linki:</strong> <input disabled type="url" name="meet_url" id="AlldetailMeetUrl" class="form-control"></p>
-
-                           
-
-                            
+                            <p><strong>Toplantı Linki:</strong> <input disabled type="url" name="meet_url" id="AlldetailMeetUrl" class="form-control"></p>  
                         
                     </div>
 
@@ -476,80 +357,9 @@
                     </div>
                 </div>
             </div>
-
-
-        <!-- Öğretmen Profil Güncelleme modalı -->
-        <div class="modal fade" id="profileModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Öğretmen Profili Güncelle</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{ route('teacher.profile.update') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="teacher_id" value="{{ auth('teacher')->user()->id }}">
-                            <div class="mb-3">
-                                <label class="form-label">Profil Fotografı</label>
-                                <input type="file" name="image" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Ad - Soyad</label>
-                                <input type="text" name="name" class="form-control" value="{{ auth('teacher')->user()->name }}">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">E-posta</label>
-                                <input type="email" name="email" class="form-control" value="{{ auth('teacher')->user()->email }}">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Telefon</label>
-                                <input type="text" name="phone" class="form-control" value="{{ auth('teacher')->user()->phone }}">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Şifre</label>
-                                <input type="password" name="password" class="form-control" placeholder="Yeni şifre (boş bırakılırsa değişmez)">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Branş</label>
-                                <input type="text" name="branch" class="form-control" value="{{ auth('teacher')->user()->branch }}">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Deneyim(Yıl)</label>
-                                <input type="number" name="experience" class="form-control" value="{{ auth('teacher')->user()->experience }}">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Varsa Belge/Sertifikalarınız</label>
-                                <input type="text" name="certificates" class="form-control" value="{{ auth('teacher')->user()->certificates }}">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Kendiniz hakkında</label>
-                                <textarea name="about" class="form-control" rows="3">{{ auth('teacher')->user()->about }}</textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Etiketler</label>
-                                <input type="text" name="tags" class="form-control" placeholder="Örn. LGS, TYT, Matematik" value="{{ auth('teacher')->user()->tags }}">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Birebir Ders Ücreti</label>
-                                <input type="text" name="lesson_price" class="form-control" value="{{ auth('teacher')->user()->lesson_price }}">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Güncelle</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         
 
     </main>
-
-<script>
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  const tooltipList = [...tooltipTriggerList].map(
-    tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl)
-  )
-</script>
 
 <script>
     
@@ -561,29 +371,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var selectedDate = null;
 
-    // isFree selectbox change event
-    /*document.getElementById('is_free').addEventListener('change', function () {
-        if (this.value == "0") {
-            document.getElementById('detailPriceArea').style.display = 'block';
-        } else {
-            document.getElementById('detailPriceArea').style.display = 'none';
-        }
-    });
-
-    document.getElementById('detailIsFree').addEventListener('change', function () {
-        
-        if (this.value == "0") {
-            document.getElementById('detailPriceArea').style.display = 'block';
-        } else {
-            document.getElementById('detailPriceArea').style.display = 'none';
-        }
-    });*/
-
    var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             locale: 'tr',
             selectable: true,
-            events: '/events',
+            events: '/vip-events',
 
             headerToolbar: {
                 left: 'prev,next today',
@@ -623,12 +415,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             eventClick: function(info) {
                 let event = info.event;
-
-                fetch('/events/' + event.id + '/registrations')
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('detailRegistrationCount').innerText = data.count;
-                });
 
                 let priceText = event.extendedProps.is_free == 1 
                     ? 'Ücretsiz' 
@@ -686,7 +472,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var detailModal = new bootstrap.Modal(document.getElementById('eventDetailModal'));
                 detailModal.show();
             }
-        });
+    });
 
 
     calendar.render();
@@ -737,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let startDateTime = selectedDate + "T" + startTime;
         let endDateTime   = selectedDate + "T" + endTime;
 
-        fetch('/events/store', {
+        fetch('/vip-events/store', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -798,7 +584,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    var allCalendar = new FullCalendar.Calendar(allCalendarEl, {
+    /*var allCalendar = new FullCalendar.Calendar(allCalendarEl, {
             initialView: 'dayGridMonth',
             locale: 'tr',
             selectable: true,
@@ -827,13 +613,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             eventClick: function(info) {
                 let event = info.event;
-                
-
-                fetch('/events/' + event.id + '/registrations')
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('AlldetailRegistrationCount').innerText = data.count;
-                });
 
                 let priceText = event.extendedProps.is_free == 1 
                     ? 'Ücretsiz' 
@@ -876,88 +655,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-    allCalendar.render();
-
-
-    var paidCalendar = new FullCalendar.Calendar(paidCalendarEl, {
-            initialView: 'dayGridMonth',
-            locale: 'tr',
-            selectable: true,
-            events: '/paid-events',
-
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth'
-            },
-
-            buttonText: {
-                today: 'Bugün',
-                month: 'Ay',
-                week: 'Hafta',
-                day: 'Gün'
-            },
-
-            eventTimeFormat: {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false
-            },
-
-            
-
-            eventClick: function(info) {
-                let event = info.event;
-                
-
-                fetch('/events/' + event.id + '/registrations')
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('AlldetailRegistrationCount').innerText = data.count;
-                });
-
-                let priceText = event.extendedProps.is_free == 1 
-                    ? 'Ücretsiz' 
-                    : event.extendedProps.price + ' ₺';
-
-                //document.getElementById('AlldetailPrice').innerText = priceText;
-
-                document.getElementById('AlldetailPersonMin').value =
-                    event.extendedProps.min_person;
-
-                // detailGradeLevel selectbox
-                document.getElementById('AlldetailGradeLevel').value =
-                    event.extendedProps.grade;
-
-                // AlldetailTeacherName
-                document.getElementById('AlldetailTeacherName').innerText =
-                    event.extendedProps.teacher.name;
-
-                document.getElementById('AlldetailPersonMax').value =
-                    event.extendedProps.max_person;
-
-                    document.getElementById('AlldetailMeetUrl').value =
-                    event.extendedProps.meet_url;
-
-                // is_free selectbox
-                document.getElementById('AlldetailIsFree').value = event.extendedProps.is_free
-
-                // price input
-                //document.getElementById('AlldetailPrice').value = event.extendedProps.price
-
-                document.getElementById('detailId').value = event.id;
-                document.getElementById('AlldetailTitle').value = event.title;
-                document.getElementById('AlldetailStart').value = event.start.toLocaleString('tr-TR');
-                document.getElementById('AlldetailEnd').value   = event.end.toLocaleString('tr-TR');
-
-                
-
-                var allDetailModal = new bootstrap.Modal(document.getElementById('allEventDetailModal'));
-                allDetailModal.show();
-            }
-        });
-
-    paidCalendar.render();
+    allCalendar.render();*/
 
 
 

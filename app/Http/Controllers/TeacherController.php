@@ -21,6 +21,11 @@ class TeacherController extends Controller
         return view('teacher.dashboard'/*, ['calendars' => $calendarList->getItems()]*/);
     }
 
+    public function vip_dashboard()
+    {
+        return view('teacher.vip-dashboard'/*, ['calendars' => $calendarList->getItems()]*/);
+    }
+
     public function listTeachers()
     {
         $teachers = Teacher::all();

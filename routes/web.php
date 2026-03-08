@@ -221,6 +221,7 @@ Route::post('/student/join-free-lesson/{id}', 'App\Http\Controllers\StudentContr
 
 // teacher routes
 Route::get('/teacher/dashboard', 'App\Http\Controllers\TeacherController@dashboard')->middleware('auth:teacher')->name('teacher.dashboard');
+Route::get('/teacher/vip-dashboard', 'App\Http\Controllers\TeacherController@vip_dashboard')->middleware('auth:teacher')->name('teacher.vip_dashboard');
 Route::get('/ogretmen/giris', 'App\Http\Controllers\TeacherController@showLoginForm')->name('teacher.login');
 Route::post('/ogretmen/giris', 'App\Http\Controllers\TeacherController@login')->name('teacher.login.submit');
 Route::post('/ogretmen/kayit', 'App\Http\Controllers\TeacherController@signup')->name('teacher.signup.submit');
@@ -273,11 +274,14 @@ Route::get('/teacher-events/{id}', function () {
 });
 
 Route::get('/events', 'App\Http\Controllers\EventsController@index')->middleware('auth:teacher')->name('teacher.events');
+Route::get('/vip-events', 'App\Http\Controllers\EventsController@indexVip')->middleware('auth:teacher')->name('teacher.vip_events');
 Route::get('/all-events', 'App\Http\Controllers\EventsController@allEvents')->middleware('auth:teacher')->name('all.events');
 Route::get('/paid-events', 'App\Http\Controllers\EventsController@paidEvents')->middleware('auth:teacher')->name('paid.events');
 
 Route::post('/events/store', 'App\Http\Controllers\EventsController@store')->middleware('auth:teacher')->name('event.save');
+Route::post('/vip-events/store', 'App\Http\Controllers\EventsController@storeVip')->middleware('auth:teacher')->name('vip_event.save');
 Route::post('/events/update', 'App\Http\Controllers\EventsController@update')->middleware('auth:teacher')->name('event.update');
+Route::post('/vip-events/update', 'App\Http\Controllers\EventsController@updateVip')->middleware('auth:teacher')->name('vip_event.update');
 
 
 
