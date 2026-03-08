@@ -182,7 +182,7 @@ class EventsController extends Controller
 
             
         
-            $existing_free_events = Event::where('grade', $request->grade)
+            $existing_free_events = EventVip::where('grade', $request->grade)
                 ->where('is_free', '1')
                 ->where(function($query) use ($request) {
                     $query->whereBetween('start', [Carbon::parse($request->start), Carbon::parse($request->end)])
