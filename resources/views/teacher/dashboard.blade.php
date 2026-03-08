@@ -65,8 +65,10 @@
                         <div class="text-right mb-2" style="text-align:right;">
                             @if(auth('teacher')->user()->status == '1')
                             <a class="btn btn-sm btn-info btn-sm form-control" style="display: inline-block" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">Profili Güncelle <i class="bi-pencil-fill"></i></a>
-                            <hr>
-                            <a href="{{route('teacher.vip_dashboard')}}" class="btn btn-success btn-sm form-control" style="background:#000000;" >VIP PANELE GEÇ </a>
+                                @if(auth('teacher')->user()->is_vip == '1')
+                                <hr>
+                                <a href="{{route('teacher.vip_dashboard')}}" class="btn btn-success btn-sm form-control" style="background:#000000;" >VIP PANELE GEÇ </a>
+                                @endif
                             @endif
                         </div>
                     </div>
