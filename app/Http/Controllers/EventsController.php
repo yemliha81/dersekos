@@ -195,7 +195,7 @@ class EventsController extends Controller
 
             if($existing_free_events->count() > 0 && $request->is_free == '1'){
                 return response()->json([
-                    'error' => 'Girdiğiniz zaman diliminde aynı sınıf seviyesi için ücretsiz başka bir ders bulunuyor. Lütfen farklı bir zaman dilimi seçin.'
+                    'error' => 'Girdiğiniz zaman diliminde aynı sınıf seviyesi için başka bir ders bulunuyor. Lütfen farklı bir zaman dilimi seçin.'
                 ], 400);
 
             }
