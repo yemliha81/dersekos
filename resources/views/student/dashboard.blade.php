@@ -3,10 +3,8 @@
 
 @section('content')
 
-    
-
     <main>
-        <div class="vip-banner">
+        <div class="vip-banner" style="display:none;">
         <a href="https://dersekos.vip"><i>dersekos.vip</i> Açıldı! Hemen incele</a>
         </div>
         <!-- col-3 in pc screen, col-12 in mobile screen -->
@@ -21,58 +19,59 @@
                     <div class="left-student-menu">
                         <a href="{{route('student.old_lessons')}}"> <i class="bi bi-file-earmark-text"></i> Geçmiş Derslerim</a>
                     </div>
-                    <div class="left-student-menu">
+                    <!--<div class="left-student-menu">
                         <a href="{{route('student.dashboard2')}}"> <i class="bi bi-file-earmark-text"></i> Tüm Sınıf Dersleri</a>
+                    </div>-->
+                    <div>
+                    @if(auth('student')->user()->grade == '1')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/KqnVpHc71dBGHMlPVwa8YM?mode=hqrc">1. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '2')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/BUfeng4quwoIFoC0tXHsQS?mode=hqrc">2. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '3')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/FHb3K0BlY0P01YCJWEawcD?mode=hqrc">3. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '4')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/IQW5Ft9xGZSGgbf1m3D4b9?mode=hqrc">4. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '5')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '6')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '7')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '8')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '9')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '10')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/L97vpPBhlqt3dpfV4knbND?mode=hqrc">10. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '11')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/GHZ6XPSC9q1A0K5oeG26Pa?mode=hqrc">11. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '12')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">12. Sınıf WhatsApp Grubu</a>
+                    @endif
+                    @if(auth('student')->user()->grade == '13')
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/GmPAYDFFoSOGcxULO9ApGw?mode=hqrc">KPSS WhatsApp Grubu</a>
+                    @endif
                     </div>
                 </section>
-                <div>
-                    @if(auth('student')->user()->grade == '1')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/KqnVpHc71dBGHMlPVwa8YM?mode=hqrc">1. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '2')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/BUfeng4quwoIFoC0tXHsQS?mode=hqrc">2. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '3')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/FHb3K0BlY0P01YCJWEawcD?mode=hqrc">3. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '4')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/IQW5Ft9xGZSGgbf1m3D4b9?mode=hqrc">4. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '5')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '6')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '7')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '8')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '9')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '10')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/L97vpPBhlqt3dpfV4knbND?mode=hqrc">10. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '11')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/GHZ6XPSC9q1A0K5oeG26Pa?mode=hqrc">11. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '12')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">12. Sınıf WhatsApp Grubumuza Katıl</a>
-                @endif
-                @if(auth('student')->user()->grade == '13')
-                    <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/GmPAYDFFoSOGcxULO9ApGw?mode=hqrc">KPSS WhatsApp Grubumuza Katıl</a>
-                @endif
-                </div>
+                
             </section>
             
       </div>
         
         <div class="col-12 col-md-9">
             <section class="dashboard-cards">
-                <div class="mb-50">
+                <div class="mb-50" style="display:none;">
                     <div class="lesson-title-div"><b>Kayıt olduğum dersler</b></div>
                     <div class="free-lessons">
                         @if(count($myLessons) > 0)
@@ -114,44 +113,57 @@
                 </div>
                 <!-- Ücretsiz Dersler --> 
                 <div class="mb-50">
-                    <div class="free-lesson-title-div"><b>Ücretsiz Dersler</b></div>
+                    <div class="free-lesson-title-div" style="display:none;"><b>Ücretsiz Dersler</b></div>
                     <div class="grades">
-                        @if(count($groupedLessons) > 0)
-                            @foreach($groupedLessons as $grade => $lessons)
-
-                                <div class="grade-box">
-                                    <div class="lessons">
-                                        @foreach($lessons as $lesson)
-                                    
-                                            <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
-                                                <div class="flex-space-between">
-                                                    <div >
-                                                        <div>@if($lesson->grade != null)<b>{{ ($lesson->grade == 13 ) ? 'KPSS' : $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
-                                                        <div style="font-size:15px;">{{ $lesson->title }}</div>
-                                                    </div>
-                                                    <a href="javascript:;" class="btnx join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
-                                                </div>
-                                                
-                                                
-                                                <div class="flex-space-between" style="margin-top:15px;">
-                                                    <div>
-                                                        <b>{{ $lesson->teacher->name }} </b>
-                                                        <span><i class="bi bi-person"></i> {{ $lesson->max_person }} / {{count(array_filter(explode(',', $lesson->attendees)))}} </span>
-                                                    </div>
-                                                    <span style="font-size:15px;">{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
-                                                </div>
-                                                
-                                            </div>
-                                    
-                                        @endforeach
-                                    </div>
+                        @if( in_array( auth()->user('student')->grade, [5, 6, 7, 8]))
+                                
+                                <div class="alert alert-danger">
+                                    <span>{{ auth()->user('student')->grade }} . Sınıf Derslerimiz Ramazan Bayramı'na kadar <a target="_blank" href="https://dersekos.vip"><b>dersekos.vip</b></a> üzerinden <b>ÜCRETSİZ</b> yapılacaktır. </span> <br><br>
+                                    <div class="text-center"><a class="btn  btn-success" target="_blank" href="https://dersekos.vip/giris">Hemen katılmak için tıklayın!</a></div>
                                 </div>
-                            
-                            @endforeach
-                        @else
-                            <div class="alert alert-warning">
-                                Sınıf seviyenizde aktif ücretsiz ders bulunamadı. Lütfen sayfayı daha sonra tekrar ziyaret ediniz.
-                            </div>
+                                <div class="alert alert-info">
+                                    <b>NOT:</b> Bayramdan sonra, dersekos.com üzerinden ücretsiz derslerimiz aynı şekilde devam edecektir.
+                                </div>
+
+                            @else 
+                                @if(count($groupedLessons) > 0)
+                                    
+                                        @foreach($groupedLessons as $grade => $lessons)
+                                            
+                                                <div class="grade-box">
+                                                    <div class="lessons">
+                                                        @foreach($lessons as $lesson)
+                                                    
+                                                            <div class="{{ $lesson->is_free ? 'lesson-card' : 'paid-lesson-card' }}">
+                                                                <div class="flex-space-between">
+                                                                    <div >
+                                                                        <div>@if($lesson->grade != null)<b>{{ ($lesson->grade == 13 ) ? 'KPSS' : $lesson->grade }}. Sınıf - {{ ucwords(str_replace('_', ' ', $lesson->teacher->branch) )}}</b> @endif </div>
+                                                                        <div style="font-size:15px;">{{ $lesson->title }}</div>
+                                                                    </div>
+                                                                    <a href="javascript:;" class="btnx join-lesson-btn" data-lesson-id="{{ $lesson->id }}">Derse Kayıt ol</a>
+                                                                </div>
+                                                                
+                                                                
+                                                                <div class="flex-space-between" style="margin-top:15px;">
+                                                                    <div>
+                                                                        <b>{{ $lesson->teacher->name }} </b>
+                                                                        <span><i class="bi bi-person"></i> {{ $lesson->max_person }} / {{count(array_filter(explode(',', $lesson->attendees)))}} </span>
+                                                                    </div>
+                                                                    <span style="font-size:15px;">{{ date('d.m.Y', strtotime($lesson->start)) }} {{ date('H:i', strtotime($lesson->start)) }}</span>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                    
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                        @endforeach
+                                    
+                                @else
+                                    <div class="alert alert-warning">
+                                        Sınıf seviyenizde aktif ücretsiz ders bulunamadı. Lütfen sayfayı daha sonra tekrar ziyaret ediniz.
+                                    </div>
+                                @endif
                         @endif
                     </div>
                 </div>
