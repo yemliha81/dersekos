@@ -19,6 +19,11 @@
       <div class="alert alert-danger">
         {{session()->get('error')}}
       </div>
+      @if (session('status'))
+      <div class="alert alert-info">
+      {{ session('status') }}
+      </div>
+      @endif
 
       @endif
       <!-- Giriş Formu -->
@@ -34,7 +39,7 @@
           <input type="password" name="password" placeholder="••••••••" required>
         </div>
         <button class="btn btn-primary" style="width:100%">Giriş Yap</button>
-        <div class="auth-footer">Şifreni mi unuttun? <a href="#">Sıfırla</a></div>
+        <div class="auth-footer">Şifreni mi unuttun? <a href="{{route('password.request')}}">Sıfırla</a></div>
       </form>
 
       <!-- Üyelik Formu -->

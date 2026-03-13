@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SeederController;
+use App\Http\Controllers\Auth\PasswordResetController;
 
 
 
@@ -14,6 +15,13 @@ use App\Http\Controllers\SeederController;
 Route::get('/admin/login', 'App\Http\Controllers\Admin\LoginController@showLoginForm')->name('admin.login');
 Route::post('/admin/login', 'App\Http\Controllers\Admin\LoginController@login')->name('admin.login.submit');
 Route::get('/admin/logout', 'App\Http\Controllers\Admin\LoginController@logout')->name('admin.logout');
+
+
+
+Route::get('/forgot-password', [PasswordResetController::class, 'showForgotForm'])->name('password.request');
+Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])->name('password.email');
+Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])->name('password.update');
 
 //Project Admin Routes
 
