@@ -1086,5 +1086,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('assets/js/kesirler.js') }}"></script>
+    <script src="{{ asset('assets/js/kesirler.js?v=1234') }}"></script>
 @endsection
