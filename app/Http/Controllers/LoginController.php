@@ -39,10 +39,9 @@ class LoginController extends Controller
             return redirect()->route('student.dashboard');
         }
 
-        // Authentication failed...
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        
+
+        return back()->with('error', 'Lütfen bilgilerinizi kontrol ediniz. ');
 
         
         } catch (\Throwable $th) {
@@ -78,7 +77,7 @@ class LoginController extends Controller
             return redirect()->route('student.dashboard');
         
          } catch (\Exception $e) {
-            dd($e->getMessage());
+            return back()->with('error', 'Kayıt sırasında bir hata oluştu: ' . $e->getMessage());
         }
     }
     public function logout()

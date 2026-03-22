@@ -14,16 +14,16 @@
         <label for="login">Giriş Yap</label>
         <label for="register">Üye Ol</label>
       </div>
-      @if(session()->has('error'))
+      @if(session('error'))
 
       <div class="alert alert-danger">
         {{session()->get('error')}}
       </div>
-      @if (session('status'))
-      <div class="alert alert-info">
-      {{ session('status') }}
-      </div>
-      @endif
+        @if (session('status'))
+        <div class="alert alert-info">
+        {{ session('status') }}
+        </div>
+        @endif
 
       @endif
       <!-- Giriş Formu -->

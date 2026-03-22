@@ -191,5 +191,14 @@ class StudentController extends Controller
 
     }
 
+    public function cancelMembership(Request $request){
+        $student = auth('student')->user();
+        $student->delete();
+
+        auth('student')->logout();
+
+        return redirect('/')->with('success', 'Üyelik iptaliniz alınmıştır. Sizi kaybettiğimiz için üzgünüz :(');
+    }
+
     
 }

@@ -223,6 +223,8 @@ Route::get('/student/dashboard234', 'App\Http\Controllers\StudentController@dash
 Route::get('/student/old-lessons', 'App\Http\Controllers\StudentController@oldEvents')->middleware('auth:student')->name('student.old_lessons');
 Route::post('/student/event-rate', 'App\Http\Controllers\StudentController@rateEvent')->middleware('auth:student')->name('student.event_rate');
 Route::post('/student/join-free-lesson/{id}', 'App\Http\Controllers\StudentController@joinToEvent')->middleware('auth:student')->name('student.join_free_lesson');
+//student.cancel_membership route
+Route::post('/student/cancel-membership', 'App\Http\Controllers\StudentController@cancelMembership')->middleware('auth:student')->name('student.cancel_membership');
 
 
 
