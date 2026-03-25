@@ -16,6 +16,7 @@ use App\Models\Content;
 use App\Models\SeoSettings;
 use App\Models\Teacher;
 use App\Models\Event;
+use App\Models\EventVip;
 use App\Models\Campaign;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -231,6 +232,10 @@ class HomeController extends Controller
         $lessons = Event::where('start', '>=', Carbon::now()->addMinutes(30))
         ->where('start', '<=', Carbon::now()->addMinutes(31))->with("teacher")
         ->get();
+
+        $vip_lessons = EventVip::where('start', '>=', Carbon::now()->addMinutes(30))
+        ->where('start', '<=', Carbon::now()->addMinutes(31))->with("teacher")
+        ->get();
         
         $lesson_text = [];
 
@@ -246,6 +251,23 @@ class HomeController extends Controller
  ". $lesson->title . " dersine katılmak için 
 dersekos.com üzerinden kayıt olmayı unutmayın. 
 Şimdiden iyi dersler dileriz. @all";
+
+                $this->sendWhatsappMessage('905067790414', $lesson_text[$lesson->id]);
+
+            }
+
+        }
+
+        if($vip_lessons->isEmpty()){
+            // No lessons found
+            echo "No lessons found.";
+        }else{
+            foreach($lessons as $lesson){
+            
+                $lesson_text[$lesson->id] = 
+                "Değerli öğrencilerimiz,  ". $lesson->teacher->name . " hocamızın, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacak olan  
+ ". $lesson->grade . ". sınıf " . ucwords( str_replace('_', ' ', $lesson->teacher->branch )) ." 
+ ". $lesson->title . " dersi 30 dakika içinde başlayacaktır. Ders Linkimiz: " . $lesson->meet_url . " Şimdiden iyi dersler dileriz. @all";
 
                 $this->sendWhatsappMessage('905067790414', $lesson_text[$lesson->id]);
 
