@@ -262,7 +262,7 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
             // No lessons found
             echo "No lessons found.";
         }else{
-            foreach($lessons as $lesson){
+            foreach($vip_lessons as $lesson){
             
                 $lesson_text[$lesson->id] = 
                 "Değerli öğrencilerimiz,  ". $lesson->teacher->name . " hocamızın, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacak olan  
