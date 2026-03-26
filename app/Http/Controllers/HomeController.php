@@ -229,12 +229,12 @@ class HomeController extends Controller
     public function upComingEvents(){
         // Get the lessons that start in 30 mins later
 
-        $lessons = Event::where('start', '>=', Carbon::now()->addMinutes(30))
-        ->where('start', '<=', Carbon::now()->addMinutes(31))->with("teacher")
+        $lessons = Event::where('start', '>=', Carbon::now()->addMinutes(20))
+        ->where('start', '<=', Carbon::now()->addMinutes(21))->with("teacher")
         ->get();
 
-        $vip_lessons = EventVip::where('start', '>=', Carbon::now()->addMinutes(30))
-        ->where('start', '<=', Carbon::now()->addMinutes(31))->with("teacher")
+        $vip_lessons = EventVip::where('start', '>=', Carbon::now()->addMinutes(20))
+        ->where('start', '<=', Carbon::now()->addMinutes(21))->with("teacher")
         ->get();
         
         $lesson_text = [];
