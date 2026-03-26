@@ -265,9 +265,9 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
             foreach($vip_lessons as $lesson){
             
                 $lesson_text[$lesson->id] = 
-                "Değerli öğrencilerimiz,  ". $lesson->teacher->name . " hocamızın, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacak olan  
+                "Değerli öğrencilerimiz,  ". $lesson->teacher->name . " hocamızın,   
  ". $lesson->grade . ". sınıf " . ucwords( str_replace('_', ' ', $lesson->teacher->branch )) ." 
- ". $lesson->title . " dersi 30 dakika içinde başlayacaktır. Ders Linkimiz: " . $lesson->meet_url . " Şimdiden iyi dersler dileriz. @all";
+ ". $lesson->title . " dersi, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacaktır. Ders Linkimiz: " . $lesson->meet_url . " Şimdiden iyi dersler dileriz. @all";
 
                 $this->sendWhatsappMessage('905067790414', $lesson_text[$lesson->id]);
 
