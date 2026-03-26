@@ -22,9 +22,7 @@
                     <div class="left-student-menu">
                         <a href="{{route('student.dashboard2')}}"> <i class="bi bi-file-earmark-text"></i> Tüm Sınıf Dersleri</a>
                     </div>
-                    <div class="left-student-menu">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#cancelModal"> <i class="bi bi-x"></i> Üyelik İptali</a>
-                    </div>
+                    
                     <div>
                     @if(auth('student')->user()->grade == '1')
                         <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/KqnVpHc71dBGHMlPVwa8YM?mode=hqrc">1. Sınıf WhatsApp Grubu</a>
@@ -65,6 +63,9 @@
                     @if(auth('student')->user()->grade == '13')
                         <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/GmPAYDFFoSOGcxULO9ApGw?mode=hqrc">KPSS WhatsApp Grubu</a>
                     @endif
+                    </div>
+                    <div class="left-student-menu">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#cancelModal"> <i class="bi bi-x"></i> Üyelik İptali</a>
                     </div>
                 </section>
                 
