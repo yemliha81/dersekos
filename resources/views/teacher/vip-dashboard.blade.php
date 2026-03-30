@@ -373,6 +373,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
    var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
+            firstDay: 1,
             locale: 'tr',
             selectable: true,
             events: '/vip-events',

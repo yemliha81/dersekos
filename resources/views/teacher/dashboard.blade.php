@@ -584,6 +584,7 @@ document.addEventListener('DOMContentLoaded', function () {
    var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             locale: 'tr',
+            firstDay: 1,
             selectable: true,
             events: '/events',
 
@@ -802,6 +803,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var allCalendar = new FullCalendar.Calendar(allCalendarEl, {
             initialView: 'dayGridMonth',
+            firstDay: 1,
             locale: 'tr',
             selectable: true,
             events: '/all-events',
@@ -883,6 +885,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var paidCalendar = new FullCalendar.Calendar(paidCalendarEl, {
             initialView: 'dayGridMonth',
+            firstDay: 1,
             locale: 'tr',
             selectable: true,
             events: '/paid-events',
