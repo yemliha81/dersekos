@@ -137,7 +137,7 @@
             <!-- Review 1 -->
              @if(count($reviews) > 0)
                 @foreach($reviews as $review)
-                  @if($review->student->name)
+                  @if(isset($review->student->name))
                     <div class="d-flex gap-3 mb-3">
                       <i class="bi bi-person"></i>
                       <div>
