@@ -137,21 +137,23 @@
             <!-- Review 1 -->
              @if(count($reviews) > 0)
                 @foreach($reviews as $review)
-                <div class="d-flex gap-3 mb-3">
-                  <i class="bi bi-person"></i>
-                  <div>
-                    <div class="fw-bold">
-                      <!-- get first letters of first name and then add *** after --> 
-                      {{maskName($review->student->name) }}
+                  @if($review->student->name)
+                    <div class="d-flex gap-3 mb-3">
+                      <i class="bi bi-person"></i>
+                      <div>
+                        <div class="fw-bold">
+                          <!-- get first letters of first name and then add *** after --> 
+                          {{maskName($review->student->name) }}
+                        </div>
+                        <div class="small text-muted">{{$review->comment}}</div>
+                        <div class="small mt-1"> 
+                          @for($i = 1; $i <= $review->rating; $i++)
+                          <i class="bi bi-star-fill review-star"></i>
+                          @endfor
+                        </div>
+                      </div>
                     </div>
-                    <div class="small text-muted">{{$review->comment}}</div>
-                    <div class="small mt-1"> 
-                      @for($i = 1; $i <= $review->rating; $i++)
-                      <i class="bi bi-star-fill review-star"></i>
-                      @endfor
-                    </div>
-                  </div>
-                </div>
+                  @endif
                 @endforeach
             @else 
 
