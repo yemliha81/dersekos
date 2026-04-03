@@ -729,6 +729,9 @@
       .top-image-area{
         flex-direction: column;
       }
+      .mb-hidden{
+        display: none;
+      }
     }
 
   </style>

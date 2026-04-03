@@ -47,10 +47,10 @@
                     <p>- Ders Video Kaydı: Yok</p>
                     <p>- Whatsapp grubu: Genel</p>
                     <p>- Sınıf Kontenjan limiti: Yok</p>
-                    <p><br></p>
-                    <p><br></p>
-                    <p><br></p>
-                    <p><br></p>
+                    <p class="mb-hidden"><br></p>
+                    <p class="mb-hidden"><br></p>
+                    <p class="mb-hidden"><br></p>
+                    <p class="mb-hidden"><br></p>
                     <p class="text-right">
                     <a class="login-new-btn" href="{{ route('student.login') }}">Öğrenci Girişi</a>
                   </p>       
