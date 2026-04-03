@@ -726,6 +726,9 @@
       .teachers-list{
         grid-template-columns: 1fr !important;
       }
+      .top-image-area{
+        flex-direction: column;
+      }
     }
 
   </style>
