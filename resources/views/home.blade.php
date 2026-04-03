@@ -32,6 +32,58 @@
         </section>
         <section>
           <div class="row mb-50">
+            <div class="top-image-areas" >
+              <div class="top-image-area" style="background:linear-gradient(135deg, #3691d2 0%);">
+                <div style="border-radius: 50%;overflow: hidden;">
+                  <img src="{{asset('assets/img/dersekos.jpg')}}" width="220"  alt="Derse Koş Ücretsiz ders platformu." loading="lazy">
+                </div>
+                 <div>
+                    <p><h4>Derse Koş (Ücretsiz)</h4></p>
+                    <p>
+                      <hr>
+                    </p>
+                    <p>- 5, 6, 7 ve 8. sınıflar için haftada en az 4 ücretsiz canlı ders</p>
+                    <p>- Üyelik : Ücretsiz</p>
+                    <p>- Ders Video Kaydı: Yok</p>
+                    <p>- Whatsapp grubu: Genel</p>
+                    <p>- Sınıf Kontenjan limiti: Yok</p>
+                    <p><br></p>
+                    <p><br></p>
+                    <p><br></p>
+                    <p><br></p>
+                    <p class="text-right">
+                    <a class="login-new-btn" href="{{ route('student.login') }}">Öğrenci Girişi</a>
+                  </p>       
+                 </div>
+              </div>
+              <div class="top-image-area" style="background:linear-gradient(135deg, #292a2c 0%, #5e5d60 100%);">
+                <div style="border-radius: 50%;overflow: hidden;">
+                  <img src="{{asset('assets/img/dersekos-vip-logo.png')}}" width="220"  alt="Derse Koş Ücretsiz ders platformu." loading="lazy">
+                </div>
+                 <div>
+                    <p><h4>Derse Koş VIP</h4></p>
+                    <p>
+                      <hr>
+                    </p>
+                    <p>- 5, 6, 7 ve 8. sınıflar için haftada en az 12 canlı ders</p>
+                    <p>- Ders Video Kaydı: Var</p>
+                    <p>- Whatsapp grubu: Özel grup</p>
+                    <p>- Sınıf Kontenjan limiti: 12 kişi</p>  
+                    <p>- Düzenli Deneme sınavları</p>
+                    <p>- Bireysel rehberlik hizmeti</p>
+                    <p>- Eğitici Oyunlara sınırsız erişim</p>
+                    <p>- Düzenli öğrenci takibi ve raporlama</p>
+                    <p>- Derslig aboneliği hediye!</p>
+                    <p class="text-right">
+                    <a class="login-new-btn" style="color:#000000;" target="_blank" href="https://dersekos.vip/vip-paketler">Paketleri incele</a>
+                  </p>           
+                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="row mb-50">
             <div class="top-image-areas">
               <div class="top-image-area ">
                  <img src="{{asset('assets/img/ogrenci-giris.png')}}"  alt="">
