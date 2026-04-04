@@ -336,7 +336,9 @@ Route::get('/up-coming-events', 'App\Http\Controllers\HomeController@upComingEve
 Route::get('/oyunlar/kesirler',  fn() => view('games/kesirler'))->name('game.kesirler');
 Route::get('/oyunlar/dort-islem',  fn() => view('games/dort-islem'))->name('game.dort.islem');
 
-
+Route::get('/check-gd', function () {
+    return extension_loaded('gd') ? 'GD is loaded' : 'GD is NOT loaded';
+});
 
 
 // Route for HomeController copyDB function
