@@ -24,6 +24,7 @@ class Teacher extends Authenticatable
         'branch',
         'image',
         'status',
+        'is_vip'
         
     ];
 

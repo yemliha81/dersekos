@@ -39,6 +39,7 @@ class TeacherController extends Controller
         $teacher->tags = $request->input('tags');
         $teacher->about = $request->input('about');
         $teacher->status = $request->input('status');
+        $teacher->is_vip = $request->input('is_vip');
         //status
         
 

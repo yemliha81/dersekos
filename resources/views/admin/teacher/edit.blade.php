@@ -109,6 +109,15 @@
                                                     <option value="0" {{ $teacher->status == 0 ? 'selected' : '' }}>Pasif</option>
                                                 </select>
                                             </div>
+
+                                            <!-- is_vip --> 
+                                            <div class="mb-3">
+                                                <label for="is_vip" class="form-label">VIP Öğretmen</label>
+                                                <select name="is_vip" id="is_vip" class="form-control">
+                                                    <option value="1" {{ $teacher->is_vip == 1 ? 'selected' : '' }}>Evet</option>
+                                                    <option value="0" {{ $teacher->is_vip == 0 ? 'selected' : '' }}>Hayır</option>
+                                                </select>
+                                            </div>
                                             
                                         </div>
                                        
