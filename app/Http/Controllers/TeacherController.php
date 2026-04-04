@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Google\Client;
 use App\Models\Campaign;
+use Intervention\Image\Facades\Image;
 
 
 class TeacherController extends Controller
@@ -54,6 +55,30 @@ class TeacherController extends Controller
         return view('teacher', compact('teacher', 'reviews', 'meta_title', 'meta_description'));
     }
 
+
+
+public function upload(Request $request)
+{
+    $request->validate([
+        'image' => 'required|image|max:2048',
+    ]);
+
+    $image = $request->file('image');
+
+    // Resize image
+    $resizedImage = Image::make($image)
+        ->resize(300, 300, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
+
+    // Save image
+    $path = public_path('uploads/' . time() . '.jpg');
+    $resizedImage->save($path);
+
+    return response()->json(['message' => 'Image uploaded successfully']);
+}
+
     public function updateProfile(Request $request)
     {
         //dd($request->all());
@@ -71,10 +96,26 @@ class TeacherController extends Controller
 
             if($request->has('image')){
 
-                $imagePath = $request->file('image')->move(public_path('teacher_images'), uniqid().'.jpg');
-                $teacher->image = 'teacher_images/' . basename($imagePath);
+                $image = $request->file('image');
+
+                $resizedImage = Image::make($image)
+                    ->resize(300, 300, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    });
+
+                // Save image
+                $image_name = time() . '.jpg';
+                $imagePath = 'teacher_images/' . $image_name;
+                $path = public_path($imagePath);
+                $resizedImage->save($path);
+
+                //$imagePath = $request->file('image')->move(public_path('teacher_images'), uniqid().'.jpg');
+                $teacher->image = $imagePath;
 
             }
+
+            
 
             $teacher->name = $request->input('name');
             $teacher->email = $request->input('email');
