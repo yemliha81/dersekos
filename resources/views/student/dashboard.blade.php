@@ -77,7 +77,7 @@
             <section class="dashboard-cards">
                 <div class="mb-50">
                     <div class="lesson-title-div"><b>Kayıt olduğum dersler</b></div>
-                    <div class="free-lessons">
+                    <div class="free-lessons" style="margin-bottom:30px; background: #dcffe3; padding:15px; border-radius:5px;">
                         @if(count($myLessons) > 0)
                             @foreach($myLessons as $lesson)
                                 @if($lesson->end > now())
@@ -122,7 +122,9 @@
                             
                                 @foreach($groupedLessons as $grade => $lessons)
                                     
-                                        <div class="grade-box">
+                                        <div class="grade-box" style="margin-bottom:30px; background: #dceeff; padding:15px; border-radius:5px;">
+                                            <div><b>{{ ($grade == 13 ) ? 'KPSS' : $grade }}. Sınıf</b></div>
+                                            <hr>
                                             <div class="lessons">
                                                 @foreach($lessons as $lesson)
                                             
