@@ -96,22 +96,8 @@ public function upload(Request $request)
 
             if($request->has('image')){
 
-                $image = $request->file('image');
-
-                $resizedImage = Image::make($image)
-                    ->resize(300, 300, function ($constraint) {
-                        $constraint->aspectRatio();
-                        $constraint->upsize();
-                    });
-
-                // Save image
-                $image_name = time() . '.jpg';
-                $imagePath = 'teacher_images/' . $image_name;
-                $path = public_path($imagePath);
-                $resizedImage->save($path);
-
-                //$imagePath = $request->file('image')->move(public_path('teacher_images'), uniqid().'.jpg');
-                $teacher->image = $imagePath;
+                $imagePath = $request->file('image')->move(public_path('teacher_images'), uniqid().'.jpg');
+                $teacher->image = 'teacher_images/' . basename($imagePath);
 
             }
 
