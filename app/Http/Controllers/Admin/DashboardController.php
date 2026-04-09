@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Event;
+use App\Models\EventVip;
 
 
 class DashboardController extends Controller
@@ -18,7 +19,7 @@ class DashboardController extends Controller
         $studentCount = Student::count();
         $teacherCount = Teacher::count();
         $freeEventCount = Event::where('is_free', 1)->count();
-        $paidEventCount = Event::where('is_free', 0)->count();
+        $paidEventCount = EventVip::count();
 
         $teacherCountsByDay = Teacher::all()
         ->groupBy(fn ($teacher) => $teacher->created_at->format('Y-m-d'))
@@ -69,6 +70,14 @@ class DashboardController extends Controller
     public function events($type)
     {
         $is_free = ($type === 'free') ? 1 : 0;
+        if($type === 'paid') {
+            $events = EventVip::orderBy('start')->with('teacher')->get();
+            return view('admin.dashboard.events', compact('events'));
+        }
+        if($type === 'free') {
+            $events = Event::orderBy('start')->where('is_free', 1)->with('teacher')->get();
+            return view('admin.dashboard.events', compact('events'));
+        }
         $events = Event::where('is_free', $is_free)->orderBy('start')->with('teacher')->get();
         return view('admin.dashboard.events', compact('events'));
     }
