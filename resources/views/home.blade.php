@@ -32,6 +32,13 @@
         </section>
         <section>
           <div class="row mb-50">
+            <div class="col-12 text-center">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdtS3u0ANgtSj9Ql2svRswa0JxnK2FstIgxALfuSA3csKPs5g/viewform?embedded=true" width="100%" height="992" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="row mb-50">
             <div class="top-image-areas" >
               <div class="top-image-area" style="background:linear-gradient(135deg, #3691d2 0%);">
                 <div style="border-radius: 50%;overflow: hidden;">
