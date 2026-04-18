@@ -278,9 +278,33 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
 
     }
 
+    public function sendTestMessage(){
+        $this->sendWhatsappMessage2('905067790414', 'Bu bir test mesajıdır');
+    }
+
     private function sendWhatsappMessage($phone_number, $message) {
         $phoneNumberId = '975195775683335';
         $accessToken = 'EAAjXZBqSsnEEBQ5SvjA96T3PvpGitd9OCHPXVZBVlVDcgKkUNeveNghNmyjCAxKSCf1JGVe6B69GvfKWdbEfko5GMr3Nj1UhgC0LDWT4dZBaZBpo89XhAZCDKCrkiqtQK7fjLZCxQkp4AbYUuhnZBVnDi0lu0U9uCLEZB8Aey3jPN2gdWJMLfipSfBAATAL9C1XAZBgZDZD';
+
+        $response = Http::withToken($accessToken)
+            ->post("https://graph.facebook.com/v22.0/{$phoneNumberId}/messages", [
+                "messaging_product" => "whatsapp",
+                "to" => $phone_number,
+                "type" => "text",
+                "text" => [
+                    "body" => $message
+                ]
+            ]);
+
+        return response()->json([
+            'status' => $response->status(),
+            'body' => $response->json()
+        ]);
+    }
+
+     private function sendWhatsappMessage2($phone_number, $message) {
+        $phoneNumberId = '1002556022950899';
+        $accessToken = 'EAASZApTG0mR8BRFDE1R9RijsxFWZAYybavt5ZBlTuyaiVPx0DKLZCJCQvza6vjOuVr6v0mPl5I02ABZBxkbFVrriZBEIFjAj9HOrHC2vD2beq80i8qv2TmByS0VatcS0i0dSsXGyEGLiww9DxTG4QE9xglZA2qpii9ktOPcylDf5MXqfVkJmZCvnFME3A3RaFlS5hQZDZD';
 
         $response = Http::withToken($accessToken)
             ->post("https://graph.facebook.com/v22.0/{$phoneNumberId}/messages", [
