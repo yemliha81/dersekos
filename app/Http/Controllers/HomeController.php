@@ -296,7 +296,10 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
                 ]
             ]);
 
-        print_r($response); die();
+        return response()->json([
+            'status' => $response->status(),
+            'body' => $response->json()
+        ]);
     }
 
      private function sendWhatsappMessage2($phone_number, $message) {
@@ -313,10 +316,7 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
                 ]
             ]);
 
-        return response()->json([
-            'status' => $response->status(),
-            'body' => $response->json()
-        ]);
+        print_r($response->json());
     }
 
     /*private function sendWhatsappMessage($phone_number, $message) {
