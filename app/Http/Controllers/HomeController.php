@@ -21,6 +21,7 @@ use App\Models\Campaign;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 
 class HomeController extends Controller
@@ -358,6 +359,29 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
         }
 
         return response('Forbidden', 403);
+    }
+
+    public function handleMessage(Request $request)
+    {
+        $data = $request->all();
+
+        $message = $data['entry'][0]['changes'][0]['value']['messages'][0] ?? null;
+
+        if (!$message) {
+            return response('NO MESSAGE', 200);
+        }
+
+        $from = $message['from'] ?? null;
+        $text = $message['text']['body'] ?? null;
+        $messageId = $message['id'] ?? null;
+
+        Log::info("WhatsApp Message", [
+            'from' => $from,
+            'text' => $text,
+            'id' => $messageId
+        ]);
+
+        return response('OK', 200);
     }
 
     /*private function sendWhatsappMessage($phone_number, $message) {
