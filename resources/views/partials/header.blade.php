@@ -2,6 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
+  <meta name="facebook-domain-verification" content="rayxx4gxvv5tb6dlys0aarburbvwbg" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   @if(isset($meta_title))
   <?php $meta_title = Str::limit($meta_title, 60); ?>
