@@ -343,8 +343,8 @@ Route::get('/check-gd', function () {
 Route::post('/send-test-message', 'App\Http\Controllers\HomeController@sendTestMessage')->name('send.test.message');
 Route::get('/sinav-giris', 'App\Http\Controllers\HomeController@sinavGirisBilgi')->name('sinav.giris.bilgi');
 Route::get('/message-send-page-81010555', 'App\Http\Controllers\HomeController@messageSendPage')->name('message.send.page');
-Route::post('/meta-webhook', 'App\Http\Controllers\HomeController@metaWebhook')->name('meta.web.hook');
-Route::get('/meta-webhook', 'App\Http\Controllers\HomeController@handleMessage')->name('meta.handle.message');
+Route::get('/meta-webhook', 'App\Http\Controllers\HomeController@metaWebhook')->name('meta.web.hook');
+Route::post('/meta-webhook', 'App\Http\Controllers\HomeController@handleMessage')->name('meta.handle.message');
 
 
 // Route for HomeController copyDB function
