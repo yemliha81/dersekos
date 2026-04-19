@@ -340,8 +340,9 @@ Route::get('/check-gd', function () {
     return extension_loaded('gd') ? 'GD is loaded' : 'GD is NOT loaded';
 });
 
-Route::get('/send-test-message', 'App\Http\Controllers\HomeController@sendTestMessage')->name('send.test.message');
+Route::post('/send-test-message', 'App\Http\Controllers\HomeController@sendTestMessage')->name('send.test.message');
 Route::get('/sinav-giris', 'App\Http\Controllers\HomeController@sinavGirisBilgi')->name('sinav.giris.bilgi');
+Route::get('/message-send-page-81010555', 'App\Http\Controllers\HomeController@messageSendPage')->name('message.send.page');
 
 
 // Route for HomeController copyDB function

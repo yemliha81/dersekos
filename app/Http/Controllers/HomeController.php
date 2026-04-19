@@ -278,10 +278,6 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
 
     }
 
-    public function sendTestMessage(){
-        $this->sendWhatsappMessage2('905074788281', 'Bu bir test mesajıdır');
-    }
-
     private function sendWhatsappMessage($phone_number, $message) {
         $phoneNumberId = '975195775683335';
         $accessToken = 'EAAjXZBqSsnEEBQ5SvjA96T3PvpGitd9OCHPXVZBVlVDcgKkUNeveNghNmyjCAxKSCf1JGVe6B69GvfKWdbEfko5GMr3Nj1UhgC0LDWT4dZBaZBpo89XhAZCDKCrkiqtQK7fjLZCxQkp4AbYUuhnZBVnDi0lu0U9uCLEZB8Aey3jPN2gdWJMLfipSfBAATAL9C1XAZBgZDZD';
@@ -300,6 +296,13 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
             'status' => $response->status(),
             'body' => $response->json()
         ]);
+    }
+
+
+
+    public function sendTestMessage(Request $request){
+        $number = $request->input('phone_number');
+        $this->sendWhatsappMessage2($number, 'Bu bir test mesajıdır');
     }
 
      private function sendWhatsappMessage2($phone_number, $message) {
@@ -337,6 +340,10 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
 
     public function sinavGirisBilgi(){
         return view('sinav_giris_bilgi');
+    }
+
+    public function messageSendPage(){
+        return view('message_send_page');
     }
 
     /*private function sendWhatsappMessage($phone_number, $message) {
