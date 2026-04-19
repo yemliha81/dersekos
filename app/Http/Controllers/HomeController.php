@@ -347,7 +347,17 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
     }
 
     public function metaWebhook(Request $request){
-        echo "Meta Webhook Çalışıyor";
+        $verify_token = 'drsks2026drsksvip2026';
+
+        $mode = $request->get('hub_mode');
+        $token = $request->get('hub_verify_token');
+        $challenge = $request->get('hub_challenge');
+
+        if ($mode === 'subscribe' && $token === $verify_token) {
+            return response($challenge, 200);
+        }
+
+        return response('Forbidden', 403);
     }
 
     /*private function sendWhatsappMessage($phone_number, $message) {
