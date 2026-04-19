@@ -315,6 +315,19 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
                     "name" => "template_test_1",
                     "language" => [
                         "code" => "tr"
+                    ],
+                    "components" => [
+                        [
+                            "type" => "header",
+                            "parameters" => [
+                                [
+                                    "type" => "image",
+                                    "image" => [
+                                        "link" => "https://dersekos.vip/img/dersekos-vip-logo-1.jpg"
+                                    ]
+                                ]
+                            ]
+                        ]
                     ]
                 ]
             ]);
