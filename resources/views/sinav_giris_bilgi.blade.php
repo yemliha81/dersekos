@@ -16,13 +16,13 @@
   <div class="">
         <section>
             <div class="container">
-                <div><br><br><br>
+                <div>
                     <b>Değerli velimiz</b>, <br>
-                    Derse Koş Türkiye geneli deneme sınavımıza girebilmek için, <br><br><br>
+                    Derse Koş Türkiye geneli deneme sınavımıza girebilmek için, <br><br>
                     <div class="alert alert-info">
-                        <b> >>>> <a href="https://denemeol.com/giris" target="_blank"><i>Sınav Giriş Sayfası</i></a> <<<<</b> adresine giderek, <br><br><br>
+                        <b> >>>> <a href="https://denemeol.com/giris" target="_blank"><i>Sınav Giriş Sayfası</i></a> <<<<</b> adresine giderek, <br><br>
                         <b>Kullanıcı adı</b>: Telefon numaranızın başına sıfır yerine 1 ekleyerek yazınız. <br>
-                        <b>Şifre</b>: Telefon numaranızın son 6 rakamını yazınız. <br><br><br>
+                        <b>Şifre</b>: Telefon numaranızın son 6 rakamını yazınız. <br><br>
 
                         <b>Örnek</b>: Telefon numaranız 05555554433 ise, <br>
                         <b>Kullanıcı adı</b>: 15555554433 <br>
@@ -30,7 +30,7 @@
 
                     </div>
 
-                    Sisteme giriş yaptıktan sonra <b>Sınavlarım -> Derse Koş Türkiye Geneli Deneme Sınavı -> Sınava Başla</b> butonlarına tıklayarak sınava girebilirsiniz. <br><br><br>
+                    Sisteme giriş yaptıktan sonra <b>Sınavlarım -> Derse Koş Türkiye Geneli Deneme Sınavı -> Sınava Başla</b> butonlarına tıklayarak sınava girebilirsiniz. <br><br>
 
                     <div class="alert alert-info">
                         Ücretsiz deneme sınavlarımızı kaçırmamak, duyurulardan ve <b>ÖDÜLLERDEN</b> anında haberdar olmak için <br><br>
