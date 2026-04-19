@@ -341,6 +341,7 @@ Route::get('/check-gd', function () {
 });
 
 Route::get('/send-test-message', 'App\Http\Controllers\HomeController@sendTestMessage')->name('send.test.message');
+Route::get('/sinav-giris', 'App\Http\Controllers\HomeController@sinavGirisBilgi')->name('sinav.giris.bilgi');
 
 
 // Route for HomeController copyDB function

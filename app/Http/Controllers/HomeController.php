@@ -335,6 +335,10 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
         dd($response->json());
     }
 
+    public function sinavGirisBilgi(){
+        return view('sinav_giris_bilgi');
+    }
+
     /*private function sendWhatsappMessage($phone_number, $message) {
 
         $phoneNumberId = '975195775683335';
