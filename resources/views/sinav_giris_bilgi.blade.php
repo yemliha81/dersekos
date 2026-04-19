@@ -10,7 +10,7 @@
                     <b>Değerli velimiz</b>, <br>
                     Derse Koş Türkiye geneli deneme sınavımıza girebilmek için, <br><br><br>
 
-                    <b> >>>> <a href="https://denemeol.com" target="_blank"><i>Sınav Giriş Sayfası</i></a> <<<<</b> adresine giderek, <br><br><br>
+                    <b> >>>> <a href="https://denemeol.com/giris" target="_blank"><i>Sınav Giriş Sayfası</i></a> <<<<</b> adresine giderek, <br><br><br>
                     <b>Kullanıcı adı</b>: Telefon numaranızın başına sıfır yerine 1 ekleyerek yazınız. <br>
                     <b>Şifre</b>: Telefon numaranızın son 6 rakamını yazınız. <br><br><br>
 
