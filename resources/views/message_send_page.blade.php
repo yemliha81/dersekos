@@ -33,7 +33,35 @@
 @endsection
 
 @section('scripts')
+<script>
+    // Form submit event listener
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
 
+        // Get form data
+        var formData = new FormData(this);
+
+        // Send AJAX request
+        fetch('/send-test-message', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Handle response from server
+            
+            document.querySelector('.form-response').innerHTML = '<p>Mesaj gönderildi!</p>';
+
+            // Empty input and set value as "90"
+            document.getElementById('phone_number').value = '90';
+
+        })
+        .catch(error => {
+            // Handle error
+            console.error('Error:', error);
+        });
+    });
+</script>
 @endsection
 
 

@@ -346,6 +346,10 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
         return view('message_send_page');
     }
 
+    public function metaWebhook(Request $request){
+        echo "Meta Webhook Çalışıyor";
+    }
+
     /*private function sendWhatsappMessage($phone_number, $message) {
 
         $phoneNumberId = '975195775683335';
