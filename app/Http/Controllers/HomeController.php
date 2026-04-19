@@ -339,6 +339,26 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
         dd($response->json());
     }
 
+    private function sendBackWhatsappMessage($phone_number, $message) {
+        $phoneNumberId = '1002556022950899';
+        $accessToken = 'EAASZApTG0mR8BRFDE1R9RijsxFWZAYybavt5ZBlTuyaiVPx0DKLZCJCQvza6vjOuVr6v0mPl5I02ABZBxkbFVrriZBEIFjAj9HOrHC2vD2beq80i8qv2TmByS0VatcS0i0dSsXGyEGLiww9DxTG4QE9xglZA2qpii9ktOPcylDf5MXqfVkJmZCvnFME3A3RaFlS5hQZDZD';
+
+        $response = Http::withToken($accessToken)
+            ->post("https://graph.facebook.com/v22.0/{$phoneNumberId}/messages", [
+                "messaging_product" => "whatsapp",
+                "to" => $phone_number,
+                "type" => "text",
+                "text" => [
+                    "body" => $message
+                ]
+            ]);
+
+        return response()->json([
+            'status' => $response->status(),
+            'body' => $response->json()
+        ]);
+    }
+
     public function sinavGirisBilgi(){
         return view('sinav_giris_bilgi');
     }
@@ -375,11 +395,7 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
         $text = $message['text']['body'] ?? null;
         $messageId = $message['id'] ?? null;
 
-        Log::info("WhatsApp Message", [
-            'from' => $from,
-            'text' => $text,
-            'id' => $messageId
-        ]);
+        $this->sendBackWhatsappMessage('905067790414', $from . ': ' . $text);
 
         return response('OK', 200);
     }
