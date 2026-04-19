@@ -279,7 +279,7 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
     }
 
     public function sendTestMessage(){
-        $this->sendWhatsappMessage2('905067790414', 'Bu bir test mesajıdır');
+        $this->sendWhatsappMessage2('905074788281', 'Bu bir test mesajıdır');
     }
 
     private function sendWhatsappMessage($phone_number, $message) {
@@ -307,16 +307,26 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
         $accessToken = 'EAASZApTG0mR8BRFDE1R9RijsxFWZAYybavt5ZBlTuyaiVPx0DKLZCJCQvza6vjOuVr6v0mPl5I02ABZBxkbFVrriZBEIFjAj9HOrHC2vD2beq80i8qv2TmByS0VatcS0i0dSsXGyEGLiww9DxTG4QE9xglZA2qpii9ktOPcylDf5MXqfVkJmZCvnFME3A3RaFlS5hQZDZD';
 
         $response = Http::withToken($accessToken)
-            ->post("https://graph.facebook.com/v22.0/{$phoneNumberId}/messages", [
+            ->post('https://graph.facebook.com/v19.0/'.$phoneNumberId.'/messages', [
                 "messaging_product" => "whatsapp",
                 "to" => $phone_number,
-                "type" => "text",
-                "text" => [
-                    "body" => $message
+                "type" => "template",
+                "template" => [
+                    "name" => "template_test_1",
+                    "language" => [
+                        "code" => "tr"
+                    ],
+                    "components" => [
+                        [
+                            "type" => "body",
+                            "parameters" => [
+                            ]
+                        ]
+                    ]
                 ]
             ]);
 
-        print_r($response->json());
+        dd($response->json());
     }
 
     /*private function sendWhatsappMessage($phone_number, $message) {
