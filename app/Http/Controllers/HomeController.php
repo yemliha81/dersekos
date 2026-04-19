@@ -315,13 +315,6 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
                     "name" => "template_test_1",
                     "language" => [
                         "code" => "tr"
-                    ],
-                    "components" => [
-                        [
-                            "type" => "body",
-                            "parameters" => [
-                            ]
-                        ]
                     ]
                 ]
             ]);
