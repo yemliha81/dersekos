@@ -33,6 +33,7 @@ Route::get('/run-student-seeder', [SeederController::class, 'runStudentSeeder'])
 Route::get('/admin', 'App\Http\Controllers\Admin\DashboardController@dashboard')->name('admin.dashboard');
 Route::get('/admin/students', 'App\Http\Controllers\Admin\DashboardController@students')->name('admin.students');
 Route::get('/admin/students/{id}', 'App\Http\Controllers\Admin\DashboardController@studentShow')->name('admin.students.show');
+Route::post('/admin/students/store', 'App\Http\Controllers\Admin\DashboardController@studentStore')->name('admin.students.store');
 
 Route::get('/admin/teachers', 'App\Http\Controllers\Admin\DashboardController@teachers')->name('admin.teachers');
 

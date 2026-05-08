@@ -22,10 +22,8 @@ class Student extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
-        'phone',
-        'address',
         'grade',
+        'is_banned'
     ];
 
     // If you want to automatically cast created_at as datetime

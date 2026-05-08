@@ -46,6 +46,27 @@ class DashboardController extends Controller
         return view('admin.dashboard.student_show', compact('student'));
     }
 
+    public function studentStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|email',
+            'grade' => 'nullable|integer',
+            'is_banned' => 'required|boolean',
+        ]);
+
+        $student = Student::find($request->student_id);
+
+        $student->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'grade' => $request->grade,
+            'is_banned' => $request->is_banned,
+        ]);
+
+        return redirect()->route('admin.students')->with('success', 'Öğrenci başarıyla güncellendi.');
+    }
+
 
     public function teachers()
     {
@@ -77,6 +98,15 @@ class DashboardController extends Controller
         if($type === 'free') {
             $events = Event::orderBy('start')->where('is_free', 1)->with('teacher')->get();
             return view('admin.dashboard.events', compact('events'));
+        }
+        if($type === 'detail') {
+            $events = Event::orderBy('start')->where('is_free', 1)->with('teacher')->get();
+            
+            foreach($events as $event) {
+                $event->attendees = Student::whereIn('id', explode(',', $event->attendees))->get();
+            }
+            //dd($events);
+            return view('admin.dashboard.events-detail', compact('events'));
         }
         $events = Event::where('is_free', $is_free)->orderBy('start')->with('teacher')->get();
         return view('admin.dashboard.events', compact('events'));

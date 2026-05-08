@@ -28,16 +28,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-        //die(bcrypt('drs2026**'));
+        //die(bcrypt('123456'));
         // cache teachers for 60 minutes
-        $teachers = cache()->remember('teachers', 60, function () {
+        /*$teachers = cache()->remember('teachers', 60, function () {
             return Teacher::orderByRaw("
                 CASE 
                     WHEN image IS NULL OR image = '' THEN 1 
                     ELSE 0 
                 END
             ")->where('status', 1)->get();
-        });
+        });*/
         
 
         //dd($teachers);
@@ -45,7 +45,7 @@ class HomeController extends Controller
 
         //$menuItems = Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->get();
 
-        return view('home', compact('teachers'));
+        return view('home');
     }
 
     public function campRegistration()
