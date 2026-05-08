@@ -22,6 +22,7 @@ class Student extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'password',
         'grade',
         'is_banned'
     ];
@@ -33,7 +34,6 @@ class Student extends Authenticatable
     ];
 
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 }
