@@ -251,7 +251,9 @@ class HomeController extends Controller
  ". $lesson->grade . ". sınıf " . ucwords( str_replace('_', ' ', $lesson->teacher->branch )) ." 
  ". $lesson->title . " dersine katılmak için 
 dersekos.com üzerinden kayıt olmayı unutmayın. 
-Şimdiden iyi dersler dileriz. @all";
+Şimdiden iyi dersler dileriz. @all
+
+Ders Linkimiz: " . $lesson->meet_url;
 
                 $this->sendWhatsappMessage('905067790414', $lesson_text[$lesson->id]);
 
@@ -268,7 +270,14 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
                 $lesson_text[$lesson->id] = 
                 "Değerli öğrencilerimiz,  ". $lesson->teacher->name . " hocamızın,   
  ". $lesson->grade . ". sınıf " . ucwords( str_replace('_', ' ', $lesson->teacher->branch )) ." 
- ". $lesson->title . " dersi, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacaktır. Ders Linkimiz: " . $lesson->meet_url . " Şimdiden iyi dersler dileriz. @all";
+ ". $lesson->title . " dersi, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacaktır. Ders Linkimiz: " . $lesson->meet_url . " Şimdiden iyi dersler dileriz. @all
+ 
+ 
+ Değerli öğrencilerimiz,  ". $lesson->teacher->name . " hocamızın, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacak olan  
+ ". $lesson->grade . ". sınıf " . ucwords( str_replace('_', ' ', $lesson->teacher->branch )) ." 
+ ". $lesson->title . " dersine katılmak için 
+dersekos.com üzerinden kayıt olmayı unutmayın. 
+Şimdiden iyi dersler dileriz. @all";
 
                 $this->sendWhatsappMessage('905067790414', $lesson_text[$lesson->id]);
 
