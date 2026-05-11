@@ -316,7 +316,7 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
                 "to" => $phone_number,
                 "type" => "template",
                 "template" => [
-                    "name" => "template_test_1",
+                    "name" => "derse_kos_vip_erken_kayit",
                     "language" => [
                         "code" => "tr"
                     ],
