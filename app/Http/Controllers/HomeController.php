@@ -230,6 +230,8 @@ class HomeController extends Controller
     public function upComingEvents(){
         // Get the lessons that start in 30 mins later
 
+        $this->sendWhatsappMessage('905067790414', 'Bu bir test mesajıdır. Şu an saat: ' . date('H:i:s'));
+
         $lessons = Event::where('start', '>=', Carbon::now()->addMinutes(20))
         ->where('start', '<=', Carbon::now()->addMinutes(21))->with("teacher")
         ->get();
