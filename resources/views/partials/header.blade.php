@@ -15,7 +15,18 @@
   @else 
   <?php $meta_description = "Öğrencileri ve eğitmenleri buluşturan DerseKoş platformuna kayıt olun ve ücretsiz ders fırsatını kaçırmayın! Derse koş! Öğrenci kayıt. Derse koş! Eğitmen kayıt."; ?>
   @endif
+  <meta name="keywords" content="özel ders, online özel ders, öğrenci, eğitmen, ücretsiz ders, derse koş, öğrenci kayıt, eğitmen kayıt" />
   <meta name="description" content="{{ $meta_description }}" />
+  <meta property="og:title" content="Derse Koş! — Özel Ders Platformu">
+  <meta property="og:description" content="{{ $meta_description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.dersekos.com/">
+  <meta property="og:site_name" content="Derse Koş Online Eğitim Platformu">
+  <meta property="og:image" content="https://www.dersekos.com/assets/img/dersekos.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Online Özel Ders ve Online Eğitim Platformu | Derse Koş">
+  <meta property="og:locale" content="tr_TR">
   <!-- Google Font (optional) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
