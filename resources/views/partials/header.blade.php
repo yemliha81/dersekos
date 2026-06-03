@@ -23,8 +23,8 @@
   <meta property="og:url" content="https://www.dersekos.com/">
   <meta property="og:site_name" content="Derse Koş Online Eğitim Platformu">
   <meta property="og:image" content="https://www.dersekos.com/assets/img/dersekos.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
   <meta property="og:image:alt" content="Online Özel Ders ve Online Eğitim Platformu | Derse Koş">
   <meta property="og:locale" content="tr_TR">
   <!-- Google Font (optional) -->
