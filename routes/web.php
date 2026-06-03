@@ -319,6 +319,9 @@ Route::get('/ara-tatil-kamplar', 'App\Http\Controllers\HomeController@campsList'
 //Exam Route
 Route::get('/exam/{id}', 'App\Http\Controllers\ExamController@index')->name('exam.index');
 Route::post('/exam/{exam_id}/submit-answers', 'App\Http\Controllers\ExamController@submitAnswers')->name('exam.submit_answers');
+// Exam application form
+Route::get('/exam/{exam_id}/apply', 'App\Http\Controllers\ExamController@showApplicationForm')->name('exam.apply');
+Route::post('/exam/{exam_id}/apply', 'App\Http\Controllers\ExamController@submitApplication')->name('exam.apply.store');
 
 //Contact Route
 Route::get('/iletisim', 'App\Http\Controllers\HomeController@contact')->name('contact');
