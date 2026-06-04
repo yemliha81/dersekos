@@ -796,10 +796,10 @@
     </div>
   </div>
 
-  <!--<div class="mt-3" style="background: #b70dbc; color: #FFFFFF; text-align: center; padding: 12px; font-weight: bold;">
-    2. Dönem 2. yazılı hazırlık kampımız için kayıtlarımız başladı! <br>
-    <a style="color: #c3ed19" href="https://forms.gle/7Ej5gNjxzoDqqLAK7" class="cta">Hemen kayıt olun</a>
-  </div>-->
+  <div class="mt-3" style="background: #b70dbc; color: #FFFFFF; text-align: center; padding: 12px; font-weight: bold;">
+    6-7 Haziran Türkiye Geneli Deneme Sınavı kayıtlarımız başladı! <br>
+    <a  target="_blank" style="font-size:30px; color: #c3ed19" href="https://forms.gle/jzKM89gpp7Ln3HpL6" class="cta"> Hemen kayıt olun  </a>
+  </div>
 
   <a href="javascript:;" class="mobile-nav-toggle d-lg-none" 
     style="position: absolute;
