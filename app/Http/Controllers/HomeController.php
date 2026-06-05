@@ -272,14 +272,7 @@ Ders Linkimiz: " . $lesson->meet_url;
                 $lesson_text[$lesson->id] = 
                 "Değerli öğrencilerimiz,  ". $lesson->teacher->name . " hocamızın,   
  ". $lesson->grade . ". sınıf " . ucwords( str_replace('_', ' ', $lesson->teacher->branch )) ." 
- ". $lesson->title . " dersi, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacaktır. Ders Linkimiz: " . $lesson->meet_url . " Şimdiden iyi dersler dileriz. @all
- 
- 
- Değerli öğrencilerimiz,  ". $lesson->teacher->name . " hocamızın, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacak olan  
- ". $lesson->grade . ". sınıf " . ucwords( str_replace('_', ' ', $lesson->teacher->branch )) ." 
- ". $lesson->title . " dersine katılmak için 
-dersekos.com üzerinden kayıt olmayı unutmayın. 
-Şimdiden iyi dersler dileriz. @all";
+ ". $lesson->title . " dersi, " . date('H:i', strtotime($lesson->start)) . " saatinde başlayacaktır. Ders Linkimiz: " . $lesson->meet_url . " Şimdiden iyi dersler dileriz. @all";
 
                 $this->sendWhatsappMessage('905067790414', $lesson_text[$lesson->id]);
 
@@ -287,7 +280,20 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
 
         }
 
+        $this->sendExamNotification();
 
+
+    }
+
+    private function sendExamNotification(){
+        // select 5 records from sinif_liste_7 table where sms_sent is 0
+        $numbers = DB::table('sinif_liste_7')->where('sms_sent', 0)->limit(5)->get();
+        foreach($numbers as $number){
+            $phone = str_replace([' ', '(', ')', '-', '+'], '', $number->phone);
+            $this->sendWhatsappMessage2($phone, "deneme_sinavi_davet");
+            // update sms_sent to 1
+            DB::table('sinif_liste_7')->where('id', $number->id)->update(['sms_sent' => 1]);
+        }
     }
 
     private function sendWhatsappMessage($phone_number, $message) {
@@ -317,7 +323,7 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
         $this->sendWhatsappMessage2($number, 'Bu bir test mesajıdır');
     }
 
-     private function sendWhatsappMessage2($phone_number, $message) {
+    private function sendWhatsappMessage2($phone_number, $template_name) {
         $phoneNumberId = '1002556022950899';
         $accessToken = 'EAASZApTG0mR8BRFDE1R9RijsxFWZAYybavt5ZBlTuyaiVPx0DKLZCJCQvza6vjOuVr6v0mPl5I02ABZBxkbFVrriZBEIFjAj9HOrHC2vD2beq80i8qv2TmByS0VatcS0i0dSsXGyEGLiww9DxTG4QE9xglZA2qpii9ktOPcylDf5MXqfVkJmZCvnFME3A3RaFlS5hQZDZD';
 
@@ -327,7 +333,7 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
                 "to" => $phone_number,
                 "type" => "template",
                 "template" => [
-                    "name" => "derse_kos_vip_erken_kayit",
+                    "name" => $template_name,
                     "language" => [
                         "code" => "tr"
                     ],
@@ -338,7 +344,7 @@ dersekos.com üzerinden kayıt olmayı unutmayın.
                                 [
                                     "type" => "image",
                                     "image" => [
-                                        "link" => "https://dersekos.vip/img/dersekos-vip-logo-1.jpg"
+                                        "link" => "https://dersekos.com/assets/img/dersekos-logo.png"
                                     ]
                                 ]
                             ]
