@@ -287,13 +287,17 @@ Ders Linkimiz: " . $lesson->meet_url;
 
     private function sendExamNotification(){
         // select 5 records from sinif_liste_7 table where sms_sent is 0
-        $numbers = DB::table('sinif_liste_7')->where('sms_sent', 0)->limit(5)->get();
+        $numbers = DB::table('sinif_liste_7')->where('sms_sent', 0)->limit(1)->get();
+    
         foreach($numbers as $number){
             $phone = str_replace([' ', '(', ')', '-', '+'], '', $number->phone);
+            
+            DB::table('sinif_liste_7')->where('id', $number->id)->update(['sms_sent' => 1]);
             $this->sendWhatsappMessage2($phone, "deneme_sinavi_davet");
             // update sms_sent to 1
-            DB::table('sinif_liste_7')->where('id', $number->id)->update(['sms_sent' => 1]);
+            
         }
+        
     }
 
     private function sendWhatsappMessage($phone_number, $message) {
@@ -333,7 +337,7 @@ Ders Linkimiz: " . $lesson->meet_url;
                 "to" => $phone_number,
                 "type" => "template",
                 "template" => [
-                    "name" => $template_name,
+                    "name" => 'deneme_sinavi_davet',
                     "language" => [
                         "code" => "tr"
                     ],
