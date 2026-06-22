@@ -25,40 +25,40 @@
                     
                     <div>
                     @if(auth('student')->user()->grade == '1')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/KqnVpHc71dBGHMlPVwa8YM?mode=hqrc">1. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/HKz4UvzrW7J9Ko00njdcPp?mode=hqrc">1. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '2')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/BUfeng4quwoIFoC0tXHsQS?mode=hqrc">2. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/Fwha1MiaB3cKR64RAkXFKZ?mode=hqrc">2. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '3')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/FHb3K0BlY0P01YCJWEawcD?mode=hqrc">3. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/KLPrNcGh0T378yxX42kW5i?mode=hqrc">3. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '4')
                         <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/IQW5Ft9xGZSGgbf1m3D4b9?mode=hqrc">4. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '5')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">5. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/FqU4X111Ou264zxfCR0jPS?mode=hqrc">5. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '6')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">6. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/IkluolYw7KLIVFHhJyJQyQ?mode=hqrc">6. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '7')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">7. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/EfDqyyYWxBW7mtvI5X0kLr?mode=hqrc">7. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '8')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">8. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/K2uZXFY2tnHCbQUXqvMi1H?mode=hqrc">8. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '9')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">9. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/D1vMb1B7k6N9QY7vX665mV?mode=hqrc">9. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '10')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/L97vpPBhlqt3dpfV4knbND?mode=hqrc">10. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/FYZDrDOFJxe7aggofVkqiw?mode=hqrc">10. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '11')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/GHZ6XPSC9q1A0K5oeG26Pa?mode=hqrc">11. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/IZ4WRwfsE1gB4PK2vxgsD6?mode=hqrc">11. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '12')
-                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/EeIJrSFzFObFen8WoLOd2Z?mode=hqrc">12. Sınıf WhatsApp Grubu</a>
+                        <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/GHZ6XPSC9q1A0K5oeG26Pa?mode=hqrc">12. Sınıf WhatsApp Grubu</a>
                     @endif
                     @if(auth('student')->user()->grade == '13')
                         <a class="whatsapp-btn" target="_blank" href="https://chat.whatsapp.com/GmPAYDFFoSOGcxULO9ApGw?mode=hqrc">KPSS WhatsApp Grubu</a>
