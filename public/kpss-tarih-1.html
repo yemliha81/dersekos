@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarih Terimleri ve Unvanları Testi</title>
+    <style>
+        :root {
+            --bg-color: #0d131a;
+            --container-bg: #151f2b;
+            --text-main: #f5f7fa;
+            --text-muted: #8a99ad;
+            --accent-gold: #ffb703;
+            --accent-orange: #fb8500;
+            --correct-green: #2a9d8f;
+            --wrong-red: #e63946;
+            --border-color: #243447;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background-color: var(--container-bg);
+            width: 100%;
+            max-width: 650px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .quiz-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background-color: var(--border-color);
+            border-radius: 3px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-orange));
+            transition: width 0.3s ease;
+        }
+
+        .question-box {
+            margin-bottom: 25px;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .options-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            width: 100%;
+            background-color: #1b2838;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 14px 18px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .option-btn:hover:not([disabled]) {
+            background-color: #243447;
+            border-color: var(--accent-gold);
+            transform: translateX(4px);
+        }
+
+        .option-prefix {
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-right: 12px;
+            min-width: 20px;
+        }
+
+        .option-btn.correct {
+            background-color: rgba(42, 157, 143, 0.2) !important;
+            border-color: var(--correct-green) !important;
+            color: #4ade80;
+            font-weight: 600;
+        }
+
+        .option-btn.wrong {
+            background-color: rgba(230, 57, 70, 0.2) !important;
+            border-color: var(--wrong-red) !important;
+            color: #fca5a5;
+        }
+
+        .footer-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, var(--accent-orange), #d94e00);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            display: none;
+        }
+
+        .next-btn:hover {
+            opacity: 0.9;
+        }
+
+        .result-screen {
+            text-align: center;
+            padding: 20px 0;
+            display: none;
+        }
+
+        .result-score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin: 20px 0;
+        }
+
+        .result-details {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .restart-btn {
+            background-color: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .restart-btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--bg-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <!-- Aktif Soru Alanı -->
+        <div id="quiz-active-state">
+            <div class="quiz-header">
+                <div class="quiz-title">Türk Devletleri Tarih Testi</div>
+                <div class="progress-text" id="progress-text">Soru 1 / 70</div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+            <div class="question-box">
+                <p class="question-text" id="question-text">Soru yükleniyor...</p>
+            </div>
+
+            <div class="options-list" id="options-container">
+                <!-- Şıklar dinamik eklenecek -->
+            </div>
+
+            <div class="footer-actions">
+                <button class="next-btn" id="next-btn" onclick="nextQuestion()">Sonraki Soru</button>
+            </div>
+        </div>
+
+        <!-- Sonuç Ekranı -->
+        <div id="quiz-result-state" class="result-screen">
+            <h2>Tebrikler! Testi Tamamladınız.</h2>
+            <div class="result-score" id="result-score">0 / 0</div>
+            <div class="result-details" id="result-details">
+                Doğru Sayısı: 0<br>
+                Yanlış Sayısı: 0<br>
+                Başarı Oranı: %0
+            </div>
+            <button class="restart-btn" onclick="restartQuiz()">Testi Yeniden Başlat</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [{"soru_numarasi": 1, "soru": "İslamiyet öncesi Türk devletlerinde en yüksek devlet lideri veya imparator anlamında kullanılan en yaygın unvan grubu aşağıdakilerden hangisidir?", "secenekler": {"A": "Şad / Tigin", "B": "Yabgu / Tudun", "C": "Kağan / Han / Hakan", "D": "Aygucı / Üge", "E": "Şanyü / Tanhu"}, "dogru_cevap": "C"}, {"soru_numarasi": 2, "soru": "Büyük Hun Devleti'nde kullanılan ve 'genişlik, sonsuzluk, büyüklük' anlamına gelen hükümdarlık unvanı aşağıdakilerden hangisidir?", "secenekler": {"A": "İlteriş", "B": "Kut", "C": "Örgin", "D": "Şanyü / Tanhu", "E": "Tuğ"}, "dogru_cevap": "D"}, {"soru_numarasi": 3, "soru": "Eski Türk devletlerinde Kutluk Kağan örneğinde olduğu gibi 'devleti derleyen, toparlayan' anlamına gelen unvan hangisidir?", "secenekler": {"A": "İlteriş", "B": "Yabgu", "C": "Subaşı", "D": "Tudun", "E": "Aygucı"}, "dogru_cevap": "A"}, {"soru_numarasi": 4, "soru": "Tanrı tarafından kağana ve ailesine verildiğine inanılan siyasi ve kutsal yönetim gücünü ifade eden kavram hangisidir?", "secenekler": {"A": "Töre", "B": "Örgin", "C": "Kut", "D": "Toygun", "E": "Ayuki"}, "dogru_cevap": "C"}, {"soru_numarasi": 5, "soru": "İslam öncesi Türk devletlerinde hükümdarlık alameti olan ve ucuna at kuyruğu bağlanan sancak veya direğe ne ad verilirdi?", "secenekler": {"A": "Kopuz", "B": "Tuğ", "C": "Yargu", "D": "Bitigçi", "E": "Şad"}, "dogru_cevap": "B"}, {"soru_numarasi": 6, "soru": "Eski Türkçe döneminde doğrudan 'taht' anlamına gelen hükümdarlık sembolü aşağıdakilerden hangisidir?", "secenekler": {"A": "Örgin", "B": "Kurultay", "C": "Ayuki", "D": "Tigin", "E": "Tamgacı"}, "dogru_cevap": "A"}, {"soru_numarasi": 7, "soru": "İslamiyet öncesi Türk devletlerinde devlet işlerinin görüşüldüğü, boy beylerinin katıldığı büyük meclise ne ad verilirdi?", "secenekler": {"A": "Ayuki", "B": "Kengeş", "C": "Kurultay / Toy", "D": "Yargu", "E": "Töre"}, "dogru_cevap": "C"}, {"soru_numarasi": 8, "soru": "Eski Türklerde kurultaya (meclise) katılma hakkı olan üyelerin genel adı aşağıdakilerden hangisidir?", "secenekler": {"A": "Toygun", "B": "Bitigçi", "C": "Tudun", "D": "Subaşı", "E": "Aygucı"}, "dogru_cevap": "A"}, {"soru_numarasi": 9, "soru": "İslam öncesi dönemde hükümdardan sonra gelen, günümüzdeki başbakan dengi vezir veya danışmana ne ad verilirdi?", "secenekler": {"A": "Şad", "B": "Aygucı / Üge", "C": "Yabgu", "D": "Tigîn", "E": "Tamgacı"}, "dogru_cevap": "B"}, {"soru_numarasi": 10, "soru": "İslamiyet öncesi Türk devletlerinde devlet işlerini yürüten, hükümdar başkanlığındaki hükümet veya bakanlar kuruluna verilen isim hangisidir?", "secenekler": {"A": "Ayuki", "B": "Kurultay", "C": "Yargu", "D": "Kengeş", "E": "Töre"}, "dogru_cevap": "A"}, {"soru_numarasi": 11, "soru": "Eski Türk devletlerinde kağanın oğullarına, yani şehzadelere verilen isim aşağıdakilerden hangisidir?", "secenekler": {"A": "Şad", "B": "Yabgu", "C": "Tudun", "D": "Tigin", "E": "Subaşı"}, "dogru_cevap": "D"}, {"soru_numarasi": 12, "soru": "Taşrada (eyaletlerde) ordu veya yönetimden sorumlu olan, genellikle hanedan üyesi askeri valilere ne ad verilirdi?", "secenekler": {"A": "Şad", "B": "Aygucı", "C": "Tamgacı", "D": "Bitigçi", "E": "Toygun"}, "dogru_cevap": "A"}, {"soru_numarasi": 13, "soru": "Eski Türklerde devletin batı kanadını yöneten, iç işlerinde serbest, dış işlerinde doğudaki kağana bağlı üst düzey yönetici unvanı hangisidir?", "secenekler": {"A": "Tudun", "B": "Subaşı", "C": "Yabgu", "D": "Şad", "E": "Üge"}, "dogru_cevap": "C"}, {"soru_numarasi": 14, "soru": "İslamiyet öncesi Türk devletlerinde vergi toplamakla görevli olan mali memur veya vali kimdir?", "secenekler": {"A": "Tudun", "B": "Bitigçi", "C": "Tamgacı", "D": "Kopuz", "E": "Aygucı"}, "dogru_cevap": "A"}, {"soru_numarasi": 15, "soru": "Eski Türk devletlerinde devletin yazışmalarını yapan katip ile devlet mühürlerini basan görevli ikilisi hangisidir?", "secenekler": {"A": "Subaşı - Tudun", "B": "Bitigçi - Tamgacı", "C": "Aygucı - Üge", "D": "Şad - Yabgu", "E": "Tigin - Toygun"}, "dogru_cevap": "B"}, {"soru_numarasi": 16, "soru": "Eski Türkçe döneminde 'Ordu komutanı' anlamına gelen terim aşağıdakilerden hangisidir?", "secenekler": {"A": "Subaşı", "B": "Tudun", "C": "Şad", "D": "Yabgu", "E": "Aygucı"}, "dogru_cevap": "A"}, {"soru_numarasi": 17, "soru": "Eski Türklerde resmi devlet kurultaylarının yanı sıra toplanan 'danışma meclisi' niteliğindeki yapıya ne ad verilirdi?", "secenekler": {"A": "Ayuki", "B": "Kengeş", "C": "Yargu", "D": "Töre", "E": "Kopuz"}, "dogru_cevap": "B"}, {"soru_numarasi": 18, "soru": "İslam öncesi Türklerde bizzat kağan başkanlığında toplanan yüksek devlet mahkemesi aşağıdakilerden hangisidir?", "secenekler": {"A": "Töre", "B": "Kurultay", "C": "Ayuki", "D": "Yargu", "E": "Kengeş"}, "dogru_cevap": "D"}, {"soru_numarasi": 19, "soru": "Eski Türk toplumlarında sosyal hayatı ve hukuku düzenleyen yazısız hukuk kuralları bütününe ne ad verilir?", "secenekler": {"A": "Yargu", "B": "Töre", "C": "Kut", "D": "Örgin", "E": "Tuğ"}, "dogru_cevap": "B"}, {"soru_numarasi": 20, "soru": "İslam öncesi dönemde kam veya ozanların çaldığı, telli eski Türk sazı aşağıdakilerden hangisidir?", "secenekler": {"A": "Kopuz", "B": "Tuğ", "C": "Örgin", "D": "Kut", "E": "Töre"}, "dogru_cevap": "A"}, {"soru_numarasi": 21, "soru": "İlk Türk-İslam devletlerinde (Karahanlı, Gazneli, Selçuklu) hükümdar ile halk ve devlet görevlileri arasındaki ilişkileri ve protokolü düzenleyen saray teşkilat amiri kimdir?", "secenekler": {"A": "Müstevfi", "B": "Müşrif", "C": "Atabey", "D": "Hâcip (Hâcibü'l-Hüccâb)", "E": "Câmedâr"}, "dogru_cevap": "D"}, {"soru_numarasi": 22, "soru": "İlk Türk-İslam devletlerinde sultanın elbiselerini muhafaza etmek ve giyinmesine yardım etmekle görevli saray görevlisi hangisidir?", "secenekler": {"A": "Câmedâr", "B": "Taştidâr", "C": "Hâris", "D": "Naib", "E": "Muhtesib"}, "dogru_cevap": "A"}, {"soru_numarasi": 23, "soru": "Sarayın ve sultanın güvenliğini sağlayan, aynı zamanda suçluları cezalandırmakla görevli askeri/idari saray görevlisi kimdir?", "secenekler": {"A": "Hâris", "B": "Taştidâr", "C": "Câmedâr", "D": "Müşrif", "E": "Naib"}, "dogru_cevap": "A"}, {"soru_numarasi": 24, "soru": "Sultanın temizlik işlerine bakan and el yıkama suyunu (ibrik) taşımakla görevli olan saray hizmetlisi aşağıdakilerden hangisidir?", "secenekler": {"A": "Câmedâr", "B": "Taştidâr (Abdâr)", "C": "Hâris", "D": "Müstevfi", "E": "Atabey"}, "dogru_cevap": "B"}, {"soru_numarasi": 25, "soru": "İlk Türk-İslam devletlerinde iç ve dış resmi yazışmaları yürütmekle görevli olan divan hangisidir?", "secenekler": {"A": "Divan-ı İstifa", "B": "Divan-ı İşraf", "C": "Divan-ı Arz", "D": "Divan-ı İnşa (Tuğra)", "E": "Niyabet-i Saltanat"}, "dogru_cevap": "D"}, {"soru_numarasi": 26, "soru": "Devletin mali işlerinden (gelir-gider) sorumlu olan Divan-ı İstifa'nın başındaki görevliye ne ad verilirdi?", "secenekler": {"A": "Müşrif", "B": "Müstevfi", "C": "Emir-i Arz", "D": "Naib", "E": "Atabey"}, "dogru_cevap": "B"}, {"soru_numarasi": 27, "soru": "Devlet kurumlarının idari ve mali denetimini yapan teftiş kuruluna (Divan-ı İşraf) başkanlık eden görevli hangisidir?", "secenekler": {"A": "Müstevfi", "B": "Müşrif", "C": "Emir-i Arz", "D": "Naib", "E": "Muhtesib"}, "dogru_cevap": "B"}, {"soru_numarasi": 28, "soru": "Ordunun ihtiyaçlarını, maaşlarını ve lojistik işlerini yürüten askeri divanın (Divan-ı Arz) başındaki komutana ne ad verilirdi?", "secenekler": {"A": "Emir-i Arz", "B": "Müstevfi", "C": "Müşrif", "D": "Atabey", "E": "Subaşı"}, "dogru_cevap": "A"}, {"soru_numarasi": 29, "soru": "Sultan başkentte olmadığında devlete vekalet eden 'Niyabet-i Saltanat' kurumunun başındaki vekile ne ad verilir?", "secenekler": {"A": "Atabey", "B": "Müşrif", "C": "Naib", "D": "Müstevfi", "E": "Muhtesib"}, "dogru_cevap": "C"}, {"soru_numarasi": 30, "soru": "Meliklerin (şehzadelerin) eğitimiyle görevlendirilen tecrübeli devlet adamlarına ve akıl hocalarına ne ad verilirdi?", "secenekler": {"A": "Atabey", "B": "Naib", "C": "Müderris", "D": "Mülazım", "E": "Danişment"}, "dogru_cevap": "A"}, {"soru_numarasi": 31, "soru": "Hem Selçuklu hem de Osmanlı'da çarşı ve pazarları denetleyen, fiyatları kontrol eden ve belediye görevi gören görevli hangisidir?", "secenekler": {"A": "Subaşı", "B": "Muhtesib", "C": "Muhzır", "D": "Mütesellim", "E": "Kapıcıbaşı"}, "dogru_cevap": "B"}, {"soru_numarasi": 32, "soru": "Osmanlı'daki Tımar sisteminin temelini oluşturan, toprak gelirlerinin hizmet karşılığı asker ve memurlara verilmesi sistemine ilk Türk-İslam devletlerinde ne ad verilirdi?", "secenekler": {"A": "Gedik", "B": "İkta", "C": "Arpalık", "D": "Kapan", "E": "Bedesten"}, "dogru_cevap": "B"}, {"soru_numarasi": 33, "soru": "Müslüman çiftçilerden alınan 1/10 oranındaki ürün vergisi ile Gayrimüslim tebaadan alınan ürün vergisinin adları sırasıyla hangisidir?", "secenekler": {"A": "Cizye - Avarız", "B": "Öşür - Haraç", "C": "Haraç - Öşür", "D": "Çiftresmi - Bennak", "E": "Ağnam - Öşür"}, "dogru_cevap": "B"}, {"soru_numarasi": 34, "soru": "Gayrimüslim sağlıklı erkeklerden, askerlik yapmamaları ve can-mal güvenliklerinin sağlanması karşılığında yılda bir kez alınan baş vergisi hangisidir?", "secenekler": {"A": "Haraç", "B": "Öşür", "C": "Cizye", "D": "Avarız", "E": "Bennak"}, "dogru_cevap": "C"}, {"soru_numarasi": 35, "soru": "Osmanlı Devleti'nde padişahın mutlak vekili olan ve 'Mühr-ü Hümayun'u taşıyan devlet görevlisi kimdir?", "secenekler": {"A": "Sadrazam (Vezir-i Azam)", "B": "Kubbealtı Veziri", "C": "Defterdar", "D": "Nişancı", "E": "Reisülküttab"}, "dogru_cevap": "A"}, {"soru_numarasi": 36, "soru": "Osmanlı Devleti'nde maliyeden, bütçeden ve hazineden sorumlu olan en üst düzey görevli aşağıdakilerden hangisidir?", "secenekler": {"A": "Nişancı", "B": "Kazasker", "C": "Defterdar", "D": "Reisülküttab", "E": "Şeyhülislam"}, "dogru_cevap": "C"}, {"soru_numarasi": 37, "soru": "Osmanlı'da fermanlara padişahın imzası olan Tuğrayı çeken ve toprak kayıtlarını (Tahrir) tutan divan üyesi kimdir?", "secenekler": {"A": "Nişancı", "B": "Sadrazam", "C": "Kazasker", "D": "Defterdar", "E": "Reisülküttab"}, "dogru_cevap": "A"}, {"soru_numarasi": 38, "soru": "Osmanlı'da adalet ve eğitim işlerinden sorumlu olan, kadı ve müderrislerin atamasını yapan divan üyesi hangisidir?", "secenekler": {"A": "Şeyhülislam", "B": "Kazasker (Kadıasker)", "C": "Nişancı", "D": "Mabeyinci", "E": "Mütesellim"}, "dogru_cevap": "B"}, {"soru_numarasi": 39, "soru": "Osmanlı Devleti'nde 17. yüzyıldan itibaren Nişancı'dan ayrılarak doğrudan dış işlerinden (Hariciye) sorumlu bakan seviyesine yükselen görevli kimdir?", "secenekler": {"A": "Reisülküttab", "B": "Sadrazam", "C": "Defterdar", "D": "Tercüman-ı Divan", "E": "Mabeyinci"}, "dogru_cevap": "A"}, {"soru_numarasi": 40, "soru": "Osmanlı'da eyaletlerin en üst düzey askeri ve idari yöneticisi (Vali) ile sancakları yöneten amir unvanları sırasıyla hangisidir?", "secenekler": {"A": "Sancakbeyi - Kadı", "B": "Beylerbeyi - Sancakbeyi", "C": "Sancakbeyi - Beylerbeyi", "D": "Subaşı - Kadı", "E": "Mütesellim - Ayan"}, "dogru_cevap": "B"}, {"soru_numarasi": 41, "soru": "Osmanlı Devleti'nde taşradaki kazalarda hem hukuki davaları çözen hakim, hem de merkezin emirlerini uygulayan sivil yönetici kimdir?", "secenekler": {"A": "Subaşı", "B": "Kadı", "C": "Muhzır", "D": "Mütesellim", "E": "Ayan"}, "dogru_cevap": "B"}, {"soru_numarasi": 42, "soru": "Osmanlı saray yapılanmasında devlet işlerinin yürütüldüğü dış bölüm (Bîrun), devlet adamı yetiştiren iç okul (Enderun) ve padişahın aile hayatını geçirdiği yer (Harem) hangi şıkta doğru sıralanmıştır?", "secenekler": {"A": "Enderun - Bîrun - Harem", "B": "Bîrun - Enderun - Harem", "C": "Harem - Bîrun - Enderun", "D": "Bîrun - Harem - Enderun", "E": "Enderun - Harem - Bîrun"}, "dogru_cevap": "B"}, {"soru_numarasi": 43, "soru": "Padişahın veya sadrazamın yanında çalışan, önemli devlet işlerinde ve törenlerde görev alan seçkin saray görevlileri grubuna ne ad verilirdi?", "secenekler": {"A": "Müteferrika", "B": "Çeşnigîr", "C": "Mabeyinci", "D": "Kapıcıbaşı", "E": "Mihmandar"}, "dogru_cevap": "A"}, {"soru_numarasi": 44, "soru": "Padişahın yemeklerini hazırlayan, sofrasını düzenleyen ve zehirlenme riskine karşı yemekleri padişahtan önce tadan görevliye ne ad verilirdi?", "secenekler": {"A": "Çaşnigîrbaşı", "B": "Kilerci", "C": "Çeşnigîr", "D": "Câmedâr", "E": "Taştidâr"}, "dogru_cevap": "C"}, {"soru_numarasi": 45, "soru": "Osmanlı Devleti'nde Tımar (toprak) sistemi sayesinde taşrada yetiştirilen, tamamen Türklerden oluşan ve devletten maaş almayan atlı askerlere ne ad verilirdi?", "secenekler": {"A": "Yeniçeri", "B": "Levent", "C": "Tımarlı Sipahi", "D": "Cebelü", "E": "Humbaracı"}, "dogru_cevap": "C"}, {"soru_numarasi": 46, "soru": "Tımarlı Sipahilerin toprak gelirlerine (dirlik) göre yetiştirmek ve savaşa götürmek zorunda oldukları tam teçhizatlı atlı askerlere ne ad verilir?", "secenekler": {"A": "Cebelü", "B": "Humbaracı", "C": "Lağımcı", "D": "Turnalar", "E": "Levent"}, "dogru_cevap": "A"}, {"soru_numarasi": 47, "soru": "Osmanlı ordusunda havan topları, el bombaları ve patlayıcı maddeler üreten askeri sınıf ile tünel kazarak surları çökerten askeri mühendislik sınıfı hangi şıkta doğru verilmiştir?", "secenekler": {"A": "Lağımcı - Humbaracı", "B": "Humbaracı - Lağımcı", "C": "Cebelü - Turnalar", "D": "Turnalar - Lağımcı", "E": "Humbaracı - Cebelü"}, "dogru_cevap": "B"}, {"soru_numarasi": 48, "soru": "Yeniçeri Ocağı'na alınacak devşirme çocukları taşrada seçip merkeze getiren veya ordunun haberleşmesini sağlayan görevlilere ne ad verilirdi?", "secenekler": {"A": "Turnalar", "B": "Levent", "C": "Humbaracı", "D": "Müteferrika", "E": "Kapıcıbaşı"}, "dogru_cevap": "A"}, {"soru_numarasi": 49, "soru": "Osmanlı'da küçükbaş hayvan (koyun, keçi) yetiştiricilerinden hayvan başına alınan vergi türü aşağıdakilerden hangisidir?", "secenekler": {"A": "Çiftresmi", "B": "Ağnam Resmi", "C": "Bennak", "D": "Mücerred", "E": "Avarız"}, "dogru_cevap": "B"}, {"soru_numarasi": 50, "soru": "Tımar sisteminde bir çift öküzün işleyebileceği büyüklükteki toprağa sahip olan köylünün ödediği arazi vergisi aşağıdakilerden hangisidir?", "secenekler": {"A": "Çiftresmi", "B": "Bennak", "C": "Mücerred", "D": "Avarız", "E": "Bâc-ı Bazar"}, "dogru_cevap": "A"}, {"soru_numarasi": 51, "soru": "Osmanlı vergi sisteminde evli olup yarım çift veya daha az toprağı olan köylülerden alınan vergi (I) ile bekar ve kazanç sahibi köylü erkeklerden alınan vergi (II) hangisidir?", "secenekler": {"A": "I: Mücerred, II: Bennak", "B": "I: Bennak, II: Mücerred", "C": "I: Çiftresmi, II: Bennak", "D": "I: Bennak, II: Avarız", "E": "I: Mücerred, II: Çiftresmi"}, "dogru_cevap": "B"}, {"soru_numarasi": 52, "soru": "Osmanlı maliyesinde savaş, deprem, sel gibi olağanüstü durumlarda toplanan ve zamanla sürekli hale gelen vergi aşağıdakilerden hangisidir?", "secenekler": {"A": "Avarız", "B": "Bâc-ı Bazar", "C": "Cerime", "D": "Öşür", "E": "Ağnam"}, "dogru_cevap": "A"}, {"soru_numarasi": 53, "soru": "Osmanlı'da çarşı ve pazarlarda satılan mallardan alınan ticaret ve gümrük vergisine ne ad verilirdi?", "secenekler": {"A": "Cerime", "B": "Bâc-ı Bazar (Bac Vergisi)", "C": "Çiftresmi", "D": "Mücerred", "E": "Avarız"}, "dogru_cevap": "B"}, {"soru_numarasi": 54, "soru": "Osmanlı hukuk ve maliye sisteminde işlenen suçlar karşılığında suçlulardan alınan mahkeme veya para cezası vergisi hangisidir?", "secenekler": {"A": "Cerime", "B": "Avarız", "C": "Bâc-ı Bazar", "D": "Bennak", "E": "Çiftresmi"}, "dogru_cevap": "A"}, {"soru_numarasi": 55, "soru": "Osmanlı Devleti'nin yabancı devletlere verdiği ticaret ve seyahat imtiyazlarını içeren, padişahın tuğrasını taşıyan antlaşma metinlerine ne ad verilir?", "secenekler": {"A": "Sefaretnâme", "B": "Ahidnâme", "C": "Berat", "D": "Ferman", "E": "Gedik"}, "dogru_cevap": "B"}, {"soru_numarasi": 56, "soru": "Osmanlı elçilerinin görevli gittikleri yabancı ülkelerdeki gözlemlerini ve o ülkenin yapısını merkeze rapor etmek amacıyla yazdıkları eserler hangisidir?", "secenekler": {"A": "Ahidnâme", "B": "Tahrir Defteri", "C": "Sefaretnâme", "D": "Fetva", "E": "Gedik"}, "dogru_cevap": "C"}, {"soru_numarasi": 57, "soru": "Osmanlı eğitim sisteminde medreselerde ders veren profesör düzeyindeki öğretmenlere verilen unvan hangisidir?", "secenekler": {"A": "Müderris", "B": "Danişment", "C": "Suhte", "D": "Mülazım", "E": "Naib"}, "dogru_cevap": "A"}, {"soru_numarasi": 58, "soru": "Medresede eğitimini tamamlamış, müderrisliğe hazırlanan kıdemli öğrencilere (I) ve genel anlamda tüm medrese öğrencilerine (II) verilen isimler hangisidir?", "secenekler": {"A": "I: Suhte, II: Mülazım", "B": "I: Danişment, II: Suhte (Softa)", "C": "I: Suhte, II: Danişment", "D": "I: Mülazım, II: Danişment", "E": "I: Danişment, II: Mülazım"}, "dogru_cevap": "B"}, {"soru_numarasi": 59, "soru": "Medreseden mezun olan ancak henüz ataması yapılmamış, 'stajyer' kadrosundaki aday öğretmen veya kadılara ne ad verilirdi?", "secenekler": {"A": "Mülazım", "B": "Danişment", "C": "Suhte", "D": "Müderris", "E": "Mabeyinci"}, "dogru_cevap": "A"}, {"soru_numarasi": 60, "soru": "İstanbul, Bursa, Edirne gibi önemli merkezlerdeki büyük kadılık makamlarına ve bu makama atanan üst düzey kadılara verilen isim hangisidir?", "secenekler": {"A": "Mevleviyet", "B": "Mütesellim", "C": "Muhzır", "D": "Ayan", "E": "Naib"}, "dogru_cevap": "A"}, {"soru_numarasi": 61, "soru": "Sarayın iç ve dış kapılarının güvenliğinden, saray protokolünden ve elçilerin karşılanmasından sorumlu olan üst düzey yetkili kimdir?", "secenekler": {"A": "Kapıcıbaşı", "B": "Mabeyinci", "C": "Çaşnigîrbaşı", "D": "Mihmandar", "E": "Muhzır"}, "dogru_cevap": "A"}, {"soru_numarasi": 62, "soru": "Padişahın özel kalem müdürü gibi çalışan, padişahın şahsi işleri ve saray dışı bağlantıları ile ilgilenen görevli aşağıdakilerden hangisidir?", "secenekler": {"A": "Kapıcıbaşı", "B": "Mabeyinci", "C": "Mihmandar", "D": "Reisülküttab", "E": "Mütesellim"}, "dogru_cevap": "B"}, {"soru_numarasi": 63, "soru": "Devlete misafir gelen yabancı elçileri sınırda karşılayıp başkente kadar getiren, konaklama ve güvenliklerinden sorumlu olan devlet görevlisi hangisidir?", "secenekler": {"A": "Mihmandar", "B": "Kapıcıbaşı", "C": "Mabeyinci", "D": "Tercüman-ı Divan", "E": "Muhzır"}, "dogru_cevap": "A"}, {"soru_numarasi": 64, "soru": "Osmanlı iktisadi sisteminde devletin, temel tüketim maddelerinin (ekmek, et, odun vb.) tavan fiyatlarını belirlemesi uygulamasına ne ad verilir?", "secenekler": {"A": "Gedik", "B": "Narh", "C": "Lonca", "D": "Kapan", "E": "Bedesten"}, "dogru_cevap": "B"}, {"soru_numarasi": 65, "soru": "Osmanlı esnaf teşkilatında bir mesleği icra etme hakkına, yani işyeri açma ruhsatına / imtiyazına ne ad verilirdi?", "secenekler": {"A": "Gedik", "B": "Narh", "C": "Lonca", "D": "Kapan", "E": "Bedesten"}, "dogru_cevap": "A"}, {"soru_numarasi": 66, "soru": "Şehrin ihtiyacı olan un, yağ gibi büyük gıda maddelerinin giriş yaptığı, günümüzün toptancı hallerine Osmanlı'da ne ad verilirdi?", "secenekler": {"A": "Kapan", "B": "Bedesten", "C": "Lonca", "D": "Gedik", "E": "Arpalık"}, "dogru_cevap": "A"}, {"soru_numarasi": 67, "soru": "Osmanlı donanmasının en üst düzey komutanına ve donanmada görev yapan deniz piyadelerine verilen isimler sırasıyla hangisidir?", "secenekler": {"A": "Yeniçeri Ağası - Levent", "B": "Kaptan-ı Derya - Levent", "C": "Kaptan-ı Derya - Subaşı", "D": "Beylerbeyi - Cebelü", "E": "Sancakbeyi - Turnalar"}, "dogru_cevap": "B"}, {"soru_numarasi": 68, "soru": "Emekli olan veya görevden alınan üst düzey devlet adamlarına, geçimlerini sağlamaları için verilen ek gelir kaynağına ne ad verilirdi?", "secenekler": {"A": "Arpalık", "B": "İkta", "C": "Gedik", "D": "Narh", "E": "Kapan"}, "dogru_cevap": "A"}, {"soru_numarasi": 69, "soru": "Özellikle 18. ve 19. yüzyıllarda taşrada güçlenen, halk üzerinde nüfuzu olan yerel eşraf ve büyük toprak sahiplerine ne ad verilirdi?", "secenekler": {"A": "Ayan", "B": "Mütesellim", "C": "Muhzır", "D": "Kadı", "E": "Subaşı"}, "dogru_cevap": "A"}, {"soru_numarasi": 70, "soru": "Sancakbeyi veya eyalet valisinin görev yaptığı bölgede bulunmadığı zamanlarda onun yetkilerini kullanan valinin vekiline ne ad verilir?", "secenekler": {"A": "Mütesellim", "B": "Ayan", "C": "Muhzır", "D": "Naib", "E": "Hâcip"}, "dogru_cevap": "A"}];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        const questionTextEl = document.getElementById('question-text');
+        const optionsContainerEl = document.getElementById('options-container');
+        const progressTextEl = document.getElementById('progress-text');
+        const progressBarEl = document.getElementById('progress-bar');
+        const nextBtnEl = document.getElementById('next-btn');
+        
+        const activeStateEl = document.getElementById('quiz-active-state');
+        const resultStateEl = document.getElementById('quiz-result-state');
+        const resultScoreEl = document.getElementById('result-score');
+        const resultDetailsEl = document.getElementById('result-details');
+
+        function loadQuestion() {
+            answered = false;
+            nextBtnEl.style.display = 'none';
+            optionsContainerEl.innerHTML = '';
+            
+            const currentQuestion = quizData[currentQuestionIndex];
+            
+            // Başlık ve İlerleme çubuğu güncelleme
+            progressTextEl.innerText = `Soru ${currentQuestionIndex + 1} / ${quizData.length}`;
+            const progressPercent = ((currentQuestionIndex) / quizData.length) * 100;
+            progressBarEl.style.width = `${progressPercent}%`;
+
+            // Soru metni
+            questionTextEl.innerText = `${currentQuestion.soru_numarasi}. ${currentQuestion.soru}`;
+
+            // Şıkları ekleme
+            for (const [key, value] of Object.entries(currentQuestion.secenekler)) {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.innerHTML = `<span class="option-prefix">${key})</span> <span class="option-text">${value}</span>`;
+                button.addEventListener('click', () => selectOption(button, key));
+                optionsContainerEl.appendChild(button);
+            }
+        }
+
+        function selectOption(selectedBtn, selectedKey) {
+            if (answered) return;
+            answered = true;
+
+            const currentQuestion = quizData[currentQuestionIndex];
+            const correctKey = currentQuestion.dogru_cevap;
+            const buttons = optionsContainerEl.querySelectorAll('.option-btn');
+
+            buttons.forEach(btn => {
+                btn.setAttribute('disabled', 'true');
+                const btnKey = btn.querySelector('.option-prefix').innerText.replace(')', '');
+                if (btnKey === correctKey) {
+                    btn.classList.add('correct');
+                }
+            });
+
+            if (selectedKey === correctKey) {
+                score++;
+            } else {
+                selectedBtn.classList.add('wrong');
+            }
+
+            nextBtnEl.style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            progressBarEl.style.width = '100%';
+            activeStateEl.style.display = 'none';
+            resultStateEl.style.display = 'block';
+            
+            const totalQuestions = quizData.length;
+            const wrongs = totalQuestions - score;
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            resultScoreEl.innerText = `${score} / ${totalQuestions}`;
+            resultDetailsEl.innerHTML = `
+                Doğru Sayısı: <strong>${score}</strong><br>
+                Yanlış Sayısı: <strong>${wrongs}</strong><br>
+                Başarı Oranı: <strong>%${percentage}</strong>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            activeStateEl.style.display = 'block';
+            resultStateEl.style.display = 'none';
+            loadQuestion();
+        }
+
+        // İlk soruyu yükle
+        loadQuestion();
+    </script>
+</body>
+</html>
