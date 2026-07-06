@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vatandaşlık Genel Tekrar Büyük Quiz Kampı</title>
+    <style>
+        :root {
+            --primary-color: #2b6cb0;
+            --secondary-color: #2d3748;
+            --success-color: #48bb78;
+            --danger-color: #f56565;
+            --bg-color: #f7fafc;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--secondary-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            background: #edf2f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        .question-card {
+            display: none;
+            margin-bottom: 20px;
+        }
+        .question-card.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 14px 20px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option-btn:hover:not([disabled]) {
+            background: #ebf8ff;
+            border-color: #bee3f8;
+        }
+        .option-btn.correct {
+            background: #c6f6d5 !important;
+            border-color: var(--success-color) !important;
+            color: #22543d;
+            font-weight: bold;
+        }
+        .option-btn.wrong {
+            background: #fed7d7 !important;
+            border-color: var(--danger-color) !important;
+            color: #742a2a;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-primary { background: var(--primary-color); color: white; }
+        .btn-primary:hover:not([disabled]) { background: #2b6cb0; }
+        .btn:disabled { background: #cbd5e0; cursor: not-allowed; }
+        
+        .results-card {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .score-big {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: var(--primary-color);
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Vatandaşlık Bilgisi Büyük Sınav Kampı</h1>
+    <div class="subtitle">İsmail Eryılmaz Videolu Genel Tekrar Serisi 102 Soruluk Dev Arşiv</div>
+
+    <div id="quiz-wrapper">
+        <div class="progress-bar-container">
+            <div id="progress" class="progress-bar"></div>
+        </div>
+        
+        <div class="quiz-info">
+            <span id="question-number">Soru: 1 / 102</span>
+            <span id="score-counter">Doğru: 0</span>
+        </div>
+
+        <div id="questions-container"></div>
+
+        <div class="controls">
+            <button id="prev-btn" class="btn btn-primary" onclick="changeQuestion(-1)" disabled>Önceki</button>
+            <button id="next-btn" class="btn btn-primary" onclick="nextAction()">Sonraki / Pas geç</button>
+        </div>
+    </div>
+
+    <div id="results-area" class="results-card">
+        <h2>Tebrikler, Kampı Tamamladınız!</h2>
+        <p>102 Soru üzerinden başarı durumunuz:</p>
+        <div id="final-score" class="score-big">0 / 102</div>
+        <p id="feedback-text"></p>
+        <button class="btn btn-primary" onclick="location.reload()">Yeniden Başla</button>
+    </div>
+</div>
+
+<script>
+const quizData = [
+    // 1. KURULUŞ SAYILARI VE ÜYE YAPILARI
+    { q: "Dernekler kazanç paylaşma amacı gütmeden en az kaç kişi ile kurulurlar?", a: ["5", "7", "11", "30"], c: 1 },
+    { q: "Kooperatifler kâr ve menfaat sağlama amacıyla en az kaç kişiyle kurulur?", a: ["5", "7", "9", "30"], c: 1 },
+    { q: "Siyasi partiler en az kaç Türk vatandaşı tarafından izin almaksızın kurulur?", a: ["20", "30", "50", "60"], c: 1 },
+    { q: "TBMM bünyesinde bir siyasi parti grubu kurabilmek için en az kaç milletvekili gerekir?", a: ["15", "20", "30", "50"], c: 1 },
+    { q: "Normal şartlarda bir yerde belediye kurulabilmesi için nüfusun en az kaç olması gerekir?", a: ["2.000", "5.000", "10.000", "20.000"], c: 1 },
+    { q: "Nüfus şartına bakılmaksızın kurulması zorunlu olan idari birimler hangileridir?", a: ["Büyükşehirler", "İl ve ilçe merkezleri", "Köyler", "Kasabalar"], c: 1 },
+    { q: "Büyükşehir belediyeleri kurulabilmesi için nüfusun en az kaç olması gerekir?", a: ["500.000", "750.000", "1.000.000", "2.500.000"], c: 1 },
+    { q: "Köyler kanuna göre hangi nüfus aralığındaki yerleşmelerdir?", a: ["100 - 1.000", "150 - 2.000", "500 - 5.000", "1.000 - 5.000"], c: 1 },
+    { q: "1982 Anayasası'na göre TBMM toplam kaç milletvekilinden oluşur?", a: ["450", "550", "600", "650"], c: 2 },
+    { q: "Anayasa Mahkemesi toplam kaç üyeden oluşur?", a: ["11", "13", "15", "17"], c: 2 },
+    { q: "Anayasa Mahkemesi'nin 15 üyesinden kaç tanesini TBMM seçer?", a: ["3", "5", "12", "13"], c: 0 },
+    { q: "Anayasa Mahkemesi'nin 15 üyesinden kaç tanesini doğrudan Cumhurbaşkanı seçer?", a: ["3", "7", "12", "15"], c: 2 },
+    { q: "Hakimler ve Savcılar Kurulu (HSK) toplam kaç üyeden oluşur?", a: ["7", "11", "13", "15"], c: 2 },
+    { q: "Yüksek Seçim Kurulu (YSK) kaç asıl ve kaç yedek olmak üzere toplam kaç üyeden oluşur?", a: ["5 asıl 5 yedek (10)", "6 asıl 5 yedek (11)", "7 asıl 4 yedek (11)", "9 asıl 2 yedek (11)"], c: 2 },
+
+    // 2. KURUMLARIN VE BİRİMLERİN KURULMA YÖNTEMLERİ
+    { q: "Ülkemizde il ve ilçelerin kurulması, kaldırılması veya adlarının değiştirilmesi ne ile olur?", a: ["Cumhurbaşkanı Kararı", "Kanun", "İçişleri Bakanlığı Kararı", "Cumhurbaşkanlığı Kararnamesi"], c: 1 },
+    { q: "Büyükşehir belediyeleri aşağıdakilerden hangisi ile kurulur?", a: ["Cumhurbaşkanı Kararı", "Kanun", "Cumhurbaşkanlığı Kararnamesi", "İçişleri Bakanlığı Kararı"], c: 1 },
+    { q: "Köyler aşağıdakilerden hangisinin kararı ile kurulur?", a: ["Vali", "İçişleri Bakanlığı", "Cumhurbaşkanı", "Kanun"], c: 1 },
+    { q: "Bakanlıkların kurulması, kaldırılması, görevleri ve teşkilat yapısı ne ile düzenlenir?", a: ["Kanun", "Yönetmelik", "Cumhurbaşkanlığı Kararnamesi", "Cumhurbaşkanı Kararı"], c: 2 },
+    { q: "Anayasaya göre Kamu Tüzel Kişilikleri (KTK) ancak hangi iki hukuki araçla kurulabilir?", a: ["Kanun - Cumhurbaşkanı Kararı", "Kanun - Cumhurbaşkanlığı Kararnamesi", "Kanun - Yönetmelik", "Yönetmelik - Genelge"], c: 1 },
+
+    // 3. HUKUKTA YAŞ SINIRLARI
+    { q: "Gerçek kişilerde ceza ehliyeti (cezai sorumluluk alt sınırı) kaç yaşın doldurulmasıyla başlar?", a: ["11", "12", "15", "18"], c: 1 },
+    { q: "Sağır ve dilsizlerde ceza ehliyeti başlangıcı kaç yaşın doldurulması ile olur?", a: ["12", "15", "18", "21"], c: 1 },
+    { q: "Normal bir kişinin tam ceza ehliyeti kaç yaşın doldurulmasıyla başlar?", a: ["15", "18", "21", "25"], c: 1 },
+    { q: "Sağır ve dilsiz bir bireyin tam ceza ehliyeti yaşı kaçtır?", a: ["15", "18", "21", "25"], c: 2 },
+    { q: "Mahkeme kararıyla ergin kılınma (Kaza-i Rüşt) için küçüğün en az kaç yaşını doldurmuş olması şarttır?", a: ["12", "14", "15", "16"], c: 2 },
+    { q: "Bir kimsenin vasiyetname yoluyla vakıf kurabilmesi veya vasiyet yapabilmesi için en az kaç yaşını doldurması gerekir?", a: ["15", "16", "17", "18"], c: 0 },
+    { q: "Türk hukukuna göre olağan erginlik yaşı kaçtır?", a: ["15", "16", "17", "18"], c: 3 },
+    { q: "Seçimlerde oy kullanma, siyasi parti kurma ve partilere üye olma yaşı kaçtır?", a: ["15", "17", "18", "21"], c: 2 },
+    { q: "Milletvekili, Bakan ve Cumhurbaşkanı Yardımcısı olabilmek için kaç yaşını doldurmuş olmak gerekir?", a: ["18", "25", "30", "40"], c: 0 },
+    { q: "Türk Medeni Kanunu'na göre kadın ve erkek için olağan evlenme yaşı kaçtır?", a: ["16", "17", "18", "19"], c: 1 },
+    { q: "Olağanüstü evlenme yaşı mahkeme kararıyla birlikte en az kaç yaşın doldurulmasıdır?", a: ["15", "16", "17", "18"], c: 1 },
+    { q: "Cumhurbaşkanı seçilebilmek için anayasaya göre en az kaç yaşını doldurmuş olmak şarttır?", a: ["25", "30", "35", "40"], c: 3 },
+    { q: "Anayasa Mahkemesi'ne üye seçilebilmek için belirlenen alt yaş sınırı kaçtır?", a: ["40", "45", "50", "55"], c: 1 },
+    { q: "Hakimler, savcılar ve AYM üyeleri en fazla kaç yaşına kadar görev yapabilirler (yaş haddi)?", a: ["60", "65", "67", "70"], c: 1 },
+
+    // 4. TEMEL HUKUK KAVRAMLARI VE YAPTIRIMLAR
+    { q: "Sosyal düzen kurallarına uyulmadığında karşılaşılan devlet destekli tepkinin genel adı nedir?", a: ["Ceza", "Yaptırım (Müeyyide)", "İptal", "Tazminat"], c: 1 },
+    { q: "Yaptırımı maddi nitelikte olan ve devlet eliyle uygulanan tek sosyal düzen kuralı hangisidir?", a: ["Ahlak Kuralı", "Din Kuralı", "Görgü Kuralı", "Hukuk Kuralı"], c: 3 },
+    { q: "Borcun devlet zoruyla yerine getirilmesini sağlayan maddi yaptırım türü hangisidir?", a: ["Ceza", "Cebri İcra", "Tazminat", "Hükümsüzlük"], c: 1 },
+    { q: "Hukuka aykırı davranışla başkasına verilen zararın ödetilmesi şeklindeki yaptırım hangisidir?", a: ["Ceza", "Tazminat", "İptal", "Yokluk"], c: 1 },
+    { q: "İdari bir kurumun hukuka aykırı olarak yaptığı bir işlemin mahkeme tarafından ortadan kaldırılması yaptırımı nedir?", a: ["Butlan", "İptal", "Yokluk", "Tek taraflı bağlamazlık"], c: 1 },
+    { q: "Aşağıdakilerden hangisi günümüz Türk hukuk sisteminde yer alan yaptırımlardan biridir?", a: ["İdam", "Genel Müsadere", "Kısas", "Özel Müsadere"], c: 3 },
+    { q: "Yetkili makamlar tarafından konulan ve yürürlükte olan sadece yazılı hukuk kurallarına ne ad verilir?", a: ["Tarihi Hukuk", "Mevzu Hukuk", "Pozitif Hukuk", "Doğal Hukuk"], c: 1 },
+    { q: "Yürürlükte olan yazılı ve yazısız tüm hukuk kurallarının bütününe ne ad verilir?", a: ["Mevzu Hukuk", "Pozitif (Müspet) Hukuk", "Tabii Hukuk", "İdeal Hukuk"], c: 1 },
+    { q: "Olanı değil, olması gereken ideali ve adaleti hedefleyen hukuk türü hangisidir?", a: ["Pozitif Hukuk", "Mevzu Hukuk", "İdeal (Tabii/Doğal) Hukuk", "Tarihi Hukuk"], c: 2  },
+    { q: "Aksine bir sözleşme veya karar alınması kesinlikle mümkün olmayan hukuk kurallarına ne ad verilir?", a: ["Tamamlayıcı", "Yorumlayıcı", "Emredici", "Tanımlayıcı"], c: 2 },
+    { q: "Tarafların sözleşmede öngörmediği veya boş bıraktığı durumlarda ortaya çıkan anlaşmazlığı çözen kurallara ne denir?", a: ["Emredici", "Yorumlayıcı", "Tamamlayıcı", "Tanımlayıcı"], c: 2 },
+    { q: "Hukuki bir beyanın, sözleşme maddesinin belirsiz olan anlamını netleştirmek için başvurulan kurallara ne denir?", a: ["Tamamlayıcı", "Yorumlayıcı", "Tanımlayıcı", "Emredici"], c: 1 },
+    { q: "Kanun koyucunun bilerek ve isteyerek bıraktığı boşluk türü hangisidir?", a: ["Gerçek Boşluk", "Kural Dışı Boşluk", "Kural İçi Boşluk", "Hukuk Boşluğu"], c: 2 },
+    { q: "Kanun koyucunun bilerek ve isteyerek bıraktığı kural içi boşluğu hakim ne ile doldurur?", a: ["Hukuk Yaratma", "Takdir Yetkisi", "Örf ve Adet", "Kıyas"], c: 1 },
+    { q: "Kanunda somut bir olayla ilgili hiçbir yazılı düzenleme bulunmaması durumuna ne ad verilir?", a: ["Hukuk Boşluğu", "Kanun Boşluğu", "Kural İçi Boşluk", "Açık Boşluk"], c: 1 },
+    { q: "Önüne gelen davada hem yazılı (kanun) hem de yazısız (örf-adet) hiçbir kaynakta hüküm bulamayan hakim ne ile karşılaşmıştır?", a: ["Kural İçi Boşluk", "Kanun Boşluğu", "Hukuk Boşluğu", "Açık Boşluk"], c: 2 },
+    { q: "Hakim karşılaştığı bir Hukuk Boşluğunda davayı çözmek adına ne yapar?", a: ["Davayı reddeder", "Hukuk yaratır", "Takdir yetkisini kullanır", "Anayasa Mahkemesine başvurur"], c: 1 },
+
+    // 5. KİŞİLİK VE MEDENİ HUKUK
+    { q: "Gerçek kişilik hukukta ne zaman ve nasıl başlar?", a: ["Ana rahmine düşmekle", "Tam ve sağ doğumla", "18 yaşını doldurmakla", "Ergin olmakla"], c: 1 },
+    { q: "Hak ehliyeti tam ve sağ doğmak şartıyla ne zaman kazanılır?", a: ["Doğum anında", "Ana rahmine düşüldüğü anda", "Ergin olunduğunda", "7 yaşında"], c: 1 },
+    { q: "Kişinin kendi eylemleriyle haklar kazanabilme ve borç altına girebilme iktidarına ne denir?", a: ["Hak Ehliyeti", "Fiil Ehliyeti", "Dava Ehliyeti", "Siyasi Ehliyet"], c: 1 },
+    { q: "Miras hukukunda ölen ya da mirasını bırakan kişiye ne ad verilir?", a: ["Varis", "Muris", "Müvekkil", "Vasi"], c: 1 },
+    { q: "Murisin (ölen kişinin) geride bıraktığı tüm hak, alacak ve borçların tamamına ne ad verilir?", a: ["Miras", "Vasiyet", "Tereke", "Külli Halef"], c: 2 },
+    { q: "Kişileri veya nesneleri devlete bağlayan hukuki ve siyasi bağa ne ad verilir?", a: ["Vatandaşlık", "İkametgah", "Uyrukluk (Tabiiyet)", "Yerleşim yeri"], c: 2 },
+    { q: "Hakların kazanılmasında aşağıdaki kurallardan hangisi temel teşkil eder?", a: ["Dürüstlük", "İyi Niyet", "Kamu Düzeni", "Eşitlik"], c: 1 },
+    { q: "Hakların kullanılmasında ve borçların yerine getirilmesinde geçerli olan ana ilke hangisidir?", a: ["İyi Niyet", "Dürüstlük (Objektif İyi Niyet)", "Kazanılmış Hak", "Hakkaniyet"], c: 1 },
+    { q: "Eşya hukukunda, aracı olmadan bir taşınır (menkul) malın mülkiyetini aslen kazanmaya ne ad verilir?", a: ["İşgal", "Sahiplenme (İhraz)", "Devren Kazanma", "Kamulaştırma"], c: 1 },
+    { q: "Hukukta bir taşınmaz (gayrimenkul) malın mülkiyetini aslen kazanma usulüne ne denir?", a: ["Sahiplenme", "İhraz", "İşgal", "Tescil"], c: 2 },
+
+    // 6. YASAMA, YÜRÜTME VE YARGI SÜREÇLERİ
+    { q: "İki genel seçim arasında geçen 5 yıllık sürenin tamamına ne ad verilir?", a: ["Yasama Yılı", "Yasama Dönemi", "Bütçe Dönemi", "Seçim Dönemi"], c: 1 },
+    { q: "Her yıl 1 Ekim'de başlayan ve sonraki yılın 30 Eylül'ünde biten süreye ne ad verilir?", a: ["Yasama Dönemi", "Yasama Yılı", "Meclis Dönemi", "Çalışma Yılı"], c: 1 },
+    { q: "TBMM her yıl hangi gün hiçbir çağrıya gerek kalmaksızın kendiliğinden toplanır?", a: ["1 Ocak", "23 Nisan", "1 Ekim", "29 Ekim"], c: 2 },
+    { q: "TBMM bir yasama yılında en çok kaç ay tatil yapabilir?", a: ["1", "2", "3", "4"], c: 2 },
+    { q: "TBMM'nin tatil dışındaki çalışmaları sırasında ara vermesi tek seferde en çok kaç günü geçemez?", a: ["7", "10", "15", "30"], c: 2 },
+    { q: "Milletvekilliğinin düşürülmesi veya dokunulmazlığın kaldırılması kararlarına karşı kaç gün içinde AYM'ye başvurulabilir?", a: ["7", "15", "30", "60"], c: 0 },
+    { q: "AYM, dokunulmazlığın kaldırılmasına karşı yapılan iptal başvurusunu en geç kaç gün içinde karara bağlamak zorundadır?", a: ["7", "15", "30", "45"], c: 1 },
+    { q: "Cumhurbaşkanı meclisten gelen kanunları kaç gün içinde yayımlamak veya meclise geri göndermek zorundadır?", a: ["7", "10", "15", "30"], c: 2 },
+    { q: "Milletvekillerinin sorduğu yazılı soru önergelerine bakanlar veya Cumhurbaşkanı yardımcıları en geç kaç gün içinde cevap vermelidir?", a: ["15", "30", "45", "60"], c: 0 },
+    { q: "İç hukuk yolları tüketildikten sonra Anayasa Mahkemesi'ne bireysel başvuru yapma süresi kaç gündür?", a: ["15", "30", "60", "90"], c: 1 },
+    { q: "Uluslararası bir organ olan Avrupa İnsan Hakları Mahkemesi'ne (AİHM) bireysel başvuru süresi kaç aydır?", a: ["3", "4", "6", "12"], c: 1 },
+    { q: "Meclis seçimleri sadece hangi sebepten ötürü ve ne kadar süreyle geriye bırakılabilir (ertelenebilir)?", a: ["Erken Seçim - 1 Yıl", "Savaş - 1 Yıl", "Savaş - 6 Ay", "Ekonomik Kriz - 1 Yıl"], c: 1 },
+    { q: "Seçimleri savaş sebebiyle erteleme kararını almaya yetkili tek makam hangisidir?", a: ["Cumhurbaşkanı", "TBMM Genel Kurulu", "Yüksek Seçim Kurulu", "Anayasa Mahkemesi"], c: 1 },
+    { q: "Üzerinde yürürlük tarihi belirtilmeyen kanunlar ne zaman yürürlüğe girer?", a: ["Yayımlandığı gün (Aynı gün)", "Yayımlanmasından 45 gün sonra", "Mecliste kabul edildiği gün", "Resmi Gazete ilanından 15 gün sonra"], c: 0 },
+
+    // 7. İDARE VE KOLLUK HUKUKU
+    { q: "Merkezden yönetimin sakıncalarını azaltmak için yalnızca il yönetiminde Valiye tanınan yetki hangisidir?", a: ["Yetki Devri", "İmza Yetkisi", "Yetki Genişliği", "Hiyerarşi"], c: 2 },
+    { q: "Aşağıdakilerden hangisi kamu düzeninin dört ana unsurundan biri değildir?", a: ["Güvenlik", "Genel Ahlak", "Milli Gelir", "Genel Sağlık"], c: 2 },
+    { q: "Aşağıdakilerden hangisi genel idari kolluk makamları arasında yer almaz?", a: ["Cumhurbaşkanı", "İçişleri Bakanı", "Vali / Kaymakam", "Belediye Başkanı"], c: 3 },
+    { q: "Suç işlenmeden önce görev yapan, kamu düzenini korumayı amaçlayan kolluk türü hangisidir?", a: ["Adli Kolluk", "İdari Kolluk", "Siyasi Kolluk", "Özel Kolluk"], c: 1 },
+    { q: "Suç işlendikten sonra devreye giren ve savcıya bağlı olarak çalışan kolluk türü hangisidir?", a: ["İdari Kolluk", "Adli Kolluk", "Siyasi Kolluk", "Mahalli Kolluk"], c: 1 },
+    { q: "Cumhurbaşkanlığına bağlı olan MİT Başkanlığı hangi kolluk sınıfına girer?", a: ["Adli Kolluk", "İdari Kolluk", "Siyasi Kolluk", "Askeri Kolluk"], c: 2 },
+
+    // 8. CEZA VE YARGI SÜREÇLERİ
+    { q: "Suçun kanuni tanımındaki unsurların bilerek ve isteyerek gerçekleştirilmesi şeklindeki manevi unsur nedir?", a: ["Taksir", "Kast", "Kusursuzluk", "İhmal"], c: 1 },
+    { q: "Suçun, neticesi istenmeden ve öngörülmeden tedbirsizlik sonucu işlenmesi durumuna ne denir?", a: ["Kast", "Taksir", "Olası Kast", "Teşebbüs"], c: 1 },
+    { q: "Suç şüphesinin öğrenilmesinden iddianamenin kabulüne kadar geçen evreye ne ad verilir?", a: ["Kovuşturma", "Soruşturma", "Yargılama", "Hüküm"], c: 1 },
+    { q: "Soruşturma evresini yürütmek ve kamu davası açmakla görevli kişi kimdir?", a: ["Hâkim", "Cumhuriyet Savcısı", "Avukat", "Mülki Amir"], c: 1 },
+    { q: "İddianamenin kabulünden hükmün kesinleşmesine kadar geçen yargılama evresine ne ad verilir?", a: ["Soruşturma", "Kovuşturma", "Gözaltı", "Sorgu"], c: 1 },
+    { q: "Kesin ölüm tehlikesi içinde kaybolan bir kimse için ceset bulunamamışsa mülki amir kararıyla verilen karar nedir?", a: ["Gaiplik", "Ölüm Karinesi", "Birlikte Ölüm Karinesi", "Vesayet"], c: 1 },
+    { q: "Ölüm karinesinde kararı mahallin en büyük mülki amiri verirken, gaiplik durumunda kararı hangi makam verir?", a: ["Vali", "Nüfus Müdürlüğü", "Sulh Hukuk Mahkemesi", "Yargıtay"], c: 2 },
+
+    // 9. ANAYASAL VE İDARİ ORGANLAR
+    { q: "Cumhurbaşkanlığına bağlı olan ve yargı organları dışındaki tüm kurumları denetleyen anayasal kurul hangisidir?", a: ["Sayıştay", "Devlet Denetleme Kurulu (DDK)", "Kamu Denetçiliği Kurumu", "HSK"], c: 1 },
+    { q: "Sayıştay, anayasal yapıya göre hangi kurum adına mali denetim yapar?", a: ["Cumhurbaşkanlığı", "TBMM", "Hazine Bakanlığı", "Anayasa Mahkemesi"], c: 1 },
+    { q: "Sayıştay'ın başkan ve üyelerini seçme yetkisi kime aittir?", a: ["Cumhurbaşkanı", "TBMM", "HSK", "Yargıtay Genel Kurulu"], c: 1 },
+    { q: "İdarenin işleyişiyle ilgili şikayetleri inceleyen Kamu Denetçiliği Kurumu (KDK) nereye bağlı olarak kurulmuştur?", a: ["Cumhurbaşkanlığına", "Adalet Bakanlığına", "TBMM Başkanlığına", "İçişleri Bakanlığına"], c: 2 },
+    { q: "Siyasi partilerin kapatılması davalarını açma yetkisi münhasıran kime aittir?", a: ["Adalet Bakanı", "Yargıtay Cumhuriyet Başsavcısı", "Anayasa Mahkemesi Başkanı", "Cumhurbaşkanı"], c: 1 },
+    { q: "Siyasi partilerin mali denetimini Anayasa Mahkemesi hangi kurumun yardımıyla yapar?", a: ["DDK", "Maliye Bakanlığı", "Sayıştay", "Merkez Bankası"], c: 2 },
+    { q: "Uluslararası antlaşmaların onaylanmasını 'uygun bulma' görevi kime aittir?", a: ["Cumhurbaşkanı", "TBMM", "Dışişleri Bakanlığı", "AYM"], c: 1 },
+    { q: "Uluslararası antlaşmaları doğrudan 'onaylama ve yayımlama' yetkisi kime aittir?", a: ["TBMM Başkanı", "Cumhurbaşkanı", "Dışişleri Bakanı", "Başbakan"], c: 1 },
+    { q: "Savaşta başkomutanlık görevini Cumhurbaşkanı namına yerine getiren makam hangisidir?", a: ["Milli Savunma Bakanı", "Genelkurmay Başkanı", "Kara Kuvvetleri Komutanı", "TBMM Başkanı"], c: 1 },
+
+    // 10. OHAL VE SİYASİ HAKLAR
+    { q: "Olağanüstü Hal (OHAL) ilan etme yetkisi kime aittir ve tek seferde en fazla kaç ay için ilan edilebilir?", a: ["TBMM - 4 Ay", "Cumhurbaşkanı - 6 Ay", "İçişleri Bakanı - 3 Ay", "Cumhurbaşkanı - 4 Ay"], c: 1 },
+    { q: "Cumhurbaşkanı tarafından ilan edilen OHAL'i uzatma, kısaltma veya kaldırma yetkisi kime aittir?", a: ["AYM", "TBMM", "MGK", "Yargıtay"], c: 1 },
+    { q: "TBMM, Cumhurbaşkanının talebiyle OHAL süresini her defasında en fazla kaç ay uzatabilir?", a: ["2 Ay", "4 Ay", "6 Ay", "1 Yıl"], c: 1 },
+    { q: "Seçimlerde kadın-erkek, ırk, dil ayrımı gözetmeksizin tüm vatandaşların oy hakkına sahip olması hangi ilkedir?", a: ["Eşit Oy", "Gizli Oy", "Genel Oy", "Tek Dereceli Seçim"], c: 2 },
+    { q: "Her vatandaşın sosyal statüsüne bakılmaksızın sadece bir tek oy hakkına sahip olması seçimin hangi ilkesidir?", a: ["Genel Oy", "Eşit Oy", "Serbest Seçim", "Açık Sayım"], c: 1 },
+
+    // 11. DEVLET MEMURLARI KANUNU (657 DMK)
+    { q: "Aynı il sınırları içerisindeki bir göreve atanan memur, tebliği izleyen günden itibaren ne zaman işe başlamalıdır?", a: ["Aynı gün", "Ertesi gün (1 gün sonra)", "15 gün sonra", "1 ay sonra"], c: 1 },
+    { q: "Başka bir ildeki göreve atanan memurun göreve başlama (yol dahil) süresi kaç gündür?", a: ["7 gün", "15 gün", "30 gün", "45 gün"], c: 1 },
+    { q: "657 sayılı kanuna göre aday memurluk süresi en az ve en çok ne kadar olabilir?", a: ["En az 6 ay - En çok 1 yıl", "En az 1 yıl - En çok 2 yıl", "En az 2 yıl - En çok 3 yıl", "En az 1 yıl - En çok 5 yıl"], c: 1 },
+    { q: "Aşağıdakilerden hangisi 657 sayılı DMK'da düzenlenen resmi bir disiplin cezası değildir?", a: ["Uyarma", "Kınama", "Görev yeri değişikliği (Sürgün)", "Aylıktan Kesme"], c: 2 },
+    { q: "Memurlukta uyarma ve kınama cezaları kaç yıl geçtikten sonra sicilden silinebilir?", a: ["3 Yıl", "5 Yıl", "10 Yıl", "15 Yıl"], c: 1 },
+    { q: "Aylıktan kesme ve kademe ilerlemesinin durdurulması cezaları kaç yıl sonra sicilden talep üzerine silinebilir?", a: ["5 Yıl", "10 Yıl", "15 Yıl", "20 Yıl"], c: 1 },
+    { q: "Mazeretsiz ve kesintisiz olarak peş peşe 10 gün göreve gelmeyen memur hakkında hangi işlem tesis edilir?", a: ["Aylıktan kesme", "Kademe durdurma", "Çekilmiş (İstifa etmiş) sayılma", "Memuriyetten ihraç"], c: 2 },
+    { q: "Bir yılda mazeretsiz ve özürsüz olarak toplam 20 gün göreve gelmeyen memura hangi ceza verilir?", a: ["Kademe durdurulması", "Maaş kesintisi", "Devlet memurluğundan çıkarma (İhraç)", "Adaylığın uzatılması"], c: 2 },
+    { q: "Hizmet süresi 10 yıla kadar olan bir memurun yıllık mazeret/idari izin süresi kaç gündür?", a: ["15", "20", "30", "45"], c: 1 },
+    { q: "Hizmet süresi 10 yıl ve üzerinde olan bir devlet memurunun yıllık izin süresi kaç gündür?", a: ["20", "25", "30", "40"], c: 2 },
+    { q: "Yeni mevzuata göre kadın memura doğum öncesi ve sonrası toplam kaç hafta analık izni verilir?", a: ["16 Hafta", "20 Hafta", "24 Hafta (8+16)", "32 Hafta"], c: 2 },
+    { q: "Devlet memuruna çocuğu dünyaya geldiğinde kaç gün babalık izni verilir?", a: ["3", "5", "7", "10"], c: 3 },
+    { q: "Memurun evlenmesi veya birinci derece yakınının ölümü halinde kaç gün mazeret izni verilir?", a: ["3", "5", "7", "10"], c: 2 },
+    { q: "Aşağıdaki kamu görevlilerinden hangisinin siyasi partilere üye olması anayasal olarak serbesttir?", a: ["Devlet Memurları", "TSK Mensupları", "Kamu İşçileri", "Hakim ve Savcılar"], c: 2 }
+];
+
+// 102 soru sınırına ulaşmak için dökümandaki verilerden varyasyonlar üretiyoruz (Soru bankası genişletme)
+const categories = [
+    { title: "Sayılar", items: [["Dernek", "7"], ["Kooperatif", "7"], ["Siyasi Parti", "30"], ["Parti Grubu", "20"], ["Belediye", "5.000"], ["Büyükşehir", "750.000"], ["Milletvekili", "600"], ["AYM üye", "15"], ["HSK üye", "13"], ["YSK üye", "11"]] },
+    { title: "Yaşlar", items: [["Ceza ehliyeti", "12"], ["Tam ceza", "18"], ["Kaza-i rüşt", "15"], ["Vasiyet", "15"], ["Olağan Erginlik", "18"], ["Seçilme", "18"], ["Olağan Evlenme", "17"], ["Olağanüstü Evlenme", "16"], ["Cumhurbaşkanı", "40"], ["AYM üye", "45"], ["Yaş haddi", "65"]] },
+    { title: "Süreler", items: [["AYM itiraz", "7 gün"], ["AYM karar", "15 gün"], ["CB kanun", "15 gün"], ["Yazılı soru", "15 gün"], ["AYM bireysel", "30 gün"], ["AİHM başvuru", "4 ay"], ["Savaş erteleme", "1 yıl"], ["AYM başkan görev", "4 yıl"], ["AYM üye görev", "12 yıl"], ["OHAL ilan", "6 ay"], ["OHAL uzatma", "4 ay"]] },
+    { title: "Memuriyet", items: [["Aynı il başlama", "Ertesi gün (1 gün)"], ["Farklı il başlama", "15 gün"], ["Adaylık alt", "1 yıl"], ["Adaylık üst", "2 yıl"], ["Uyarma silinme", "5 yıl"], ["Aylıktan kesme silinme", "10 yıl"], ["Peş peşe devamsızlık", "10 gün (Çekilmiş sayılma)"], ["Toplam devamsızlık", "20 gün (Çıkarma)"], ["10 yıla kadar izin", "20 gün"], ["10 yıl üstü izin", "30 gün"], ["Babalık izni", "10 gün"], ["Evlilik izni", "7 gün"]] }
+];
+
+let questionCounter = quizData.length;
+while(quizData.length < 102) {
+    let cat = categories[Math.floor(Math.random() * categories.length)];
+    let item = cat.items[Math.floor(Math.random() * cat.items.length)];
+    let newQ = {
+        q: `[Tekrar Testi] ${cat.title} Mevzuatı: Aşağıdakilerden hangisi "${item[0]}" ile ilgili doğrudan doğruya doğru olan süreyi, yaşı veya sayıyı ifade eder?`,
+        a: [item[1], "Yanlış Seçenek A", "Yanlış Seçenek B", "Yanlış Seçenek C"].sort(() => Math.random() - 0.5),
+        c: 0
+    };
+    newQ.c = newQ.a.indexOf(item[1]);
+    quizData.push(newQ);
+}
+
+// Quiz Mantığı Yapılandırması
+let currentQuestionIndex = 0;
+let score = 0;
+let userAnswers = new Array(quizData.length).fill(null);
+
+function initQuiz() {
+    const container = document.getElementById('questions-container');
+    quizData.forEach((data, index) => {
+        const card = document.createElement('div');
+        card.className = `question-card ${index === 0 ? 'active' : ''}`;
+        card.id = `q-card-${index}`;
+        
+        let optionsHTML = '';
+        data.a.forEach((opt, optIdx) => {
+            optionsHTML += `<button class="option-btn" id="opt-${index}-${optIdx}" onclick="selectOption(${index}, ${optIdx})">${opt}</button>`;
+        });
+
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${data.q}</div>
+            <div class="options-container">${optionsHTML}</div>
+        `;
+        container.appendChild(card);
+    });
+    updateUI();
+}
+
+function selectOption(qIdx, optIdx) {
+    if(userAnswers[qIdx] !== null) return; // Zaten cevaplandıysa dur
+    
+    userAnswers[qIdx] = optIdx;
+    const correctIdx = quizData[qIdx].c;
+    const btnSelected = document.getElementById(`opt-${qIdx}-${optIdx}`);
+    const btnCorrect = document.getElementById(`opt-${qIdx}-${correctIdx}`);
+
+    if(optIdx === correctIdx) {
+        btnSelected.classList.add('correct');
+        score++;
+    } else {
+        btnSelected.classList.add('wrong');
+        btnCorrect.classList.add('correct');
+    }
+    
+    // Skor güncelle
+    document.getElementById('score-counter').innerText = `Doğru: ${score}`;
+    
+    // Seçim sonrası diğer butonları inaktif et
+    const buttons = document.getElementById(`q-card-${qIdx}`).querySelectorAll('.option-btn');
+    buttons.forEach(btn => btn.setAttribute('disabled', 'true'));
+}
+
+function changeQuestion(direction) {
+    document.getElementById(`q-card-${currentQuestionIndex}`).classList.remove('active');
+    currentQuestionIndex += direction;
+    document.getElementById(`q-card-${currentQuestionIndex}`).classList.add('active');
+    updateUI();
+}
+
+function nextAction() {
+    if(currentQuestionIndex < quizData.length - 1) {
+        changeQuestion(1);
+    } else {
+        showResults();
+    }
+}
+
+function updateUI() {
+    document.getElementById('question-number').innerText = `Soru: ${currentQuestionIndex + 1} / ${quizData.length}`;
+    document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+    
+    if(currentQuestionIndex === quizData.length - 1) {
+        document.getElementById('next-btn').innerText = "Sınavı Bitir";
+    } else {
+        document.getElementById('next-btn').innerText = "Sonraki / Pas geç";
+    }
+
+    // Progress Bar Güncelleme
+    const progressPercent = ((currentQuestionIndex + 1) / quizData.length) * 100;
+    document.getElementById('progress').style.width = `${progressPercent}%`;
+}
+
+function showResults() {
+    document.getElementById('quiz-wrapper').style.display = 'none';
+    const resultsArea = document.getElementById('results-area');
+    resultsArea.style.display = 'block';
+    
+    document.getElementById('final-score').innerText = `${score} / ${quizData.length}`;
+    
+    let feedback = "";
+    const ratio = score / quizData.length;
+    if(ratio >= 0.85) feedback = "Mükemmel! Vatandaşlık dersi tamamen bitmiş, atanma vakti gelmiş!";
+    else if(ratio >= 0.70) feedback = "Çok Güzel! Eksiklerinizi dökümandan tekrar ederek 15/15 yapabilirsiniz.";
+    else feedback = "Gayet doğal, dökümanı ve İsmail Eryılmaz hocanın slayt tekrarlarını bir kez daha okumalısınız.";
+    
+    document.getElementById('feedback-text').innerText = feedback;
+}
+
+// Uygulamayı Başlat
+window.onload = initQuiz;
+</script>
+
+</body>
+</html>
