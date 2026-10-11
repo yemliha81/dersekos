@@ -29,13 +29,13 @@ class TeacherController extends Controller
 
     public function listTeachers()
     {
-        $teachers = Teacher::all();
+        $teachers = Teacher::where('status', 1)->get();
         return view('teacher.list', ['teachers' => $teachers]);
     }
 
     public function viewProfile($id)
     {
-        $teacher = Teacher::findOrFail($id);
+        $teacher = Teacher::where('status', 1)->findOrFail($id);
 
         $meta_title = "Öğretmen Profili - " . $teacher->name . ", ".$teacher->branch;
         $meta_description = "Dersekos öğretmen profili. " . $teacher->name . " " . strip_tags($teacher->about);
@@ -45,7 +45,7 @@ class TeacherController extends Controller
 
     public function publicProfile($id)
     {
-        $teacher = Teacher::with('events')->findOrFail($id);
+        $teacher = Teacher::with('events')->where('status', 1)->findOrFail($id);
         $reviews = EventRate::where(['teacher_id'=> $id, 'status' => 1])->with('student')->get();
 
         $meta_title = "Öğretmen Profili - " . $teacher->name . ", ".$teacher->branch;
